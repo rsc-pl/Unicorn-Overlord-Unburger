@@ -1,0 +1,13 @@
+/.local/
+/bin/
+/dist/
+/coverage/
+/.DS_Store
+/Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.log
+*.test
+.idea/
+.vscode/

@@ -1,0 +1,16 @@
+# Normalise text files to LF on checkout so builds and translation hashes are
+# reproducible across platforms. Translation tables are line-oriented text.
+* text=auto eol=lf
+*.go text eol=lf
+*.sh text eol=lf
+*.tsv text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# Binary payloads are never text-normalised.
+*.zip binary
+*.nsp binary
+*.xci binary
+*.nca binary
+*.cpk binary
+*.bin binary
