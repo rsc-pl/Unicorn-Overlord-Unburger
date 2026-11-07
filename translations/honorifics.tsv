@@ -4796,9 +4796,9 @@ press #(3) to join the battle with a Ranged Assist."
 UcHelpList.fms:509	4b837eb556bc	a4375546e5eb	"When #c(13)another allied unit encounters an enemy#/c within assist range,
 press #(3) to join the battle with #c(13)Ranged Assist, Magick Assist,
 or Healing Assist#/c."
-UcHelpList.fms:514	5e310991ffd1	a861bda33161	"When a resting unit is attacked, it cannot
-use #c(9)#(56)Active Skills#/c or #c(8)#(57)Passive Skills #/c.
-It cannot take any action at all."
+UcHelpList.fms:514	5e310991ffd1	a861bda33161	"If a resting unit is engaged in battle,
+its #c(9)#(56)Active Skills#/c and #c(8)#(57)Passive Skills #/c are sealed,
+and it cannot take any action at all."
 UcHelpList.fms:517	140e71e3d2d2	37081817e351	"#c(12)- Merging and Reorganizing -#/c
 Use #c(13)Merge/Reorganize#/c to change
 unit composition."
@@ -7094,8 +7094,7 @@ UcScriptMsgConv.fms:48086	822cf31f2cde	b1576c8ebbfd	Oh! You caught me!
 UcScriptMsgConv.fms:48087	cadfc48fa168	3231193a588d	I borrowed a few fish for my hungry siblings.
 UcScriptMsgConv.fms:48088	6c8c91d7cc6b	e89b24487c26	"I'll put them back, I promise!
 So please don't tell anyone..."
-UcScriptMsgConv.fms:48089	2e7a447556d8	9ee7faa2bf69	"I'm pretty sloppy,
-but my daughter's got her act together."
+UcScriptMsgConv.fms:48089	2e7a447556d8	9ee7faa2bf69	Unlike a scatterbrain like me, my daughter really has a good head on her shoulders.
 UcScriptMsgConv.fms:48090	07d92f7a6142	037294d626d6	She keeps an exact count of every last item. It's a real help.
 UcScriptMsgConv.fms:48091	239cbd015494	59e569994b97	My dad and I peddle goods together—I'm the one who keeps count of our stock.
 UcScriptMsgConv.fms:48092	23fd52e9473a	a96365666024	But ever since we got to this town, only the fish count has been off... I wonder why.
@@ -8599,10 +8598,9 @@ UcScriptMsgConv.fms:60483	ba7d42ca118d	29ef5e74a246	Mister, did you make our tow
 UcScriptMsgConv.fms:60485	4e8be8f7d85d	f98029f32f54	From now on, we'll protect this town ourselves!
 UcScriptMsgConv.fms:60486	353baf3bf6b4	5f32b1e42a1b	I can't sense the Zenoiran Army to the north anymore.
 UcScriptMsgConv.fms:60487	f01ab5ce3e93	d08b26568fbc	No... I suppose it's more accurate to say they've moved farther away.
-UcScriptMsgConv.fms:60488	5d8329b1b86f	e1129f90884f	I had three sons. All of them were taken away to be soldiers.
-UcScriptMsgConv.fms:60489	f0c645f880e1	25967d99e83b	"My two older sons were killed in battle,
-but I'm sure my youngest is still alive."
-UcScriptMsgConv.fms:60490	f33ca757959c	6c61ca57932d	That's why I can't leave this place. Not until he comes home.
+UcScriptMsgConv.fms:60488	5d8329b1b86f	e1129f90884f	I had three sons, you see, but they were all taken away to be soldiers.
+UcScriptMsgConv.fms:60489	f0c645f880e1	25967d99e83b	My eldest and second-born died in battle, yet I'm sure my youngest is still alive.
+UcScriptMsgConv.fms:60490	f33ca757959c	6c61ca57932d	That's why I cannot leave this place—not until my boy comes home.
 UcScriptMsgConv.fms:60491	c00f819279c8	f6dc5f385e4c	I told the lady next door it was dangerous here and that she should flee, but she insists on staying...
 UcScriptMsgConv.fms:60492	4d6c7a6f8712	e1c5c2e52fc2	I heard it's thanks to you that we get to eat every day, mister.
 UcScriptMsgConv.fms:60493	cdb33873e736	f8f342884f38	You're amazing, mister! Thank you!
@@ -9296,10 +9294,10 @@ UcScriptMsgConv.fms:70403	96852bba3dae	86168b3c8d91	Your Highness...
 UcScriptMsgConv.fms:70404	4f46c6e79ef7	bd4b080993e1	We've secured a route to the capital, Gran Corrine.
 UcScriptMsgConv.fms:70405	b2f2850c1b5e	3fed2f37ab24	If we advance any farther, our final battle against our sworn enemy will begin.
 UcScriptMsgConv.fms:70406	18957dea764c	00b0143d87f4	Let's prepare thoroughly before we face the final battle.
-UcScriptMsgConv.fms:70407	2e4f3433f5dd	9c81c539f389	Beyond here lies Galerius-sama's castle. No one is allowed through.
-UcScriptMsgConv.fms:70411	2e4f3433f5dd	9c81c539f389	Beyond here lies Galerius-sama's castle. No one is allowed through.
+UcScriptMsgConv.fms:70407	2e4f3433f5dd	9c81c539f389	Beyond this point lies Galerius-sama's castle. I cannot let anyone pass.
+UcScriptMsgConv.fms:70411	2e4f3433f5dd	9c81c539f389	Beyond this point lies Galerius-sama's castle. I cannot let anyone pass.
 UcScriptMsgConv.fms:70412	3ca7add8538b	594bb13ebbb0	I won't let you through.
-UcScriptMsgConv.fms:70416	2e4f3433f5dd	9c81c539f389	Beyond here lies Galerius-sama's castle. No one is allowed through.
+UcScriptMsgConv.fms:70416	2e4f3433f5dd	9c81c539f389	Beyond this point lies Galerius-sama's castle. I cannot let anyone pass.
 UcScriptMsgConv.fms:70417	3ca7add8538b	594bb13ebbb0	I won't let you through.
 UcScriptMsgConv.fms:71200	f5916c2bd5de	65ec24948880	Leave the town's security to me!
 UcScriptMsgConv.fms:71201	a8ec77f2c8ae	3e2ce9db2422	Thank you!
@@ -9807,8 +9805,8 @@ UcScriptMsgConv.fms:71900	8ac14325213c	54d91d6a88df	Alain-sama, I found some Lum
 UcScriptMsgConv.fms:71901	f5273143e6c0	8881522c2762	They say these ashes possess a mysterious power.
 UcScriptMsgConv.fms:71902	4fb69869502f	54d91d6a88df	I found some Luminous Corne Ash. I'll collect it for you.
 UcScriptMsgConv.fms:71903	f33adf8c3516	534fc24ed929	So I'm still not strong enough...
-UcScriptMsgConv.fms:71904	9eb4b5552c0d	759010ba8318	I might be able to defeat Galerius as I am now, but something doesn't feel right.
-UcScriptMsgConv.fms:71905	815f83430e0b	bcdea416def4	We should also consider going to Bisfaine Cathedral in Albion.
+UcScriptMsgConv.fms:71904	9eb4b5552c0d	759010ba8318	We might be able to defeat Galerius as things stand, but something still bothers me.
+UcScriptMsgConv.fms:71905	815f83430e0b	bcdea416def4	We should consider heading to Bisfaine Cathedral in Albion as well.
 UcScriptMsgConv.fms:71906	602ec5da3222	450c6459791d	The sanctuary is quiet. Nothing seems to be happening.
 UcScriptMsgConv.fms:71907	a6b3cad03684	7045b081aa66	Let's go to the Altar of the Unicorn and Maiden first, so the ring can regain its true power.
 UcScriptMsgConv.fms:71909	48390648d059	eb596bb4b966	Once the ring regains its true power, I'm sure the Six Sages will help us.
@@ -23447,7 +23445,7 @@ UcScriptMsgConv.fms:361613	4e48d629146e	f6b51d3953c0	You were so little, yet you
 UcScriptMsgConv.fms:361614	be4b58822106	e894dd3eaa39	I'm proud I got to raise you, and of everything I went through for you.
 UcScriptMsgConv.fms:361615	b62893a4ff9d	220149215dc0	And Morard too, of course... #w(20)You're both irreplaceable family to me.
 UcScriptMsgConv.fms:361616	c334f2807eb4	4d10ade37869	...Ramona-sama...
-UcScriptMsgConv.fms:361617	276104d70d1e	ad1b425fcc74	I'm glad you're my mother, Ramona-sama.
+UcScriptMsgConv.fms:361617	276104d70d1e	ad1b425fcc74	Me too. I'm glad you're my mother, Ramona-sama.
 UcScriptMsgConv.fms:361618	abedb2491f2a	cb4829d0010b	Thank you for finding us...
 UcScriptMsgConv.fms:361619	1188e290baa3	8f5db00fd41a	And you know, Morard's been so funny!
 UcScriptMsgConv.fms:361620	4974da9c880b	fbc82c612a13	Hehe... Yunifi, we can talk, but we need to start getting dinner ready soon.
@@ -28580,7 +28578,7 @@ UcScriptMsgConv.fms:473509	93fca9cd3c03	32d4902bcf01	But when that malice threat
 UcScriptMsgConv.fms:473510	f9da35f81a1f	b1fc7bddba93	...who's there to heal you?
 UcScriptMsgConv.fms:473511	4795253d66e2	1335e5b7a1dd	Hehe... Alain-sama, I'm sure it'll be all right.
 UcScriptMsgConv.fms:473514	1c276f804c93	8a1fabf0b935	Alain-sama, I accept the Ring of the Maiden.
-UcScriptMsgConv.fms:473515	d8b8af238369	ed398ec0a26c	But when that happens, I'll heal your wounds and stroke your head.
+UcScriptMsgConv.fms:473515	d8b8af238369	ed398ec0a26c	But if that happens, I'll heal your wounds and soothe you with a gentle touch.
 UcScriptMsgConv.fms:473516	d84436cca3b6	093fa51e7d61	Yes... I will protect you. I won't let anyone hurt you.
 UcScriptMsgConv.fms:473517	35effa69d5f5	3a3ef6812537	You'll keep getting hurt protecting me, Alain-sama...
 UcScriptMsgConv.fms:473600	ded6763ebc9b	43aa3227a854	Prince Alain... You're teasing me again, aren't you?
@@ -28846,7 +28844,7 @@ UcScriptMsgConv.fms:478901	d591b24ee04a	626eb8da9450	The nerve of you...
 UcScriptMsgConv.fms:478902	965a2ba13e05	3e82021cb39a	I'll take Alain back, even if I have to use force.
 UcScriptMsgConv.fms:478903	1ae198b35be2	b02e7afc789b	Don't give up!
 UcScriptMsgConv.fms:478904	07cf0c641a16	d1422445fcc0	...Dammit!
-UcScriptMsgConv.fms:478905	d0a5a8f21ec1	07809df4fac3	...Galerius, that means we just have to stop short of killing you, right?
+UcScriptMsgConv.fms:478905	d0a5a8f21ec1	07809df4fac3	Galerius, in short, we just have to make sure we don't kill you, right?
 UcScriptMsgConv.fms:478906	9d5976c9b95b	3247182ee874	Alain's a man who's earned my respect. He won't die that easily.
 UcScriptMsgConv.fms:478908	51c23bc77dc6	89995fc3f728	Alain, you're alive...! You really are a man who's earned my respect.
 UcScriptMsgConv.fms:478909	13a1564ecc14	498dcbeae0e3	Now show me what you can do, Alain!
@@ -29671,7 +29669,7 @@ UcScriptMsgConv.fms:483916	30c7a3bb575c	fa118e72d341	Yes, together... Alain-sama
 UcScriptMsgConv.fms:484000	cbe89c561541	3b52fe12c368	This is bad... Alain, get back!
 UcScriptMsgConv.fms:484001	149e5edaeef3	6ed1eb5a1cc4	I see...
 UcScriptMsgConv.fms:484002	a11e3d2f94ff	7c52647a2264	Galerius... You actually lost to Ilenia-sama, didn't you?
-UcScriptMsgConv.fms:484003	31c56829eed9	e0f40b0a7e8b	Is the ability to possess whoever kills you the source of your confidence?
+UcScriptMsgConv.fms:484003	31c56829eed9	e0f40b0a7e8b	So the power to possess whoever kills you is the source of your confidence?
 UcScriptMsgConv.fms:484004	1873cbd8f9a9	098be458d64f	...Then I'll put an end to it.
 UcScriptMsgConv.fms:484005	b5625282d50f	c49c7b3308eb	...Don't give up, Josef!
 UcScriptMsgConv.fms:484007	a2ffe31f400b	3e0935f81cc8	Aren't you a little too quick to assume you've won?
@@ -33104,7 +33102,7 @@ UcStageVoice.fms:2705	02cd185467b4	42220d69356b	Who's next?!
 UcStageVoice.fms:2707	311ce14a07cb	f56238754242	Going well!
 UcStageVoice.fms:2708	8daf11343fb4	40ab8f532b59	Too soon to celebrate.
 UcStageVoice.fms:2710	80a2ba79d4a0	b74288387570	Stay out of my way!
-UcStageVoice.fms:2711	651a8902daa6	8e552e1ea1f1	I win.
+UcStageVoice.fms:2711	651a8902daa6	8e552e1ea1f1	I win!
 UcStageVoice.fms:2712	671a52d3a682	5d85df33a3af	My tactics can't fail!
 UcStageVoice.fms:2713	c5ac04b2a1ae	6b1d59078fe3	That wasn't enough.
 UcStageVoice.fms:2714	85dc26f0da90	35c68c7fc6ef	You took me lightly.

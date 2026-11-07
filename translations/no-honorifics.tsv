@@ -179,9 +179,9 @@ UcScriptMsgConv.fms:64893	cf6c26c78127341d042e81a2d43b3f7f2fd4b7bff85ab5b67459c9
 UcScriptMsgConv.fms:69637	d3cd6969817f3acffd18453b933a7d7d1e9e92cb2bfe421e3840d11a303d548c	That sorceress over there looks just like Yahna did when she was young...
 UcScriptMsgConv.fms:69640	8daae2af07bde117445f6f485e7731cac5c58dc8c161f68df3727f655e632959	Wha—Alain!
 UcScriptMsgConv.fms:69664	844172a4fa61365fefd542d173e3bc63883612045b2e92ae6b2a99c412e869d9	Is that not Virginia I see over there?
-UcScriptMsgConv.fms:70407	130601583bbdc11b85d45326f813bd08ca1d9d27c637c82fc95557d655c28e9e	Beyond here lies Galerius's castle. No one is allowed through.
-UcScriptMsgConv.fms:70411	130601583bbdc11b85d45326f813bd08ca1d9d27c637c82fc95557d655c28e9e	Beyond here lies Galerius's castle. No one is allowed through.
-UcScriptMsgConv.fms:70416	130601583bbdc11b85d45326f813bd08ca1d9d27c637c82fc95557d655c28e9e	Beyond here lies Galerius's castle. No one is allowed through.
+UcScriptMsgConv.fms:70407	29a0d141a178c6461c6e8a47c9f7e3b594b7ef5613a921e800333628007ba813	Beyond this point lies Galerius's castle. I cannot let anyone pass.
+UcScriptMsgConv.fms:70411	29a0d141a178c6461c6e8a47c9f7e3b594b7ef5613a921e800333628007ba813	Beyond this point lies Galerius's castle. I cannot let anyone pass.
+UcScriptMsgConv.fms:70416	29a0d141a178c6461c6e8a47c9f7e3b594b7ef5613a921e800333628007ba813	Beyond this point lies Galerius's castle. I cannot let anyone pass.
 UcScriptMsgConv.fms:71245	1bf673e1aa39a9d7179be43d23af16c5dc7abb79b1232dccbeb66c3eb30c7d78	Please look after Melisandre while I'm away.
 UcScriptMsgConv.fms:71262	105cd425af4e5e4da64a1e2f866e281d9a82cf229f966cead6c6815cb0509145	You've really earned their trust, Alain. Everyone in town is helping the army too.
 UcScriptMsgConv.fms:71361	3414e00ec9fcad1ed7e102730def5d3db6eca67c06fa053e0f1e4ae7a8170856	"A gift from you, Alain...
@@ -956,7 +956,7 @@ UcScriptMsgConv.fms:360404	b888d15027c4edb36ecec8c4369ea9a11ea52156bf81222f0b619
 UcScriptMsgConv.fms:360812	1277df891ba53f61cb70bac9f65e27d2e8b3395fb8e2cb55e6c5784fd09d8772	...One of the six keepsakes Ghislain left behind...
 UcScriptMsgConv.fms:361602	16dd88b0ae155c200a377e318f1150e7be58c7e5df7c100bdce954473870c261	Hey, Ramona... #w(30)Have you ever regretted taking me in?
 UcScriptMsgConv.fms:361616	a462b3768156fdff6bafba8e867b64f3b2ceede2828a502541e75b33d81c5207	...Ramona...
-UcScriptMsgConv.fms:361617	91e40a3446e0fce3a577a230fda356855b1d0cf990ac14879fda81c64a027b9b	I'm glad you're my mother, Ramona.
+UcScriptMsgConv.fms:361617	51589db9bee71cc4c36dbdd9cfe8ebaef66ff83bf3235600493ff70877dadda4	Me too. I'm glad you're my mother, Ramona.
 UcScriptMsgConv.fms:361622	8a0740b02311e6939df7421de7bb0864ddea77de596c3b299a2f083d8b647b03	I've been away from you for a while, Ramona, and I have so much I want to tell you...
 UcScriptMsgConv.fms:361635	5bcc111acb0feab56acda15961406a7b238a710ee3b58e383e232e96d73a897e	Because I'm not... really Ramona's child.
 UcScriptMsgConv.fms:361642	7eb93aefb409216db48014f7f512a64da47e3a058901fd43f396cdc0ec7268c8	...! Sorry, Ramona. I didn't mean it like that.
