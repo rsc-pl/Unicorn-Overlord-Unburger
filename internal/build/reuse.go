@@ -93,6 +93,19 @@ func reuseEdition(result *Result, runDir string, v Variant) *EditionResult {
 	if er.StartupLabel != result.StartupLabel {
 		return nil
 	}
+	// The title footer is an input-derived asset: a different atlas (or a build
+	// without one) must never reuse a published edition that carries another.
+	// The embedded typeface and the typography JSON are part of the identity too,
+	// so editing internal/assets/title_footer.json invalidates the cache.
+	if er.TitleFooterTag != result.TitleFooterTag ||
+		er.TitleFooterMember != result.TitleFooterMember ||
+		er.TitleFooterSHA != result.TitleFooterSHA256 {
+		return nil
+	}
+	if er.TitleFooterFontSHA != result.TitleFooterFontSHA256 ||
+		er.TitleFooterConfigSHA != result.TitleFooterConfigSHA256 {
+		return nil
+	}
 	if result.TitleID != "" && er.TitleID != "" && er.TitleID != result.TitleID {
 		return nil
 	}
@@ -163,8 +176,11 @@ func reuseVoice(result *Result, runDir string, opts Options) *VoiceResult {
 	if vr.ArtifactRel == "" {
 		vr.ArtifactRel = voiceArtifactRel
 	}
-	if vr.RuntimeStatus == "" {
-		vr.RuntimeStatus = "NOT_RUNTIME_APPROVED"
+	// A published stage from before the current status carries stale wording.
+	// Do not adopt it; rebuild so every report and marker in the run describes
+	// the current status.
+	if vr.RuntimeStatus != voiceRuntimeConfirmed {
+		return nil
 	}
 	return &vr
 }

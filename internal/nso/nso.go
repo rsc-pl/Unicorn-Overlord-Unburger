@@ -41,8 +41,13 @@ import (
 // Magic is the NSO0 file signature.
 const Magic = "NSO0"
 
-// headerSize is the fixed NSO0 header length (the segment table ends at 0x100).
-const headerSize = 0x100
+// HeaderSize is the fixed NSO0 header length (the segment table ends at 0x100).
+// It is exported because an Atmosphère exefs_patches IPS is offset relative to
+// the uncompressed NSO file, which begins with exactly this header.
+const HeaderSize = 0x100
+
+// headerSize is retained for the package's internal call sites.
+const headerSize = HeaderSize
 
 // FlagCompressed is the header flag bit that marks the segments LZ4-compressed.
 const FlagCompressed = 1
@@ -206,6 +211,40 @@ func (f *File) Verify() error {
 		}
 	}
 	return nil
+}
+
+// MappedImage returns the module image a loader maps: the three decompressed
+// segments at their memory offsets, with the gaps between them zero-filled.
+// The NSO0 header is not part of the mapped image.
+//
+// This is the image an Atmosphère exefs_patches IPS is applied to, at
+// `patch offset - nso.HeaderSize`. A patch that is offset relative to the
+// *stored* (compressed) file cannot be used there: the compressed stream is a
+// different, much smaller byte sequence.
+func (f *File) MappedImage() ([]byte, error) {
+	end := 0
+	prevEnd := 0
+	for _, sf := range segFields {
+		s := f.Segment(sf.name)
+		if int(s.MemoryOffset) < prevEnd {
+			return nil, fmt.Errorf("nso: %s memory offset %#x overlaps the previous segment (ends %#x)",
+				sf.name, s.MemoryOffset, prevEnd)
+		}
+		e := int(s.MemoryOffset) + int(s.DecompressedSize)
+		prevEnd = e
+		if e > end {
+			end = e
+		}
+	}
+	out := make([]byte, end)
+	for _, sf := range segFields {
+		blob, err := f.Decompress(sf.name)
+		if err != nil {
+			return nil, err
+		}
+		copy(out[int(f.Segment(sf.name).MemoryOffset):], blob)
+	}
+	return out, nil
 }
 
 // Encode re-emits an NSO0 image. Segments present in replace are re-compressed

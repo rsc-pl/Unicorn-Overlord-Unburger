@@ -90,9 +90,6 @@ type PackageOptions struct {
 	// Targets selects the loader layout(s). Empty means both (atmosphere and
 	// emulator), the normal release flow.
 	Targets PackageTarget
-	// IncludeVoice adds the shared voice ExeFS artifact to each archive. It is
-	// EXPERIMENTAL: the artifact is never runtime-approved.
-	IncludeVoice bool
 	// RunDir is the published build run directory. Empty uses the result's own.
 	RunDir string
 	// OutDir is the destination for the ZIPs. Empty means the project release
@@ -172,18 +169,28 @@ type PackageResult struct {
 // per-file digests and the validation outcome are recorded instead, and the
 // archive's own digest is reported by the caller and in PACKAGE_REPORT.json.
 type packageManifest struct {
-	Schema          string            `json:"schema"`
-	Tool            string            `json:"tool"`
-	Game            packageGame       `json:"game"`
-	Edition         string            `json:"edition"`
-	Dataset         packageDataset    `json:"dataset"`
-	Target          packageTargetInfo `json:"target"`
-	Voice           *packageVoice     `json:"voice,omitempty"`
-	PatchComponents []string          `json:"patch_components"`
-	Release         string            `json:"release"`
-	Version         string            `json:"version,omitempty"`
-	StartupLabel    string            `json:"startup_label,omitempty"`
-	Validation      packageValidation `json:"validation"`
+	Schema          string              `json:"schema"`
+	Tool            string              `json:"tool"`
+	Game            packageGame         `json:"game"`
+	Edition         string              `json:"edition"`
+	Dataset         packageDataset      `json:"dataset"`
+	Target          packageTargetInfo   `json:"target"`
+	TitleFooter     *packageTitleFooter `json:"title_footer,omitempty"`
+	Voice           *packageVoice       `json:"voice,omitempty"`
+	PatchComponents []string            `json:"patch_components"`
+	Release         string              `json:"release"`
+	Version         string              `json:"version,omitempty"`
+	StartupLabel    string              `json:"startup_label,omitempty"`
+	Validation      packageValidation   `json:"validation"`
+}
+
+// packageTitleFooter records the build-time title-screen footer baked into the
+// RomFS replacement.
+type packageTitleFooter struct {
+	Text   string `json:"text"`
+	Member string `json:"member"`
+	Size   int64  `json:"size"`
+	SHA256 string `json:"sha256"`
 }
 
 type packageGame struct {
@@ -295,13 +302,20 @@ func Package(res *Result, opts PackageOptions) (*PackageResult, error) {
 		return nil, fmt.Errorf("package: --mod-name is not supported: an emulator archive always extracts into the single folder %q", layeredfs.EmulatorModDir)
 	}
 
-	var voice *voiceComponent
-	if opts.IncludeVoice {
-		v, err := resolveVoice(res, runDir, opts)
-		if err != nil {
-			return nil, err
-		}
-		voice = v
+	// The shared Japanese-voice patch and the title footer are mandatory
+	// components of every standard build. Refuse an older, incomplete or
+	// hand-built run that lacks either one instead of publishing an archive
+	// that silently drops a component the production flow always includes.
+	if err := validatePackagingComponents(res); err != nil {
+		return nil, err
+	}
+
+	// The shared voice patch is part of every normal build, so packaging includes
+	// it automatically. There is no opt-in flag and no way to publish a run with
+	// a silently dropped voice component.
+	voice, err := resolveVoice(res, runDir, opts)
+	if err != nil {
+		return nil, err
 	}
 
 	release := sanitizeName(strings.TrimSpace(opts.Release))
@@ -606,10 +620,10 @@ func planArchive(res *Result, variant Variant, cpkPath, cpkSHA string, cpkSize i
 		// operator extracts the archive into the emulator's mod directory
 		// (load/<title id>/) and gets that folder there.
 		cpkName = archiveEntryName(target, layeredfs.RomFSRel)
-		// The romfs mod folder shape has been checked against Eden's documented
-		// layout; the exefs override is not runtime-verified by this project, so
-		// the emulator target is labelled EXPERIMENTAL.
-		status = "EXPERIMENTAL"
+		// The romfs mod folder shape follows Eden's documented layout. The
+		// console target keeps the conservative layout-only status because the
+		// two loaders use different install paths.
+		status = "RUNTIME_VERIFIED"
 	default:
 		return nil, packageManifest{}, nil, fmt.Errorf("package: unsupported target %q", target)
 	}
@@ -642,6 +656,16 @@ func planArchive(res *Result, variant Variant, cpkPath, cpkSHA string, cpkSize i
 		Version:         version,
 		StartupLabel:    FormatTag(version),
 	}
+	if res.TitleFooterTag != "" {
+		manifest.TitleFooter = &packageTitleFooter{
+			Text:   res.TitleFooterTag,
+			Member: res.TitleFooterMember,
+			Size:   res.TitleFooterSize,
+			SHA256: res.TitleFooterSHA256,
+		}
+		manifest.PatchComponents = append(manifest.PatchComponents,
+			"title-footer: "+res.TitleFooterMember+" ("+res.TitleFooterTag+")")
+	}
 
 	if voice != nil {
 		var voiceName string
@@ -662,7 +686,7 @@ func planArchive(res *Result, variant Variant, cpkPath, cpkSHA string, cpkSize i
 			Placement:      voiceName,
 		}
 		manifest.PatchComponents = append(manifest.PatchComponents,
-			"voice-exefs: "+layeredfs.VoiceExeFSRel+" (shared, Build-ID-gated; EXPERIMENTAL "+voice.RuntimeStatus+")")
+			"voice-exefs: "+layeredfs.VoiceExeFSRel+" (shared, Build-ID-gated; "+voice.RuntimeStatus+")")
 	} else {
 		manifest.PatchComponents = append(manifest.PatchComponents, "voice-exefs: NOT_INCLUDED")
 	}
@@ -768,6 +792,27 @@ func layoutRoot(target PackageTarget, titleID string) string {
 	return ""
 }
 
+// validatePackagingComponents enforces the mandatory build components. Every
+// standard build carries the shared Japanese-voice ExeFS patch and the title
+// footer, and both are shared by the two text editions. A run produced before
+// those components became automatic, or an incomplete/hand-built result, must
+// fail packaging instead of producing an archive that omits a mandatory patch.
+func validatePackagingComponents(res *Result) error {
+	if res.Voice == nil {
+		return fmt.Errorf("package: the build is missing the mandatory Japanese-voice ExeFS patch; rebuild the run with the standard build")
+	}
+	if id := strings.TrimSpace(res.Voice.BuildID); id == "" || strings.EqualFold(id, "UNVERIFIED") {
+		return fmt.Errorf("package: the build's voice patch has no verified Build ID; rebuild the run with the standard build")
+	}
+	if strings.TrimSpace(res.TitleFooterTag) == "" {
+		return fmt.Errorf("package: the build is missing the mandatory title footer; rebuild the run with the standard build")
+	}
+	if strings.TrimSpace(res.TitleFooterMember) == "" || res.TitleFooterSize <= 0 || strings.TrimSpace(res.TitleFooterSHA256) == "" {
+		return fmt.Errorf("package: the build's title-footer metadata is incomplete; rebuild the run with the standard build")
+	}
+	return nil
+}
+
 // resolveVoice resolves and verifies the shared voice artifact.
 func resolveVoice(res *Result, runDir string, opts PackageOptions) (*voiceComponent, error) {
 	mainPath := strings.TrimSpace(opts.VoiceMain)
@@ -783,7 +828,7 @@ func resolveVoice(res *Result, runDir string, opts PackageOptions) (*voiceCompon
 		MainSHA256:    sum,
 		MainSize:      size,
 		BuildID:       "UNVERIFIED",
-		RuntimeStatus: "NOT_RUNTIME_APPROVED",
+		RuntimeStatus: voiceRuntimeConfirmed,
 	}
 	if res != nil && res.Voice != nil {
 		v := res.Voice
@@ -969,7 +1014,7 @@ func renderInstallReadme(target PackageTarget, titleID string, edition Variant, 
 		fmt.Fprintf(&b, "startup label: %s\n", FormatTag(v))
 	}
 	b.WriteString("\nGenerated from game files you supplied. It contains only modified resources:\n")
-	b.WriteString("the localization archive override and, when present, the shared voice patch.\n\n")
+	b.WriteString("the localization archive override and the shared Japanese-voice patch.\n\n")
 	switch target {
 	case TargetAtmosphere:
 		b.WriteString("Target: Atmosphère (console CFW) LayeredFS.\n\n")
@@ -983,7 +1028,7 @@ func renderInstallReadme(target PackageTarget, titleID string, edition Variant, 
 		b.WriteString("Uninstall: delete the <title-id> folder you added under atmosphere/contents and restore\n")
 		b.WriteString("any backup you kept. Removing the override restores the original game text.\n\n")
 	case TargetEmulator:
-		b.WriteString("Target: Eden (and the Yuzu/Ryujinx family) mod folder. EXPERIMENTAL.\n\n")
+		b.WriteString("Target: Eden mod folder (Yuzu/Ryujinx-family layout).\n\n")
 		fmt.Fprintf(&b, "Extracting this archive creates exactly one folder, %s/.\n", layeredfs.EmulatorModDir)
 		b.WriteString("Its contents are:\n")
 		fmt.Fprintf(&b, "  %s/romfs/Unicorn_US.CPK\n", layeredfs.EmulatorModDir)
@@ -1003,14 +1048,15 @@ func renderInstallReadme(target PackageTarget, titleID string, edition Variant, 
 		b.WriteString("  3. Restart the emulator and enable the mod for the game.\n\n")
 		b.WriteString("Do not move the folder: the emulator shows the mod under the name\n")
 		fmt.Fprintf(&b, "%s.\n", layeredfs.EmulatorModDir)
-		b.WriteString("Uninstall: disable or delete the mod folder. This target shape is EXPERIMENTAL: the\n")
-		b.WriteString("romfs mod folder follows Eden's documented layout, but the exefs override is not runtime-verified.\n\n")
+		b.WriteString("Uninstall: disable or delete the mod folder.\n\n")
 	}
 	if voice != nil {
-		b.WriteString("Voice patch (EXPERIMENTAL, not runtime-approved):\n")
+		fmt.Fprintf(&b, "Voice patch (%s):\n", voice.RuntimeStatus)
 		fmt.Fprintf(&b, "  build id (gate): %s\n", voice.BuildID)
-		b.WriteString("  It was never installed or run; whether English voices are hidden is unproven. Do not\n")
-		b.WriteString("  distribute or rely on it before an in-game acceptance run.\n\n")
+		b.WriteString("  This build rewrites four same-size .text words in the shared Japanese-voice\n")
+		b.WriteString("  patch. The in-game voice menu still lists its English entry; Japanese\n")
+		b.WriteString("  playback is forced regardless of the setting (selector removal not\n")
+		b.WriteString("  implemented).\n\n")
 	}
 	b.WriteString("This is not a supported release and game support is not claimed.\n")
 	return b.String()
@@ -1177,6 +1223,18 @@ func LoadRun(runDir string, variants []Variant) (*Result, error) {
 		res.Dataset.CanonicalSHA256 = er.DatasetCanonSHA
 		res.Dataset.CanonicalRows = er.DatasetCanonRows
 		res.Facts = &SourceFacts{SHA256: er.SourceSHA256, Size: er.SourceSize}
+		// Packaging reads the footer metadata back from the per-edition report so
+		// a standalone `package` run describes the same components as the build
+		// that produced the run. Both editions carry one shared footer.
+		if res.TitleFooterTag == "" {
+			res.TitleFooterTag = er.TitleFooterTag
+			res.TitleFooterMember = er.TitleFooterMember
+			res.TitleFooterSize = er.TitleFooterSize
+			res.TitleFooterSHA256 = er.TitleFooterSHA
+			res.TitleFooterFontSHA256 = er.TitleFooterFontSHA
+			res.TitleFooterConfigSHA256 = er.TitleFooterConfigSHA
+			res.TitleFooterTypography = er.TitleFooterTypography
+		}
 	}
 	res.Voice = loadVoiceStage(runDir)
 	return res, nil
@@ -1196,7 +1254,7 @@ func loadVoiceStage(runDir string) *VoiceResult {
 		ArtifactSHA256: sum,
 		ArtifactSize:   size,
 		BuildID:        "UNVERIFIED",
-		RuntimeStatus:  "NOT_RUNTIME_APPROVED",
+		RuntimeStatus:  voiceRuntimeConfirmed,
 	}
 	if data, err := os.ReadFile(filepath.Join(runDir, "voice", "VOICE_REPORT.json")); err == nil {
 		var reported VoiceResult

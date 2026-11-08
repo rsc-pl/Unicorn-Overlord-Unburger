@@ -18,7 +18,6 @@ func runPackage(args []string, out, errOut io.Writer) int {
 	runDir := ""
 	variantWord := string(build.VariantBoth)
 	targetWord := ""
-	voice := false
 	releaseName := ""
 	modName := ""
 	outDir := ""
@@ -44,8 +43,6 @@ func runPackage(args []string, out, errOut io.Writer) int {
 			}
 			i++
 			targetWord = args[i]
-		case "--voice":
-			voice = true
 		case "--release":
 			if i+1 >= len(args) {
 				return packageUsage(errOut, "--release requires a value")
@@ -115,26 +112,17 @@ func runPackage(args []string, out, errOut io.Writer) int {
 		fmt.Fprintf(errOut, "%v\n", err)
 		return exitFail
 	}
-	if voice && res.Voice == nil {
-		fmt.Fprintln(errOut, "package: --voice was requested but this run has no published voice stage")
-		fmt.Fprintln(errOut, "         (build it first with `uo-unburger build --voice --voice-main <main> ...`)")
-		return exitFail
-	}
 	pkg, err := build.Package(res, build.PackageOptions{
-		Variants:     variants,
-		Targets:      target,
-		IncludeVoice: voice,
-		OutDir:       outDir,
-		Version:      version,
-		Release:      releaseName,
-		Overwrite:    force,
+		Variants:  variants,
+		Targets:   target,
+		OutDir:    outDir,
+		Version:   version,
+		Release:   releaseName,
+		Overwrite: force,
 	})
 	if err != nil {
 		fmt.Fprintf(errOut, "%v\n", err)
 		return exitFail
-	}
-	if voice {
-		fmt.Fprintln(errOut, "WARNING: the voice patch is EXPERIMENTAL and NOT runtime-approved; it has never been installed or run.")
 	}
 	fmt.Fprint(out, pkg.SummaryTxt)
 	fmt.Fprintf(out, "report:             %s\n", paths.Display(pkg.ReportPath))
@@ -144,7 +132,7 @@ func runPackage(args []string, out, errOut io.Writer) int {
 func packageUsage(errOut io.Writer, reason string) int {
 	fmt.Fprintf(errOut, "%s\n", reason)
 	fmt.Fprintln(errOut, "usage: uo-unburger package --run <build-run-directory> [--variant honorifics|no-honorifics|both]")
-	fmt.Fprintln(errOut, "       [--target atmosphere|emulator|both] [--voice] [--release <label>] [--out <dir>]")
+	fmt.Fprintln(errOut, "       [--target atmosphere|emulator|both] [--release <label>] [--out <dir>]")
 	fmt.Fprintln(errOut, "       [--force]  replace existing ZIPs and report; without it an existing")
 	fmt.Fprintln(errOut, "                  output is refused and every colliding file is named")
 	fmt.Fprintln(errOut, "Assembles install-ready ZIPs from an already-published run; it rebuilds nothing.")

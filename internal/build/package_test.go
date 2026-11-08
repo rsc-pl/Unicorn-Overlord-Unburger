@@ -32,7 +32,81 @@ func packageFixture(t *testing.T) (*Result, string) {
 	if err != nil {
 		t.Fatalf("Run: %v", err)
 	}
+	res.Voice = writeSyntheticVoiceStage(t, res.RunDir)
+	res.TitleFooterTag = "UNBURGER MOD 1.2.3"
+	res.TitleFooterMember = "GUI/Opening100.ftx"
+	res.TitleFooterSize = 18_876_304
+	res.TitleFooterSHA256 = strings.Repeat("d", 64)
+	// Persist the footer metadata in each published edition report: LoadRun must
+	// reconstruct it for a standalone package run.
+	for _, e := range res.Editions {
+		path := filepath.Join(res.RunDir, string(e.Variant), "BUILD_REPORT.json")
+		data, err := os.ReadFile(path)
+		if err != nil {
+			t.Fatalf("read %s: %v", path, err)
+		}
+		var er editionReport
+		if err := json.Unmarshal(data, &er); err != nil {
+			t.Fatalf("decode %s: %v", path, err)
+		}
+		er.TitleFooterTag = res.TitleFooterTag
+		er.TitleFooterMember = res.TitleFooterMember
+		er.TitleFooterSize = res.TitleFooterSize
+		er.TitleFooterSHA = res.TitleFooterSHA256
+		data, err = json.MarshalIndent(er, "", "  ")
+		if err != nil {
+			t.Fatal(err)
+		}
+		mustWrite(t, path, append(data, '\n'))
+	}
 	return res, dir
+}
+
+// syntheticVoiceResult describes the voice stage writeSyntheticVoiceStage just
+// wrote. It carries a verified Build ID so packaging accepts it as a complete
+// production component.
+func syntheticVoiceResult(t *testing.T, runDir string) *VoiceResult {
+	t.Helper()
+	mainPath := filepath.Join(runDir, "voice", "exefs", "main")
+	sum, size, err := hashFileSHA256(mainPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	ipsPath := filepath.Join(runDir, "voice", "main.ips")
+	ipsSum, ipsSize, err := hashFileSHA256(ipsPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return &VoiceResult{
+		Plan:           "jp-voice-config-v5",
+		BuildID:        "c841ffe2717ff03a13990480c51da73f091c04fa",
+		ArtifactRel:    layeredfs.VoiceExeFSRel,
+		ArtifactSHA256: sum,
+		ArtifactSize:   size,
+		IPSSHA256:      ipsSum,
+		IPSSize:        ipsSize,
+		IPSRecords:     4,
+		IPSChanged:     16,
+		ChangedBytes:   16,
+		Edits:          4,
+		RuntimeStatus:  voiceRuntimeConfirmed,
+	}
+}
+
+// writeSyntheticVoiceStage writes a minimal but self-consistent shared voice
+// stage (artifact, IPS and report) so a fixture run is a complete production
+// run for packaging.
+func writeSyntheticVoiceStage(t *testing.T, runDir string) *VoiceResult {
+	t.Helper()
+	mustWrite(t, filepath.Join(runDir, "voice", "exefs", "main"), []byte("synthetic patched exefs main"))
+	mustWrite(t, filepath.Join(runDir, "voice", "main.ips"), []byte("synthetic ips"))
+	vr := syntheticVoiceResult(t, runDir)
+	data, err := json.MarshalIndent(vr, "", "  ")
+	if err != nil {
+		t.Fatal(err)
+	}
+	mustWrite(t, filepath.Join(runDir, "voice", "VOICE_REPORT.json"), append(data, '\n'))
+	return vr
 }
 
 func zipNames(t *testing.T, path string) []string {
@@ -138,6 +212,7 @@ func TestPackageLayoutBothTargetsAndReopen(t *testing.T) {
 				ManifestEntryName,
 				InstallReadmeName,
 				layeredfs.AtmospherePath("010069401ADB8000", layeredfs.RomFSRel),
+				layeredfs.AtmospherePath("010069401ADB8000", layeredfs.VoiceExeFSRel),
 			}
 			if a.TargetStatus != "VERIFIED_LAYOUT" {
 				t.Fatalf("atmosphere status = %q", a.TargetStatus)
@@ -150,8 +225,9 @@ func TestPackageLayoutBothTargetsAndReopen(t *testing.T) {
 				layeredfs.EmulatorZipEntry(ManifestEntryName),
 				layeredfs.EmulatorZipEntry(InstallReadmeName),
 				layeredfs.EmulatorZipEntry(layeredfs.RomFSRel),
+				layeredfs.EmulatorZipEntry(layeredfs.VoiceExeFSRel),
 			}
-			if a.TargetStatus != "EXPERIMENTAL" {
+			if a.TargetStatus != "RUNTIME_VERIFIED" {
 				t.Fatalf("emulator status = %q", a.TargetStatus)
 			}
 		}
@@ -311,6 +387,7 @@ func TestPackageAtmosphereLayoutUnchanged(t *testing.T) {
 		ManifestEntryName,
 		InstallReadmeName,
 		layeredfs.AtmospherePath("010069401ADB8000", layeredfs.RomFSRel),
+		layeredfs.AtmospherePath("010069401ADB8000", layeredfs.VoiceExeFSRel),
 	}
 	for _, a := range pkg.Artifacts {
 		if a.Target != TargetAtmosphere {
@@ -497,12 +574,16 @@ func TestPackageVoiceArtifact(t *testing.T) {
 			ArtifactSize:   mainSize,
 			IPSSHA256:      ipsSum,
 			IPSSize:        ipsSize,
-			RuntimeStatus:  "NOT_RUNTIME_APPROVED",
+			RuntimeStatus:  voiceRuntimeConfirmed,
 		},
+		TitleFooterTag:    "UNBURGER MOD 1.2.3",
+		TitleFooterMember: "GUI/Opening100.ftx",
+		TitleFooterSize:   18_876_304,
+		TitleFooterSHA256: strings.Repeat("d", 64),
 	}
 	res.Dataset.CanonicalSHA256 = strings.Repeat("b", 64)
 	res.Dataset.CanonicalRows = 7
-	pkg, err := Package(res, PackageOptions{Variants: []Variant{VariantHonorifics}, Targets: TargetBoth, IncludeVoice: true})
+	pkg, err := Package(res, PackageOptions{Variants: []Variant{VariantHonorifics}, Targets: TargetBoth})
 	if err != nil {
 		t.Fatalf("Package: %v", err)
 	}
@@ -525,7 +606,7 @@ func TestPackageVoiceArtifact(t *testing.T) {
 		if v == nil || v["build_id"] != "c841ffe2717ff03a13990480c51da73f091c04fa" {
 			t.Fatalf("manifest voice = %v", v)
 		}
-		if v["runtime_status"] != "NOT_RUNTIME_APPROVED" {
+		if v["runtime_status"] != voiceRuntimeConfirmed {
 			t.Fatalf("voice runtime status = %v", v["runtime_status"])
 		}
 	}
@@ -538,12 +619,16 @@ func TestPackageRejectsTamperedVoice(t *testing.T) {
 	mainPath := filepath.Join(dir, "voice", "exefs", "main")
 	mustWrite(t, mainPath, []byte("patched nso bytes"))
 	res := &Result{
-		RunDir:   dir,
-		TitleID:  "010069401ADB8000",
-		Editions: []EditionResult{{Variant: VariantHonorifics, ArtifactPath: cpk, ArtifactRel: layeredfs.RomFSRel}},
-		Voice:    &VoiceResult{ArtifactSHA256: strings.Repeat("0", 64), ArtifactSize: 3},
+		RunDir:            dir,
+		TitleID:           "010069401ADB8000",
+		Editions:          []EditionResult{{Variant: VariantHonorifics, ArtifactPath: cpk, ArtifactRel: layeredfs.RomFSRel}},
+		Voice:             &VoiceResult{BuildID: "c841ffe2717ff03a13990480c51da73f091c04fa", ArtifactSHA256: strings.Repeat("0", 64), ArtifactSize: 3},
+		TitleFooterTag:    "UNBURGER MOD 1.2.3",
+		TitleFooterMember: "GUI/Opening100.ftx",
+		TitleFooterSize:   18_876_304,
+		TitleFooterSHA256: strings.Repeat("d", 64),
 	}
-	if _, err := Package(res, PackageOptions{Variants: []Variant{VariantHonorifics}, IncludeVoice: true}); err == nil {
+	if _, err := Package(res, PackageOptions{Variants: []Variant{VariantHonorifics}}); err == nil {
 		t.Fatal("expected a voice sha256 mismatch to be rejected")
 	}
 }
@@ -573,6 +658,55 @@ func TestLoadRunRepackagesPublishedRun(t *testing.T) {
 		if want := shortHex(loaded.Dataset.CanonicalSHA256, 12); pkg.Release != want {
 			t.Fatalf("release = %q, want dataset-derived %q", pkg.Release, want)
 		}
+	}
+}
+
+// TestLoadRunRestoresFooterMetadata is the regression for a standalone
+// `package` run dropping the title-footer fields: LoadRun must reconstruct them
+// from the published edition report so every manifest still names the footer
+// baked into the CPK.
+func TestLoadRunRestoresFooterMetadata(t *testing.T) {
+	dir := t.TempDir()
+	cpk := filepath.Join(dir, "honorifics", "romfs", "Unicorn_US.CPK")
+	data := []byte("edited cpk bytes")
+	mustWrite(t, cpk, data)
+	er := editionReport{
+		Variant:           string(VariantHonorifics),
+		TitleID:           "010069401ADB8000",
+		Version:           "1.2.3",
+		OutputSHA256:      sha256Bytes(data),
+		OutputSize:        int64(len(data)),
+		TitleFooterTag:    "UNBURGER MOD 1.2.3",
+		TitleFooterMember: "GUI/Opening100.ftx",
+		TitleFooterSize:   123,
+		TitleFooterSHA:    strings.Repeat("a", 64),
+	}
+	report, err := json.Marshal(er)
+	if err != nil {
+		t.Fatal(err)
+	}
+	mustWrite(t, filepath.Join(dir, "honorifics", "BUILD_REPORT.json"), report)
+	writeSyntheticVoiceStage(t, dir)
+
+	loaded, err := LoadRun(dir, []Variant{VariantHonorifics})
+	if err != nil {
+		t.Fatalf("LoadRun: %v", err)
+	}
+	if loaded.TitleFooterTag != er.TitleFooterTag || loaded.TitleFooterMember != er.TitleFooterMember ||
+		loaded.TitleFooterSize != er.TitleFooterSize || loaded.TitleFooterSHA256 != er.TitleFooterSHA {
+		t.Fatalf("loaded footer = %q %q %d %q", loaded.TitleFooterTag,
+			loaded.TitleFooterMember, loaded.TitleFooterSize, loaded.TitleFooterSHA256)
+	}
+
+	out := filepath.Join(dir, "release")
+	pkg, err := Package(loaded, PackageOptions{Variants: []Variant{VariantHonorifics}, Targets: TargetAtmosphere, OutDir: out})
+	if err != nil {
+		t.Fatalf("Package: %v", err)
+	}
+	m := zipManifest(t, pkg.Artifacts[0].Path)
+	footer, _ := m["title_footer"].(map[string]any)
+	if footer == nil || footer["text"] != er.TitleFooterTag || footer["member"] != er.TitleFooterMember {
+		t.Fatalf("manifest title_footer = %v", footer)
 	}
 }
 
@@ -635,6 +769,43 @@ func TestPackageRollsBackPartialSet(t *testing.T) {
 			continue
 		}
 		t.Fatalf("failed packaging left %q behind", name)
+	}
+}
+
+// TestPackageRejectsIncompleteBuild is the regression for packaging an older or
+// incomplete run: the shared Japanese-voice patch and the title footer are
+// mandatory production components, so an archive must never silently drop
+// either of them.
+func TestPackageRejectsIncompleteBuild(t *testing.T) {
+	cases := []struct {
+		name   string
+		mutate func(*Result)
+		want   string
+	}{
+		{"missing voice", func(r *Result) { r.Voice = nil }, "Japanese-voice"},
+		{"unverified voice", func(r *Result) { r.Voice.BuildID = "UNVERIFIED" }, "Build ID"},
+		{"empty voice id", func(r *Result) { r.Voice.BuildID = " " }, "Build ID"},
+		{"missing footer", func(r *Result) { r.TitleFooterTag = "" }, "title footer"},
+		{"missing footer member", func(r *Result) { r.TitleFooterMember = "" }, "title-footer metadata"},
+		{"zero footer size", func(r *Result) { r.TitleFooterSize = 0 }, "title-footer metadata"},
+		{"missing footer sha", func(r *Result) { r.TitleFooterSHA256 = "" }, "title-footer metadata"},
+	}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			res, _ := packageFixture(t)
+			tc.mutate(res)
+			outDir := filepath.Join(res.RunDir, "rejected-package")
+			pkg, err := Package(res, PackageOptions{Targets: TargetAtmosphere, OutDir: outDir})
+			if err == nil {
+				t.Fatalf("expected packaging to fail for %s, got %+v", tc.name, pkg)
+			}
+			if !strings.Contains(err.Error(), tc.want) {
+				t.Fatalf("error = %v, want it to name %q", err, tc.want)
+			}
+			if entries, rerr := os.ReadDir(outDir); rerr == nil && len(entries) > 0 {
+				t.Fatalf("rejected packaging left output in %s", outDir)
+			}
+		})
 	}
 }
 

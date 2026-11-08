@@ -9,8 +9,8 @@
 // detected and reported as requiring the extractor path rather than guessed at.
 //
 // The cache holds only the resources a build consumes — the effective
-// localization archive and (for the planned voice work) the executable `main`
-// excerpt — alongside a manifest that fingerprints the container they came from.
+// localization archive and (for the voice patch) the executable `main` excerpt
+// — alongside a manifest that fingerprints the container they came from.
 // A cache entry is reused only after its artifact identity is re-verified; a
 // damaged entry is quarantined (renamed aside), never deleted, and re-extracted.
 package sourcecache

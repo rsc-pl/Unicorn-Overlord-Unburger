@@ -30,7 +30,7 @@ Those changes are harder to demonstrate with one spectacular screenshot, but the
 
 **Some contain story spoilers.**
 
-A much larger collection will eventually live in [docs/LOCALIZATION_CHANGES.md](docs/LOCALIZATION_CHANGES.md).
+A much larger collection of examples is available in [docs/LOCALIZATION_CHANGES.md](docs/LOCALIZATION_CHANGES.md).
 
 ### Ramona is her mother
 
@@ -44,9 +44,9 @@ One conversation contains a very direct statement about Ramona. The English vers
 > I'm glad you're the one who found us, all those years ago.
 >
 > **Revised translation:**  
-> I'm glad you're my mother, Ramona-sama.
+> Me too. I'm glad you're my mother, Ramona-sama.
 
-The Japanese isn't leaving their relationship for the player to infer. She says that Ramona-sama is her mother.
+The Japanese isn't leaving their relationship for the player to infer. Yunifi says that she, too, is glad Ramona-sama is her mother.
 
 ### Nina was never offered a crown here
 

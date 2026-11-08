@@ -129,13 +129,43 @@ func writePublishedRun(t *testing.T, root string) string {
 	if err := os.WriteFile(filepath.Join(editionDir, "Unicorn_US.CPK"), cpk, 0o644); err != nil {
 		t.Fatal(err)
 	}
+	// The voice stage and title footer are mandatory packaging components since
+	// the shared patch became part of every normal build, so a published run
+	// fixture has to carry both.
+	voiceMain := []byte("published synthetic patched exefs main")
+	voiceSum := sha256.Sum256(voiceMain)
+	voiceHex := hex.EncodeToString(voiceSum[:])
+	voiceDir := filepath.Join(runDir, "voice", "exefs")
+	if err := os.MkdirAll(voiceDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(voiceDir, "main"), voiceMain, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(runDir, "voice", "main.ips"), []byte("published synthetic ips"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	voiceReport := "{\n" +
+		"  \"plan\": \"jp-voice-config-v5\",\n" +
+		"  \"build_id\": \"c841ffe2717ff03a13990480c51da73f091c04fa\",\n" +
+		"  \"artifact_rel\": \"exefs/main\",\n" +
+		"  \"artifact_sha256\": \"" + voiceHex + "\",\n" +
+		"  \"artifact_size\": " + itoaCLI(uint32(len(voiceMain))) + ",\n" +
+		"  \"runtime_status\": \"INTEGRATED_VERIFIED\"\n}\n"
+	if err := os.WriteFile(filepath.Join(runDir, "voice", "VOICE_REPORT.json"), []byte(voiceReport), 0o644); err != nil {
+		t.Fatal(err)
+	}
 	report := "{\n" +
 		"  \"variant\": \"honorifics\",\n" +
 		"  \"title_id\": \"010069401ADB8000\",\n" +
 		"  \"dataset_canonical_sha256\": \"" + strings.Repeat("ab", 32) + "\",\n" +
 		"  \"version\": \"2.0\",\n" +
 		"  \"output_sha256\": \"" + hexSum + "\",\n" +
-		"  \"output_size\": " + itoaCLI(uint32(len(cpk))) + "\n}\n"
+		"  \"output_size\": " + itoaCLI(uint32(len(cpk))) + ",\n" +
+		"  \"title_footer\": \"UNBURGER MOD 1.2.3\",\n" +
+		"  \"title_footer_member\": \"GUI/Opening100.ftx\",\n" +
+		"  \"title_footer_size\": 18876304,\n" +
+		"  \"title_footer_sha256\": \"" + strings.Repeat("d", 64) + "\"\n}\n"
 	if err := os.WriteFile(filepath.Join(runDir, "honorifics", "BUILD_REPORT.json"), []byte(report), 0o644); err != nil {
 		t.Fatal(err)
 	}

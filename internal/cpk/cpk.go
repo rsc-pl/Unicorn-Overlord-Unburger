@@ -7,6 +7,7 @@ import (
 	"math"
 	"os"
 	"sort"
+	"strings"
 )
 
 const (
@@ -51,6 +52,9 @@ type Entry struct {
 	resized bool
 	// newExtract is the extract size declared alongside a resized replacement.
 	newExtract int64
+	// added is set by AddMember: the entry is not present in the source TOC and
+	// RebuildVariable must append a row for it. FileOffset is assigned then.
+	added bool
 }
 
 // Path returns the member path using the archive's separator convention.
@@ -463,6 +467,52 @@ func (a *Archive) ReplaceMemberResized(path string, newStored []byte, newExtract
 	return nil
 }
 
+// AddMember stages a new member that is not present in the source TOC. The
+// payload is stored verbatim (uncompressed) with extractSize equal to its
+// length; the caller must stage content that the engine reads unchanged, such
+// as a rebuilt texture atlas. RebuildVariable places the member after every
+// existing member and appends the TOC and ETOC rows.
+func (a *Archive) AddMember(dir, name string, stored []byte, extractSize int64) error {
+	if name == "" || strings.ContainsAny(name, "/\\") {
+		return fmt.Errorf("cpk: invalid new member file name %q", name)
+	}
+	if strings.ContainsAny(dir, "/\\") {
+		return fmt.Errorf("cpk: invalid new member directory %q", dir)
+	}
+	path := name
+	if dir != "" {
+		path = dir + "/" + name
+	}
+	if a.Member(path) != nil {
+		return fmt.Errorf("cpk: member %q already exists", path)
+	}
+	if extractSize != int64(len(stored)) {
+		return fmt.Errorf("cpk: new member %q must be stored uncompressed (extract %d, stored %d)", path, extractSize, len(stored))
+	}
+	var maxID uint64
+	for _, e := range a.Entries {
+		if e.ID > maxID {
+			maxID = e.ID
+		}
+	}
+	if maxID == math.MaxUint64 {
+		return fmt.Errorf("cpk: member ID space exhausted")
+	}
+	e := &Entry{
+		DirName:     dir,
+		FileName:    name,
+		FileSize:    int64(len(stored)),
+		ExtractSize: extractSize,
+		ID:          maxID + 1,
+		replacement: append([]byte(nil), stored...),
+		resized:     true,
+		newExtract:  extractSize,
+		added:       true,
+	}
+	a.Entries = append(a.Entries, e)
+	return nil
+}
+
 func alignUp(value, align int64) int64 {
 	if align <= 1 {
 		return value
@@ -529,41 +579,97 @@ func (a *Archive) Rebuild(w io.Writer) (int64, error) {
 
 // RebuildVariable writes a complete archive with a recomputed content layout.
 // Members staged with ReplaceMemberResized are stored verbatim (uncompressed when
-// their declared extract size equals the payload length); every other member is
-// copied byte-for-byte, without decompression or recompression. The member order,
-// alignment and content start follow the source; TOC FileOffset/FileSize/
-// ExtractSize and the derived header size fields are patched in place (the packet
-// bodies keep their size), and the ETOC — which lists no offsets or sizes — is
-// preserved verbatim. Output is deterministic: a stable offset-order sort and
-// zero padding. Unknown layout state and integer overflows are rejected.
+// their declared extract size equals the payload length); members staged with
+// AddMember are appended after the existing members and gain TOC/ETOC rows; every
+// other member is copied byte-for-byte, without decompression or recompression.
+// The member order, alignment and content start follow the source; TOC
+// FileOffset/FileSize/ExtractSize and the derived header size fields are patched,
+// and the TOC may grow into the slack that precedes the content region. Output is
+// deterministic: a stable offset-order sort and zero padding. Unknown layout
+// state and integer overflows are rejected.
 func (a *Archive) RebuildVariable(w io.Writer) (int64, error) {
 	if a.headerSpan == nil || a.tocSpan == nil || a.etocSpan == nil {
 		return 0, fmt.Errorf("cpk: archive spans are not captured")
 	}
-	if a.headerTable == nil || a.tocTable == nil {
+	if a.headerTable == nil || a.tocTable == nil || a.etocTable == nil {
 		return 0, fmt.Errorf("cpk: archive tables are not captured")
 	}
 
-	// Recompose the content region in the original stored-offset order.
-	ordered := make([]*Entry, len(a.Entries))
-	copy(ordered, a.Entries)
-	sort.SliceStable(ordered, func(i, j int) bool { return ordered[i].Offset < ordered[j].Offset })
+	addedCount := 0
+	for _, e := range a.Entries {
+		if e.added {
+			addedCount++
+		}
+	}
+	existingCount := len(a.Entries) - addedCount
+
+	// Existing members keep their source offsets unless one of them changed
+	// size. A new member is appended after the last existing payload, so the
+	// content layout of the base archive is preserved exactly.
+	relayout := false
+	for _, e := range a.Entries {
+		if !e.added && e.resized {
+			relayout = true
+			break
+		}
+	}
+
+	ordered := make([]*Entry, 0, len(a.Entries))
+	existing := make([]*Entry, 0, existingCount)
+	for _, e := range a.Entries {
+		if !e.added {
+			existing = append(existing, e)
+		}
+	}
+	sort.SliceStable(existing, func(i, j int) bool { return existing[i].Offset < existing[j].Offset })
+	ordered = append(ordered, existing...)
+	for _, e := range a.Entries {
+		if e.added {
+			ordered = append(ordered, e)
+		}
+	}
 
 	placement := make(map[*Entry]int64, len(ordered))
-	cursor := a.contentOffset
+	var cursor int64
 	var totalStored, totalExtract int64
+	if relayout {
+		cursor = a.contentOffset
+		for _, e := range ordered {
+			stored := e.stagedStoredSize()
+			start := alignUp(cursor, a.align)
+			if start > math.MaxInt64-stored {
+				return 0, fmt.Errorf("cpk: member %q overflows the content layout", e.Path())
+			}
+			placement[e] = start
+			cursor = start + stored
+		}
+	} else {
+		// Preserve the source offsets, and append new members after the last
+		// existing payload.
+		for _, e := range existing {
+			if e.Offset < a.contentOffset {
+				return 0, fmt.Errorf("cpk: member %q offset %d below ContentOffset %d", e.Path(), e.Offset, a.contentOffset)
+			}
+			placement[e] = e.Offset
+			if end := e.Offset + e.stagedStoredSize(); end > cursor {
+				cursor = end
+			}
+		}
+		for _, e := range a.Entries {
+			if !e.added {
+				continue
+			}
+			start := alignUp(cursor, a.align)
+			placement[e] = start
+			cursor = start + e.stagedStoredSize()
+		}
+	}
 	for _, e := range ordered {
 		stored := e.stagedStoredSize()
 		extract := e.stagedExtractSize()
 		if stored < 0 || extract < 0 {
 			return 0, fmt.Errorf("cpk: member %q has a negative staged size", e.Path())
 		}
-		start := alignUp(cursor, a.align)
-		if start > math.MaxInt64-stored {
-			return 0, fmt.Errorf("cpk: member %q overflows the content layout", e.Path())
-		}
-		placement[e] = start
-		cursor = start + stored
 		totalStored += stored
 		totalExtract += extract
 		if totalStored < 0 || totalExtract < 0 {
@@ -571,34 +677,162 @@ func (a *Archive) RebuildVariable(w io.Writer) (int64, error) {
 		}
 	}
 	newEtoc := alignUp(cursor, a.align)
-	etocLen := int64(len(a.etocSpan))
-	if newEtoc > math.MaxInt64-etocLen {
-		return 0, fmt.Errorf("cpk: archive size overflows")
-	}
-	newSize := newEtoc + etocLen
 
-	// Patch the TOC rows in place (same packet body size).
+	// Existing entries are identified by their source row index; a new member is
+	// inserted by path order below.
+	sourceIndex := make(map[*Entry]int, existingCount)
 	for i, e := range a.Entries {
-		off := placement[e]
-		if off < a.addOffset {
-			return 0, fmt.Errorf("cpk: member %q offset %d below add offset %d", e.Path(), off, a.addOffset)
-		}
-		if err := a.tocTable.setRowUint(i, "FileOffset", uint64(off-a.addOffset)); err != nil {
-			return 0, err
-		}
-		if err := a.tocTable.setRowUint(i, "FileSize", uint64(e.stagedStoredSize())); err != nil {
-			return 0, err
-		}
-		if err := a.tocTable.setRowUint(i, "ExtractSize", uint64(e.stagedExtractSize())); err != nil {
-			return 0, err
+		if !e.added {
+			sourceIndex[e] = i
 		}
 	}
-	newTocSpan, err := splicePacketBody(a.tocSpan, a.tocTable.raw, a.tocObfuscated)
-	if err != nil {
-		return 0, err
+	var sorted []*Entry
+	if addedCount > 0 {
+		sorted = append([]*Entry(nil), a.Entries...)
+		sort.SliceStable(sorted, func(i, j int) bool { return sorted[i].Path() < sorted[j].Path() })
 	}
 
-	// Patch the derived header size fields in place (same packet body size).
+	// Patch or rebuild the TOC rows. Adding a member rewrites the whole row
+	// sequence in path order (the archive header declares Sorted=1), renumbers
+	// IDs 0..N-1, and patches each member's staged sizes and offset.
+	newTocBody := a.tocTable.raw
+	if addedCount > 0 {
+		builder, err := a.tocTable.newBuilder()
+		if err != nil {
+			return 0, err
+		}
+		rows := make([][]byte, 0, len(sorted))
+		for idx, e := range sorted {
+			off := placement[e]
+			if off < a.addOffset {
+				return 0, fmt.Errorf("cpk: member %q offset %d below add offset %d", e.Path(), off, a.addOffset)
+			}
+			e.ID = uint64(idx)
+			var row []byte
+			if e.added {
+				row = a.tocTable.blankRow()
+				ed, err := a.tocRowEdit(e, uint64(off-a.addOffset))
+				if err != nil {
+					return 0, err
+				}
+				if err := a.tocTable.applyRowEdit(builder, row, ed); err != nil {
+					return 0, fmt.Errorf("cpk: TOC row %q: %w", e.Path(), err)
+				}
+			} else {
+				row, err = a.tocTable.rowBytes(sourceIndex[e])
+				if err != nil {
+					return 0, err
+				}
+				for name, val := range map[string]uint64{
+					"FileOffset":  uint64(off - a.addOffset),
+					"FileSize":    uint64(e.stagedStoredSize()),
+					"ExtractSize": uint64(e.stagedExtractSize()),
+					"ID":          e.ID,
+				} {
+					ci, ok := a.tocTable.column(name)
+					if !ok {
+						return 0, fmt.Errorf("cpk: TOC missing column %q", name)
+					}
+					if err := putUTFUint(row, a.tocTable.columns[ci], val); err != nil {
+						return 0, err
+					}
+				}
+			}
+			rows = append(rows, row)
+		}
+		newTocBody, err = a.tocTable.encodeRowSequence(rows, builder)
+		if err != nil {
+			return 0, err
+		}
+	} else {
+		for i := 0; i < existingCount; i++ {
+			e := a.Entries[i]
+			off := placement[e]
+			if off < a.addOffset {
+				return 0, fmt.Errorf("cpk: member %q offset %d below add offset %d", e.Path(), off, a.addOffset)
+			}
+			if err := a.tocTable.setRowUint(i, "FileOffset", uint64(off-a.addOffset)); err != nil {
+				return 0, err
+			}
+			if err := a.tocTable.setRowUint(i, "FileSize", uint64(e.stagedStoredSize())); err != nil {
+				return 0, err
+			}
+			if err := a.tocTable.setRowUint(i, "ExtractSize", uint64(e.stagedExtractSize())); err != nil {
+				return 0, err
+			}
+		}
+	}
+
+	var newTocSpan []byte
+	if addedCount == 0 {
+		var err error
+		newTocSpan, err = splicePacketBody(a.tocSpan, newTocBody, a.tocObfuscated)
+		if err != nil {
+			return 0, err
+		}
+	} else {
+		var err error
+		newTocSpan, err = wrapPacket(a.tocSpan, newTocBody, a.tocObfuscated)
+		if err != nil {
+			return 0, err
+		}
+	}
+	if maxSpan := a.contentOffset - a.tocOffset; int64(len(newTocSpan)) > maxSpan {
+		return 0, fmt.Errorf("cpk: rebuilt TOC packet is %d bytes, only %d fit before ContentOffset", len(newTocSpan), maxSpan)
+	}
+
+	// Rebuild the ETOC. Rows are positionally parallel to the path-sorted TOC,
+	// and the trailing empty sentinel stays last: adding a member inserts one
+	// file row before it. The new member's timestamp stays 0; existing rows keep
+	// their stored metadata.
+	newEtocSpan := a.etocSpan
+	if addedCount > 0 {
+		if a.etocTable.numRows < existingCount {
+			return 0, fmt.Errorf("cpk: ETOC has %d rows for %d existing members", a.etocTable.numRows, existingCount)
+		}
+		builder, err := a.etocTable.newBuilder()
+		if err != nil {
+			return 0, err
+		}
+		sentinel, err := a.etocTable.rowBytes(a.etocTable.numRows - 1)
+		if err != nil {
+			return 0, err
+		}
+		if a.etocTable.numRows == existingCount {
+			sentinel = a.etocTable.blankRow()
+		}
+		rows := make([][]byte, 0, len(sorted)+1)
+		for _, e := range sorted {
+			if e.added {
+				row := a.etocTable.blankRow()
+				ed := utfRowEdit{Strings: map[string]string{}}
+				if ci, ok := a.etocTable.column("LocalDir"); ok && a.etocTable.columns[ci].rowOffset >= 0 {
+					ed.Strings["LocalDir"] = e.DirName
+				}
+				if err := a.etocTable.applyRowEdit(builder, row, ed); err != nil {
+					return 0, fmt.Errorf("cpk: ETOC row %q: %w", e.Path(), err)
+				}
+				rows = append(rows, row)
+				continue
+			}
+			row, err := a.etocTable.rowBytes(sourceIndex[e])
+			if err != nil {
+				return 0, err
+			}
+			rows = append(rows, row)
+		}
+		rows = append(rows, sentinel)
+		body, err := a.etocTable.encodeRowSequence(rows, builder)
+		if err != nil {
+			return 0, err
+		}
+		newEtocSpan, err = wrapPacket(a.etocSpan, body, a.etocObfuscated)
+		if err != nil {
+			return 0, err
+		}
+	}
+
+	// Patch the derived header fields in place (same packet body size).
 	patchHeader := func(name string, v uint64, required bool) error {
 		if !a.headerTable.hasColumn(name) {
 			if required {
@@ -614,8 +848,19 @@ func (a *Archive) RebuildVariable(w io.Writer) (int64, error) {
 	if err := patchHeader("ContentSize", uint64(newEtoc-a.contentOffset), false); err != nil {
 		return 0, err
 	}
-	if err := patchHeader("EtocSize", uint64(etocLen), false); err != nil {
+	if err := patchHeader("EtocSize", uint64(len(newEtocSpan)), false); err != nil {
 		return 0, err
+	}
+	if err := patchHeader("TocSize", uint64(16+len(newTocBody)), false); err != nil {
+		return 0, err
+	}
+	if err := patchHeader("Files", uint64(len(a.Entries)), true); err != nil {
+		return 0, err
+	}
+	if addedCount > 0 {
+		if err := patchHeader("Sorted", 1, false); err != nil {
+			return 0, err
+		}
 	}
 	if err := patchHeader("EnabledPackedSize", uint64(totalExtract), false); err != nil {
 		return 0, err
@@ -628,12 +873,23 @@ func (a *Archive) RebuildVariable(w io.Writer) (int64, error) {
 		return 0, err
 	}
 
+	etocLen := int64(len(newEtocSpan))
+	if newEtoc > math.MaxInt64-etocLen {
+		return 0, fmt.Errorf("cpk: archive size overflows")
+	}
+	newSize := newEtoc + etocLen
+
 	cw := &countingWriter{w: w}
 	if _, err := cw.Write(newHeaderSpan); err != nil {
 		return cw.n, err
 	}
 	if _, err := cw.Write(newTocSpan); err != nil {
 		return cw.n, err
+	}
+	if pad := a.contentOffset - int64(len(newHeaderSpan)) - int64(len(newTocSpan)); pad > 0 {
+		if _, err := cw.Write(make([]byte, pad)); err != nil {
+			return cw.n, err
+		}
 	}
 	cursor = a.contentOffset
 	for _, e := range ordered {
@@ -665,13 +921,61 @@ func (a *Archive) RebuildVariable(w io.Writer) (int64, error) {
 	} else if pad < 0 {
 		return cw.n, fmt.Errorf("cpk: content layout overruns the ETOC region by %d bytes", -pad)
 	}
-	if _, err := cw.Write(a.etocSpan); err != nil {
+	if _, err := cw.Write(newEtocSpan); err != nil {
 		return cw.n, err
 	}
 	if cw.n != newSize {
 		return cw.n, fmt.Errorf("cpk: variable rebuild produced %d bytes, expected %d", cw.n, newSize)
 	}
 	return cw.n, nil
+}
+
+// tocRowEdit builds the TOC row values for a member staged by AddMember.
+func (a *Archive) tocRowEdit(e *Entry, fileOffset uint64) (utfRowEdit, error) {
+	ed := utfRowEdit{Strings: map[string]string{}, Uints: map[string]uint64{}}
+	// Only per-row string columns are writable; a constant column (such as the
+	// real TOC's constant UserString) already carries its value in the schema.
+	stringCol := func(name string) bool {
+		ci, ok := a.tocTable.column(name)
+		return ok && a.tocTable.columns[ci].rowOffset >= 0
+	}
+	if stringCol("DirName") {
+		ed.Strings["DirName"] = e.DirName
+	}
+	if stringCol("FileName") {
+		ed.Strings["FileName"] = e.FileName
+	}
+	if stringCol("UserString") {
+		ed.Strings["UserString"] = e.UserString
+	}
+	for _, name := range []string{"FileSize", "ExtractSize", "FileOffset", "ID"} {
+		if !a.tocTable.hasColumn(name) {
+			return utfRowEdit{}, fmt.Errorf("cpk: TOC missing column %q", name)
+		}
+	}
+	ed.Uints["FileSize"] = uint64(e.stagedStoredSize())
+	ed.Uints["ExtractSize"] = uint64(e.stagedExtractSize())
+	ed.Uints["FileOffset"] = fileOffset
+	ed.Uints["ID"] = e.ID
+	return ed, nil
+}
+
+// wrapPacket returns a new region holding a packet with the given body,
+// preserving the region's identifier and LE wrapper and re-applying the XOR
+// obfuscation when the source packet was obfuscated. Unlike splicePacketBody the
+// body may change size.
+func wrapPacket(span, body []byte, obfuscated bool) ([]byte, error) {
+	if len(span) < utfIdentOff {
+		return nil, fmt.Errorf("cpk: captured region too short for a packet")
+	}
+	out := make([]byte, utfIdentOff+len(body))
+	copy(out[:utfIdentOff], span[:utfIdentOff])
+	cpkLittleEndian.PutUint64(out[8:16], uint64(len(body)))
+	if obfuscated {
+		body = criXorMask(body)
+	}
+	copy(out[utfIdentOff:], body)
+	return out, nil
 }
 
 // splicePacketBody returns a copy of a captured region with the @UTF packet body
@@ -707,6 +1011,9 @@ func (a *Archive) checkLayoutUnchanged() error {
 		return fmt.Errorf("cpk: captured spans exceed file size")
 	}
 	for _, e := range a.Entries {
+		if e.added {
+			return fmt.Errorf("cpk: member %q was added; use RebuildVariable to append it", e.Path())
+		}
 		if e.resized {
 			return fmt.Errorf("cpk: member %q was resized; use RebuildVariable for size-changing rebuilds", e.Path())
 		}

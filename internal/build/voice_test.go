@@ -55,7 +55,9 @@ func synthMain(t *testing.T, rodata []byte, moduleID [32]byte) []byte {
 // the options for a voice-enabled build plus the expected patched image.
 func voiceFixture(t *testing.T, dir string) (Options, []byte) {
 	t.Helper()
-	src, _, _ := writeCPK(t, dir, fixExtract(standardMembers()))
+	// The startup label writes UcSysMsg.fms slot 1326, so the fixture carries the
+	// real member's slot count. The translation record itself stays on slot 0.
+	src, _, _ := writeCPK(t, dir, fixExtract(startupLabelMembers()))
 	corpus := writeCorpus(t, dir, [][3]string{{"UcSysMsg.fms:0", "ニューゲーム", "New Game"}})
 	translations := filepath.Join(dir, "translations")
 	writeTranslations(t, translations, "honorifics.tsv",
@@ -113,7 +115,7 @@ func TestVoicePatchBuildStage(t *testing.T) {
 	if res.Voice == nil {
 		t.Fatal("Voice result missing")
 	}
-	if res.Voice.RuntimeStatus != "NOT_RUNTIME_APPROVED" {
+	if res.Voice.RuntimeStatus != voiceRuntimeConfirmed {
 		t.Fatalf("runtime status = %q", res.Voice.RuntimeStatus)
 	}
 	if res.Voice.ChangedBytes == 0 || res.Voice.Edits != 2 {
@@ -131,8 +133,31 @@ func TestVoicePatchBuildStage(t *testing.T) {
 	if _, err := os.Stat(filepath.Join(stage, "main.ips")); err != nil {
 		t.Fatalf("IPS missing: %v", err)
 	}
-	if _, err := os.Stat(filepath.Join(stage, "NOT_RUNTIME_APPROVED")); err != nil {
-		t.Fatalf("marker missing: %v", err)
+	// The IPS must be the small Atmosphère exefs_patches form of the same
+	// edit, never a restatement of the re-compressed segment.
+	ips, err := os.ReadFile(filepath.Join(stage, "main.ips"))
+	if err != nil {
+		t.Fatalf("read IPS: %v", err)
+	}
+	if !bytes.HasPrefix(ips, []byte("PATCH")) || !bytes.HasSuffix(ips, []byte("EOF")) {
+		t.Fatalf("IPS is not a classic PATCH/EOF file (%d bytes)", len(ips))
+	}
+	if len(ips) > 64 {
+		t.Fatalf("IPS is %d bytes; a stored-NSO diff leaked into the patch", len(ips))
+	}
+	if res.Voice.IPSSize != int64(len(ips)) || res.Voice.IPSRecords != 2 || res.Voice.IPSChanged != 6 {
+		t.Fatalf("IPS report = size %d records %d changed %d", res.Voice.IPSSize, res.Voice.IPSRecords, res.Voice.IPSChanged)
+	}
+	if !strings.Contains(res.Voice.IPSLayer, "uncompressed-nso") {
+		t.Fatalf("IPS layer = %q", res.Voice.IPSLayer)
+	}
+	if !strings.Contains(res.Voice.IPSInstallRel, "exefs_patches") {
+		t.Fatalf("IPS install path = %q", res.Voice.IPSInstallRel)
+	}
+	if data, err := os.ReadFile(filepath.Join(stage, voiceRuntimeMarker)); err != nil {
+		t.Fatalf("runtime status marker missing: %v", err)
+	} else if !strings.Contains(string(data), voiceRuntimeConfirmed) {
+		t.Fatalf("runtime status marker does not carry the confirmed status: %s", data)
 	}
 
 	// The per-edition reports assert the pinned Build ID and list the component.
@@ -148,7 +173,7 @@ func TestVoicePatchBuildStage(t *testing.T) {
 		if !strings.Contains(joined, "voice-exefs-patch") || strings.Contains(joined, "NOT_INCLUDED") {
 			t.Fatalf("edition %s patch components = %q", e.Variant, joined)
 		}
-		if !strings.Contains(rep.VoiceStatus, "EXPERIMENTAL") {
+		if rep.VoiceStatus != voiceRuntimeConfirmed {
 			t.Fatalf("edition %s voice status = %q", e.Variant, rep.VoiceStatus)
 		}
 	}
@@ -194,7 +219,65 @@ func TestVoicePatchWithoutMainIsAnError(t *testing.T) {
 	opts, _ := voiceFixture(t, dir)
 	opts.VoiceMain = ""
 	_, err := Run(opts)
-	if err == nil || !strings.Contains(err.Error(), "--voice-main") {
+	if err == nil || !strings.Contains(err.Error(), "extracted ExeFS main") {
 		t.Fatalf("want missing-main error, got %v", err)
+	}
+}
+
+// TestAutoAssetsBuildsVoiceAndFooter is the integration test for the normal
+// build path: the pinned voice `main` and the title atlas are resolved from
+// <root>/.local/work/source, the voice patch and footer are added to both
+// editions, and no explicit voice/footer option is needed.
+func TestAutoAssetsBuildsVoiceAndFooter(t *testing.T) {
+	dir := t.TempDir()
+	opts, wantVoice := voiceFixture(t, dir)
+
+	root := filepath.Join(dir, "checkout")
+	mainData, err := os.ReadFile(opts.VoiceMain)
+	if err != nil {
+		t.Fatal(err)
+	}
+	mustWrite(t, filepath.Join(root, ".local", "work", "source", "exefs", "main"), mainData)
+	mustWrite(t, filepath.Join(root, ".local", "work", "source", "romfs", "GUI", "Opening100.ftx"), fxFTX(t, 2048, 2048))
+
+	// Drop every explicit asset path: only the checkout root and the automatic
+	// mode remain, exactly like the CLI/TUI standard build.
+	opts.Root = root
+	opts.AutoAssets = true
+	opts.Voice = false
+	opts.VoiceMain = ""
+	opts.TitleFooterFTX = ""
+	opts.Version = "0.2.1-test"
+
+	res, err := Run(opts)
+	if err != nil {
+		t.Fatalf("Run(auto assets): %v", err)
+	}
+	if res.Voice == nil || res.Voice.RuntimeStatus != voiceRuntimeConfirmed {
+		t.Fatalf("voice result = %+v", res.Voice)
+	}
+	patched, err := os.ReadFile(filepath.Join(res.RunDir, "voice", "exefs", "main"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Equal(patched, wantVoice) {
+		t.Fatal("automatic voice artifact differs from the independently built image")
+	}
+	if res.TitleFooterTag != "UNBURGER MOD 0.2.1-test" || res.TitleFooterMember != "GUI/Opening100.ftx" {
+		t.Fatalf("footer = %q %q", res.TitleFooterTag, res.TitleFooterMember)
+	}
+	for _, e := range res.Editions {
+		cpk := mustOpenCPK(t, readOut(t, res, e.Variant))
+		if cpk.Member("GUI/Opening100.ftx") == nil {
+			t.Fatalf("%s: automatic footer member missing", e.Variant)
+		}
+	}
+}
+
+func TestAutoAssetsReportsMissingInputs(t *testing.T) {
+	opts := Options{Root: t.TempDir(), AutoAssets: true}
+	err := resolveAutoAssets(&opts)
+	if err == nil || !strings.Contains(err.Error(), "automatic assets") {
+		t.Fatalf("want a clear missing-asset error, got %v", err)
 	}
 }

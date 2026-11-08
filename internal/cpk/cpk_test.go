@@ -152,6 +152,22 @@ type testMember struct {
 	extract   int64
 }
 
+func sumStored(members []testMember) uint64 {
+	var n uint64
+	for _, m := range members {
+		n += uint64(len(m.stored))
+	}
+	return n
+}
+
+func sumExtract(members []testMember) uint64 {
+	var n uint64
+	for _, m := range members {
+		n += uint64(m.extract)
+	}
+	return n
+}
+
 func alignUpTest(v, a int64) int64 {
 	if a <= 1 {
 		return v
@@ -197,18 +213,36 @@ func buildTestCPK(t *testing.T, members []testMember) []byte {
 		},
 		rows: tocRows,
 	})
+	etocRows := make([][]any, 0, len(members)+1)
+	for i, p := range list {
+		etocRows = append(etocRows, []any{uint64(1_600_000_000_000_000_000 + int64(i)*2048), p.m.dir})
+	}
+	// The real archives carry one trailing empty sentinel row; the rebuilt ETOC
+	// must keep it last.
+	etocRows = append(etocRows, []any{uint64(0), ""})
+	etocPacket := encodeTestUTF(t, testTable{
+		name: "ETOC",
+		columns: []testColumn{
+			{"UpdateDateTime", utfTypeU64}, {"LocalDir", utfTypeStr},
+		},
+		rows: etocRows,
+	})
 	headerPacket := encodeTestUTF(t, testTable{
 		name: "CpkHeader",
 		columns: []testColumn{
 			{"TocOffset", utfTypeU32}, {"ContentOffset", utfTypeU32}, {"EtocOffset", utfTypeU32},
 			{"ItocOffset", utfTypeU32}, {"GtocOffset", utfTypeU32}, {"Files", utfTypeU32}, {"Align", utfTypeU32},
+			{"Sorted", utfTypeU32}, {"TocSize", utfTypeU32}, {"EtocSize", utfTypeU32},
+			{"ContentSize", utfTypeU32}, {"EnabledPackedSize", utfTypeU32}, {"EnabledDataSize", utfTypeU32},
 		},
 		rows: [][]any{{
 			uint64(tocOffset), uint64(contentOffset), uint64(etocOffset), uint64(0), uint64(0),
-			uint64(len(members)), uint64(align),
+			uint64(len(members)), uint64(align), uint64(1),
+			uint64(16 + len(tocPacket)), uint64(16 + len(etocPacket)),
+			uint64(etocOffset - contentOffset),
+			sumExtract(members), sumStored(members),
 		}},
 	})
-	etocPacket := encodeTestUTF(t, testTable{name: "ETOC"})
 
 	out := []byte("CPK ")
 	out = appendLE32(out, 0)
@@ -604,8 +638,186 @@ func TestRebuildVariableResizeLayoutAndPreservation(t *testing.T) {
 	}
 }
 
-// TestRebuildVariablePreservesCompressedSiblings checks that untouched compressed
-// members are copied raw (not recompressed) and still decompress identically.
+// TestAddMemberAppendsTOCAndETOCRows covers staging a new, uncompressed member
+// and is the regression test for a container TOC bug: the TOC must stay
+// genuinely path-sorted with IDs 0..N-1 and the header must agree, the ETOC must
+// gain one file row while keeping its trailing empty sentinel, every existing
+// member must keep its bytes and offset, and a second rebuild must be identical.
+func TestAddMemberAppendsTOCAndETOCRows(t *testing.T) {
+	members := []testMember{
+		{dir: "", name: "root.bin", stored: []byte("root payload"), extract: 12},
+		{dir: "MsgSheet", name: "a.fms", stored: []byte("AAAA"), extract: 4},
+		{dir: "Help", name: "b.bin", stored: []byte{0, 1, 2, 3, 4}, extract: 5},
+	}
+	blob := buildTestCPK(t, members)
+	a, err := Open(bytes.NewReader(blob), int64(len(blob)))
+	if err != nil {
+		t.Fatal(err)
+	}
+	rawBefore, _ := cloneEntryData(t, a)
+	offBefore := map[string]int64{}
+	etocBefore := map[string]struct {
+		stamp uint64
+		dir   string
+	}{}
+	for i, e := range a.Entries {
+		offBefore[e.Path()] = e.Offset
+		stamp, _, _ := a.etocTable.uintValue(i, "UpdateDateTime")
+		dir, _, _ := a.etocTable.stringValue(i, "LocalDir")
+		etocBefore[e.Path()] = struct {
+			stamp uint64
+			dir   string
+		}{stamp, dir}
+	}
+
+	payload := bytes.Repeat([]byte{0xA5, 0x5A, 0x11, 0x22}, 260)
+	if err := a.AddMember("GUI", "Opening100.ftx", payload, int64(len(payload))); err != nil {
+		t.Fatalf("AddMember: %v", err)
+	}
+	if err := a.AddMember("GUI", "Opening100.ftx", payload, int64(len(payload))); err == nil {
+		t.Fatal("duplicate AddMember must be rejected")
+	}
+	if err := a.AddMember("GUI", "bad", payload, int64(len(payload))+1); err == nil {
+		t.Fatal("compressed new member must be rejected")
+	}
+	if _, err := a.Rebuild(&bytes.Buffer{}); err == nil {
+		t.Fatal("size-preserving Rebuild must reject an added member")
+	}
+
+	var first bytes.Buffer
+	if _, err := a.RebuildVariable(&first); err != nil {
+		t.Fatalf("RebuildVariable: %v", err)
+	}
+	var second bytes.Buffer
+	if _, err := a.RebuildVariable(&second); err != nil {
+		t.Fatalf("second RebuildVariable: %v", err)
+	}
+	if !bytes.Equal(first.Bytes(), second.Bytes()) {
+		t.Fatal("rebuild with an added member is not deterministic")
+	}
+
+	out := first.Bytes()
+	a2, err := Open(bytes.NewReader(out), int64(len(out)))
+	if err != nil {
+		t.Fatalf("reopen: %v", err)
+	}
+	if len(a2.Entries) != len(members)+1 {
+		t.Fatalf("reopened entries = %d, want %d", len(a2.Entries), len(members)+1)
+	}
+	if a2.Header.Files != int64(len(members)+1) {
+		t.Fatalf("header Files = %d", a2.Header.Files)
+	}
+
+	hdrUint := func(name string) uint64 {
+		v, _, err := a2.headerTable.uintValue(0, name)
+		if err != nil {
+			t.Fatalf("header %s: %v", name, err)
+		}
+		return v
+	}
+	if got := hdrUint("Sorted"); got != 1 {
+		t.Fatalf("header Sorted = %d, want 1", got)
+	}
+	// The rebuilt TOC must be genuinely path-sorted and IDs must be sequential.
+	paths := make([]string, len(a2.Entries))
+	for i, e := range a2.Entries {
+		paths[i] = e.Path()
+		if e.ID != uint64(i) {
+			t.Fatalf("TOC row %d (%s) ID = %d, want %d", i, e.Path(), e.ID, i)
+		}
+	}
+	if !sort.StringsAreSorted(paths) {
+		t.Fatalf("TOC is not path-sorted: %q", paths)
+	}
+	if a2.tocTable.numRows != len(paths) {
+		t.Fatalf("TOC rows = %d, want %d", a2.tocTable.numRows, len(paths))
+	}
+
+	// Header size/count fields agree with the rebuilt packets.
+	if got := hdrUint("TocSize"); got != uint64(16+len(a2.tocTable.raw)) {
+		t.Fatalf("TocSize = %d, want %d", got, 16+len(a2.tocTable.raw))
+	}
+	if got := hdrUint("EtocSize"); got != uint64(16+len(a2.etocTable.raw)) {
+		t.Fatalf("EtocSize = %d, want %d", got, 16+len(a2.etocTable.raw))
+	}
+	if got := hdrUint("ContentSize"); got != uint64(a2.Header.EtocOffset-a2.Header.ContentOffset) {
+		t.Fatalf("ContentSize = %d", got)
+	}
+	var wantStored, wantExtract uint64
+	for _, e := range a2.Entries {
+		wantStored += uint64(e.FileSize)
+		wantExtract += uint64(e.ExtractSize)
+	}
+	if got := hdrUint("EnabledDataSize"); got != wantStored {
+		t.Fatalf("EnabledDataSize = %d, want %d", got, wantStored)
+	}
+	if got := hdrUint("EnabledPackedSize"); got != wantExtract {
+		t.Fatalf("EnabledPackedSize = %d, want %d", got, wantExtract)
+	}
+	if a2.Header.EtocOffset%a2.Header.Align != 0 {
+		t.Fatalf("EtocOffset %d is not aligned to %d", a2.Header.EtocOffset, a2.Header.Align)
+	}
+
+	// Existing members keep their payload and their source offset.
+	for _, e := range a2.Entries {
+		if e.Path() == "GUI/Opening100.ftx" {
+			continue
+		}
+		raw, err := a2.RawData(e)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if !bytes.Equal(raw, rawBefore[e.Path()]) {
+			t.Fatalf("existing member %q payload changed", e.Path())
+		}
+		if e.Offset != offBefore[e.Path()] {
+			t.Fatalf("existing member %q offset %d, want %d", e.Path(), e.Offset, offBefore[e.Path()])
+		}
+	}
+
+	// The ETOC has one row per file plus the trailing empty sentinel, and its
+	// rows are positionally parallel to the path-sorted TOC.
+	if got, want := a2.etocTable.numRows, len(paths)+1; got != want {
+		t.Fatalf("ETOC rows = %d, want %d", got, want)
+	}
+	for i, e := range a2.Entries {
+		dir, _, _ := a2.etocTable.stringValue(i, "LocalDir")
+		if dir != e.DirName {
+			t.Fatalf("ETOC row %d LocalDir = %q, want %q", i, dir, e.DirName)
+		}
+		if e.Path() != "GUI/Opening100.ftx" {
+			before := etocBefore[e.Path()]
+			stamp, _, _ := a2.etocTable.uintValue(i, "UpdateDateTime")
+			if stamp != before.stamp {
+				t.Fatalf("ETOC row %d (%s) timestamp = %d, want %d", i, e.Path(), stamp, before.stamp)
+			}
+		}
+	}
+	sentStamp, _, _ := a2.etocTable.uintValue(a2.etocTable.numRows-1, "UpdateDateTime")
+	sentDir, _, _ := a2.etocTable.stringValue(a2.etocTable.numRows-1, "LocalDir")
+	if sentStamp != 0 || sentDir != "" {
+		t.Fatalf("ETOC sentinel = (%d, %q), want (0, \"\")", sentStamp, sentDir)
+	}
+
+	added := a2.Member("GUI/Opening100.ftx")
+	if added == nil {
+		t.Fatal("added member missing")
+	}
+	if added.Compressed() || added.FileSize != int64(len(payload)) || added.ExtractSize != int64(len(payload)) {
+		t.Fatalf("added member sizes = %d/%d compressed=%v", added.FileSize, added.ExtractSize, added.Compressed())
+	}
+	if got, err := a2.Data(added); err != nil || !bytes.Equal(got, payload) {
+		t.Fatalf("added member payload mismatch (err %v)", err)
+	}
+	if added.Offset%a2.Header.Align != 0 {
+		t.Fatalf("added member offset %d is not aligned to %d", added.Offset, a2.Header.Align)
+	}
+	// GUI/Opening100.ftx sorts after Debug and before Help; in this fixture the
+	// lower-case "root.bin" sorts last, so GUI is row 0.
+	if added.ID != 0 || a2.tocTable.numRows < 1 {
+		t.Fatalf("added member ID = %d, want 0 (first path-sorted row)", added.ID)
+	}
+}
 func TestRebuildVariablePreservesCompressedSiblings(t *testing.T) {
 	s1, p1 := compressedTestMember(0x22, 700)
 	s2, p2 := compressedTestMember(0x77, 300)

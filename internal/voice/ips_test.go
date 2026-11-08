@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"math/rand"
 	"testing"
+
+	"uo-unburger/internal/nso"
 )
 
 func TestIPSRoundTripVaryingSizes(t *testing.T) {
@@ -109,4 +111,108 @@ func TestIPSRoundTripEmpty(t *testing.T) {
 	if !bytes.Equal(got, patched) {
 		t.Fatal("round-trip mismatch")
 	}
+}
+
+// mappedOf returns the loader-visible image of a synthetic NSO.
+func mappedOf(t *testing.T, img []byte) []byte {
+	t.Helper()
+	f, err := nso.Parse(img)
+	if err != nil {
+		t.Fatalf("parse: %v", err)
+	}
+	m, err := f.MappedImage()
+	if err != nil {
+		t.Fatalf("mapped image: %v", err)
+	}
+	return m
+}
+
+func TestBuildExefsIPSIsSmallAndLoaderShaped(t *testing.T) {
+	img, plan := fixturePlan(t)
+	patched, _, err := Apply(img, plan)
+	if err != nil {
+		t.Fatalf("Apply: %v", err)
+	}
+	patch, err := BuildExefsIPS(img, patched)
+	if err != nil {
+		t.Fatalf("BuildExefsIPS: %v", err)
+	}
+	if patch.Records != 2 {
+		t.Fatalf("records = %d, want 2", patch.Records)
+	}
+	if patch.Changed != 8 {
+		t.Fatalf("payload bytes = %d, want 8", patch.Changed)
+	}
+	// 5 magic + 2*(3+2) headers + 8 payload + 3 EOF = 26.
+	if len(patch.Bytes) != 26 {
+		t.Fatalf("patch size = %d, want 26 (a stored-layer diff would be far larger)", len(patch.Bytes))
+	}
+	// Offsets are uncompressed-NSO file offsets: mapped offset + 0x100.
+	if patch.First != 0x1140 || patch.Last <= patch.First {
+		t.Fatalf("first/last = %#x/%#x, want 0x1140/…", patch.First, patch.Last)
+	}
+	if _, _, err := parseIPS(patch.Bytes); err != nil {
+		t.Fatalf("parse built patch: %v", err)
+	}
+	// Loader semantics reproduce the patched mapped image exactly.
+	got, err := ApplyExefsIPS(img, patch.Bytes)
+	if err != nil {
+		t.Fatalf("ApplyExefsIPS: %v", err)
+	}
+	if want := mappedOf(t, patched); !bytes.Equal(got, want) {
+		t.Fatal("ApplyExefsIPS does not reproduce the patched mapped image")
+	}
+}
+
+func TestBuildExefsIPSRejectsDifferentModuleID(t *testing.T) {
+	img, plan := fixturePlan(t)
+	patched, _, err := Apply(img, plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	f, err := nso.Parse(patched)
+	if err != nil {
+		t.Fatal(err)
+	}
+	ro, err := f.Decompress(nso.Rodata)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var other [32]byte
+	for i := range other {
+		other[i] = byte(0x10 + i)
+	}
+	foreign := synthNSO(t, ro, other, true)
+	if _, err := BuildExefsIPS(img, foreign); err == nil {
+		t.Fatal("different module id accepted")
+	}
+}
+
+func TestBuildExefsIPSRejectsIdenticalImages(t *testing.T) {
+	img, _ := fixturePlan(t)
+	if _, err := BuildExefsIPS(img, img); err == nil {
+		t.Fatal("empty patch accepted")
+	}
+}
+
+func TestApplyExefsIPSSkipsProtectedHeader(t *testing.T) {
+	img, plan := fixturePlan(t)
+	patched, _, err := Apply(img, plan)
+	if err != nil {
+		t.Fatal(err)
+	}
+	// A record inside the 0x100-byte header must never reach the module image.
+	headerOnly := []byte("PATCH")
+	headerOnly = be24(headerOnly, 0x40)
+	headerOnly = be16(headerOnly, 4)
+	headerOnly = append(headerOnly, 0xDE, 0xAD, 0xBE, 0xEF)
+	headerOnly = append(headerOnly, 'E', 'O', 'F')
+	got, err := ApplyExefsIPS(img, headerOnly)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Equal(got, mappedOf(t, img)) {
+		t.Fatal("a header-only record changed the mapped image")
+	}
+	_ = patched
 }

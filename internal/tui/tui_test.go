@@ -599,27 +599,53 @@ func TestFormTabCyclesFields(t *testing.T) {
 	}
 }
 
-func TestVoiceScreenStatesExperimentalStatus(t *testing.T) {
+func TestVoiceScreenStatesIntegratedPatchStatus(t *testing.T) {
 	m := testModel(t)
 	m.setScreen(ScreenVoice)
 	got := view(m)
-	if !strings.Contains(got, "experimental") {
-		t.Fatalf("voice screen must state the experimental status:\n%s", got)
+	if !strings.Contains(got, "Japanese voice patch — integrated") {
+		t.Fatalf("voice screen must state the integrated-package status:\n%s", got)
 	}
-	if !strings.Contains(got, "runtime-approved") {
-		t.Fatalf("voice screen must preserve the not-runtime-approved boundary:\n%s", got)
-	}
-	foundImplemented := false
+	foundFooter, foundIntegrated := false, false
 	for _, it := range voiceItems() {
-		if len(it.Cells) >= 3 && strings.Contains(it.Cells[2], "implemented") {
-			foundImplemented = true
+		if it.ID == "footer" && len(it.Cells) >= 3 &&
+			strings.Contains(it.Cells[2], "two-line title footer") {
+			foundFooter = true
 		}
-		if len(it.Cells) >= 3 && strings.Contains(it.Cells[2], "not implemented") {
-			t.Fatalf("voice screen must not claim the patch is unimplemented: %+v", it)
+		if it.ID == "integrated" && len(it.Cells) >= 3 &&
+			it.Cells[1] == "built" &&
+			strings.Contains(it.Cells[2], "every integrated production package") {
+			foundIntegrated = true
 		}
 	}
-	if !foundImplemented {
-		t.Fatalf("voice screen must state the patch implementation exists")
+	if !foundFooter {
+		t.Fatalf("voice screen must record that the build applies the title footer")
+	}
+	if !foundIntegrated {
+		t.Fatalf("voice screen must record the integrated package component")
+	}
+	if strings.Contains(got, "not been") || strings.Contains(got, "not re-run") {
+		t.Fatalf("voice screen still carries the obsolete not-tested claim:\n%s", got)
+	}
+	foundSelector := false
+	for _, it := range voiceItems() {
+		if it.ID == "selector" && len(it.Cells) >= 3 &&
+			strings.Contains(it.Cells[2], "English entry") &&
+			strings.Contains(it.Cells[2], "not implemented") {
+			foundSelector = true
+		}
+	}
+	if !foundSelector {
+		t.Fatalf("voice screen must record the English selector limitation")
+	}
+	foundBuilt := false
+	for _, it := range voiceItems() {
+		if len(it.Cells) >= 3 && strings.Contains(it.Cells[2], "every normal build") {
+			foundBuilt = true
+		}
+	}
+	if !foundBuilt {
+		t.Fatalf("voice screen must state the patch is built automatically")
 	}
 }
 

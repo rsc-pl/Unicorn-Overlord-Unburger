@@ -147,6 +147,22 @@ type fxMember struct {
 	extract int64
 }
 
+func sumStored(members []fxMember) uint64 {
+	var n uint64
+	for _, m := range members {
+		n += uint64(len(m.stored))
+	}
+	return n
+}
+
+func sumExtract(members []fxMember) uint64 {
+	var n uint64
+	for _, m := range members {
+		n += uint64(m.extract)
+	}
+	return n
+}
+
 // fxCPK builds a synthetic CPK that the real internal/cpk reader accepts.
 func fxCPK(t *testing.T, members []fxMember) []byte {
 	t.Helper()
@@ -184,14 +200,27 @@ func fxCPK(t *testing.T, members []fxMember) []byte {
 		{"DirName", fxStr}, {"FileName", fxStr}, {"FileSize", fxU32},
 		{"ExtractSize", fxU32}, {"FileOffset", fxU64}, {"ID", fxU32}, {"UserString", fxStr},
 	}, tocRows)
+	etocRows := make([][]any, 0, len(members)+1)
+	for i := range list {
+		etocRows = append(etocRows, []any{uint64(1_600_000_000_000_000_000 + int64(i)*2048), list[i].m.dir})
+	}
+	// Real archives carry one trailing empty sentinel row.
+	etocRows = append(etocRows, []any{uint64(0), ""})
+	etocPacket := fxUTF(t, "ETOC", []fxCol{
+		{"UpdateDateTime", fxU64}, {"LocalDir", fxStr},
+	}, etocRows)
 	headerPacket := fxUTF(t, "CpkHeader", []fxCol{
 		{"TocOffset", fxU32}, {"ContentOffset", fxU32}, {"EtocOffset", fxU32},
 		{"ItocOffset", fxU32}, {"GtocOffset", fxU32}, {"Files", fxU32}, {"Align", fxU32},
+		{"Sorted", fxU32}, {"TocSize", fxU32}, {"EtocSize", fxU32},
+		{"ContentSize", fxU32}, {"EnabledPackedSize", fxU32}, {"EnabledDataSize", fxU32},
 	}, [][]any{{
 		uint64(tocOffset), uint64(contentOffset), uint64(etocOffset), uint64(0), uint64(0),
-		uint64(len(members)), uint64(align),
+		uint64(len(members)), uint64(align), uint64(1),
+		uint64(16 + len(tocPacket)), uint64(16 + len(etocPacket)),
+		uint64(etocOffset - contentOffset),
+		uint64(sumStored(members)), uint64(sumExtract(members)),
 	}})
-	etocPacket := fxUTF(t, "ETOC", nil, nil)
 
 	out := []byte("CPK ")
 	out = append(out, 0, 0, 0, 0) // LE u32

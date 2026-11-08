@@ -11,62 +11,73 @@ import (
 
 // editionReport is the machine-readable per-edition report.
 type editionReport struct {
-	Variant          string       `json:"variant"`
-	Status           string       `json:"status"`
-	Translations     string       `json:"translations"`
-	Run              string       `json:"run"`
-	SourcePath       string       `json:"source_path"`
-	SourceSHA256     string       `json:"source_sha256"`
-	SourceSize       int64        `json:"source_size"`
-	SourceMembers    int          `json:"source_members"`
-	SourceFMSMembers int          `json:"source_fms_members"`
-	SourceMemberList string       `json:"source_member_list_sha256"`
-	TitleID          string       `json:"title_id"`
-	DisplayVersion   string       `json:"display_version,omitempty"`
-	Version          string       `json:"version,omitempty"`
-	StartupLabel     string       `json:"startup_label,omitempty"`
-	SourceMode       string       `json:"source_mode"`
-	DatasetCanonFile string       `json:"dataset_canonical_file"`
-	DatasetCanonSHA  string       `json:"dataset_canonical_sha256"`
-	DatasetCanonRows int          `json:"dataset_canonical_rows"`
-	DatasetAltFile   string       `json:"dataset_alternate_file,omitempty"`
-	DatasetAltSHA    string       `json:"dataset_alternate_sha256,omitempty"`
-	DatasetAltRows   int          `json:"dataset_alternate_rows"`
-	CanonicalRows    int          `json:"canonical_rows"`
-	Overrides        int          `json:"overrides"`
-	Applied          int          `json:"applied"`
-	Rejected         int          `json:"rejected"`
-	Unresolved       int          `json:"unresolved"`
-	OfficialVerified int          `json:"official_verified"`
-	TokenAllowed     int          `json:"token_allowed_with_exception"`
-	TokenMismatch    int          `json:"token_mismatch"`
-	TokenMismatchIDs []string     `json:"token_mismatch_ids,omitempty"`
-	TokenAdvisory    bool         `json:"token_mismatch_advisory"`
-	DiffPass         bool         `json:"diff_pass"`
-	EditedMembers    int          `json:"edited_members"`
-	PlannedSlots     int          `json:"planned_slots"`
-	ChangedSlots     int          `json:"changed_slots"`
-	NoOpRecords      int          `json:"no_op_records"`
-	Reverts          []string     `json:"no_honorifics_reverts_to_source,omitempty"`
-	ArtifactRel      string       `json:"artifact_rel"`
-	ArtifactPath     string       `json:"artifact_path"`
-	Target           string       `json:"target"`
-	PatchComponents  []string     `json:"patch_components"`
-	VoiceBuildID     string       `json:"voice_build_id"`
-	VoiceStatus      string       `json:"voice_patch_status"`
-	VoiceArtifactSHA string       `json:"voice_artifact_sha256,omitempty"`
-	VoiceArtifactRel string       `json:"voice_artifact_rel,omitempty"`
-	VoiceRuntime     string       `json:"voice_runtime_status,omitempty"`
-	OutputSHA256     string       `json:"output_sha256"`
-	OutputSize       int64        `json:"output_size"`
-	OutputZIP        string       `json:"output_zip,omitempty"`
-	Validation       string       `json:"validation_status"`
-	Files            []FileResult `json:"files"`
+	Variant                  string       `json:"variant"`
+	Status                   string       `json:"status"`
+	Translations             string       `json:"translations"`
+	Run                      string       `json:"run"`
+	SourcePath               string       `json:"source_path"`
+	SourceSHA256             string       `json:"source_sha256"`
+	SourceSize               int64        `json:"source_size"`
+	SourceMembers            int          `json:"source_members"`
+	SourceFMSMembers         int          `json:"source_fms_members"`
+	SourceMemberList         string       `json:"source_member_list_sha256"`
+	TitleID                  string       `json:"title_id"`
+	DisplayVersion           string       `json:"display_version,omitempty"`
+	Version                  string       `json:"version,omitempty"`
+	StartupLabel             string       `json:"startup_label,omitempty"`
+	SourceMode               string       `json:"source_mode"`
+	DatasetCanonFile         string       `json:"dataset_canonical_file"`
+	DatasetCanonSHA          string       `json:"dataset_canonical_sha256"`
+	DatasetCanonRows         int          `json:"dataset_canonical_rows"`
+	DatasetAltFile           string       `json:"dataset_alternate_file,omitempty"`
+	DatasetAltSHA            string       `json:"dataset_alternate_sha256,omitempty"`
+	DatasetAltRows           int          `json:"dataset_alternate_rows"`
+	CanonicalRows            int          `json:"canonical_rows"`
+	Overrides                int          `json:"overrides"`
+	Applied                  int          `json:"applied"`
+	Rejected                 int          `json:"rejected"`
+	Unresolved               int          `json:"unresolved"`
+	OfficialVerified         int          `json:"official_verified"`
+	TokenAllowed             int          `json:"token_allowed_with_exception"`
+	TokenMismatch            int          `json:"token_mismatch"`
+	TokenMismatchIDs         []string     `json:"token_mismatch_ids,omitempty"`
+	TokenAdvisory            bool         `json:"token_mismatch_advisory"`
+	DiffPass                 bool         `json:"diff_pass"`
+	EditedMembers            int          `json:"edited_members"`
+	PlannedSlots             int          `json:"planned_slots"`
+	ChangedSlots             int          `json:"changed_slots"`
+	NoOpRecords              int          `json:"no_op_records"`
+	Reverts                  []string     `json:"no_honorifics_reverts_to_source,omitempty"`
+	ArtifactRel              string       `json:"artifact_rel"`
+	ArtifactPath             string       `json:"artifact_path"`
+	Target                   string       `json:"target"`
+	PatchComponents          []string     `json:"patch_components"`
+	VoiceBuildID             string       `json:"voice_build_id"`
+	VoiceStatus              string       `json:"voice_patch_status"`
+	VoiceArtifactSHA         string       `json:"voice_artifact_sha256,omitempty"`
+	VoiceArtifactRel         string       `json:"voice_artifact_rel,omitempty"`
+	VoiceRuntime             string       `json:"voice_runtime_status,omitempty"`
+	TitleFooterTag           string       `json:"title_footer,omitempty"`
+	TitleFooterMember        string       `json:"title_footer_member,omitempty"`
+	TitleFooterSize          int64        `json:"title_footer_size,omitempty"`
+	TitleFooterSHA           string       `json:"title_footer_sha256,omitempty"`
+	TitleFooterFontSHA       string       `json:"title_footer_font_sha256,omitempty"`
+	TitleFooterConfigSHA     string       `json:"title_footer_config_sha256,omitempty"`
+	TitleFooterTypography    string       `json:"title_footer_typography,omitempty"`
+	TitleFooterRegion        string       `json:"title_footer_region,omitempty"`
+	TitleFooterBlocks        int          `json:"title_footer_blocks,omitempty"`
+	TitleFooterChangedBlocks int          `json:"title_footer_changed_blocks,omitempty"`
+	TitleFooterChangedBytes  int          `json:"title_footer_changed_bytes,omitempty"`
+	OutputSHA256             string       `json:"output_sha256"`
+	OutputSize               int64        `json:"output_size"`
+	OutputZIP                string       `json:"output_zip,omitempty"`
+	Validation               string       `json:"validation_status"`
+	Files                    []FileResult `json:"files"`
 }
 
-// voiceBuildID is UNVERIFIED unless a voice patch was built in this run: the
-// planned shared Build-ID-gated Japanese-voice ExeFS patch is experimental and
-// not runtime-approved, so no voice Build ID is applied to a normal build.
+// voiceBuildID is UNVERIFIED unless a voice patch was built in this run. The
+// shared Build-ID-gated Japanese-voice ExeFS patch is an optional component, so
+// a build that did not produce it has no voice Build ID to assert.
 const voiceBuildID = "UNVERIFIED"
 
 // patchComponents names every component this output carries. The RomFS
@@ -74,17 +85,20 @@ const voiceBuildID = "UNVERIFIED"
 // ExeFS patch is listed only when it was actually built.
 func patchComponents(res *Result, er *EditionResult) []string {
 	out := []string{"romfs:" + layeredfs.RomFSRel + " (LayeredFS RomFS replacement)"}
+	if res.TitleFooterTag != "" {
+		out = append(out, "title-footer: "+res.TitleFooterMember+" ("+res.TitleFooterTag+")")
+	}
 	if res.Voice != nil {
 		out = append(out, "voice-exefs-patch: "+res.Voice.ArtifactRel+
-			" (shared, Build-ID-gated; EXPERIMENTAL "+res.Voice.RuntimeStatus+")")
+			" (shared, Build-ID-gated; "+res.Voice.RuntimeStatus+")")
 	} else {
-		out = append(out, "voice-exefs-patch: NOT_INCLUDED (experimental, not runtime-approved; use an explicit --voice build)")
+		out = append(out, "voice-exefs-patch: NOT_INCLUDED")
 	}
 	return out
 }
 
 // effectiveVoiceBuildID is the Build ID asserted in the report: the pinned id
-// of the built voice patch, or UNVERIFIED when no voice patch was requested.
+// of the built voice patch, or UNVERIFIED when no voice patch was built.
 func effectiveVoiceBuildID(res *Result) string {
 	if res.Voice != nil {
 		return res.Voice.BuildID
@@ -138,17 +152,32 @@ func newEditionReport(res *Result, er *EditionResult) editionReport {
 		Target:           layeredfs.AtmospherePath(res.TitleID, er.ArtifactRel),
 		PatchComponents:  patchComponents(res, er),
 		VoiceBuildID:     effectiveVoiceBuildID(res),
-		VoiceStatus:      "NOT_INCLUDED (experimental, not runtime-approved)",
+		VoiceStatus:      "NOT_INCLUDED",
 		OutputSHA256:     er.SHA256,
 		OutputSize:       er.Size,
 		Validation:       validationWord(res, er),
 		Files:            er.Files,
 	}
 	if res.Voice != nil {
-		r.VoiceStatus = "EXPERIMENTAL (" + res.Voice.RuntimeStatus + ")"
+		r.VoiceStatus = res.Voice.RuntimeStatus
 		r.VoiceArtifactSHA = res.Voice.ArtifactSHA256
 		r.VoiceArtifactRel = res.Voice.ArtifactRel
 		r.VoiceRuntime = res.Voice.RuntimeStatus
+	}
+	if res.TitleFooterTag != "" {
+		r.TitleFooterTag = res.TitleFooterTag
+		r.TitleFooterMember = res.TitleFooterMember
+		r.TitleFooterSize = res.TitleFooterSize
+		r.TitleFooterSHA = res.TitleFooterSHA256
+		r.TitleFooterFontSHA = res.TitleFooterFontSHA256
+		r.TitleFooterConfigSHA = res.TitleFooterConfigSHA256
+		r.TitleFooterTypography = res.TitleFooterTypography
+		if p := res.TitleFooterProof; p != nil {
+			r.TitleFooterRegion = fmt.Sprintf("surface %d x=%d y=%d w=%d h=%d", p.Surface, p.X, p.Y, p.W, p.H)
+			r.TitleFooterBlocks = p.Blocks
+			r.TitleFooterChangedBlocks = p.ChangedBlocks
+			r.TitleFooterChangedBytes = p.ChangedBytes
+		}
 	}
 	return r
 }
@@ -241,6 +270,14 @@ func renderEditionText(res *Result, er *EditionResult) string {
 	for _, c := range r.PatchComponents {
 		fmt.Fprintf(&b, "  %s\n", c)
 	}
+	if r.TitleFooterTag != "" {
+		fmt.Fprintf(&b, "title footer:       %s\n", r.TitleFooterTag)
+		fmt.Fprintf(&b, "title footer member: %s stored=%d sha256=%s\n", r.TitleFooterMember, r.TitleFooterSize, r.TitleFooterSHA)
+		fmt.Fprintf(&b, "title footer type:   %s (font sha256=%s config sha256=%s)\n",
+			r.TitleFooterTypography, r.TitleFooterFontSHA, r.TitleFooterConfigSHA)
+		fmt.Fprintf(&b, "title footer region: %s blocks=%d changed_blocks=%d changed_bytes=%d\n",
+			r.TitleFooterRegion, r.TitleFooterBlocks, r.TitleFooterChangedBlocks, r.TitleFooterChangedBytes)
+	}
 	fmt.Fprintf(&b, "output sha256:      %s\n", r.OutputSHA256)
 	fmt.Fprintf(&b, "output size:        %d\n", r.OutputSize)
 	fmt.Fprintf(&b, "validation:         %s\n", r.Validation)
@@ -286,6 +323,10 @@ func renderSummaryText(res *Result) string {
 	for _, e := range res.Editions {
 		fmt.Fprintf(&b, "edition %-14s sha256=%s size=%d members=%d planned=%d changed=%d\n",
 			e.Variant, e.SHA256, e.Size, len(e.Files), e.PlannedSlots, e.ChangedSlots)
+	}
+	if res.TitleFooterTag != "" {
+		fmt.Fprintf(&b, "title footer (both editions) %s member=%s stored=%d sha256=%s\n",
+			res.TitleFooterTag, res.TitleFooterMember, res.TitleFooterSize, res.TitleFooterSHA256)
 	}
 	if res.Voice != nil {
 		fmt.Fprintf(&b, "voice patch (shared) %s rel=%s sha256=%s edits=%d changed=%d runtime=%s\n",

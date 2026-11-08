@@ -267,6 +267,8 @@ func (m *Model) launchBuild(dryRun bool, explicit string, allowExtract bool) tea
 			TitleID:         titleID,
 			DisplayVersion:  displayVersion,
 			DryRun:          dryRun,
+			AutoAssets:      true,
+			Root:            root,
 			Version:         version,
 			RequireVersion:  packageOn,
 		}

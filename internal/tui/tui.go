@@ -89,7 +89,7 @@ var screenBlurbs = []string{
 	"previous build runs and their reports",
 	"install, remove or roll back the game override",
 	"static checks and the built-in self-check",
-	"Japanese voice patch status (experimental, not runtime-approved)",
+	"Japanese voice patch status (shared, built into every package)",
 	"theme, mouse and where settings are stored",
 }
 
@@ -1721,7 +1721,7 @@ func (m *Model) renderHelp(w, h int) string {
 		"A packaged build needs a non-empty root version.txt; without it it stops before writing.",
 		"Packaged release ZIPs land in .local/release (default target: both layouts).",
 		"The installer writes only the exact override file under the root you type, and backs up first.",
-		"No game support is claimed and no runtime acceptance has been verified.",
+		"No game support is claimed; the verified result covers the voice patch and title footer only.",
 	} {
 		b.WriteString("  " + m.theme.Render(m.theme.Muted, truncate(line, max(10, w-4))) + "\n")
 	}

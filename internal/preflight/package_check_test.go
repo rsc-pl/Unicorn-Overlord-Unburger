@@ -50,6 +50,24 @@ func TestPackagingChecksRunOnRealArtifacts(t *testing.T) {
 			}
 			res.Editions = append(res.Editions, e)
 		}
+		// Every standard build carries the mandatory voice patch and title
+		// footer; the packaging check exercises a complete production run.
+		voiceMain := filepath.Join(o.OutDir, o.RunName, "voice", "exefs", "main")
+		if err := os.MkdirAll(filepath.Dir(voiceMain), 0o755); err != nil {
+			return nil, err
+		}
+		if err := os.WriteFile(voiceMain, []byte("stand-in voice artifact"), 0o644); err != nil {
+			return nil, err
+		}
+		res.Voice = &build.VoiceResult{
+			BuildID:       "c841ffe2717ff03a13990480c51da73f091c04fa",
+			ArtifactRel:   layeredfs.VoiceExeFSRel,
+			RuntimeStatus: "INTEGRATED_VERIFIED",
+		}
+		res.TitleFooterTag = "UNBURGER MOD 1.2.3"
+		res.TitleFooterMember = "GUI/Opening100.ftx"
+		res.TitleFooterSize = 18_876_304
+		res.TitleFooterSHA256 = strings.Repeat("a", 64)
 		return res, nil
 	}
 

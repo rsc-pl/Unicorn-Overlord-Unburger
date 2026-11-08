@@ -145,6 +145,46 @@ func TestParseAndVerify(t *testing.T) {
 	}
 }
 
+func TestMappedImagePlacesSegmentsAtMemoryOffsets(t *testing.T) {
+	text, rodata, data := syntheticSegments()
+	for _, compressed := range []bool{true, false} {
+		img := buildFixture(t, text, rodata, data, compressed)
+		f, err := Parse(img)
+		if err != nil {
+			t.Fatal(err)
+		}
+		got, err := f.MappedImage()
+		if err != nil {
+			t.Fatalf("MappedImage: %v", err)
+		}
+		// The mapped image is the segments at their memory offsets, no header.
+		if want := len(data) + 0x2000; len(got) != want {
+			t.Fatalf("mapped size %d want %d", len(got), want)
+		}
+		if !bytes.Equal(got[:len(text)], text) {
+			t.Fatal("text is not at mapped offset 0")
+		}
+		if !bytes.Equal(got[0x1000:0x1000+len(rodata)], rodata) {
+			t.Fatal("rodata is not at its memory offset")
+		}
+		if !bytes.Equal(got[0x2000:0x2000+len(data)], data) {
+			t.Fatal("data is not at its memory offset")
+		}
+		// Gaps between segments are zero-filled.
+		for _, gap := range [][2]int{{len(text), 0x1000}, {0x1000 + len(rodata), 0x2000}} {
+			for i := gap[0]; i < gap[1]; i++ {
+				if got[i] != 0 {
+					t.Fatalf("gap byte %#x is %#x, want 0", i, got[i])
+				}
+			}
+		}
+		// The header is not part of the mapped image.
+		if bytes.Equal(got[:4], img[:4]) && string(got[:4]) == Magic {
+			t.Fatal("mapped image starts with the NSO header")
+		}
+	}
+}
+
 func TestVerifyDetectsBadHash(t *testing.T) {
 	text, rodata, data := syntheticSegments()
 	img := buildFixture(t, text, rodata, data, true)

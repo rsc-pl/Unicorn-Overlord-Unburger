@@ -104,7 +104,7 @@ func TestApplyPatchesAndValidates(t *testing.T) {
 	if len(rep.Edits) != 2 {
 		t.Fatalf("edits = %d, want 2", len(rep.Edits))
 	}
-	if rep.RuntimeStatus != "NOT_RUNTIME_APPROVED" {
+	if rep.RuntimeStatus != "INTEGRATED_VERIFIED" {
 		t.Fatalf("RuntimeStatus = %q", rep.RuntimeStatus)
 	}
 	if rep.ModuleID != plan.Target.ModuleID {
@@ -238,23 +238,201 @@ func TestVerifyIdentity(t *testing.T) {
 	}
 }
 
-func TestRegistryRepointsShape(t *testing.T) {
-	p := RegistryRepoints()
+// movWzr reports whether word is the AArch64 encoding of "mov w<rd>, wzr".
+func movWzr(word uint32, rd uint32) bool {
+	return word == 0x2A1F03E0|rd
+}
+
+// synthNSOWithText builds a format-exact compressed NSO whose .text blob is
+// caller-supplied. The production plan's .text addresses must be present, so
+// the real plan is tested against a synthetic image with the same layout.
+func synthNSOWithText(t *testing.T, text, rodata []byte, moduleID [32]byte) []byte {
+	t.Helper()
+	const headerSize = 0x100
+	data := bytes.Repeat([]byte{0xDE, 0xAD}, 64)
+	blobs := map[nso.Name][]byte{nso.Text: text, nso.Rodata: rodata, nso.Data: data}
+	payload := map[nso.Name][]byte{}
+	for n, b := range blobs {
+		payload[n] = nso.Compress(b)
+	}
+	hdr := make([]byte, headerSize)
+	copy(hdr[:4], nso.Magic)
+	binary.LittleEndian.PutUint32(hdr[0xC:], nso.FlagCompressed)
+	copy(hdr[0x40:0x60], moduleID[:])
+	mem := map[nso.Name]uint32{nso.Text: 0, nso.Rodata: 0x1000, nso.Data: 0x2000}
+	type field struct{ fileOff, memOff, decomp, memsz, csize, hash int }
+	fields := map[nso.Name]field{
+		nso.Text:   {0x10, 0x14, 0x18, 0x1C, 0x60, 0xA0},
+		nso.Rodata: {0x20, 0x24, 0x28, 0x2C, 0x64, 0xC0},
+		nso.Data:   {0x30, 0x34, 0x38, 0x3C, 0x68, 0xE0},
+	}
+	off := uint32(headerSize)
+	out := append([]byte(nil), hdr...)
+	for _, n := range []nso.Name{nso.Text, nso.Rodata, nso.Data} {
+		f := fields[n]
+		p := payload[n]
+		binary.LittleEndian.PutUint32(out[f.fileOff:], off)
+		binary.LittleEndian.PutUint32(out[f.memOff:], mem[n])
+		binary.LittleEndian.PutUint32(out[f.decomp:], uint32(len(blobs[n])))
+		binary.LittleEndian.PutUint32(out[f.memsz:], uint32(len(blobs[n])))
+		binary.LittleEndian.PutUint32(out[f.csize:], uint32(len(p)))
+		sum := sha256.Sum256(blobs[n])
+		copy(out[f.hash:f.hash+32], sum[:])
+		out = append(out, p...)
+		off += uint32(len(p))
+	}
+	return out
+}
+
+func TestJPConfigV5Shape(t *testing.T) {
+	p := JPConfigV5()
+	if p.Name != "jp-voice-config-v5" {
+		t.Fatalf("plan name = %q", p.Name)
+	}
 	if p.Target != WesternUpdate {
 		t.Fatalf("plan target = %+v", p.Target)
 	}
-	if len(p.Edits) != 5 {
-		t.Fatalf("edits = %d, want 5", len(p.Edits))
+	if len(p.Edits) != 4 {
+		t.Fatalf("edits = %d, want 4", len(p.Edits))
 	}
+	want := []struct {
+		va       uint32
+		from, to uint32
+		toReg    uint32
+	}{
+		{0x1A370, 0x1E380008, 0x2A1F03E8, 8}, // init loader: fcvtzs w8 -> mov w8,wzr
+		{0x1C884, 0x1E380008, 0x2A1F03E8, 8}, // reload loader: fcvtzs w8 -> mov w8,wzr
+		{0x1C970, 0x1E380000, 0x2A1F03E0, 0}, // index getter: fcvtzs w0 -> mov w0,wzr
+		{0x1CC34, 0x1E380008, 0x2A1F03E8, 8}, // offset getter: fcvtzs w8 -> mov w8,wzr
+	}
+	for i, ed := range p.Edits {
+		w := want[i]
+		if ed.Segment != nso.Text {
+			t.Fatalf("edit %d segment = %s, want text", i, ed.Segment)
+		}
+		if ed.VA != w.va {
+			t.Fatalf("edit %d VA = %#x, want %#x", i, ed.VA, w.va)
+		}
+		if len(ed.From) != 4 || len(ed.To) != 4 {
+			t.Fatalf("edit %d is not a 4-byte word", i)
+		}
+		if got := binary.LittleEndian.Uint32(ed.From); got != w.from {
+			t.Fatalf("edit %d from = %#x, want %#x", i, got, w.from)
+		}
+		if got := binary.LittleEndian.Uint32(ed.To); got != w.to {
+			t.Fatalf("edit %d to = %#x, want %#x", i, got, w.to)
+		}
+		if !movWzr(binary.LittleEndian.Uint32(ed.To), w.toReg) {
+			t.Fatalf("edit %d target %#x is not mov w%d,wzr", i, w.to, w.toReg)
+		}
+		if i > 0 && p.Edits[i-1].VA >= ed.VA {
+			t.Fatalf("edits are not in ascending VA order at %d", i)
+		}
+	}
+	// The plan must not carry the two language-tag ubfx edits: bit 6 of the
+	// tag word is never set, so both loaders already observe tag 0.
 	for _, ed := range p.Edits {
-		if ed.Segment != nso.Rodata {
-			t.Fatalf("edit segment = %s", ed.Segment)
+		if ed.VA == 0x1A360 || ed.VA == 0x1C874 {
+			t.Fatalf("plan unexpectedly carries a language-tag edit at %#x", ed.VA)
 		}
-		if len(ed.From) != 8 || len(ed.To) != 8 {
-			t.Fatalf("edit at %#x is not an 8-byte field", ed.VA)
+	}
+}
+
+// TestJPConfigV5ForcesJapaneseVoiceState proves the consumer-side invariant:
+// the derived window, cache index and cue offset are zero for every possible
+// engine float, including the 1.0 that the settings setter writes back.
+func TestJPConfigV5ForcesJapaneseVoiceState(t *testing.T) {
+	plan := JPConfigV5()
+	const textLen = 0x1CD40
+	text := bytes.Repeat([]byte{0x1F, 0x20, 0x03, 0xD5}, textLen/4) // nop
+	for _, ed := range plan.Edits {
+		copy(text[ed.VA:], ed.From)
+	}
+	// Only the four plan words are staged; the tag sources, the literal float
+	// address setup and the cue-offset conditional are not otherwise present in
+	// the synthetic buffer and are outside the plan.
+	rodata := bytes.Repeat([]byte{0xAA}, 0x200)
+	var moduleID [32]byte
+	for i := range moduleID {
+		moduleID[i] = byte(0x40 + i)
+	}
+	img := synthNSOWithText(t, text, rodata, moduleID)
+	sum := sha256.Sum256(img)
+	plan.Target = Identity{
+		ModuleID: hex.EncodeToString(moduleID[:]),
+		SHA256:   hex.EncodeToString(sum[:]),
+		Size:     int64(len(img)),
+	}
+	out, rep, err := Apply(img, plan)
+	if err != nil {
+		t.Fatalf("Apply: %v", err)
+	}
+	if rep.ChangedBytes != 16 || len(rep.Edits) != 4 {
+		t.Fatalf("report changed=%d edits=%d, want 16/4", rep.ChangedBytes, len(rep.Edits))
+	}
+	f, err := nso.Parse(out)
+	if err != nil {
+		t.Fatal(err)
+	}
+	patched, err := f.Decompress(nso.Text)
+	if err != nil {
+		t.Fatal(err)
+	}
+	word := func(va uint32) uint32 { return binary.LittleEndian.Uint32(patched[va:]) }
+
+	// Whatever float a writer leaves in engine+0x2DF0C (0.0 Japanese, 1.0
+	// English, or noise), every forced conversion reports zero.
+	for _, engine := range []float32{0, 1, 7, -1, 1.0 / 3} {
+		for _, c := range []struct {
+			name string
+			va   uint32
+			reg  uint32
+		}{
+			{"init window", 0x1A370, 8},
+			{"reload window", 0x1C884, 8},
+			{"index getter", 0x1C970, 0},
+			{"cue offset", 0x1CC34, 8},
+		} {
+			derived := int32(engine) // fcvtzs truncates toward zero
+			if movWzr(word(c.va), c.reg) {
+				derived = 0
+			}
+			if derived != 0 {
+				t.Fatalf("%s = %d for engine float %v, want 0", c.name, derived, engine)
+			}
 		}
-		if ed.VA >= 0x84E000+0x1EBB9A0 {
-			t.Fatalf("edit %#x outside the expected .rodata size", ed.VA)
+	}
+
+	// Exactly the four planned words differ; .rodata is untouched.
+	diff := 0
+	for i := range text {
+		if text[i] != patched[i] {
+			diff++
 		}
+	}
+	if diff != 16 {
+		t.Fatalf(".text changed by %d bytes, want 16", diff)
+	}
+	ro, err := f.Decompress(nso.Rodata)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Equal(ro, rodata) {
+		t.Fatal(".rodata changed")
+	}
+
+	again, _, err := Apply(img, plan)
+	if err != nil {
+		t.Fatalf("second Apply: %v", err)
+	}
+	if !bytes.Equal(out, again) {
+		t.Fatal("two Apply calls produced different images")
+	}
+	third, rep3, err := Apply(out, plan)
+	if err != nil {
+		t.Fatalf("idempotent Apply: %v", err)
+	}
+	if !rep3.AlreadyApplied || !bytes.Equal(out, third) {
+		t.Fatal("patched image is not idempotent")
 	}
 }

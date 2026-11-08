@@ -31,8 +31,6 @@ func runBuild(args []string, out, errOut io.Writer) int {
 	strictTokens := false
 	dryRun := false
 	allowExtract := false
-	voice := false
-	voiceMain := ""
 	packageFlag := false
 	force := false
 	targetWord := ""
@@ -101,14 +99,6 @@ func runBuild(args []string, out, errOut io.Writer) int {
 			dryRun = true
 		case "--extract":
 			allowExtract = true
-		case "--voice":
-			voice = true
-		case "--voice-main":
-			if i+1 >= len(args) {
-				return buildUsage(errOut, "--voice-main requires a value")
-			}
-			i++
-			voiceMain = args[i]
 		case "--package":
 			packageFlag = true
 		case "--force":
@@ -142,16 +132,6 @@ func runBuild(args []string, out, errOut io.Writer) int {
 	if modName != "" {
 		fmt.Fprintf(errOut, "build: --mod-name is not supported: an emulator archive always extracts into the single folder %q\n", layeredfs.EmulatorModDir)
 		return exitUsage
-	}
-	if voiceMain != "" && !voice {
-		return buildUsage(errOut, "--voice-main requires --voice")
-	}
-	if voice && voiceMain == "" {
-		return buildUsage(errOut, "--voice requires the extracted ExeFS main: --voice-main <path>")
-	}
-	if voice {
-		fmt.Fprintln(errOut, "WARNING: --voice builds the EXPERIMENTAL, Build-ID-gated Japanese-voice ExeFS patch.")
-		fmt.Fprintln(errOut, "         It is NOT runtime-approved: it has never been installed or run. In-game validation is still required.")
 	}
 	if packageFlag && dryRun {
 		return buildUsage(errOut, "--package requires a real build; remove --dry-run")
@@ -204,8 +184,8 @@ func runBuild(args []string, out, errOut io.Writer) int {
 		Expect:          build.SourceExpectation{SHA256: sourceSHA},
 		StrictTokens:    strictTokens,
 		DryRun:          dryRun,
-		Voice:           voice,
-		VoiceMain:       voiceMain,
+		AutoAssets:      true,
+		Root:            root,
 		Version:         version,
 		RequireVersion:  packageFlag,
 	})
@@ -230,12 +210,11 @@ func runBuild(args []string, out, errOut io.Writer) int {
 			pkgOut = project.ReleaseDir(root)
 		}
 		pkg, err := build.Package(res, build.PackageOptions{
-			Targets:      packageTarget,
-			IncludeVoice: voice,
-			OutDir:       pkgOut,
-			Version:      version,
-			Release:      releaseName,
-			Overwrite:    force,
+			Targets:   packageTarget,
+			OutDir:    pkgOut,
+			Version:   version,
+			Release:   releaseName,
+			Overwrite: force,
 		})
 		if err != nil {
 			fmt.Fprintf(errOut, "%v\n", err)
@@ -328,8 +307,9 @@ func buildUsage(errOut io.Writer, reason string) int {
 	fmt.Fprintln(errOut, "       [--title-id 010069401ADB8000] [--display-version 1.05] [--source-sha256 <hex>]")
 	fmt.Fprintln(errOut, "       [--strict-tokens] [--dry-run] [--run-name <name>]")
 	fmt.Fprintln(errOut, "       [--extract]  extract the source from a game container when the cache has no entry")
-	fmt.Fprintln(errOut, "       [--voice --voice-main <main>]  EXPERIMENTAL, not runtime-approved: add the shared")
-	fmt.Fprintln(errOut, "                                     Build-ID-gated Japanese-voice ExeFS patch built from <main>")
+	fmt.Fprintln(errOut, "       A normal build automatically includes the shared Japanese-voice ExeFS patch from")
+	fmt.Fprintln(errOut, "       .local/work/source/exefs/main and the \"UNBURGER MOD <version.txt>\" title footer from")
+	fmt.Fprintln(errOut, "       .local/work/source/romfs/GUI/Opening100.ftx; both are added to both editions.")
 	fmt.Fprintln(errOut, "       [--package] [--target atmosphere|emulator|both] [--release <label>]")
 	fmt.Fprintln(errOut, "                                     assemble install-ready ZIPs from the published run")
 	fmt.Fprintln(errOut, "                                     (default target both; ZIPs land in .local/release)")
@@ -338,7 +318,7 @@ func buildUsage(errOut io.Writer, reason string) int {
 	fmt.Fprintln(errOut, "                                     (without it an existing output is refused by name)")
 	fmt.Fprintln(errOut, "       uo-unburger validate-source --cpk <path> [--title-id <id>] [--display-version <v>] [--source-sha256 <hex>]")
 	fmt.Fprintln(errOut, "       uo-unburger package --run <run-dir> [--variant honorifics|no-honorifics|both]")
-	fmt.Fprintln(errOut, "                                     [--target atmosphere|emulator|both] [--voice] [--release <label>]")
+	fmt.Fprintln(errOut, "                                     [--target atmosphere|emulator|both] [--release <label>]")
 	fmt.Fprintln(errOut, "                                     [--out <dir>] [--force]")
 	return exitUsage
 }

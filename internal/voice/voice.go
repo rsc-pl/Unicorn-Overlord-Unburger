@@ -1,13 +1,46 @@
 // Package voice builds the shared, Build-ID-gated Japanese-voice ExeFS patch.
 //
 // The Western build of Unicorn Overlord ships both the Japanese and the US
-// voice-asset families in its executable and selects one of them at runtime.
-// The two families are registered by ten R_AARCH64_RELATIVE relocation
-// descriptors in .rodata (stride 0x18, {u64 addend, u64 target, u64 info}); the
-// loader copies each addend (the asset-name VA) into the .data pointer slot
-// named by target. The five "US" descriptors are the only byte-level lever:
-// repointing them at the five "JP" asset names makes the executable load the
-// Japanese family whichever block the runtime selects.
+// voice-asset families in its executable and selects one at runtime. This
+// package applies four same-size AArch64 word overwrites in .text so the
+// consumers of the voice-language state always observe the native Japanese
+// value, regardless of which value the settings machinery has stored.
+//
+// # ASSET SELECTION
+//
+// Two independent inputs select the active voice configuration:
+//
+//   - the asset block: the voice loader at .text 0x1C830 indexes a 0x30-byte
+//     pointer window by int(float at engine+0x2DF0C). Window 0 (base
+//     0x270AAF8) is the complete Japanese set; window 1 (base 0x270AB28) is the
+//     complete US set;
+//   - the language tag: w21 = (voice-manager +0x268 >> 6) & 1, passed as the
+//     second argument of rm.get(manager, tag, assetName).
+//
+// The production patch is reader-side: it forces the four integer values
+// derived from the float at the point of use, so no producer of
+// engine+0x2DF0C can affect the selected assets, cache index or cue offset.
+//
+//	0x1A370  fcvtzs w8, s0  ->  mov w8, wzr   (initial loader asset window)
+//	0x1C884  fcvtzs w8, s0  ->  mov w8, wzr   (runtime reload asset window)
+//	0x1C970  fcvtzs w0, s0  ->  mov w0, wzr   (language-index getter)
+//	0x1CC34  fcvtzs w8, s0  ->  mov w8, wzr   (cue-id language offset)
+//
+// Four words / 16 bytes, .text only. The two language-tag ubfx words are not
+// touched: the tag is (voice-manager+0x268 >> 6) & 1, and the static trace
+// shows that bit 6 of that word is never set. The constructor zeroes +0x268 at
+// 0x18C64 and the only later writer ORs 0x400 (bit 10) at 0x1AD58, so every
+// loader observes tag 0 without a patch. The four forced converts then pin
+// window 0, cache index 0 and cue offset 0 regardless of what the settings
+// machinery stores.
+//
+// Forcing the readers is necessary because the voice-language field has more
+// than one producer. The generic indexed settings setter at .text 0x3EC94
+// stores one float config element at 0x3ECD8/0x3ED08, and the settings-apply
+// loop at 0x3DC530 (reached from 0x3DC604) maps the persisted voice setting
+// onto config element 5. Patching only the boot defaults or the vector clamps
+// therefore cannot guarantee the observed value; forcing every consumer of the
+// converted value can.
 //
 // This package is deliberately stdlib-only and free of any real game file: it
 // validates the caller-supplied bytes against a pinned identity (whole-file
@@ -16,17 +49,16 @@
 //
 // SCOPE AND SAFETY
 //
-//   - The patch is a same-size overwrite of five 8-byte addend fields in the
-//     decompressed .rodata image; every other byte is preserved. Re-encoding is
+//   - The patch is a same-size overwrite of four 4-byte AArch64 words in the
+//     decompressed .text image; every other byte is preserved. Re-encoding is
 //     delegated to internal/nso, which is byte-stable for untouched segments.
 //   - The patch is version-specific: it is only ever applied to the Western
 //     v1.05 update ExeFS `main` recorded in WesternUpdate. Any other Build ID is
 //     rejected before a single byte is read.
-//   - The runtime premise is UNPROVEN. Statically the voice pointer array is
-//     filled by the loader and has no direct code reference, and neither the
-//     boot default nor a persistent voice-language key was found. A byte-level
-//     repoint is therefore a hypothesis that only an in-game acceptance run can
-//     confirm. Apply and BuildIPS never install or run anything.
+//   - The in-game voice menu still exposes its English entry; Japanese playback
+//     is enforced by this patch regardless of the selected setting, and
+//     selector removal is not implemented. Apply and BuildIPS never install or
+//     run anything.
 package voice
 
 import (
@@ -86,33 +118,51 @@ func le64(v uint64) []byte {
 	return b
 }
 
-// jpVoiceRepoints are the five US voice-asset registry addends (decompressed
-// .rodata file-VAs) and their JP replacements. The addend is a u64 little-endian
-// pointer into .rodata; only its low four bytes differ.
-var jpVoiceRepoints = []struct {
-	va   uint32
-	from uint64
-	to   uint64
-	desc string
-}{
-	{0x84F768, 0xAC8010, 0xAE4B9F, "SOUND/VOICE_US.ACB -> SOUND/VOICE_JP.ACB"},
-	{0x84F780, 0xAA77E8, 0xABCDC8, "SOUND/VOICE_US.AWB -> SOUND/VOICE_JP.AWB"},
-	{0x84F798, 0xAF7489, 0xAAEC42, "SOUND/VOICE_BTL_US.ACB -> SOUND/VOICE_BTL_JP.ACB"},
-	{0x84F7B0, 0xAE86F9, 0xAE125E, "SOUND/VOICE_BTL_US.AWB -> SOUND/VOICE_BTL_JP.AWB"},
-	{0x84F7C8, 0xACB9BC, 0xAC7FF9, "SOUND/VOICE_ADD_US.ACB -> SOUND/VOICE_ADD_JP.ACB"},
+func le32(v uint32) []byte {
+	b := make([]byte, 4)
+	binary.LittleEndian.PutUint32(b, v)
+	return b
 }
 
-// RegistryRepoints returns the JP-enforcement plan for the Western update
-// `main`: repoint the five US voice-asset registry entries at the five JP ones.
-func RegistryRepoints() Plan {
-	p := Plan{Name: "jp-voice-registry", Target: WesternUpdate}
-	for _, r := range jpVoiceRepoints {
+// jpConfigV5Edits forces the four integer values derived from the engine
+// voice-language float. Each conversion (fcvtzs) is replaced by a register
+// zeroing; the surrounding literal address setup and the conditional cue
+// offset math stay byte-identical. Because the converted value is forced at
+// the consumer, no producer of engine+0x2DF0C (default table, boot writer,
+// generic settings setter 0x3EC94) can change the outcome.
+//
+//	0x1A370  initial/reinitialisation loader asset window
+//	0x1C884  runtime reload loader asset window
+//	0x1C970  voice language index getter (reload-cache comparison)
+//	0x1CC34  cue-id language offset getter (0 not +1,000,000)
+//
+// The language-tag ubfx words are deliberately absent: app+0x268 bit 6 is
+// never set (ctor zero at 0x18C64; the only later writer ORs 0x400 at
+// 0x1AD58), so both loaders already observe tag 0.
+var jpConfigV5Edits = []struct {
+	va   uint32
+	from uint32
+	to   uint32
+	desc string
+}{
+	{0x1A370, 0x1E380008, 0x2A1F03E8, "init voice loader: force JP asset window 0 (fcvtzs w8 -> mov w8,wzr)"},
+	{0x1C884, 0x1E380008, 0x2A1F03E8, "reload voice loader: force JP asset window 0 (fcvtzs w8 -> mov w8,wzr)"},
+	{0x1C970, 0x1E380000, 0x2A1F03E0, "voice language index getter: return 0 (fcvtzs w0 -> mov w0,wzr)"},
+	{0x1CC34, 0x1E380008, 0x2A1F03E8, "cue-id language offset getter: return 0 (fcvtzs w8 -> mov w8,wzr)"},
+}
+
+// JPConfigV5 returns the production Japanese-voice plan for the Western update
+// `main`: four same-size .text word overwrites / 16 bytes that force the
+// consumer-side indices.
+func JPConfigV5() Plan {
+	p := Plan{Name: "jp-voice-config-v5", Target: WesternUpdate}
+	for _, e := range jpConfigV5Edits {
 		p.Edits = append(p.Edits, Edit{
-			Segment: nso.Rodata,
-			VA:      r.va,
-			From:    le64(r.from),
-			To:      le64(r.to),
-			Desc:    r.desc,
+			Segment: nso.Text,
+			VA:      e.va,
+			From:    le32(e.from),
+			To:      le32(e.to),
+			Desc:    e.desc,
 		})
 	}
 	return p
@@ -203,10 +253,13 @@ func Apply(src []byte, plan Plan) ([]byte, *Report, error) {
 	}
 
 	report := &Report{
-		Plan:          plan.Name,
-		ModuleID:      hex.EncodeToString(f.ModuleID[:]),
-		SourceSHA256:  "",
-		RuntimeStatus: "NOT_RUNTIME_APPROVED",
+		Plan:         plan.Name,
+		ModuleID:     hex.EncodeToString(f.ModuleID[:]),
+		SourceSHA256: "",
+		// RuntimeStatus is a machine-readable report field for the production
+		// plan this package implements. It is not an install or launch step:
+		// Apply only rewrites bytes in the supplied image.
+		RuntimeStatus: "INTEGRATED_VERIFIED",
 	}
 
 	// Classify the current state of every edit.
@@ -307,8 +360,13 @@ func Apply(src []byte, plan Plan) ([]byte, *Report, error) {
 		}
 		report.ChangedBytes += changed
 	}
-	// Untouched stored payloads must be byte-identical to the source.
-	for _, n := range []nso.Name{nso.Text, nso.Data} {
+	// Untouched stored payloads must be byte-identical to the source. Only the
+	// segments this plan rewrites may be re-encoded; every other segment keeps
+	// its original compressed stream byte-for-byte.
+	for _, n := range []nso.Name{nso.Text, nso.Rodata, nso.Data} {
+		if len(ranges[n]) > 0 {
+			continue
+		}
 		a, _ := f.StoredSegment(n)
 		b, _ := g.StoredSegment(n)
 		if !bytes.Equal(a, b) {

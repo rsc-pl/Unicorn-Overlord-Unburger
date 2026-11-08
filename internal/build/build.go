@@ -29,6 +29,9 @@ import (
 	"uo-unburger/internal/fms"
 	"uo-unburger/internal/importer"
 	"uo-unburger/internal/layeredfs"
+	"uo-unburger/internal/paths"
+	"uo-unburger/internal/project"
+	"uo-unburger/internal/titlefooter"
 	"uo-unburger/internal/voice"
 )
 
@@ -79,14 +82,31 @@ type Options struct {
 	StrictTokens bool
 	// DryRun performs every read, rebuild and validation but writes nothing.
 	DryRun bool
-	// Voice requests the shared, Build-ID-gated Japanese-voice ExeFS patch. It
-	// is an explicit opt-in and the artifact is EXPERIMENTAL / not
-	// runtime-approved: it is built from VoiceMain, validated offline and never
-	// installed by this package.
+	// AutoAssets selects the pinned production assets from the checkout: the
+	// extracted ExeFS `main` under .local/work/source/exefs/main and the title
+	// credit atlas under .local/work/source/romfs/GUI/Opening100.ftx. It makes the
+	// Japanese-voice patch and the version footer part of every normal build.
+	// The CLI and TUI always set it; tests and library callers can pass explicit
+	// Voice/VoiceMain/TitleFooterFTX paths instead.
+	AutoAssets bool
+	// Root is the checkout root used to resolve AutoAssets. Empty falls back to
+	// project.FindRoot (the process working directory).
+	Root string
+	// Voice requests the shared, Build-ID-gated Japanese-voice ExeFS patch. It is
+	// the normal build path through AutoAssets; the explicit fields remain for
+	// tests and library callers. The artifact is built from VoiceMain, validated
+	// offline and never installed by this package.
 	Voice bool
 	// VoiceMain is the already-extracted ExeFS `main` (NSO0) the voice patch is
 	// built from. Required when Voice is set. Read-only.
 	VoiceMain string
+	// TitleFooterFTX is the user's own extracted title-screen credit atlas
+	// (GUI/Opening100.ftx). When set, the build renders "UNBURGER MOD <Version>"
+	// into a copy and adds that copy as a new member of both editions. The input
+	// is only read; no game texture is stored in the toolkit or its outputs other
+	// than the rebuilt edition archives themselves. AutoAssets sets it for the
+	// normal build; the field remains for tests and library callers.
+	TitleFooterFTX string
 	// Date is the YYYYMMDD stamp used in the default run name; tests pin it.
 	Date string
 	// Version is the release version read from the checkout root's version.txt
@@ -118,6 +138,9 @@ type FileResult struct {
 	Slots       []int
 	StoredSize  int64
 	ExtractSize int64
+	// NewMember marks a member that did not exist in the source archive and was
+	// staged from scratch (the title-screen footer atlas).
+	NewMember bool `json:"new_member,omitempty"`
 }
 
 // EditionResult is the outcome for one edition.
@@ -160,13 +183,31 @@ type Result struct {
 	// SourceMode names where the canonical rows' official English text came
 	// from (verified source CPK or reference corpus).
 	SourceMode importer.SourceMode
+	// TitleFooterTag is the exact footer text rendered into the title-screen
+	// credit atlas ("UNBURGER MOD <version>"); empty when no footer was built.
+	TitleFooterTag string
+	// TitleFooterMember is the CPK member that carries the footer.
+	TitleFooterMember string
+	// TitleFooterSize is the stored size of the rebuilt atlas member.
+	TitleFooterSize int64
+	// TitleFooterSHA256 is the SHA-256 of the rebuilt atlas member.
+	TitleFooterSHA256 string
+	// TitleFooterFontSHA256 and TitleFooterConfigSHA256 pin the embedded
+	// typeface and the authoritative typography JSON. They are part of the reuse
+	// identity: changing either must invalidate an otherwise identical run.
+	TitleFooterFontSHA256   string
+	TitleFooterConfigSHA256 string
+	// TitleFooterTypography is a human-readable form of the effective config.
+	TitleFooterTypography string
+	// TitleFooterProof records the edited surface rectangle and byte counts.
+	TitleFooterProof *titlefooter.Proof
 	// Dataset identifies the translation tables the build resolved.
 	Dataset     importer.Dataset
 	NoOpRecords int
 	Reverts     []string
 	Editions    []EditionResult
-	// Voice is the shared Japanese-voice ExeFS patch when it was requested and
-	// built; nil otherwise.
+	// Voice is the shared Japanese-voice ExeFS patch when it was built; nil
+	// otherwise.
 	Voice      *VoiceResult
 	SummaryTxt string
 }
@@ -176,6 +217,10 @@ type editionMember struct {
 	File   string
 	Slots  []int
 	Stored []byte
+	// Raw marks a member that is staged verbatim rather than as an FMS slot
+	// edit; IsNew marks a member that does not exist in the source archive.
+	Raw   bool
+	IsNew bool
 }
 
 // Run executes a build (or a dry-run) and returns its report. It performs no
@@ -187,6 +232,11 @@ func Run(opts Options) (*Result, error) {
 	// proceed without one and reports no version.
 	if opts.RequireVersion && strings.TrimSpace(opts.Version) == "" {
 		return nil, ErrVersionMissing
+	}
+	if opts.AutoAssets {
+		if err := resolveAutoAssets(&opts); err != nil {
+			return nil, err
+		}
 	}
 	if opts.TranslationsDir == "" {
 		opts.TranslationsDir = "translations"
@@ -272,6 +322,16 @@ func Run(opts Options) (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	footer, err := prepareTitleFooter(opts)
+	if err != nil {
+		return nil, err
+	}
+	if footer != nil {
+		member := editionMember{Member: footer.member, Stored: footer.stored, Raw: true, IsNew: true}
+		for _, v := range variants {
+			prepared.builds[v] = append(prepared.builds[v], member)
+		}
+	}
 	if err := step("prepare editions"); err != nil {
 		return nil, err
 	}
@@ -317,6 +377,17 @@ func Run(opts Options) (*Result, error) {
 		NoOpRecords:    prepared.noOps,
 		Reverts:        prepared.reverts,
 	}
+	if footer != nil {
+		result.TitleFooterTag = footer.text
+		result.TitleFooterMember = footer.member
+		result.TitleFooterSize = int64(len(footer.stored))
+		result.TitleFooterSHA256 = footer.sha256
+		result.TitleFooterFontSHA256 = footer.fontSHA256
+		result.TitleFooterConfigSHA256 = footer.configSHA
+		result.TitleFooterTypography = footer.typography
+		proof := footer.proof
+		result.TitleFooterProof = &proof
+	}
 
 	// A repeat build on the same day reuses a verified, complete run rather than
 	// rebuilding it or refusing to publish. The reuse check is strict — the source
@@ -350,7 +421,7 @@ func Run(opts Options) (*Result, error) {
 	pending := make([]stagedDir, 0, len(variants))
 
 	if opts.Voice {
-		plan := voice.RegistryRepoints()
+		plan := voice.JPConfigV5()
 		if opts.voicePlan != nil {
 			plan = *opts.voicePlan
 		}
@@ -365,11 +436,11 @@ func Run(opts Options) (*Result, error) {
 		result.Voice = vr
 		if !opts.DryRun {
 			pending = append(pending, stagedDir{dir: voiceStageDir(runDir), files: map[string][]byte{
-				voiceArtifactRel:       patched,
-				voiceIPSRel:            ips,
-				"VOICE_REPORT.txt":     []byte(renderVoiceText(vr)),
-				"VOICE_REPORT.json":    append(vrJSON, '\n'),
-				"NOT_RUNTIME_APPROVED": []byte(voiceNotRuntimeMarker),
+				voiceArtifactRel:    patched,
+				voiceIPSRel:         ips,
+				"VOICE_REPORT.txt":  []byte(renderVoiceText(vr)),
+				"VOICE_REPORT.json": append(vrJSON, '\n'),
+				voiceRuntimeMarker:  []byte(voiceRuntimeText),
 			}})
 		}
 		if err := step("build voice patch"); err != nil {
@@ -454,6 +525,43 @@ func resolveTranslations(opts Options) (*importer.Resolution, error) {
 		return importer.Check(opts.TranslationsDir, opts.CorpusPath)
 	}
 	return importer.CheckAgainstSource(opts.TranslationsDir, opts.SourcePath)
+}
+
+// resolveAutoAssets fills the pinned production inputs from the checkout. The
+// voice `main` and the title atlas are extracted game data; they are read-only
+// and must already exist under .local/work/source. A missing file is a
+// clear pre-build error, never a silently skipped component.
+func resolveAutoAssets(opts *Options) error {
+	root := strings.TrimSpace(opts.Root)
+	if root == "" {
+		var err error
+		root, err = project.FindRoot()
+		if err != nil {
+			return fmt.Errorf("build: automatic assets: %w", err)
+		}
+	}
+	source := filepath.Join(project.WorkDir(root), "source")
+	voiceMain := filepath.Join(source, "exefs", "main")
+	atlas := filepath.Join(source, "romfs", "GUI", "Opening100.ftx")
+	for _, asset := range []struct {
+		path string
+		want string
+	}{
+		{voiceMain, "the extracted ExeFS main (NSO0)"},
+		{atlas, "the extracted GUI/Opening100.ftx credit atlas"},
+	} {
+		info, err := os.Stat(asset.path)
+		if err != nil {
+			return fmt.Errorf("build: automatic assets: %s is required at %s", asset.want, paths.Display(asset.path))
+		}
+		if !info.Mode().IsRegular() {
+			return fmt.Errorf("build: automatic assets: %s at %s is not a regular file", asset.want, paths.Display(asset.path))
+		}
+	}
+	opts.Voice = true
+	opts.VoiceMain = voiceMain
+	opts.TitleFooterFTX = atlas
+	return nil
 }
 
 // preparedState is the shared intermediate produced from the source archive.
@@ -558,6 +666,63 @@ func prepareEditions(sourcePath string, plan *Plan) (*preparedState, error) {
 	return st, nil
 }
 
+// titleFooterBuild is the rebuilt title-screen atlas staged into both editions.
+type titleFooterBuild struct {
+	text       string
+	member     string
+	stored     []byte
+	sha256     string
+	fontSHA256 string
+	configSHA  string
+	typography string
+	proof      titlefooter.Proof
+}
+
+// prepareTitleFooter renders the version footer into the user's own extracted
+// title-screen credit atlas. It is a no-op unless Options.TitleFooterFTX is set;
+// when it is set a real version is mandatory, because the footer text is the
+// release version and is never invented.
+func prepareTitleFooter(opts Options) (*titleFooterBuild, error) {
+	path := strings.TrimSpace(opts.TitleFooterFTX)
+	if path == "" {
+		return nil, nil
+	}
+	version := strings.TrimSpace(opts.Version)
+	if version == "" {
+		return nil, fmt.Errorf("build: a title footer needs a version from the checkout root %s", VersionFileName)
+	}
+	cfg, err := titlefooter.EmbeddedConfig()
+	if err != nil {
+		return nil, fmt.Errorf("build: title footer typography (%s): %w", "internal/assets/title_footer.json", err)
+	}
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return nil, fmt.Errorf("build: reading title footer atlas: %w", err)
+	}
+	out, proof, err := titlefooter.ApplyWithConfig(data, version, cfg)
+	if err != nil {
+		return nil, fmt.Errorf("build: title footer: %w", err)
+	}
+	text, err := titlefooter.FooterText(version)
+	if err != nil {
+		return nil, fmt.Errorf("build: title footer: %w", err)
+	}
+	sum := sha256.Sum256(out)
+	fontSHA := titlefooter.FontSHA256()
+	configSum := sha256.Sum256(titlefooter.ConfigJSON())
+	return &titleFooterBuild{
+		text:       text,
+		member:     titlefooter.MemberPath,
+		stored:     out,
+		sha256:     hex.EncodeToString(sum[:]),
+		fontSHA256: fontSHA,
+		configSHA:  hex.EncodeToString(configSum[:]),
+		typography: fmt.Sprintf("font_size=%g outline_size=%g line_spacing=%g offset_x=%g offset_y=%g",
+			cfg.FontSize, cfg.OutlineSize, cfg.LineSpacing, cfg.OffsetX, cfg.OffsetY),
+		proof: proof,
+	}, nil
+}
+
 // marshalEdition parses a fresh sheet from the shared source bytes, applies the
 // edition's slot values and marshals it.
 func marshalEdition(sourceData []byte, edits map[int][]byte) ([]byte, error) {
@@ -595,6 +760,13 @@ func rebuildEdition(sourcePath string, members []editionMember) ([]byte, error) 
 	}
 	defer a.Close()
 	for _, m := range members {
+		if m.IsNew {
+			dir, name := splitMember(m.Member)
+			if err := a.AddMember(dir, name, m.Stored, int64(len(m.Stored))); err != nil {
+				return nil, fmt.Errorf("build: %w", err)
+			}
+			continue
+		}
 		if err := a.ReplaceMemberResized(m.Member, m.Stored, int64(len(m.Stored))); err != nil {
 			return nil, fmt.Errorf("build: %w", err)
 		}
@@ -619,17 +791,21 @@ func validateEdition(sourcePath string, rebuilt []byte, members []editionMember)
 	if err != nil {
 		return fmt.Errorf("build: validation: rebuilt archive does not parse: %w", err)
 	}
-	if len(dst.Entries) != len(src.Entries) {
-		return fmt.Errorf("build: validation: member count changed (%d -> %d)", len(src.Entries), len(dst.Entries))
-	}
-
 	edited := map[string]map[int]bool{}
+	newCount := 0
 	for _, m := range members {
+		if m.IsNew {
+			newCount++
+			continue
+		}
 		slots := map[int]bool{}
 		for _, s := range m.Slots {
 			slots[s] = true
 		}
 		edited[m.Member] = slots
+	}
+	if len(dst.Entries) != len(src.Entries)+newCount {
+		return fmt.Errorf("build: validation: member count changed (%d -> %d, %d new staged)", len(src.Entries), len(dst.Entries), newCount)
 	}
 	changedMembers := 0
 	for _, se := range src.Entries {
@@ -694,17 +870,47 @@ func validateEdition(sourcePath string, rebuilt []byte, members []editionMember)
 			}
 		}
 	}
-	if changedMembers != len(members) {
-		return fmt.Errorf("build: validation: %d members changed, expected %d", changedMembers, len(members))
+	// Verify every member staged from scratch (the title footer) round-trips
+	// byte-for-byte as an uncompressed member.
+	for _, m := range members {
+		if !m.IsNew {
+			continue
+		}
+		de := dst.Member(m.Member)
+		if de == nil {
+			return fmt.Errorf("build: validation: new member %q missing from the rebuilt archive", m.Member)
+		}
+		raw, err := dst.RawData(de)
+		if err != nil {
+			return fmt.Errorf("build: validation: new member %q: %w", m.Member, err)
+		}
+		if !bytes.Equal(raw, m.Stored) {
+			return fmt.Errorf("build: validation: new member %q payload changed", m.Member)
+		}
+		if de.Compressed() || de.FileSize != int64(len(m.Stored)) || de.ExtractSize != int64(len(m.Stored)) {
+			return fmt.Errorf("build: validation: new member %q sizes = %d/%d compressed=%v",
+				m.Member, de.FileSize, de.ExtractSize, de.Compressed())
+		}
+	}
+	if changedMembers != len(members)-newCount {
+		return fmt.Errorf("build: validation: %d members changed, expected %d", changedMembers, len(members)-newCount)
 	}
 	return nil
+}
+
+// splitMember splits a CPK member path into its directory and file name.
+func splitMember(member string) (dir, name string) {
+	if i := strings.LastIndexByte(member, '/'); i >= 0 {
+		return member[:i], member[i+1:]
+	}
+	return "", member
 }
 
 func fileResults(members []editionMember) []FileResult {
 	out := make([]FileResult, 0, len(members))
 	for _, m := range members {
 		n := int64(len(m.Stored))
-		out = append(out, FileResult{Member: m.Member, Slots: append([]int(nil), m.Slots...), StoredSize: n, ExtractSize: n})
+		out = append(out, FileResult{Member: m.Member, Slots: append([]int(nil), m.Slots...), StoredSize: n, ExtractSize: n, NewMember: m.IsNew})
 	}
 	return out
 }

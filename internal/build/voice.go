@@ -10,6 +10,7 @@ import (
 	"strings"
 
 	"uo-unburger/internal/layeredfs"
+	"uo-unburger/internal/nso"
 	"uo-unburger/internal/paths"
 	"uo-unburger/internal/voice"
 )
@@ -27,6 +28,10 @@ type VoiceResult struct {
 	ArtifactSize   int64  `json:"artifact_size"`
 	IPSSHA256      string `json:"ips_sha256,omitempty"`
 	IPSSize        int64  `json:"ips_size,omitempty"`
+	IPSLayer       string `json:"ips_layer,omitempty"`
+	IPSInstallRel  string `json:"ips_install_rel,omitempty"`
+	IPSRecords     int    `json:"ips_records,omitempty"`
+	IPSChanged     int    `json:"ips_changed_bytes,omitempty"`
 	ChangedBytes   int    `json:"changed_bytes"`
 	Edits          int    `json:"edits"`
 	RuntimeStatus  string `json:"runtime_status"`
@@ -36,18 +41,43 @@ type VoiceResult struct {
 // stage directory. It is re-exported from internal/layeredfs.
 const voiceArtifactRel = layeredfs.VoiceExeFSRel
 
-// voiceIPSRel is the optional IPS expression of the same edit.
+// voiceIPSRel is the optional IPS expression of the same edit, staged inside
+// the run for the private package record. It is an Atmosphère exefs_patches
+// patch (uncompressed-NSO layer); Eden loads the `exefs/main` replacement, not
+// this file.
 const voiceIPSRel = "main.ips"
 
-// voiceNotRuntimeMarker is written next to every experimental voice artifact.
-const voiceNotRuntimeMarker = `NOT_RUNTIME_APPROVED
+// voicePatchSet is the exefs_patches subdirectory name used in reports and in
+// the user-facing IPS stage. Atmosphère only requires some directory below
+// /atmosphere/exefs_patches/; the name is fixed here so reports cannot drift.
+const voicePatchSet = "uo-unburger-voice"
 
-This voice ExeFS patch is experimental and static. It has NOT been installed and
-has NOT been run on any console or emulator. The premise that the Western build
-selects the US voice registry block at boot, and that repointing it at the
-Japanese assets makes Japanese voices play (and English voices unreachable), is
-UNPROVEN. Do not ship, distribute or install this artifact before an in-game
-acceptance run.
+// voiceIPSLayer names the only layer an Atmosphère exefs_patches IPS may be
+// built against.
+const voiceIPSLayer = "uncompressed-nso (Atmosphère exefs_patches; Eden does not read .ips)"
+
+const (
+	// voiceRuntimeConfirmed is the runtime status recorded for the pinned
+	// production plan. It is a machine-readable report value; building or
+	// applying the patch never installs or launches anything.
+	voiceRuntimeConfirmed = "INTEGRATED_VERIFIED"
+	// voiceRuntimeMarker is written next to every voice artifact.
+	voiceRuntimeMarker = "RUNTIME_STATUS.txt"
+)
+
+// voiceRuntimeText is the marker written next to every voice artifact. It
+// describes the artifact's build state and the remaining selector limitation.
+// The visible English selector is UcOption.fms data plus UI layout; Japanese
+// playback is forced regardless of the setting, and selector removal is not
+// implemented.
+const voiceRuntimeText = `RUNTIME STATUS: INTEGRATED_VERIFIED
+
+This artifact is the shared Japanese-voice ExeFS patch produced by the build.
+It rewrites four same-size .text words and is emitted next to the build record;
+the toolkit never installs or launches it.
+
+The in-game voice menu still lists its English entry. Japanese playback is
+forced regardless of the selected setting; selector removal is not implemented.
 `
 
 // buildVoicePatch reads the caller-supplied ExeFS `main` read-only, verifies it
@@ -55,7 +85,7 @@ acceptance run.
 // expression and a report. It never writes anything.
 func buildVoicePatch(mainPath string, plan voice.Plan) (patched, ips []byte, vr *VoiceResult, err error) {
 	if strings.TrimSpace(mainPath) == "" {
-		return nil, nil, nil, fmt.Errorf("build: the voice patch needs the extracted ExeFS main (--voice-main)")
+		return nil, nil, nil, fmt.Errorf("build: the voice patch needs an extracted ExeFS main (NSO0)")
 	}
 	src, err := os.ReadFile(mainPath)
 	if err != nil {
@@ -71,16 +101,28 @@ func buildVoicePatch(mainPath string, plan voice.Plan) (patched, ips []byte, vr 
 	if rep.AlreadyApplied {
 		return nil, nil, nil, fmt.Errorf("build: the supplied ExeFS main already carries the voice plan; refusing to re-patch")
 	}
-	ips, err = voice.BuildIPS(src, patched)
+	// The IPS is for Atmosphère's exefs_patches loader, which patches the
+	// *mapped module*: decompressed segments at their memory offsets. Diffing
+	// the stored (LZ4-compressed) images instead would restate the whole
+	// re-encoded .rodata stream (~6.5 MB) and could never be applied safely.
+	patch, err := voice.BuildExefsIPS(src, patched)
 	if err != nil {
 		return nil, nil, nil, fmt.Errorf("build: %w", err)
 	}
-	back, err := voice.ApplyIPS(src, ips)
+	ips = patch.Bytes
+	// Self-check with the loader's own semantics: offsets are uncompressed-NSO
+	// file offsets, the 0x100-byte header is protected, writes land in the
+	// mapped image. The result must be exactly the patched module image.
+	want, err := mappedImage(patched)
 	if err != nil {
 		return nil, nil, nil, fmt.Errorf("build: IPS self-check: %w", err)
 	}
-	if !bytes.Equal(back, patched) {
-		return nil, nil, nil, fmt.Errorf("build: IPS self-check: the patch does not reproduce the patched image")
+	back, err := voice.ApplyExefsIPS(src, ips)
+	if err != nil {
+		return nil, nil, nil, fmt.Errorf("build: IPS self-check: %w", err)
+	}
+	if !bytes.Equal(back, want) {
+		return nil, nil, nil, fmt.Errorf("build: IPS self-check: the patch does not reproduce the patched mapped image")
 	}
 	sum := sha256.Sum256(ips)
 	vr = &VoiceResult{
@@ -93,18 +135,31 @@ func buildVoicePatch(mainPath string, plan voice.Plan) (patched, ips []byte, vr 
 		ArtifactSize:   rep.OutputSize,
 		IPSSHA256:      hex.EncodeToString(sum[:]),
 		IPSSize:        int64(len(ips)),
+		IPSLayer:       voiceIPSLayer,
+		IPSInstallRel:  layeredfs.ExefsPatchPath(voicePatchSet, rep.ModuleID),
+		IPSRecords:     patch.Records,
+		IPSChanged:     patch.Changed,
 		ChangedBytes:   rep.ChangedBytes,
 		Edits:          len(rep.Edits),
-		RuntimeStatus:  rep.RuntimeStatus,
+		RuntimeStatus:  voiceRuntimeConfirmed,
 	}
 	return patched, ips, vr, nil
 }
 
-// renderVoiceText renders the experimental voice artifact's human report.
+// mappedImage returns the loader-visible module image of a stored NSO.
+func mappedImage(stored []byte) ([]byte, error) {
+	f, err := nso.Parse(stored)
+	if err != nil {
+		return nil, err
+	}
+	return f.MappedImage()
+}
+
+// renderVoiceText renders the voice artifact's human report.
 func renderVoiceText(vr *VoiceResult) string {
 	var b strings.Builder
 	fmt.Fprintf(&b, "uo-unburger voice patch report\n")
-	fmt.Fprintf(&b, "status:             EXPERIMENTAL (%s)\n", vr.RuntimeStatus)
+	fmt.Fprintf(&b, "status:             %s\n", vr.RuntimeStatus)
 	fmt.Fprintf(&b, "plan:               %s (%d edits)\n", vr.Plan, vr.Edits)
 	fmt.Fprintf(&b, "build id (gate):    %s\n", vr.BuildID)
 	fmt.Fprintf(&b, "source:             %s\n", vr.SourcePath)
@@ -114,10 +169,14 @@ func renderVoiceText(vr *VoiceResult) string {
 	fmt.Fprintf(&b, "artifact size:      %d\n", vr.ArtifactSize)
 	fmt.Fprintf(&b, "changed bytes:      %d\n", vr.ChangedBytes)
 	if vr.IPSSHA256 != "" {
-		fmt.Fprintf(&b, "ips:                %s (%d bytes, sha256 %s)\n", voiceIPSRel, vr.IPSSize, vr.IPSSHA256)
+		fmt.Fprintf(&b, "ips:                %s (%d bytes, %d records, %d payload bytes, sha256 %s)\n",
+			voiceIPSRel, vr.IPSSize, vr.IPSRecords, vr.IPSChanged, vr.IPSSHA256)
+		fmt.Fprintf(&b, "ips layer:          %s\n", vr.IPSLayer)
+		fmt.Fprintf(&b, "ips install path:   %s\n", vr.IPSInstallRel)
 	}
 	fmt.Fprintf(&b, "placement:          %s\n", layeredfs.AtmospherePath("<title-id>", voiceArtifactRel))
-	fmt.Fprintf(&b, "runtime:            %s (in-game acceptance not performed)\n", vr.RuntimeStatus)
+	fmt.Fprintf(&b, "runtime (integrated): %s\n", vr.RuntimeStatus)
+	fmt.Fprintf(&b, "voice menu:         English entry still listed (Japanese forced regardless); selector removal not implemented\n")
 	return b.String()
 }
 

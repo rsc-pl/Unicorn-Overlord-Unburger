@@ -5,6 +5,7 @@ import (
 	"crypto/sha1"
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -13,6 +14,7 @@ import (
 
 	"uo-unburger/internal/cpk"
 	"uo-unburger/internal/fms"
+	"uo-unburger/internal/titlefooter"
 )
 
 // ---------- helpers ----------
@@ -172,6 +174,29 @@ func fixExtract(members []fxMember) []fxMember {
 	return members
 }
 
+// fxFTX builds a minimal synthetic FTEX atlas with one 2048x2048 BC7 surface,
+// mirroring the layout of the game's GUI atlases closely enough for the title
+// footer transform. Test fixture only.
+func fxFTX(t *testing.T, width, height int) []byte {
+	t.Helper()
+	const (
+		surfaceTag = 320
+		nameBytes  = 64
+	)
+	tex := surfaceTag + 8 + nameBytes
+	payload := tex + 0x100
+	blocks := ((width + 3) / 4) * ((height + 3) / 4)
+	buf := make([]byte, payload+blocks*16)
+	copy(buf[:4], "FTEX")
+	copy(buf[surfaceTag:surfaceTag+4], "FTX0")
+	copy(buf[tex:tex+4], ".tex")
+	words := []uint32{0x4D, 1, uint32(width), uint32(height), 1, 1, 0x100, uint32(width * height)}
+	for i, w := range words {
+		fxLE.PutUint32(buf[tex+4+i*4:], w)
+	}
+	return buf
+}
+
 // ---------- tests ----------
 
 func TestNoOpBuildByteIdentical(t *testing.T) {
@@ -288,6 +313,110 @@ func TestBothEditionsFromOneIntermediate(t *testing.T) {
 	}
 	if diffs != 1 {
 		t.Fatalf("expected exactly one differing member, got %d", diffs)
+	}
+}
+
+// TestTitleFooterAddedToBothEditions builds both editions with a synthetic
+// title-screen atlas, reads the version from a root version.txt, and verifies
+// the footer is rendered once and staged identically in both CPKs (and recorded
+// in the per-edition reports and reuse identity).
+func TestTitleFooterAddedToBothEditions(t *testing.T) {
+	dir := t.TempDir()
+	src, _, _ := writeCPK(t, dir, fixExtract(startupLabelMembers()))
+	corpus := writeCorpus(t, dir, [][3]string{{"UcSysMsg.fms:0", "ニューゲーム", "New Game"}})
+	translations := filepath.Join(dir, "translations")
+	writeTranslations(t, translations, "honorifics.tsv",
+		"record_id\tsource_jp_sha\toriginal_en_sha\tenglish_text\n"+
+			"UcSysMsg.fms:0\t"+sha1Short("ニューゲーム")+"\t"+sha1Short("New Game")+"\tNew Journey\n")
+
+	root := filepath.Join(dir, "root")
+	mustWrite(t, filepath.Join(root, VersionFileName), []byte("0.2.1-test\n"))
+	version, err := ReadVersion(root)
+	if err != nil {
+		t.Fatalf("ReadVersion: %v", err)
+	}
+	atlas := fxFTX(t, 2048, 2048)
+	footerPath := filepath.Join(dir, "Opening100.ftx")
+	mustWrite(t, footerPath, atlas)
+
+	opts := baseOptions(src, corpus, translations, filepath.Join(dir, "out"), VariantBoth)
+	opts.Version = version
+	opts.TitleFooterFTX = footerPath
+	res, err := Run(opts)
+	if err != nil {
+		t.Fatalf("Run: %v", err)
+	}
+
+	wantText := "UNBURGER MOD " + version
+	if res.TitleFooterTag != wantText {
+		t.Fatalf("footer text = %q, want %q", res.TitleFooterTag, wantText)
+	}
+	if res.TitleFooterMember != "GUI/Opening100.ftx" {
+		t.Fatalf("footer member = %q", res.TitleFooterMember)
+	}
+	wantBytes, wantProof, err := titlefooter.Apply(atlas, version)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if res.TitleFooterSize != int64(len(wantBytes)) || res.TitleFooterSHA256 != sha256Bytes(wantBytes) {
+		t.Fatalf("footer size/sha = %d/%s, want %d/%s",
+			res.TitleFooterSize, res.TitleFooterSHA256, len(wantBytes), sha256Bytes(wantBytes))
+	}
+	if res.TitleFooterProof == nil || *res.TitleFooterProof != wantProof {
+		t.Fatalf("footer proof = %+v, want %+v", res.TitleFooterProof, wantProof)
+	}
+
+	for _, variant := range []Variant{VariantHonorifics, VariantNoHonorifics} {
+		out := readOut(t, res, variant)
+		a := mustOpenCPK(t, out)
+		if len(a.Entries) != 4 {
+			t.Fatalf("%s: entries = %d, want 4", variant, len(a.Entries))
+		}
+		e := a.Member("GUI/Opening100.ftx")
+		if e == nil {
+			t.Fatalf("%s: footer member missing", variant)
+		}
+		raw, err := a.RawData(e)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if !bytes.Equal(raw, wantBytes) {
+			t.Fatalf("%s: staged footer differs from titlefooter.Apply output", variant)
+		}
+		if e.Compressed() || e.FileSize != int64(len(wantBytes)) {
+			t.Fatalf("%s: footer stored compressed or wrong size", variant)
+		}
+		reportPath := filepath.Join(res.RunDir, string(variant), "BUILD_REPORT.json")
+		reportData, err := os.ReadFile(reportPath)
+		if err != nil {
+			t.Fatalf("%s: read report: %v", variant, err)
+		}
+		var rep editionReport
+		if err := json.Unmarshal(reportData, &rep); err != nil {
+			t.Fatalf("%s: decode report: %v", variant, err)
+		}
+		if rep.TitleFooterTag != wantText || rep.TitleFooterSHA != res.TitleFooterSHA256 {
+			t.Fatalf("%s: report footer = %q %q", variant, rep.TitleFooterTag, rep.TitleFooterSHA)
+		}
+	}
+
+	if got := reuseEdition(res, res.RunDir, VariantHonorifics); got == nil {
+		t.Fatal("a matching published run should be reusable")
+	}
+	mismatch := *res
+	mismatch.TitleFooterSHA256 = strings.Repeat("0", 64)
+	if got := reuseEdition(&mismatch, res.RunDir, VariantHonorifics); got != nil {
+		t.Fatal("a run built with a different footer atlas must not be reused")
+	}
+	fontMismatch := *res
+	fontMismatch.TitleFooterFontSHA256 = strings.Repeat("1", 64)
+	if got := reuseEdition(&fontMismatch, res.RunDir, VariantHonorifics); got != nil {
+		t.Fatal("a run built with a different typeface must not be reused")
+	}
+	configMismatch := *res
+	configMismatch.TitleFooterConfigSHA256 = strings.Repeat("2", 64)
+	if got := reuseEdition(&configMismatch, res.RunDir, VariantHonorifics); got != nil {
+		t.Fatal("a run built with different typography must not be reused")
 	}
 }
 
