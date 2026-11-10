@@ -136,6 +136,7 @@ func packageUsage(errOut io.Writer, reason string) int {
 	fmt.Fprintln(errOut, "       [--force]  replace existing ZIPs and report; without it an existing")
 	fmt.Fprintln(errOut, "                  output is refused and every colliding file is named")
 	fmt.Fprintln(errOut, "Assembles install-ready ZIPs from an already-published run; it rebuilds nothing.")
-	fmt.Fprintln(errOut, "Default target both; ZIPs are written to .local/release. A root version.txt is required.")
+	fmt.Fprintln(errOut, "Default target both; ZIPs are named with the root version.txt and written to")
+	fmt.Fprintln(errOut, ".local/release. --release only labels the manifests and install notes.")
 	return exitUsage
 }

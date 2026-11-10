@@ -23,6 +23,7 @@ func TestPackagingChecksRunOnRealArtifacts(t *testing.T) {
 		SourcePath:      fake.path,
 		TranslationsDir: "translations",
 		TitleID:         build.DefaultTitleID,
+		Version:         "1.2.3",
 		Hooks:           Hooks{Validate: fake.strictValidate()},
 	}
 	opts.Hooks.Build = func(o build.Options) (*build.Result, error) {
@@ -35,6 +36,7 @@ func TestPackagingChecksRunOnRealArtifacts(t *testing.T) {
 			RunDir:  filepath.Join(o.OutDir, o.RunName),
 			DryRun:  o.DryRun,
 			TitleID: build.DefaultTitleID,
+			Version: o.Version,
 		}
 		for _, v := range o.Variant.Editions() {
 			e := build.EditionResult{Variant: v, ArtifactRel: layeredfs.RomFSRel, Published: !o.DryRun}

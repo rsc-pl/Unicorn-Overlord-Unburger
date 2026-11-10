@@ -203,7 +203,7 @@ func TestPackageForceReplacesExistingRelease(t *testing.T) {
 	if !strings.Contains(stderr.String(), "output already exists") {
 		t.Fatalf("stderr = %q, want an actionable collision message", stderr.String())
 	}
-	zipName := "unicorn-overlord-honorifics-atmosphere-" + shortHash(strings.Repeat("ab", 32)) + ".zip"
+	zipName := "unicorn-overlord-honorifics-atmosphere-2.0.zip"
 	if !strings.Contains(stderr.String(), zipName) {
 		t.Fatalf("refusal must name %s: %s", zipName, stderr.String())
 	}
@@ -214,11 +214,4 @@ func TestPackageForceReplacesExistingRelease(t *testing.T) {
 	if code := Run([]string{"package", "--run", runDir, "--force"}, &stdout, &stderr); code != 0 {
 		t.Fatalf("--force package exit = %d (%s)", code, stderr.String())
 	}
-}
-
-func shortHash(s string) string {
-	if len(s) > 12 {
-		return s[:12]
-	}
-	return s
 }

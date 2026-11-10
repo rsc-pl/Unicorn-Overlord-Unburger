@@ -96,12 +96,15 @@ type PackageOptions struct {
 	// directory (.local/release) when a checkout root can be derived from the
 	// run directory, and <RunDir>/packages otherwise (library/test use).
 	OutDir string
-	// Version is the release version stamped into every manifest. Empty is
-	// allowed for library callers; the CLI/TUI supply it from the root
-	// version.txt for a real release.
+	// Version is the release version stamped into every manifest and used as the
+	// release ZIP filename component. Empty falls back to the version recorded by
+	// the build run (Result.Version, restored by LoadRun from BUILD_REPORT.json);
+	// when neither exists packaging fails, because a release archive must name the
+	// actual mod version. It is never hard-coded.
 	Version string
-	// Release is the neutral release label used in file names. Empty derives it
-	// from the translation dataset identity (never a run name).
+	// Release is the neutral release label recorded in manifests and install
+	// notes. Empty derives it from the translation dataset identity (never a run
+	// name). It does not control the ZIP filename, which always uses Version.
 	Release string
 	// ModName is rejected when set: an emulator archive always contains exactly
 	// one top-level directory named layeredfs.EmulatorModDir, because that is the
@@ -326,6 +329,20 @@ func Package(res *Result, opts PackageOptions) (*PackageResult, error) {
 		return nil, fmt.Errorf("package: could not derive a release label; pass --release")
 	}
 
+	// The ZIP filename carries the real mod version, not a content digest or a
+	// random token. Use the same authoritative value that is stamped into the
+	// manifests: the caller-supplied version (from the root version.txt) or, for
+	// a standalone package run reconstructed by LoadRun, the version recorded in
+	// the published build report. Never derive an independent version here.
+	version := strings.TrimSpace(opts.Version)
+	if version == "" {
+		version = strings.TrimSpace(res.Version)
+	}
+	version, err = filenameVersion(version)
+	if err != nil {
+		return nil, err
+	}
+
 	// Resolve every edition's CPK before writing anything.
 	type editionInput struct {
 		variant Variant
@@ -376,7 +393,7 @@ func Package(res *Result, opts PackageOptions) (*PackageResult, error) {
 		return nil, fmt.Errorf("package: no editions selected")
 	}
 
-	result := &PackageResult{RunDir: runDir, OutDir: outDir, Release: release, Version: strings.TrimSpace(opts.Version)}
+	result := &PackageResult{RunDir: runDir, OutDir: outDir, Release: release, Version: version}
 	result.StartupLabel = FormatTag(result.Version)
 
 	type planned struct {
@@ -387,11 +404,11 @@ func Package(res *Result, opts PackageOptions) (*PackageResult, error) {
 	var plans []planned
 	for _, ei := range inputs {
 		for _, target := range targetList {
-			entries, manifest, payload, err := planArchive(res, ei.variant, ei.cpkPath, ei.cpkSHA, ei.cpkSize, ei.changed, ei.members, target, titleID, release, strings.TrimSpace(opts.Version), voice)
+			entries, manifest, payload, err := planArchive(res, ei.variant, ei.cpkPath, ei.cpkSHA, ei.cpkSize, ei.changed, ei.members, target, titleID, release, version, voice)
 			if err != nil {
 				return nil, err
 			}
-			name := fmt.Sprintf("unicorn-overlord-%s-%s-%s.zip", strings.ReplaceAll(string(ei.variant), "_", "-"), target, release)
+			name := archiveFilename(ei.variant, target, version)
 			plans = append(plans, planned{
 				art: PackageArtifact{
 					Variant:      ei.variant,
@@ -587,6 +604,15 @@ func sweepStalePackageTemps(dir string) {
 		}
 		_ = os.Remove(filepath.Join(dir, name))
 	}
+}
+
+// archiveFilename renders the deterministic release ZIP name for one edition and
+// loader target. The descriptive prefix and the edition/target distinctions are
+// preserved; only the trailing version component varies with the mod version.
+// version has already passed filenameVersion validation.
+func archiveFilename(variant Variant, target PackageTarget, version string) string {
+	return fmt.Sprintf("unicorn-overlord-%s-%s-%s.zip",
+		strings.ReplaceAll(string(variant), "_", "-"), target, version)
 }
 
 // planArchive builds the entry list, the manifest and the payload file list for

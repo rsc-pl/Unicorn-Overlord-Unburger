@@ -4,6 +4,7 @@ import (
 	"archive/zip"
 	"bytes"
 	"encoding/json"
+	"errors"
 	"io"
 	"os"
 	"path/filepath"
@@ -28,10 +29,16 @@ func packageFixture(t *testing.T) (*Result, string) {
 			"UcSysMsg.fms:2\t"+sha1Short("ロードゲーム")+"\t"+sha1Short("Load Game")+"\tLoad Journey\n")
 	writeTranslations(t, translations, "no-honorifics.tsv",
 		"record_id\tcanonical_sha256\tenglish_text\nUcSysMsg.fms:0\t"+sha256Full("New Journey")+"\tBegin Quest\n")
-	res, err := Run(baseOptions(src, corpus, translations, filepath.Join(dir, "out"), VariantBoth))
+	opts := baseOptions(src, corpus, translations, filepath.Join(dir, "out"), VariantBoth)
+	res, err := Run(opts)
 	if err != nil {
 		t.Fatalf("Run: %v", err)
 	}
+	// Pin the release version packaging will use. The build itself runs without a
+	// version so the fixture CPK does not receive the startup-label edit, keeping
+	// the packaging tests focused on archive assembly.
+	res.Version = "1.2.3"
+	res.StartupLabel = FormatTag(res.Version)
 	res.Voice = writeSyntheticVoiceStage(t, res.RunDir)
 	res.TitleFooterTag = "UNBURGER MOD 1.2.3"
 	res.TitleFooterMember = "GUI/Opening100.ftx"
@@ -257,8 +264,11 @@ func TestPackageLayoutBothTargetsAndReopen(t *testing.T) {
 		if strings.Contains(got, "romfs/romfs") {
 			t.Fatalf("archive %s doubles romfs: %v", a.RelPath, names)
 		}
-		if !strings.HasPrefix(a.RelPath, "unicorn-overlord-") || !strings.HasSuffix(a.RelPath, pkg.Release+".zip") {
-			t.Fatalf("archive name %q does not follow the neutral pattern for release %q", a.RelPath, pkg.Release)
+		if !strings.HasPrefix(a.RelPath, "unicorn-overlord-") || !strings.HasSuffix(a.RelPath, "-"+pkg.Version+".zip") {
+			t.Fatalf("archive name %q does not carry the release version %q", a.RelPath, pkg.Version)
+		}
+		if strings.Contains(a.RelPath, pkg.Release) {
+			t.Fatalf("archive name %q still carries the dataset/hash release label %q", a.RelPath, pkg.Release)
 		}
 		// Reopen + hash: the artifact's recorded digests must match a fresh read.
 		files, err := verifyZip(a.Path)
@@ -526,6 +536,277 @@ func TestPackageDeterministic(t *testing.T) {
 	}
 }
 
+// TestPackageArchiveNamesUseVersion pins the release ZIP naming contract: the
+// descriptive prefix and the edition/target distinctions are preserved, and the
+// trailing component is the actual mod version — never a dataset hash, random
+// token or run name.
+func TestPackageArchiveNamesUseVersion(t *testing.T) {
+	res, _ := packageFixture(t)
+	pkg, err := Package(res, PackageOptions{Targets: TargetBoth, Version: "0.2.1-test"})
+	if err != nil {
+		t.Fatalf("Package: %v", err)
+	}
+	want := map[string]bool{
+		"unicorn-overlord-honorifics-atmosphere-0.2.1-test.zip":    true,
+		"unicorn-overlord-honorifics-emulator-0.2.1-test.zip":      true,
+		"unicorn-overlord-no-honorifics-atmosphere-0.2.1-test.zip": true,
+		"unicorn-overlord-no-honorifics-emulator-0.2.1-test.zip":   true,
+	}
+	if len(pkg.Artifacts) != len(want) {
+		t.Fatalf("expected %d archives, got %d", len(want), len(pkg.Artifacts))
+	}
+	for _, a := range pkg.Artifacts {
+		if !want[a.RelPath] {
+			t.Fatalf("unexpected archive name %q (want one of %v)", a.RelPath, want)
+		}
+		if filepath.Base(a.Path) != a.RelPath {
+			t.Fatalf("archive path %q does not end in its reported name %q", a.Path, a.RelPath)
+		}
+		if strings.Contains(a.RelPath, pkg.Release) {
+			t.Fatalf("archive name %q still carries the dataset release hash %q", a.RelPath, pkg.Release)
+		}
+		delete(want, a.RelPath)
+	}
+	if len(want) != 0 {
+		t.Fatalf("missing expected archive names: %v", want)
+	}
+}
+
+// TestPackageFilenameTracksVersion: the same edition/target pair gets a different
+// filename when the authoritative mod version changes, and the same version
+// always maps to the same filename.
+func TestPackageFilenameTracksVersion(t *testing.T) {
+	res, dir := packageFixture(t)
+	first, err := Package(res, PackageOptions{
+		Variants: []Variant{VariantHonorifics}, Targets: TargetAtmosphere,
+		OutDir: filepath.Join(dir, "version-a"), Version: "1.2.3",
+	})
+	if err != nil {
+		t.Fatalf("Package 1.2.3: %v", err)
+	}
+	second, err := Package(res, PackageOptions{
+		Variants: []Variant{VariantHonorifics}, Targets: TargetAtmosphere,
+		OutDir: filepath.Join(dir, "version-b"), Version: "1.2.4",
+	})
+	if err != nil {
+		t.Fatalf("Package 1.2.4: %v", err)
+	}
+	if len(first.Artifacts) != 1 || len(second.Artifacts) != 1 {
+		t.Fatal("expected one archive per versioned package run")
+	}
+	if first.Artifacts[0].RelPath != "unicorn-overlord-honorifics-atmosphere-1.2.3.zip" {
+		t.Fatalf("version 1.2.3 filename = %q", first.Artifacts[0].RelPath)
+	}
+	if second.Artifacts[0].RelPath != "unicorn-overlord-honorifics-atmosphere-1.2.4.zip" {
+		t.Fatalf("version 1.2.4 filename = %q", second.Artifacts[0].RelPath)
+	}
+	again, err := Package(res, PackageOptions{
+		Variants: []Variant{VariantHonorifics}, Targets: TargetAtmosphere,
+		OutDir: filepath.Join(dir, "version-c"), Version: "1.2.3",
+	})
+	if err != nil {
+		t.Fatalf("repeat Package 1.2.3: %v", err)
+	}
+	if again.Artifacts[0].RelPath != first.Artifacts[0].RelPath {
+		t.Fatalf("same version produced different filenames: %q vs %q", first.Artifacts[0].RelPath, again.Artifacts[0].RelPath)
+	}
+}
+
+// TestPackageRepeatedPackagingReplacesSameName: a repeat into the same folder
+// collides on the versioned filename (not on a fresh hash or "-2" name), and an
+// explicit Replace policy overwrites the previous archive in place.
+func TestPackageRepeatedPackagingReplacesSameName(t *testing.T) {
+	res, dir := packageFixture(t)
+	outDir := filepath.Join(dir, "repeat")
+	opts := PackageOptions{
+		Variants: []Variant{VariantHonorifics}, Targets: TargetAtmosphere,
+		OutDir: outDir, Version: "1.2.3",
+	}
+	first, err := Package(res, opts)
+	if err != nil {
+		t.Fatalf("first Package: %v", err)
+	}
+	path := first.Artifacts[0].Path
+	old, err := os.ReadFile(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	// Without an explicit overwrite the run is refused and names the versioned
+	// file; it must not write a second hash/numbered archive.
+	if _, err := Package(res, opts); !errors.Is(err, ErrOutputExists) {
+		t.Fatalf("repeat without overwrite: err = %v, want ErrOutputExists", err)
+	}
+	if got, err := os.ReadFile(path); err != nil || !bytes.Equal(got, old) {
+		t.Fatalf("the refusal changed the existing archive (err=%v)", err)
+	}
+
+	opts.Overwrite = true
+	second, err := Package(res, opts)
+	if err != nil {
+		t.Fatalf("replacement Package: %v", err)
+	}
+	if second.Artifacts[0].RelPath != first.Artifacts[0].RelPath {
+		t.Fatalf("replacement changed the filename: %q -> %q", first.Artifacts[0].RelPath, second.Artifacts[0].RelPath)
+	}
+	entries, err := os.ReadDir(outDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, e := range entries {
+		if strings.HasSuffix(e.Name(), "-2.zip") {
+			t.Fatalf("replacement created a numbered archive %q", e.Name())
+		}
+	}
+	if files, err := verifyZip(path); err != nil || len(files) != len(second.Artifacts[0].Files) {
+		t.Fatalf("replaced archive is not a valid zip (err=%v)", err)
+	}
+}
+
+// TestPackageCancelPreservesExistingArchive: Cancel is a no-op for the existing
+// release set, even when an explicit collision prompt asks for a policy.
+func TestPackageCancelPreservesExistingArchive(t *testing.T) {
+	res, dir := packageFixture(t)
+	outDir := filepath.Join(dir, "cancel")
+	if err := os.MkdirAll(outDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	oldName := "unicorn-overlord-honorifics-atmosphere-1.2.3.zip"
+	oldPath := filepath.Join(outDir, oldName)
+	mustWrite(t, oldPath, []byte("previous valid release"))
+	_, err := Package(res, PackageOptions{
+		Variants: []Variant{VariantHonorifics}, Targets: TargetAtmosphere,
+		OutDir: outDir, Version: "1.2.3",
+		OnConflict: func(collisions []string) ConflictPolicy {
+			if len(collisions) != 1 || collisions[0] != oldPath {
+				t.Fatalf("collision prompt = %v, want [%s]", collisions, oldPath)
+			}
+			return ConflictCancel
+		},
+	})
+	if !errors.Is(err, ErrOutputCancelled) {
+		t.Fatalf("cancel: err = %v, want ErrOutputCancelled", err)
+	}
+	if got := readFile(t, oldPath); got != "previous valid release" {
+		t.Fatalf("cancel changed the existing archive: %q", got)
+	}
+	entries, err := os.ReadDir(outDir)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(entries) != 1 || entries[0].Name() != oldName {
+		t.Fatalf("cancel left extra output: %v", entries)
+	}
+}
+
+// TestPackageKeepBothPreservesExistingArchive: the TUI's Keep Both choice keeps
+// the old archive and writes the new set under deterministic "-2" names.
+func TestPackageKeepBothPreservesExistingArchive(t *testing.T) {
+	res, dir := packageFixture(t)
+	outDir := filepath.Join(dir, "keep-both")
+	if err := os.MkdirAll(outDir, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	oldName := "unicorn-overlord-honorifics-atmosphere-1.2.3.zip"
+	oldPath := filepath.Join(outDir, oldName)
+	mustWrite(t, oldPath, []byte("previous valid release"))
+	pkg, err := Package(res, PackageOptions{
+		Variants: []Variant{VariantHonorifics}, Targets: TargetAtmosphere,
+		OutDir: outDir, Version: "1.2.3",
+		OnConflict: func([]string) ConflictPolicy { return ConflictKeepBoth },
+	})
+	if err != nil {
+		t.Fatalf("keep both: %v", err)
+	}
+	if got := readFile(t, oldPath); got != "previous valid release" {
+		t.Fatalf("keep both changed the existing archive: %q", got)
+	}
+	if got := pkg.Artifacts[0].RelPath; got != "unicorn-overlord-honorifics-atmosphere-1.2.3-2.zip" {
+		t.Fatalf("keep both new filename = %q", got)
+	}
+	if _, err := os.Stat(pkg.Artifacts[0].Path); err != nil {
+		t.Fatalf("keep both did not write the new archive: %v", err)
+	}
+}
+
+// TestPackageFailurePreservesExistingArchives: an invalid follow-up packaging
+// run must not disturb a previously valid release set. Inputs are resolved and
+// every new archive is built and validated before the transactional publish step,
+// so a failure leaves the old files byte-for-byte intact.
+func TestPackageFailurePreservesExistingArchives(t *testing.T) {
+	res, dir := packageFixture(t)
+	outDir := filepath.Join(dir, "preserve")
+	first, err := Package(res, PackageOptions{Targets: TargetBoth, OutDir: outDir, Version: "1.2.3"})
+	if err != nil {
+		t.Fatalf("first Package: %v", err)
+	}
+	before := map[string][]byte{}
+	for _, a := range first.Artifacts {
+		before[a.RelPath] = []byte(readFile(t, a.Path))
+	}
+	// Break one input after the release exists. Package resolves every edition
+	// before staging anything, so it fails before any destination is touched.
+	for _, e := range res.Editions {
+		if e.Variant == VariantNoHonorifics {
+			if err := os.Remove(e.ArtifactPath); err != nil {
+				t.Fatal(err)
+			}
+		}
+	}
+	if _, err := Package(res, PackageOptions{Targets: TargetBoth, OutDir: outDir, Version: "1.2.3", Overwrite: true}); err == nil {
+		t.Fatal("expected the broken follow-up package to fail")
+	}
+	for name, want := range before {
+		got, err := os.ReadFile(filepath.Join(outDir, name))
+		if err != nil {
+			t.Fatalf("previous archive %s was removed: %v", name, err)
+		}
+		if !bytes.Equal(got, want) {
+			t.Fatalf("previous archive %s changed after a failed package", name)
+		}
+	}
+}
+
+// TestFilenameVersionValidation proves the version component is validated rather
+// than silently rewritten. Unsafe or ambiguous values must fail before any
+// archive is written; the normal release format must pass unchanged.
+func TestFilenameVersionValidation(t *testing.T) {
+	good := []string{"0.2.1-test", "1.2.3", "v1.0.0+meta", "release_2026-11-08"}
+	for _, v := range good {
+		got, err := filenameVersion(v)
+		if err != nil || got != v {
+			t.Fatalf("filenameVersion(%q) = (%q, %v), want the value unchanged", v, got, err)
+		}
+	}
+	bad := []string{
+		"", "  ", "../escape", `..\escape`, "a/b", "a\\b", "bad:name",
+		"bad*name", "bad?name", "bad name", "..", ".hidden", "trailing.",
+		"CON", "con.txt", "NUL", "COM1", strings.Repeat("x", maxFilenameVersionLen+1),
+	}
+	for _, v := range bad {
+		if got, err := filenameVersion(v); err == nil {
+			t.Fatalf("filenameVersion(%q) = %q, want an error", v, got)
+		}
+	}
+}
+
+// TestPackageRejectsUnsafeVersion: the same validation is enforced by Package
+// before any destination is created.
+func TestPackageRejectsUnsafeVersion(t *testing.T) {
+	res, dir := packageFixture(t)
+	outDir := filepath.Join(dir, "unsafe-version")
+	_, err := Package(res, PackageOptions{
+		Variants: []Variant{VariantHonorifics}, Targets: TargetAtmosphere,
+		OutDir: outDir, Version: "../escape",
+	})
+	if err == nil {
+		t.Fatal("expected an unsafe version to be rejected")
+	}
+	if _, statErr := os.Stat(outDir); !os.IsNotExist(statErr) {
+		t.Fatalf("rejected version created its output directory: %v", statErr)
+	}
+}
+
 func TestPackageMissingArtifactLeavesNothing(t *testing.T) {
 	res, _ := packageFixture(t)
 	// Remove one edition's CPK after it was built.
@@ -583,7 +864,7 @@ func TestPackageVoiceArtifact(t *testing.T) {
 	}
 	res.Dataset.CanonicalSHA256 = strings.Repeat("b", 64)
 	res.Dataset.CanonicalRows = 7
-	pkg, err := Package(res, PackageOptions{Variants: []Variant{VariantHonorifics}, Targets: TargetBoth})
+	pkg, err := Package(res, PackageOptions{Variants: []Variant{VariantHonorifics}, Targets: TargetBoth, Version: "1.2.3"})
 	if err != nil {
 		t.Fatalf("Package: %v", err)
 	}
@@ -642,7 +923,7 @@ func TestLoadRunRepackagesPublishedRun(t *testing.T) {
 	if len(loaded.Editions) != 2 {
 		t.Fatalf("LoadRun found %d editions, want 2", len(loaded.Editions))
 	}
-	pkg, err := Package(loaded, PackageOptions{Targets: TargetAtmosphere})
+	pkg, err := Package(loaded, PackageOptions{Targets: TargetAtmosphere, Version: "1.2.3"})
 	if err != nil {
 		t.Fatalf("Package from loaded run: %v", err)
 	}
@@ -746,17 +1027,17 @@ func isHex12(s string) bool {
 func TestPackageRollsBackPartialSet(t *testing.T) {
 	res, _ := packageFixture(t)
 	outDir := filepath.Join(res.RunDir, "packages")
-	release := releaseLabel(res)
+	version := res.Version
 	// Pre-create a directory where the second archive must land, so publishing
 	// the first succeeds and the second fails; the whole set must roll back.
-	blocker := filepath.Join(outDir, "unicorn-overlord-honorifics-emulator-"+release+".zip")
+	blocker := filepath.Join(outDir, "unicorn-overlord-honorifics-emulator-"+version+".zip")
 	if err := os.MkdirAll(blocker, 0o755); err != nil {
 		t.Fatal(err)
 	}
 	if _, err := Package(res, PackageOptions{Targets: TargetBoth}); err == nil {
 		t.Fatal("expected packaging to fail when the destination is a directory")
 	}
-	if _, err := os.Stat(filepath.Join(outDir, "unicorn-overlord-honorifics-atmosphere-"+release+".zip")); !os.IsNotExist(err) {
+	if _, err := os.Stat(filepath.Join(outDir, "unicorn-overlord-honorifics-atmosphere-"+version+".zip")); !os.IsNotExist(err) {
 		t.Fatal("the already-published archive was not rolled back")
 	}
 	entries, err := os.ReadDir(outDir)

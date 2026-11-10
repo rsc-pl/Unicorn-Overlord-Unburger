@@ -9288,7 +9288,8 @@ UcScriptMsgConv.fms:70015	fbd167413dfe	e2411e047fa4	You, the Liberator King Guid
 UcScriptMsgConv.fms:70016	945dc56c3046	8ce0980ddabe	This is truly your final trial. Show me you can liberate this ancient capital.
 UcScriptMsgConv.fms:70018	a3a7ef115e65	577f0404c41c	"You can now challenge the stage ""The Capital of Calamity Reborn"" as many times as you like."
 UcScriptMsgConv.fms:70400	5064cb9ec220	11ee7948b421	We can't stand against them at our current strength. Please turn back.
-UcScriptMsgConv.fms:70401	0edd42f5d885	11082d3f080f	1. Turn back / 2. Ignore the warning
+UcScriptMsgConv.fms:70401	0edd42f5d885	11082d3f080f	"1. Turn back.
+2. Ignore the warning."
 UcScriptMsgConv.fms:70402	24afcca10e22	9c80d7322c56	Thank you.
 UcScriptMsgConv.fms:70403	96852bba3dae	86168b3c8d91	Your Highness...
 UcScriptMsgConv.fms:70404	4f46c6e79ef7	bd4b080993e1	We've secured a route to the capital, Gran Corrine.

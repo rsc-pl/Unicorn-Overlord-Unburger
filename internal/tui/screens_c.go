@@ -777,12 +777,17 @@ func (m *Model) confirmSelfCheck() tea.Cmd {
 
 // startPreflight runs the self-check suite in the background.
 func (m *Model) startPreflight() tea.Cmd {
+	version := ""
+	if root, err := project.FindRoot(); err == nil {
+		version, _ = build.ReadVersion(root)
+	}
 	opts := preflight.Options{
 		SourcePath:      m.sourceArchive(),
 		CorpusPath:      m.corpusPath(),
 		TranslationsDir: choose(m.trans.form.Value("translations"), m.cfg.TranslationsDir),
 		TitleID:         choose(m.src.form.Value("title_id"), m.cfg.TitleID),
 		DisplayVersion:  m.src.form.Value("display_version"),
+		Version:         version,
 		Runs:            2,
 	}
 	variant, err := build.ParseVariant(choose(m.build.form.Value("variant"), m.cfg.Variant))

@@ -56,6 +56,11 @@ type Options struct {
 	TranslationsDir string
 	TitleID         string
 	DisplayVersion  string
+	// Version is the release version read from the checkout root version.txt. It
+	// is stamped into the self-check builds and therefore supplies the release
+	// ZIP filename when the packaging checks run. Empty skips those checks with an
+	// explicit detail; it is never invented.
+	Version string
 	// Variant selects the editions to build. Empty means both.
 	Variant build.Variant
 	// Runs is the number of real builds used for the determinism check. Zero
@@ -189,6 +194,7 @@ func Run(ctx context.Context, opts Options) (*Report, error) {
 			RunName:         runName,
 			TitleID:         exp.TitleID,
 			DisplayVersion:  exp.DisplayVersion,
+			Version:         opts.Version,
 			Expect:          exp,
 			DryRun:          dry,
 			Date:            "19700101",
@@ -349,6 +355,12 @@ func Run(ctx context.Context, opts Options) (*Report, error) {
 	if err := check(checkNames[9], func() (bool, string) {
 		if len(runs) == 0 || !hasPackagingInputs(runs[0]) {
 			return true, "skipped: the run has no artifact files on disk"
+		}
+		if strings.TrimSpace(runs[0].Version) == "" {
+			// A release ZIP names the mod version; without one there is nothing
+			// valid to name the archive. Report the skip explicitly instead of
+			// inventing a version or failing the whole self-check.
+			return true, "skipped: the run has no release version"
 		}
 		p, err := build.Package(runs[0], build.PackageOptions{
 			Targets: build.TargetBoth,
