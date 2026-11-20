@@ -119,7 +119,7 @@ UcScriptMsgConv.fms:58002	4ce043e0dc65c3b97b60603de871dfbac4e0ad55f0da54efdc8630
 UcScriptMsgConv.fms:58005	2f9ce0c1a9a946b971f0bfea3a07aef54c5cf436d09a07f8676672eac9fef404	They're a civilian anti-Zenoiran force, raised outside Gilbert's command.
 UcScriptMsgConv.fms:58007	be9d8fc0d2fb1651844ac6c0d75eb8535a537ee3182a029666833bcae5e619f2	If Leah and I hadn't trained together, I'd have refused.
 UcScriptMsgConv.fms:58026	175d8a5ddf549398073fbcffa1b61dfd8c2c8a3ca10f9b3ffda886a94db5b68d	To defeat an enemy force that large... I'm in awe of you, Alain.
-UcScriptMsgConv.fms:58400	2a00110a80a2b0e39ad2fbac196091dcaf7f60985c8c8c89b4dbd3209c565b03	So you managed to reclaim Drakenhold? It must have been hard on Gilbert, too.
+UcScriptMsgConv.fms:58400	86d11b7160022dbef458b6205016b5e7655da843d812b7a21d1b4a7543d52c16	So you managed to reclaim Drakengard? It must have been hard on Gilbert, too.
 UcScriptMsgConv.fms:58423	15789881844790aefd76511a2f2150ffe8026f67f8b9bf57e47fd97eeebfa11d	And then perhaps Gilbert will... Hehehe...
 UcScriptMsgConv.fms:58424	1f3eaf9ff728c02166db6725feb9ef0d57041ce6bdd34ed7595fb928b0251fdf	I hear Gilbert has returned.
 UcScriptMsgConv.fms:59212	55977f5a1f8f5db29d0847b5020d441bf9850354064936635a3a7dcf555a388b	Alain, please let me join the Liberation Army.
@@ -510,7 +510,7 @@ UcScriptMsgConv.fms:171213	cad051e0a26708539d1c2be3930e816f14e2508b4909fbea7cf80
 UcScriptMsgConv.fms:171217	39fe01f3c97cc29f33646724fd2d196800d3e04e5aafdff329d0ba32b282e0ee	...All right. First, release Mutsin.
 UcScriptMsgConv.fms:171601	07d9bd86a3098f80c027c0532c4a23d863517f6d185dc0a6d07e7cbeacd9c2ff	Mr. Mutsin! I'm so glad you're safe...
 UcScriptMsgConv.fms:173221	b8a210a0e58893c0b115424d8285daac95a03ed15ea1f864fb3f760786c704d7	We've received word that Queen Ilenia's niece, Princess Virginia, has been seen there.
-UcScriptMsgConv.fms:173251	7f37238d7040b35769e5a24dd24351373207f2dcfe8bedadbd0da213d5633b93	Let's help Prince Gilbert retake Drakenhold.
+UcScriptMsgConv.fms:173251	9a998ab6b1c3821cb7d17b18797430ecdd605e6c8f0eb36f8cc02f3961537d1c	Let's help Prince Gilbert retake Drakengard.
 UcScriptMsgConv.fms:173610	0ea63ae3ef017a4c570a204d6f73d8cbd48bffa79e9226426d644b31ed56a833	Josef, huh... He's preparing the Liberation Army on the mainland, isn't he?
 UcScriptMsgConv.fms:174428	bcce7521f6357bfc6822299f9a54663994370b02805fa881c45eb68fc003c81c	This is the Ring of the Unicorn. Queen Ilenia entrusted it to me to give to you, Your Highness.
 UcScriptMsgConv.fms:177603	36bdc9221c7300b7caf852d0069a3cfb37943db26a62131d2e10f0e3f8aa2d0a	Melisandre, you're speaking too loudly! Spies could be lurking anywhere...
@@ -615,14 +615,14 @@ UcScriptMsgConv.fms:207618	6c1df9dfd76e454a28a222730a3ef2ee04f910dd21d564ab26a14
 UcScriptMsgConv.fms:208425	c1573e4fa5a0bcd144c25cc7805ba97b2d2bce81d99d2e981ace618576585660	Lady Virginia.
 UcScriptMsgConv.fms:208432	1756282320281c06c77322d722a65ec06d6f30ac34cd5ea5a4c975de47e75d72	But from a military standpoint, I agree with Ser Josef's plan.
 UcScriptMsgConv.fms:208803	a54078b7140bb953f3c049e7aad563027bafa86ebffc92131deabcbac38019b1	Lady Virginia...
-UcScriptMsgConv.fms:210004	31b86000a74228d697c307cc586156791f2c1a38e9886691b0411f049a089b85	Queen Ilenia herself acted as a decoy and entrusted Your Highness to me.
-UcScriptMsgConv.fms:210006	c9f18cece15d9599c427db19110dbbb40a6b947e4dc9b2ff05bd81f074b70628	I should have fought Galerius and died, while Queen Ilenia escaped with Your Highness...
+UcScriptMsgConv.fms:210004	1140ca85c8dc904ec93e8962e4209954815d1bf18c6d216428fe46acd1beaf31	Queen Ilenia herself acted as a decoy and entrusted His Highness to me.
+UcScriptMsgConv.fms:210006	2e0cb54fb2d149ecc380a92ed4e1b07947b695adbf8166bc0737c54d616a210c	I should have fought Galerius and died, while Queen Ilenia escaped with His Highness...
 UcScriptMsgConv.fms:210008	4cb80825adb89a6f9741d47cfa9e202c037a4e825e1e4ecbb5a2c5ab2e90e8f3	It was Queen Ilenia who should have survived.
 UcScriptMsgConv.fms:210017	fd3b400e828dc17f97c652a7de010d613aec0cbc86f94d8819231cc86430cca9	Looking at you reminds me of Queen Ilenia.
 UcScriptMsgConv.fms:210403	d18611716d832c72545dce8e77360a7dabc2eee5e10b0335b85ddf8d4a948ba0	Worried? You've got some nerve saying that, Brother.
 UcScriptMsgConv.fms:210417	3d55ef7f24310982579a5aaa1c47325440e79b32fab84a6cbf3792e01c48b07f	Fine, Brother. I'll trust you, for Aubin's sake.
 UcScriptMsgConv.fms:214007	61b6280045cfd3ff1c7e6dea5ad4a498138bdf464cf72270a0f1ad7fc630150d	I'm so glad... You believed me, Sister.
-UcScriptMsgConv.fms:214408	08bad3ca4671d86bb78306d25644294f41f1021cda7e1c3ce1b7eba314b10d1b	He's one of the new recruits you were fond of, Lady Hilda. He was in that unit too...
+UcScriptMsgConv.fms:214408	9ef12b8cd97fe96527986417a7363094fc9696965c945b40571e7dd55b93ffdd	That's one of the new recruits you were fond of, Lady Hilda. From that unit too...
 UcScriptMsgConv.fms:214809	3222fbcc591374705ba8e2406dd8935ac5b6e88e2c3f7ec44882ed7d87273457	Lady Hilda!
 UcScriptMsgConv.fms:214810	b3794f47544b69e2408bf1b4f2ebd8bc43865b02003c1f1e6949385363baf8ac	Lady Hilda, I have a report! The rebel army is on the move.
 UcScriptMsgConv.fms:215201	aae7516ecb28f8dc71a99a055fd03b3b0854d6179d5390013307a50ef804e640	Sister...
@@ -1164,7 +1164,7 @@ UcScriptMsgConv.fms:394814	80fd5430994591eb733f45c24ad3a2461ca2592c37b6fc6b80a4a
 UcScriptMsgConv.fms:394816	e8fef37532346accaa3fcd911b3f2771169f9f5b20ab7510cbe282972c6578ad	Ramona was amazing, looking after both of us at once...
 UcScriptMsgConv.fms:394825	2e49af3a27fd2eefc83c3b55873d973d546b37d39eccf71a428f53e4dea465d3	Ramona was really happy, wasn't she?
 UcScriptMsgConv.fms:394855	ba5058ffa4fe86ebf67acf8f5b9283c8de923cd963b9558cd1dab1a2768d21f9	What if we got something for Ramona too? #w(20)Something with the same pattern.
-UcScriptMsgConv.fms:396001	9ad0490e4e1f97084a7df9e7923cb989b08809703e12b76ba2f1af7527d69237	Primm, you're from Drakenhold, known for its distinctive red soil, aren't you?
+UcScriptMsgConv.fms:396001	6158b7a451f01de71f9ffaa18f88ca65830584c0e4ba3ade88d187aaa7627198	Primm, you're from Drakengard, known for its distinctive red soil, aren't you?
 UcScriptMsgConv.fms:396008	aa6305fd67e2f69f03691b2529317685f083d4cc573e0d736889ac6d6150a061	Primm...
 UcScriptMsgConv.fms:396010	9e84b3fc8d2eb5934058988e6265cde4ff4780fba12ca01a22c1ddc1ddd73bb3	Umerus?
 UcScriptMsgConv.fms:396020	c6045e481819fa8b72334331fe8217a185d656d7ccfe29a82dd876f951340234	Yes... I'm looking forward to it! Thank you, Umerus.

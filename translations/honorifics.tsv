@@ -1,14 +1,18 @@
 record_id	source_jp_sha	original_en_sha	english_text
+UcArchiveList.fms:4	d198363c6c6e	776b51d785e6	"Drakengard
+(Characters)"
 UcArchiveList.fms:8	4679aa003d11	29c19b2341a0	"Zenoiran Empire
 (Characters)"
+UcArchiveList.fms:10	aff7cca1db96	a13f84718a6f	"Drakengard
+(Locations)"
 UcArchiveList.fms:50	fa19d20ca2b9	00f7fd73792a	Kingdom of Cornia
 UcArchiveList.fms:51	fa19d20ca2b9	00f7fd73792a	Kingdom of Cornia
 UcArchiveList.fms:52	fa19d20ca2b9	00f7fd73792a	Kingdom of Cornia
 UcArchiveList.fms:53	fa19d20ca2b9	00f7fd73792a	Kingdom of Cornia
 UcArchiveList.fms:54	fa19d20ca2b9	00f7fd73792a	Kingdom of Cornia
-UcArchiveList.fms:55	3f12a7c11c34	1a41d5000599	Kingdom of Drakenhold
-UcArchiveList.fms:56	3f12a7c11c34	1a41d5000599	Kingdom of Drakenhold
-UcArchiveList.fms:57	3f12a7c11c34	1a41d5000599	Kingdom of Drakenhold
+UcArchiveList.fms:55	3f12a7c11c34	1a41d5000599	Kingdom of Drakengard
+UcArchiveList.fms:56	3f12a7c11c34	1a41d5000599	Kingdom of Drakengard
+UcArchiveList.fms:57	3f12a7c11c34	1a41d5000599	Kingdom of Drakengard
 UcArchiveList.fms:64	86041412744b	3648b2d5d2f0	The Holy Kingdom of Albion
 UcArchiveList.fms:65	86041412744b	3648b2d5d2f0	The Holy Kingdom of Albion
 UcArchiveList.fms:67	8ee166a35fd8	a64ea27505ba	Zenoiran Empire
@@ -42,8 +46,8 @@ UcArchiveList.fms:318	48c70cf073bf	7e1da7142906	Bandit Hunt
 UcArchiveList.fms:319	48c70cf073bf	7e1da7142906	Bandit Hunt
 UcArchiveList.fms:320	48c70cf073bf	7e1da7142906	Bandit Hunt
 UcArchiveList.fms:321	48c70cf073bf	7e1da7142906	Bandit Hunt
-UcArchiveList.fms:351	6afe8ffe8780	00347bdfed5d	The Swordsman of a Distinguished House
-UcArchiveList.fms:352	6afe8ffe8780	00347bdfed5d	The Swordsman of a Distinguished House
+UcArchiveList.fms:351	6afe8ffe8780	00347bdfed5d	Swordsman of a Noble House
+UcArchiveList.fms:352	6afe8ffe8780	00347bdfed5d	Swordsman of a Noble House
 UcArchiveList.fms:364	45af99522217	1225a17f905d	What We Must Protect
 UcArchiveList.fms:365	45af99522217	1225a17f905d	What We Must Protect
 UcArchiveList.fms:366	45af99522217	1225a17f905d	What We Must Protect
@@ -54,11 +58,11 @@ UcArchiveList.fms:384	91c2954cddc1	0d96b54f36c5	The Wandering Helm
 UcArchiveList.fms:393	a77f5e32f80b	c28628ba6069	Sorcerer of the Ruins
 UcArchiveList.fms:394	a77f5e32f80b	c28628ba6069	Sorcerer of the Ruins
 UcArchiveList.fms:432	757f40308841	d8b5f7900fec	Vesten Town
-UcArchiveList.fms:453	6da4236c0cc0	12f45728ea0d	Black Knight of the Scorching Sands
-UcArchiveList.fms:454	6da4236c0cc0	12f45728ea0d	Black Knight of the Scorching Sands
-UcArchiveList.fms:455	6da4236c0cc0	12f45728ea0d	Black Knight of the Scorching Sands
-UcArchiveList.fms:456	6da4236c0cc0	12f45728ea0d	Black Knight of the Scorching Sands
-UcArchiveList.fms:457	6da4236c0cc0	12f45728ea0d	Black Knight of the Scorching Sands
+UcArchiveList.fms:453	6da4236c0cc0	12f45728ea0d	Black Knight of Blazing Sands
+UcArchiveList.fms:454	6da4236c0cc0	12f45728ea0d	Black Knight of Blazing Sands
+UcArchiveList.fms:455	6da4236c0cc0	12f45728ea0d	Black Knight of Blazing Sands
+UcArchiveList.fms:456	6da4236c0cc0	12f45728ea0d	Black Knight of Blazing Sands
+UcArchiveList.fms:457	6da4236c0cc0	12f45728ea0d	Black Knight of Blazing Sands
 UcArchiveList.fms:465	3912b6fbfb60	6360666f47b9	Gravemond Village
 UcArchiveList.fms:467	952c15517b8e	8999e38baba1	The Guardian of Order
 UcArchiveList.fms:468	952c15517b8e	8999e38baba1	The Guardian of Order
@@ -73,17 +77,17 @@ UcArchiveList.fms:574	fd92001ffe05	249fe4be7485	The First Counterattack
 UcArchiveList.fms:580	553005bb268b	cfea70742135	Priestess
 UcArchiveList.fms:587	baf94a7eace7	d712f288e709	The Elven Knight
 UcArchiveList.fms:588	baf94a7eace7	d712f288e709	The Elven Knight
-UcArchiveList.fms:596	febc7d7340ad	fca760399083	A Bridge Between Water and Greenery
-UcArchiveList.fms:597	febc7d7340ad	fca760399083	A Bridge Between Water and Greenery
-UcArchiveList.fms:598	febc7d7340ad	fca760399083	A Bridge Between Water and Greenery
-UcArchiveList.fms:599	febc7d7340ad	fca760399083	A Bridge Between Water and Greenery
-UcArchiveList.fms:600	febc7d7340ad	fca760399083	A Bridge Between Water and Greenery
+UcArchiveList.fms:596	febc7d7340ad	fca760399083	Bridge of Water and Greenery
+UcArchiveList.fms:597	febc7d7340ad	fca760399083	Bridge of Water and Greenery
+UcArchiveList.fms:598	febc7d7340ad	fca760399083	Bridge of Water and Greenery
+UcArchiveList.fms:599	febc7d7340ad	fca760399083	Bridge of Water and Greenery
+UcArchiveList.fms:600	febc7d7340ad	fca760399083	Bridge of Water and Greenery
 UcArchiveList.fms:612	42c4521b512e	dbab009264c8	Tower of Thorns
-UcArchiveList.fms:617	e0e2593fdffe	96aae695468c	Divine Tree of the Spirit Forest
-UcArchiveList.fms:618	e0e2593fdffe	96aae695468c	Divine Tree of the Spirit Forest
-UcArchiveList.fms:619	e0e2593fdffe	96aae695468c	Divine Tree of the Spirit Forest
-UcArchiveList.fms:620	e0e2593fdffe	96aae695468c	Divine Tree of the Spirit Forest
-UcArchiveList.fms:621	e0e2593fdffe	96aae695468c	Divine Tree of the Spirit Forest
+UcArchiveList.fms:617	e0e2593fdffe	96aae695468c	Spirit Forest's Divine Tree
+UcArchiveList.fms:618	e0e2593fdffe	96aae695468c	Spirit Forest's Divine Tree
+UcArchiveList.fms:619	e0e2593fdffe	96aae695468c	Spirit Forest's Divine Tree
+UcArchiveList.fms:620	e0e2593fdffe	96aae695468c	Spirit Forest's Divine Tree
+UcArchiveList.fms:621	e0e2593fdffe	96aae695468c	Spirit Forest's Divine Tree
 UcArchiveList.fms:622	ddc19ad056ca	4fca9ec781cc	Forest of Spirits
 UcArchiveList.fms:623	c2753d7d911e	66fe0fa230da	Divine Tree
 UcArchiveList.fms:629	1d69807bcec5	68c40fd71b9a	The Blasphemous Necromancer
@@ -338,7 +342,7 @@ say that he tried to resurrect an ancient
 magical beast to create a new form of life."
 UcArchiveList.fms:991	e085e7b3d68d	1204c94fd228	"The lands and seas that people recognize as
 the world. The main continent is home to
-^1/Cornia^, ^2/Drakenhold^, ^3/Elheim^ and
+^1/Cornia^, ^2/Drakengard^, ^3/Elheim^ and
 ^4/Bastorias^, while ^5/Albion^ occupies a smaller
 continent. The seas surrounding them are
 thought to complete the world."
@@ -370,6 +374,16 @@ UcArchiveList.fms:997	73fa254badca	d281c560366c	"A southeastern kingdom spanning
 army centered on wyverns, but ^2/Zenoira^ defeated it
 and killed the king. His two sons, both potential
 heirs, went missing."
+UcArchiveList.fms:998	db0ef12db75b	dc5e42a55b73	"The second prince, ^1/Gilbert^, reemerged from the
+shadows and after reclaiming ^2/Baumratte^, worked
+with the ^4/Liberation^ in repelling further incursion
+from the ^3/Zenoiran Army^. Their victory marked the
+first step towards Drakengard's reformation."
+UcArchiveList.fms:999	7608318944ee	e28384ad82f5	"Eventually, ^1/Gilbert^ and the ^2/Liberation^ continued
+their advance, ultimately reclaiming ^3/Castle Soldraga^
+from the ^4/Zenoiran Army^. ^5/Gilbert^ was crowned the
+new king of Drakengard and began to walk the path
+toward the nation's resurrection in earnest."
 UcArchiveList.fms:1000	23afd8079122	45f2d5fe2cd5	"A verdant land in southwestern ^1/Fevrith^, home to
 ^2/elves^ and ^3/dark elves^. Its distinctive government
 is headed by a ^4/priestess^, and it was protected by a
@@ -445,7 +459,7 @@ along with regional forces stationed in
 each conquered nation."
 UcArchiveList.fms:1014	79d5c0792049	bafa00efbd66	"Besides the army directly controlled from
 ^1/Gran Corrine^, there are three major forces:
-the southern army holding ^2/Drakenhold^ and
+the southern army holding ^2/Drakengard^ and
 ^3/Elheim^, the northern army holding ^4/Bastorias^,
 and the western army holding ^5/Albion^. Each
 includes soldiers from the conquered countries."
@@ -533,8 +547,8 @@ captured the heavily defended ^4/#FN(C5北の町)^ in
 and the ^6/Cornian Liberation Army^ even further."
 UcArchiveList.fms:1037	14e3bc889104	0fb08f61f986	"After a fierce battle, he and ^1/Gilbert^ succeeded
 in reclaiming ^3/#FN(D5城)^, the seat of
-^2/Drakenhold^ royalty, from the ^4/Zenoiran Army^.
-Leaving the reconstruction of ^5/Drakenhold^ to
+^2/Drakengard^ royalty, from the ^4/Zenoiran Army^.
+Leaving the reconstruction of ^5/Drakengard^ to
 its people, he and the ^6/Liberation^ marched on."
 UcArchiveList.fms:1038	516bbc23feb0	6a93677c6e41	"With ^1/Yahna's^ help, Alain passes through the
 ^3/Winding Wood^ of ^2/Elheim^. He is joined by
@@ -792,7 +806,7 @@ reputation. During the chaos, he caught
 thieves trying to loot the town, swiftly
 restoring order."
 UcArchiveList.fms:1100	13049d06589e	f1a8bb2a5311	"Originally from the ^2/desert^ in southern
-^1/Drakenhold^, he has connections among
+^1/Drakengard^, he has connections among
 local bandits. He is especially close to
 ^4/Magellan^, leader of ^3/Bandit's Keep^:
 the two have been friends since childhood."
@@ -817,7 +831,7 @@ the ^3/Cornian Liberation Army^’s standing. While fighting
 on the front lines, he also organized and
 operated intelligence-gathering units behind
 the scenes."
-UcArchiveList.fms:1105	6fa612be3680	19e6d76c8554	"The eldest son of ^1/Drakenhold's^ noble
+UcArchiveList.fms:1105	6fa612be3680	19e6d76c8554	"The eldest son of ^1/Drakengard's^ noble
 ^2/House Zechshelm^. When the kingdom fell,
 his father, ^3/Count Zechshelm^, helped him
 escape with his ^4/older sister^. After years
@@ -855,7 +869,7 @@ UcArchiveList.fms:1111	121e368920e8	1748f75db7bc	"A mercenary band based in ^1/C
 on any job, from battlefield support and escort
 work to kidnapping.
 Many of their members
-came from ^2/Drakenhold^."
+came from ^2/Drakengard^."
 UcArchiveList.fms:1112	660d4431c200	2f0e4afef02c	"Their leader ^1/Aubin^ was good at judging which
 jobs they could handle, and the group built up a
 strong record by avoiding unreasonable risks.
@@ -989,11 +1003,11 @@ of Baumratte^. Though she planned to strike
 kidnapped while protecting ^4/Travis^."
 UcArchiveList.fms:1143	675c81a034c5	99ae85c84ed0	"Under the ^1/magick of control^, she commanded
 the ^2/Zenoiran Army's^ southern forces from the
-^4/royal castle^ of ^3/Drakenhold^ as another
+^4/royal castle^ of ^3/Drakengard^ as another
 person entirely. Defeated by ^5/the Liberation^
 and ^6/Gilbert^ fighting together, she returned
 to her true self as Berengaria."
-UcArchiveList.fms:1144	dc713e5924be	a332d8822e30	"The eldest daughter of ^1/Drakenhold's^ noble
+UcArchiveList.fms:1144	dc713e5924be	a332d8822e30	"The eldest daughter of ^1/Drakengard's^ noble
 ^2/House Zechshelm^. When the kingdom fell,
 ^3/Count Zechshelm^ helped her and her
 ^4/younger brother^ escape. She used her martial skill
@@ -1327,7 +1341,7 @@ its workers head to the nearby
 so the village itself is seldom lively."
 UcArchiveList.fms:1214	6e6491bb52e1	ae0a24b1bbc4	"A fort in southwest ^1/Cornia's^ Lis de Prairie
 region, built in response to border disputes with
-^2/Drakenhold^. It stands near the ^3/Witches' Village^
+^2/Drakengard^. It stands near the ^3/Witches' Village^
 and is surrounded by plentiful
 gathering sites."
 UcArchiveList.fms:1215	3dfa849a7f55	558af1a84568	"^4/Clive^ is reunited with ^3/Adel^, a knight of the
@@ -1397,7 +1411,7 @@ flourished, the population grew, and crime with it.
 The fort was built as a base for maintaining order,
 but later became a gathering place for mercenaries."
 UcArchiveList.fms:1228	69d2b4036591	dd13e2479be7	"One of the larger towns in the ^2/Knights' Domain^
-of ^1/Cornia^. Its position near the ^3/Drakenhold^
+of ^1/Cornia^. Its position near the ^3/Drakengard^
 border and ancient Zenoiran ruins helped it grow
 through trade in artifacts excavated from
 the ruins."
@@ -1407,8 +1421,8 @@ on the road to ^2/Gran Corrine^. When the
 and nearby ruins were ravaged. Ruins
 shaped like a magic circle stand nearby."
 UcArchiveList.fms:1231	67817071b302	01a182ba4d15	"A fort in southern ^1/Cornia^, near the nation's border
-with ^2/Drakenhold^. It was hastily constructed amid an age-old
-border dispute with ^3/Drakenhold^ and has
+with ^2/Drakengard^. It was hastily constructed amid an age-old
+border dispute with ^3/Drakengard^ and has
 changed hands countless times over the years."
 UcArchiveList.fms:1232	d82f61cedf02	a9c961105153	"A remote town in northwest ^1/Cornia^, once busy
 as a base for research and excavations at the many
@@ -1459,7 +1473,7 @@ one of the ^9/Six Sages^."
 UcArchiveList.fms:1243	46e03d0737f4	bf5abd631255	"^1/Scarlett^ thanks ^4/Alain^ for saving her and reveals
 she is ^2/Pontifex^ ^3/Arant's^ daughter. Alain
 must choose between ^6/Elheim^, as revealed at the
-^5/sanctuary^, and ^9/Drakenhold^, where ^7/Ilenia's^
+^5/sanctuary^, and ^9/Drakengard^, where ^7/Ilenia's^
 ^8/niece^ lives."
 UcArchiveList.fms:1244	14076356d4c1	d98c4663e0b8	"A ^1/Knight of the Rose^ who joined ^3/Clive^
 after ^2/Cornia^ fell to prepare an uprising.
@@ -1509,7 +1523,7 @@ to oppose ^4/Galerius^, and that he must travel to
 ^6/Elheim^ to break the seal on that power."
 UcArchiveList.fms:1253	d367ff02ed2d	d6f603c7ee39	"A major city at the heart of the Eucuit region in
 eastern ^1/Cornia^. It was expanded into a vast
-fortified city in anticipation of war with ^2/Drakenhold^
+fortified city in anticipation of war with ^2/Drakengard^
 and remains heavily populated even today."
 UcArchiveList.fms:1254	d234284913f3	3557cb85cb0e	"A village in eastern ^1/Cornia's^ Eucuit region,
 with vast, fertile farmland and abundant harvests.
@@ -1656,6 +1670,10 @@ Defeated by the ^1/Liberation^ again, the Rock Rats
 could no longer escape. But when ^2/Bryce^ joined
 the ^3/Liberation^, his band was pardoned and
 stayed to help the ^4/Liberation^ govern ^5/Solvaquad^."
+UcArchiveList.fms:1290	f3a4f180ae96	403f26380429	"A relatively large town in southeastern ^1/Cornia^. Due
+to its proximity to the border with the neighboring
+^2/Drakengard^, the town once thrived as a center for
+trade and commerce."
 UcArchiveList.fms:1291	23051c7f8460	4268aaa9fa12	"A town in southeastern ^1/Cornia^, beside lakes
 large and small. Like ^2/#FN(C9東の町)^, it is a popular
 place of entertainment for miners and
@@ -1714,6 +1732,11 @@ the house has since declined. ^2/Melisandre's^ parents died
 in an epidemic while she was young; her aunt and uncle,
 who served as her guardians, later died of illness as
 well. ^3/Melisandre^ then became the family's official head."
+UcArchiveList.fms:1305	024816ec1a98	9118d65d122e	"A fort in eastern ^1/Cornia^, initially built during the
+age-old border dispute with the neighboring land
+of ^2/Drakengard^. When tensions settled, the fort's
+guards were recalled from the area—and the fort
+became a place for hopeful mercenaries to gather."
 UcArchiveList.fms:1306	1ff0a434f9cc	27d29905942b	"^1/Alain^ moves to help a ^2/young man^ in trouble,
 but the knight ^3/Monica^ beats him to it. She says
 her family rules this land and is dealing with the
@@ -1872,9 +1895,9 @@ People have begun gathering again since the
 ruins passed out of the ^3/Zenoiran Army's^ control."
 UcArchiveList.fms:1344	82bb5f457133	eb8889056b14	"After passing Mier Checkpoint, the ^1/Liberation^
 is greeted by ^2/Virginia^ and ^4/Leah^, a swordswoman
-from ^3/Drakenhold^. ^5/Alain^ is glad to see ^6/Virginia^
+from ^3/Drakengard^. ^5/Alain^ is glad to see ^6/Virginia^
 again. Asked for reinforcements, he considers
-heading to ^9/Baumratte^, where ^7/Drakenhold's^
+heading to ^9/Baumratte^, where ^7/Drakengard's^
 ^8/prince^ awaits."
 UcArchiveList.fms:1345	c8c73f254404	2ec106732888	"^2/Berengaria^ had served as a ^1/Zenoiran Army^
 general but was imprisoned as a traitor.
@@ -1915,14 +1938,14 @@ UcArchiveList.fms:1352	fc439d836419	f3cc6b31f23b	"^1/Ilenia's^ niece, ^2/Alain's
 the surviving members of Cornia's royal family.
 She was still a girl during ^3/Valmore's rebellion^,
 and the ^4/Knights of the Rose^ cut a path for her to
-escape to ^5/Drakenhold^."
-UcArchiveList.fms:1353	269cc9bb4d8b	1a955ab833ee	"When ^1/Drakenhold^ also came under attack by
+escape to ^5/Drakengard^."
+UcArchiveList.fms:1353	269cc9bb4d8b	1a955ab833ee	"When ^1/Drakengard^ also came under attack by
 the ^2/Zenoiran Army^ and its ^3/castle^ was about
 to fall, ^4/King Hugo^ sent her and ^5/Gilbert^ away
 to safety. She has remained under ^6/Gilbert's^
 protection, longing to fight ^7/Zenoira^ herself."
 UcArchiveList.fms:1354	95b57ec4081b	43a3a0ad34f8	"At ^3/Gilbert^’s request, she joined the
-^1/Liberation Army^ as it entered ^2/Drakenhold^,
+^1/Liberation Army^ as it entered ^2/Drakengard^,
 bringing her minder ^4/Leah^ to the ^5/Liberation^.
 She chose the ^6/Liberation^ as her home and resolved
 to fight the ^7/Zenoiran Army^ alongside them."
@@ -1931,7 +1954,7 @@ slaughtered the ^1/Knights of the Rose^—was
 stationed at ^3/Fort Pritzlasse^, she rushed to
 battle. Though cornered, she was rescued by
 ^4/Alain^ and eventually had her vengeance."
-UcArchiveList.fms:1356	8ae380f92ff1	f95c27c3ecfa	"King of ^1/Drakenhold^. Although his country had
+UcArchiveList.fms:1356	8ae380f92ff1	f95c27c3ecfa	"King of ^1/Drakengard^. Although his country had
 long been at odds with ^2/Cornia^, after ^3/Valmore's
 rebellion^ he realized the ^4/Zenoiran Empire^ had
 no intention of friendly relations with other nations.
@@ -1941,12 +1964,12 @@ he died fighting to defend
 ^2/Castle Soldraga^. Beforehand, he diverted some
 of his forces to help ^3/Gilbert^ and ^4/Virginia^
 escape."
-UcArchiveList.fms:1358	2a16db718cab	5ff3bca1233e	"A swordswoman from ^1/Drakenhold^, trained with
+UcArchiveList.fms:1358	2a16db718cab	5ff3bca1233e	"A swordswoman from ^1/Drakengard^, trained with
 a blade from childhood and originally destined
 to guard the ^2/prince^. While she now serves as
 ^3/Virginia's^ attendant and protector, her true
 lord remains ^4/Gilbert^."
-UcArchiveList.fms:1359	af3cef2ae9ca	5deef5957a55	"She learned the blade in ^1/Drakenhold's^ Früth
+UcArchiveList.fms:1359	af3cef2ae9ca	5deef5957a55	"She learned the blade in ^1/Drakengard's^ Früth
 region, a land known for martial training. With many
 acquaintances there, she proposed that the
 ^2/Früth Militia^ and the ^3/Liberation^ join forces
@@ -1956,7 +1979,7 @@ as just another job,
 but Leah came to respect the princess for
 never losing her dignity or resolve, no matter
 the circumstances."
-UcArchiveList.fms:1361	9af9a0c77eac	b4c0a9becf77	"A mercenary from ^1/Drakenhold^ who freed
+UcArchiveList.fms:1361	9af9a0c77eac	b4c0a9becf77	"A mercenary from ^1/Drakengard^ who freed
 ^3/Primm^ from captivity while in the ^2/Zenoiran Army's^
 employ. Though his manner of speech seems
 ill-fitting for a mere sellsword, there can be
@@ -1971,8 +1994,12 @@ Seeing that the ^1/Liberation^ had claimed victory
 in the battle, he seized the moment to defect
 from the ^2/Zenoiran Army^—and upon ^3/Leah's^ invitation,
 joined the ^4/Liberation's^ ranks himself."
+UcArchiveList.fms:1364	62ba25a4ee84	8d048bd8e135	"Secretly ^2/Ludwig^, first prince of ^1/Drakengard^.
+When his ^4/father^ bid him to flee during the
+fall of ^3/Castle Soldraga^, he started a new life
+as a mercenary under an assumed name."
 UcArchiveList.fms:1365	bec805411a04	081f3d0750f4	"A cleric of the ^2/Palevian Orthodoxy^ from
-^1/Drakenhold^. Captured by the ^5/Zenoiran Army^ on
+^1/Drakengard^. Captured by the ^5/Zenoiran Army^ on
 high alert near ^4/Fort Herstann^ while traveling
 to meet her ^3/older sister^, she was freed by
 ^6/Aramis^, then left stranded on a battlefield."
@@ -2005,26 +2032,26 @@ UcArchiveList.fms:1371	af7233a69360	ba2f7f7ef9e3	" — A Sister's Duty —
 but stays to care for the sick. Primm resolves
 to fight ^4/Zenoira^ with the ^3/Liberation^ on behalf
 of her older sister too."
-UcArchiveList.fms:1373	c1c1f72cfb9b	92c6a641e44e	"A town in southwest ^1/Drakenhold^ resting on the nation's
+UcArchiveList.fms:1373	c1c1f72cfb9b	92c6a641e44e	"A town in southwest ^1/Drakengard^ resting on the nation's
 border with ^2/Cornia^, it met with fierce battle when
 the ^4/Zenoiran Army^ sought to invade after their
 conquest of ^3/Cornia^. The ruins of that conflict now
 serve as foraging sites for collectors in the region."
 UcArchiveList.fms:1374	377b335a90c8	09c53cc965fe	"A large town in the Mier region in southwestern
-^1/Drakenhold^. Much like ^2/#FN(D1北の町)^, it met with
+^1/Drakengard^. Much like ^2/#FN(D1北の町)^, it met with
 fierce battle when the ^3/Zenoiran Army^ sought to invade the
 nation's lands."
 UcArchiveList.fms:1375	9912f494200d	29940b612205	"A fort in southwest
-^1/Drakenhold's^ Mier region.
+^1/Drakengard's^ Mier region.
 Like ^2/#FN(D1北の町)^, it saw fierce fighting when
 the ^3/Zenoiran Army^ invaded, particularly because
 of the mine to its north."
-UcArchiveList.fms:1376	ae04963936cf	0922f67a1a00	"A large town in southwestern ^1/Drakenhold^, on
+UcArchiveList.fms:1376	ae04963936cf	0922f67a1a00	"A large town in southwestern ^1/Drakengard^, on
 the road to its ^2/desert^. Because the
 ^3/desert^ once served as a place of
 exile for criminals, a sturdy gate
 stands on the road leading there."
-UcArchiveList.fms:1377	7a2454313141	af0298eab45c	"^1/Drakenhold's^ ^2/desert^ once served as a place
+UcArchiveList.fms:1377	7a2454313141	af0298eab45c	"^1/Drakengard's^ ^2/desert^ once served as a place
 of exile. ^3/Aubin^ tells ^5/Alain^ that although the
 ^4/desert^ is still dangerous, he can guide them
 safely because he grew up there. Alain follows
@@ -2040,9 +2067,9 @@ traveling with ^3/Gloucester^ had placed him under
 ^4/Magellan^ offers to join the ^5/Liberation^ to
 repay them for saving him."
 UcArchiveList.fms:1380	63cff2699242	07b8b20322a7	"Leader of bandits based at ^3/Bandit's Keep^ in
-^1/Drakenhold's^ southern ^2/desert^. He made his
+^1/Drakengard's^ southern ^2/desert^. He made his
 living raiding and working as a mercenary across
-^4/Drakenhold^, while maintaining good relations
+^4/Drakengard^, while maintaining good relations
 with other gangs. Since falling under the ^5/Zenoiran Army's^
 control, his behavior has changed drastically."
 UcArchiveList.fms:1381	9d64664d3147	bcf253eb8df7	"Freed by ^2/Alain^ from ^1/magick of control^, Magellan
@@ -2050,16 +2077,20 @@ returns to himself. His harsh upbringing left him
 merciless toward enemies and careful with money,
 but he always repays kindness. He joins the
 ^3/Liberation^ to settle his debt."
+UcArchiveList.fms:1382	5180645ea313	4db9bee0774b	"A vast stretch of sand and rock covering most of
+southern ^1/Drakengard^. Oases, towns, ^2/ancient
+Zenoiran^ ruins, and gigantic fossils can all be
+found throughout its dunes."
 UcArchiveList.fms:1383	f82b56fc7314	ed13e2232ddc	"The desert is a barren land struck
 by irregular sandstorms and has long served
 as a place of exile for criminals.
 As a result, many shun its people as descendants
 of convicts, while bandits and robbers
 have established bases throughout it."
-UcArchiveList.fms:1384	98e991209b5d	da55bf0cb7c8	"An oasis town in the ^2/desert^ of southern ^1/Drakenhold^.
+UcArchiveList.fms:1384	98e991209b5d	da55bf0cb7c8	"An oasis town in the ^2/desert^ of southern ^1/Drakengard^.
 It's said that the bones of ancient beasts can often
 be found within the ^3/desert^."
-UcArchiveList.fms:1385	26021767c555	69b4d71dffda	"A fort built in the ruins of ^1/Drakenhold's^
+UcArchiveList.fms:1385	26021767c555	69b4d71dffda	"A fort built in the ruins of ^1/Drakengard's^
 southern ^2/desert^. Though it looks shabby, it is
 well equipped inside. Under ^3/Magellan^, it also
 serves as a place to find work for people born
@@ -2075,22 +2106,27 @@ of surviving enemy troops, ^5/Alain^ asks ^6/Leah^
 to negotiate surrender rather than attack them.
 ^7/Leah^ shows ^8/Alain^ heartfelt respect."
 UcArchiveList.fms:1388	5ecf078f11f1	a90bfff50f4f	"A resistance group working to drive the ^2/Zenoiran Army^
-from ^1/Drakenhold^, founded mainly by people of
+from ^1/Drakengard^, founded mainly by people of
 Früth. Many defected as ^3/Soldraga^ fell, leaving
 them disillusioned with the royal family and
 unwilling to rely on its help."
-UcArchiveList.fms:1392	a369d15ba423	91af8636e8d1	"A coastal town in northeastern ^1/Drakenhold's^
+UcArchiveList.fms:1391	8b80f300705f	e2395e1f0ed6	"An old fort in the Früth region in northeastern
+^1/Drakengard^, it was originally built to facilitate
+research into the region's geysers. Though it has
+stood for many years, its sturdy construction
+keeps it functioning just as well as always."
+UcArchiveList.fms:1392	a369d15ba423	91af8636e8d1	"A coastal town in northeastern ^1/Drakengard's^
 Früth region. Shallow seas prevent large ships
 from docking. When the ^2/Zenoiran Army^ invaded, it became
 a base for attacking ^3/#FN(D4北東の港町)^, and the town
 was left badly damaged."
-UcArchiveList.fms:1393	aba4313e3616	2e67e7b4a03f	"A major harbor in northeastern ^1/Drakenhold's^
+UcArchiveList.fms:1393	aba4313e3616	2e67e7b4a03f	"A major harbor in northeastern ^1/Drakengard's^
 Früth region, able to receive large ships.
 Geysers cut it off from the heartland of the
-^2/Kingdom of Drakenhold^, leading locals to develop
+^2/Kingdom of Drakengard^, leading locals to develop
 a strong independent spirit over generations."
 UcArchiveList.fms:1394	1b90c607f2fe	571be4f78ac8	"Ancient religious ruins in northeastern
-^1/Drakenhold's^ Früth region. Extensive rooms,
+^1/Drakengard's^ Früth region. Extensive rooms,
 including underground areas, and sturdy walls
 make the site large enough to house an entire
 company of troops."
@@ -2134,9 +2170,9 @@ selling handicrafts she made herself from
 ^1/desert^ folk traditions. She still puts her
 skills to use now and then."
 UcArchiveList.fms:1403	a9f0590e8306	c1716936e446	"A royal guard who served a prince of
-^1/Drakenhold^. Because ^2/desert^ dwellers once
+^1/Drakengard^. Because ^2/desert^ dwellers once
 saved his parents, he helped forge ties between
-them and the kingdom. But after ^3/Drakenhold^
+them and the kingdom. But after ^3/Drakengard^
 surrendered to ^4/Zenoira^, his personality changed
 and he began attacking the ^5/desert^ people."
 UcArchiveList.fms:1404	448df2989ddb	33969cf30691	" — Loyal to the Throne —
@@ -2157,9 +2193,12 @@ his true self. His former lord, ^2/Ludwig^—now
 so he joined the ^4/Liberation^."
 UcArchiveList.fms:1407	75106137bb5d	be597443feab	"A village beside ruins and an oasis in the
 ^2/desert^ of southern
-^1/Drakenhold^. Surrounded by
+^1/Drakengard^. Surrounded by
 rock, the area contains ancient animal bones,
 but the village has almost no industry."
+UcArchiveList.fms:1408	9ad21bfc04d3	b6de84e52c87	"An oasis town in the ^2/desert^ spanning southern
+^1/Drakengard^. Foraging sites can be found along
+the coast of the nearby sea."
 UcArchiveList.fms:1409	c7d27dc32e15	ba7720ecf576	"^2/Hilda^, a wyvern knight of the ^1/Zenoiran Army^,
 oversees security near plague-stricken Ömpalast.
 To stop the disease spreading, she strictly
@@ -2187,7 +2226,7 @@ UcArchiveList.fms:1413	eda2d5650a97	d628d322a99f	"While helping fight the plague
 she's learned and indirectly
 asks to join the ^5/Liberation^."
 UcArchiveList.fms:1414	0caa1df81a7a	08b36e1fe157	"A wyvern knight from the Ömpalast region of
-^1/Drakenhold^. Formerly a mercenary, she entered
+^1/Drakengard^. Formerly a mercenary, she entered
 the ^2/Zenoiran Army^ and was tasked with maintaining
 security. In this plague-prone region, she has
 imposed harsh measures to prevent a repeat
@@ -2213,26 +2252,26 @@ the ^2/Zenoiran Army^ caused the plague. ^3/Alain^ asks her
 to protect the townspeople, and she agrees
 to remain behind."
 UcArchiveList.fms:1419	2de4ed649a69	8dca9945a1e9	"A deadly outbreak when ^1/Zenoira^ invaded
-Ömpalast in ^2/Drakenhold^. For a long time, the
+Ömpalast in ^2/Drakengard^. For a long time, the
 region had repelled the ^3/Zenoiran Army^, until a
 fatal disease broke out and spread rapidly."
 UcArchiveList.fms:1420	bd96b8b126f0	d18e106f161b	"The plague killed nearly half the inhabitants
-and shattered Drakenhold's army, allowing
+and shattered Drakengard's army, allowing
 the ^1/Zenoiran Army^ to win the battle. ^2/Zenoira^ then brought
 the plague under control, but sporadic outbreaks
 have occurred in the region ever since."
 UcArchiveList.fms:1421	c7d34f962a28	bcce4d6c1371	"A fort in the Ömpalast region of central
-^1/Drakenhold^. Though small from the outside,
+^1/Drakengard^. Though small from the outside,
 the former lord greatly expanded it to defend
 against the ^2/Zenoiran Army^, creating a major base
 with caverns and tunnels inside the mountain.
 Only its ordinary fort functions remain today."
-UcArchiveList.fms:1422	b343f8a343c9	8f93e8990470	"A town in central ^1/Drakenhold's^ Ömpalast
+UcArchiveList.fms:1422	b343f8a343c9	8f93e8990470	"A town in central ^1/Drakengard's^ Ömpalast
 territory. Nearby mines, ruins and forests once
 provided abundant resources, but the plague
 brought decline. Many gathering sites still
 surround the town."
-UcArchiveList.fms:1423	209188050f60	58dbefe9aaa9	"^1/Alain^ meets Prince ^3/Gilbert^ of ^2/Drakenhold^,
+UcArchiveList.fms:1423	209188050f60	58dbefe9aaa9	"^1/Alain^ meets Prince ^3/Gilbert^ of ^2/Drakengard^,
 who again asks for aid in restoring his kingdom.
 ^4/Alain^ promises to help, but before they can plan,
 the ^6/Zenoiran Army^ advances in great numbers
@@ -2250,7 +2289,7 @@ UcArchiveList.fms:1426	9f2679538f63	7734a61c671d	"The ^3/Zenoiran Army^ masses t
 ^2/Baumratte^, the town of the ^1/Coliseum^.
 ^5/Anton^, a general of the ^4/Zenoiran Army^,
 commands the attack and plans to wipe out
-all resistance in ^6/Drakenhold^ in one sweep."
+all resistance in ^6/Drakengard^ in one sweep."
 UcArchiveList.fms:1427	b2dde60313ba	ea16c4b1c1a9	"^1/Gilbert^ has mixed feelings about accepting
 aid from the Cornian royals when ^2/Amalia^,
 a towering warrior with sword and shield, arrives
@@ -2267,6 +2306,11 @@ UcArchiveList.fms:1429	21038b5dd36b	c92d6235ac87	"Seeking his ^1/older sister^, 
 deceived them. ^5/Baltro^ attacked; though his
 ^6/older sister^ shielded him, ^7/Baltro^ abducted her by
 magick."
+UcArchiveList.fms:1430	cd72eb00d40e	1fb4f41da143	"The second prince of ^1/Drakengard^. When ^2/Castle
+Soldraga^ fell, he fled at his ^3/father's^ behest—
+and upon learning the crown prince ^4/Ludwig^
+had gone missing, he began amassing an
+army to reclaim the kingdom himself."
 UcArchiveList.fms:1432	b1abba6c3363	e0fdf69f2052	"After ^1/Liberation^ forces help win the ^2/defense
 of Baumratte^, the ^3/Zenoiran Army^ is weakened and
 Gilbert establishes the town as a base. He then
@@ -2289,7 +2333,7 @@ while restoring his country. He promises aid
 for the final fight against ^6/Galerius^."
 UcArchiveList.fms:1436	38cb29ca86d5	75f2358a43b3	"A towering, one-eyed warrior of extraordinary
 strength and skill, adept with a huge sword and
-shield. Seeking combat at ^1/Drakenhold's^ renowned
+shield. Seeking combat at ^1/Drakengard's^ renowned
 ^2/Coliseum^, she lends ^4/Gilbert^ her strength in
 exchange for reopening the ^3/Coliseum^."
 UcArchiveList.fms:1437	c6ff15ff4d38	f4c320465b75	"She distinguishes herself in the ^1/defense of
@@ -2318,7 +2362,7 @@ defeated enemies, then leads the effort to retake
 ^3/Baumratte^ from ^2/Gilbert^."
 UcArchiveList.fms:1443	0b0bb492e633	618ffd95cd89	"He plans and launches a heavy encirclement
 and annihilation operation at ^1/Baumratte^,
-but the united armies of ^2/Drakenhold^ and the
+but the united armies of ^2/Drakengard^ and the
 ^3/Liberation^ repel him."
 UcArchiveList.fms:1444	dd3167138bec	ab81f88d412b	"The combat tournament held at ^1/#FN(D3闘技場)^
 and all gambling around its mock battles.
@@ -2360,15 +2404,24 @@ possessed descendants to pursue further battles.
 He later awoke as a berserker within ^1/Amalia^,
 a descendant with great potential, but was defeated
 and his soul vanished."
-UcArchiveList.fms:1452	ff28b4445cc0	bba031cfcf7d	"The largest settlement in all of ^1/Drakenhold^, situated
+UcArchiveList.fms:1452	ff28b4445cc0	bba031cfcf7d	"The largest settlement in all of ^1/Drakengard^, situated
 in the nation's eastern reaches. It is mostly known
 for its ^2/Coliseum^—around which the township itself
 developed—but there are also abundant foraging
 sites in the surrounding area."
-UcArchiveList.fms:1453	d5e382842bec	6d2992ae5367	"A small fort in eastern ^1/Drakenhold^, built long
+UcArchiveList.fms:1453	d5e382842bec	6d2992ae5367	"A small fort in eastern ^1/Drakengard^, built long
 ago near the ^2/Coliseum^ as a training post.
 In the past, troops divided by place of origin
 competed for victories at the ^3/Coliseum^."
+UcArchiveList.fms:1454	182068bd60d3	754cfea552e9	"A town in eastern ^1/Drakengard^ on the road to ^2/Castle
+Soldraga^. Many of its residents work in the nearby
+mine, which is known for its rich veins of valuable
+ore."
+UcArchiveList.fms:1455	062b09a2a683	09d62825196a	"^1/Drakengard's^ famed ^2/#FN(D6要塞)^ stands under
+the protection of a former ^3/Cornian^ noble by the
+name of ^4/Giethe^. However, Giethe has been ordered
+back to ^5/Gran Corrine^ due to suspected treason—
+but doesn't plan to arrive there empty-handed."
 UcArchiveList.fms:1456	3716315dcd8b	7acb061e0c1e	"Returning from reconnaissance, ^2/Fran^ reports
 that ^3/Giethe^ commands ^1/#FN(D6要塞)^. Ten years
 ago during ^4/Valmore's rebellion^, Giethe slaughtered
@@ -2414,20 +2467,33 @@ opponent of ^3/Ilenia^, he was among the first
 to join ^4/Valmore's^ rebellion. Eagerly leading
 the purge of the royal family, he almost
 accomplished his orders."
-UcArchiveList.fms:1464	1833f97dfa77	c092b7773d03	"He distinguished himself invading ^1/Drakenhold^
+UcArchiveList.fms:1464	1833f97dfa77	c092b7773d03	"He distinguished himself invading ^1/Drakengard^
 with ^2/Anton^ and others, then made ^3/#FN(D6要塞)^
 his seat when granted Pritzlasse territory.
 His arrogance won him many enemies. Slandered
 by political foes, he was summoned back to
 ^4/Gran Corrine^."
-UcArchiveList.fms:1469	061cd0ce2320	62a14d49cc01	"A huge fortress in northwest ^1/Drakenhold^.
+UcArchiveList.fms:1466	0e516a9b116b	010924cf2439	"A large town in northern ^1/Drakengard^, it was once
+home to a prosperous mine due to the rich deposits
+of valuable ore in the caves to the north. However,
+the war has seen it fall into disrepair. Numerous
+foraging sites can be found in the area."
+UcArchiveList.fms:1467	c41e05720245	880933af508e	"A town in northwest ^1/Drakengard^, it was once host
+to a small mine—but after its ore veins were fully
+excavated, the town's laborers began traveling to
+other mines in the region for work before returning
+home to rest. It's also known for its foraging sites."
+UcArchiveList.fms:1468	51df41357070	28bbb8466f4d	"A small fort in northwest ^1/Drakengard^ that was built
+to maintain the law and order of the surrounding
+region."
+UcArchiveList.fms:1469	061cd0ce2320	62a14d49cc01	"A huge fortress in northwest ^1/Drakengard^.
 Built when the country was at war with ^2/Cornia^,
 it long stopped ^3/Cornian^ invasions, yet fell
 easily to the ^4/Zenoiran Army^. A purely military
 facility, it houses almost no civilians."
 UcArchiveList.fms:1470	97722d95e638	085db49629aa	"^2/Alain^ meets ^1/Gilbert^, who lays out a plan
 to retake ^3/Castle Soldraga^. Taking advantage
-of repeated defections from ^4/Drakenhold^, he
+of repeated defections from ^4/Drakengard^, he
 had planted ^5/false defectors^ in the ^6/Zenoiran Army's^ ranks.
 They will coordinate to reclaim
 ^7/Castle Soldraga^."
@@ -2448,7 +2514,7 @@ this, ^3/Gilbert^ recalls his talks with ^4/Alain^
 and orders his forces to retake the ^5/royal castle^."
 UcArchiveList.fms:1474	33ade372ff17	3b0a42d7fa45	"Before the battle, ^2/Virginia^ asks to speak with ^1/Alain^
 and reveals that ^3/Aramis^ is in truth ^5/Ludwig^, the lost
-prince of Drakenhold and ^4/Gilbert's^ older brother.
+prince of Drakengard and ^4/Gilbert's^ older brother.
 She then asks ^6/Alain^ to convince ^8/Aramis^ to meet
 his younger brother ^7/Gilbert^."
 UcArchiveList.fms:1475	0ea030283b06	dcfdd58f9bed	"As the forces of ^1/Alain^ and ^2/Gilbert^ close in on
@@ -2458,7 +2524,7 @@ it with a fearless smile."
 UcArchiveList.fms:1476	064c1452bee4	b5ed1e836e58	"Freed from the ^2/magick of control^ through
 the power of the ^1/ring^, ^3/Berengaria^ is recognized
 by ^6/Gilbert^ as the daughter of ^5/House Zechshelm^
-of ^4/Drakenhold^. She joined the ^8/Zenoiran Army^ to
+of ^4/Drakengard^. She joined the ^8/Zenoiran Army^ to
 find ^7/ancient Zenoiran armor^, and now vows
 never to leave her ^9/younger brother's^ side again."
 UcArchiveList.fms:1477	9e79562668b5	0cdddbe39bea	" — Hope of a Nation —
@@ -2472,7 +2538,7 @@ When ^2/Gilbert^ returns to ^1/Castle Soldraga^,
 confesses his powerlessness and insists ^6/Gilbert^
 would make the better king. Gilbert decides
 to join the ^7/Liberation^ alongside his older brother."
-UcArchiveList.fms:1479	5b6b926fe21a	f5de6ede0348	"A knight of ^1/Drakenhold^ who, under normal
+UcArchiveList.fms:1479	5b6b926fe21a	f5de6ede0348	"A knight of ^1/Drakengard^ who, under normal
 circumstances, serves as ^2/Gilbert's^ personal
 guard—but under the prince's orders, has
 taken the guise of a defected soldier and
@@ -2482,43 +2548,47 @@ After aiding ^1/Gilbert^ in the ^2/battle to reclaim
 Castle Soldraga^, Hermann refused his reward.
 When ^4/Gilbert^ joined the ^3/Liberation^, Hermann
 was entrusted with ^5/Castle Soldraga^."
-UcArchiveList.fms:1481	562f31fc167a	ba96ad3b81c5	" — Restoring Drakenhold —
+UcArchiveList.fms:1481	562f31fc167a	ba96ad3b81c5	" — Restoring Drakengard —
 After aiding ^1/Gilbert^ in the ^2/battle to reclaim
 Castle Soldraga^, Hermann refuses his reward.
 He remains as a loyal retainer to support
 ^3/Gilbert^ as he resumes his path as king."
-UcArchiveList.fms:1482	b2e6e8d6692b	3c3695e904d6	"Eldest son of ^2/Hugo^, the late king of ^1/Drakenhold^.
+UcArchiveList.fms:1482	b2e6e8d6692b	3c3695e904d6	"Eldest son of ^2/Hugo^, the late king of ^1/Drakengard^.
 He led the defense against ^3/Zenoira^, but
 ^4/Castle Soldraga^ fell after repeated defections.
 Ludwig fled the ^5/royal castle^, taking the name
 ^6/Aramis^, and
 wandered as a mercenary."
 UcArchiveList.fms:1483	b0a0e042a83e	0ddc03708e7c	"A count of a distinguished noble family in
-^1/Drakenhold^. A mighty warrior, he was trusted
+^1/Drakengard^. A mighty warrior, he was trusted
 by ^2/the king^ to teach both sons martial arts.
 When the ^4/Zenoiran Army's^ soldiers entered ^3/Castle Soldraga^,
 he died defending ^5/the king^ in the throne room."
-UcArchiveList.fms:1484	1a90a687aef6	44985fc22e3f	"As an influential noble in ^1/Drakenhold^ and close
+UcArchiveList.fms:1484	1a90a687aef6	44985fc22e3f	"As an influential noble in ^1/Drakengard^ and close
 friend to ^2/the king^, he was respected the land over for
 the high standards to which he held himself and
 others. He was a strict, yet loving father to his two
 children, ^3/Berengaria^ and ^4/Travis^."
-UcArchiveList.fms:1485	e686f7f32019	b3e9cf6c9dcd	"One of ^1/Drakenhold's^ most powerful noble
+UcArchiveList.fms:1485	e686f7f32019	b3e9cf6c9dcd	"One of ^1/Drakengard's^ most powerful noble
 houses, it ruled the mountains southeast of
 ^2/Castle Soldraga^. During the ^4/Zenoiran Army^'s
-invasion of ^3/Drakenhold^, its head, ^5/Count Zechshelm^,
+invasion of ^3/Drakengard^, its head, ^5/Count Zechshelm^,
 was killed and his two children disappeared."
 UcArchiveList.fms:1486	9c3c31bafb03	72d0f57e848f	"Powerful magical weapons and armor from
 the ^1/ancient Zenoiran Empire^ are highly valued
 when excavated. Today's ^2/Zenoiran Empire^ is
 said to possess many such relics, including armor
 that grants its wearer extraordinary abilities."
-UcArchiveList.fms:1488	c87b2f7488e1	88cee26b94fb	"A large town in northern ^1/Drakenhold^, the
+UcArchiveList.fms:1487	b8d0942f6c10	0406736f5270	"A fort in northern ^1/Drakengard^ on the road to ^2/Castle
+Soldraga^ and nestled between a vast stretch of
+towering mountains. It was once used as a training
+ground for ^3/Drakengard's^ army."
+UcArchiveList.fms:1488	c87b2f7488e1	88cee26b94fb	"A large town in northern ^1/Drakengard^, the
 gateway to ^2/Castle Soldraga^. Any attack on
 the ^3/castle^ must pass through it, making it
 the scene of fierce fighting during the ^4/Zenoiran Army's^
 invasion."
-UcArchiveList.fms:1489	b290492994f2	1b4e9590e514	"The capital of ^1/Drakenhold^, its castle was
+UcArchiveList.fms:1489	b290492994f2	1b4e9590e514	"The capital of ^1/Drakengard^, its castle was
 built in a naturally fortified position and a
 city grew around it. After ^2/Gilbert^ recaptured
 the castle, mercenaries gathered seeking supplies
@@ -2533,7 +2603,7 @@ to test the ^2/Liberation's^ strength. Begging for
 his life, he promises to cut ties with the ^3/Zenoiran Army^
 and asks to join the ^4/Liberation^. ^5/Alain^ must
 decide his fate."
-UcArchiveList.fms:1492	51c4bf9840f9	55f8ec75310b	"A mercenary from ^1/Drakenhold^ and leader
+UcArchiveList.fms:1492	51c4bf9840f9	55f8ec75310b	"A mercenary from ^1/Drakengard^ and leader
 of the ^2/Three Poison Mercenaries^. He boasts
 that instinct tells him who will win. He quickly
 took jobs for the ^3/Zenoiran Army^ during its invasion,
@@ -2550,7 +2620,7 @@ following ^2/Alain^ could bring success. His plea
 for mercy is refused, and he dies after a futile
 last attempt to resist."
 UcArchiveList.fms:1495	cc9efbbc7cb3	7efed26479ab	"A low-ranking member of the ^2/Three Poison
-Mercenaries^ from ^1/Drakenhold^. ^3/Jeremy^ once
+Mercenaries^ from ^1/Drakengard^. ^3/Jeremy^ once
 saved his life, and he regards ^4/Jeremy^ as an older
 brother. Not a skilled mercenary himself, Darver
 serves as Jeremy's attendant and aide."
@@ -2563,45 +2633,57 @@ UcArchiveList.fms:1497	4fdae000572a	d67857316c08	" — Perished in Battle —
 When the ^1/Liberation^ attacks, Darver fights as
 a member of the ^2/Three Poison Mercenaries^
 and dies in battle without anyone noticing."
+UcArchiveList.fms:1498	c67d0a90522e	db887a747113	"A mercenary from ^1/Drakengard^ and military
+strategist for the ^2/Three Poison Mercenaries^.
+He's known ^3/Jeremy^ for a great many years,
+and is well aware of the man's tendency to
+turn on his allies if the moment calls for it."
 UcArchiveList.fms:1499	ce6ec45a9f54	5e14e6721a9d	"Foreseeing the ^1/Three Poison Mercenaries'^ defeat,
 he decided to part ways with ^2/Jeremy^ and vanished
 from the battlefield."
-UcArchiveList.fms:1500	e9aae14ca072	f73b52ac5032	"A mercenary band active in ^1/Drakenhold^,
+UcArchiveList.fms:1500	e9aae14ca072	f73b52ac5032	"A mercenary band active in ^1/Drakengard^,
 made up mainly of former criminals gathered
 by its leader ^2/Jeremy^. The 'three poisons'
 are desire, anger and ignorance. They sided
 with ^3/Zenoira^ early in the invasion of
-^4/Drakenhold^ and fought for the ^5/Zenoiran Army^,
+^4/Drakengard^ and fought for the ^5/Zenoiran Army^,
 earning fame on many battlefields."
 UcArchiveList.fms:1501	ea2ddafb5963	4cfc897506ff	"For their earlier service, the ^2/Zenoiran Army^
 entrusted them with ruling the ^3/Walled City of
-Adopti^ after ^1/Drakenhold^ fell. But when the
+Adopti^ after ^1/Drakengard^ fell. But when the
 ^4/Liberation^ attacked, they were swiftly wiped out
 under ^5/Jeremy^, who readily sacrificed his men."
-UcArchiveList.fms:1502	8201337a808b	3b6b0d4311b0	"A fortified city in central ^1/Drakenhold^,
+UcArchiveList.fms:1502	8201337a808b	3b6b0d4311b0	"A fortified city in central ^1/Drakengard^,
 built during the constant wars with ^2/Cornia^.
 It has sturdy gates and is a vital hub for
 travel to the other cities of the southern
 Adopti region."
-UcArchiveList.fms:1504	f7971fb8cd72	ae628bd21e1a	"A town in eastern ^1/Drakenhold^ which, owing to its
+UcArchiveList.fms:1503	02c98300ae65	90030fac2343	"A town located in the Adopti region of southwest
+^1/Drakengard^. While the town itself is renowned for
+its stunning lakes and therapeutic hot springs, most
+of its residents make their living in the nearby mine."
+UcArchiveList.fms:1504	f7971fb8cd72	ae628bd21e1a	"A town in eastern ^1/Drakengard^ which, owing to its
 border with the ^2/desert^, serves as a vital stopover
 for those traveling to and from the ^3/desert^. An array
 of foraging sites rests mere footsteps away."
-UcArchiveList.fms:1505	99d1c157baef	b24dbb58a31e	"A large town in central ^1/Drakenhold^. It serves
+UcArchiveList.fms:1505	99d1c157baef	b24dbb58a31e	"A large town in central ^1/Drakengard^. It serves
 as a stopover for those headed to ^2/Baumratte Coliseum^
 and a home for nearby mine workers. There
 are many gathering sites around it."
-UcArchiveList.fms:1506	c3f6f19fedf0	82d986922ab0	"A coastal town in eastern ^1/Drakenhold^. It lies
+UcArchiveList.fms:1506	c3f6f19fedf0	82d986922ab0	"A coastal town in eastern ^1/Drakengard^. It lies
 along the road to the checkpoint for the ^2/capital^
 and the hot springs of the Früth region, making it
 a popular stop for travelers. The nearby river is
 a gathering site."
-UcArchiveList.fms:1507	7dfcf59d6640	c66c374d07ae	"A coastal town in southwest ^1/Drakenhold^, where
+UcArchiveList.fms:1507	7dfcf59d6640	c66c374d07ae	"A coastal town in southwest ^1/Drakengard^, where
 rain is scarce despite the nearby sea. It relies on
 an underground watercourse in the mountains,
 believed to date from ^2/ancient Zenoira^.
 Many who have fallen on hard times gather here."
-UcArchiveList.fms:1509	ea5d519fd02c	0d85e4684b67	"A small town hidden away in northern ^1/Drakenhold^.
+UcArchiveList.fms:1508	d923ee70b312	df05850e3a7e	"A small harbor town in northwest ^1/Drakengard^ with
+calm waters and docks capable of welcoming large
+ships—if rebuilt."
+UcArchiveList.fms:1509	ea5d519fd02c	0d85e4684b67	"A small town hidden away in northern ^1/Drakengard^.
 Accessible only through a hidden cave west of
 ^2/Castle Soldraga^, it remained unknown to the
 ^4/Zenoiran Army^ even after the ^3/royal castle^ fell."
@@ -2729,7 +2811,7 @@ to fight ^5/Zenoira^ and said goodbye."
 UcArchiveList.fms:1535	d7600c784845	08e5d24916a2	"A town of ^2/humans^ in southern ^1/Elheim's^
 Sarlicotti region. It was founded when ^7/elves^
 made a special exception to take in ^6/human^
-refugees fleeing ^4/Cornia^ and ^5/Drakenhold^
+refugees fleeing ^4/Cornia^ and ^5/Drakengard^
 after ^3/Zenoira's^ invasion."
 UcArchiveList.fms:1536	628665879286	84960435fdd9	"A small fort in southern ^1/Elheim's^ Sarlicotti
 region. A mine lies behind it,
@@ -2787,7 +2869,7 @@ He fought beside the ^4/queen^ in ^3/Valmore's rebellion^
 but later swore loyalty to ^5/Galerius^. After aiding the
 invasion of the ^6/Kingdom of Cornia^, he won Galerius's
 trust and a command in the expeditionary force."
-UcArchiveList.fms:1547	d77d1892c06c	ddb127e32ccc	"A general in the invasion of ^1/Drakenhold^, he
+UcArchiveList.fms:1547	d77d1892c06c	ddb127e32ccc	"A general in the invasion of ^1/Drakengard^, he
 won major victories and was promoted to command
 the southern army. He then conquered ^2/Elheim^
 and stationed his forces at ^3/Castle Laurhal^ under
@@ -2813,7 +2895,7 @@ Formerly ^4/Cornia^’s ^5/court magician^, she
 fought beside its ^7/queen^ during
 ^6/Valmore’s rebellion^, then surrendered to
 ^8/Galerius^."
-UcArchiveList.fms:1552	be3dd3b809bb	1c41a8e743df	"She helped conquer ^1/Drakenhold^, then broke
+UcArchiveList.fms:1552	be3dd3b809bb	1c41a8e743df	"She helped conquer ^1/Drakengard^, then broke
 the barriers around ^2/Elheim^, including the
 ^3/Winding Wood^, opening routes for the ^4/Zenoiran Army^.
 As a sorceress assigned to the southern army,
@@ -2955,7 +3037,7 @@ with the former Cornian king, ^3/Gerard^.
 Clinging to this small, sorrowful hope,
 ^5/Alcina^ dies in battle."
 UcArchiveList.fms:1581	8504a84f477c	da87b5073932	"The ^1/Cornian^ king of two generations past,
-his reign saw constant conflict with ^2/Drakenhold^.
+his reign saw constant conflict with ^2/Drakengard^.
 While leading troops in battle, he died
 shielding his ^3/court magician^, ^4/Alcina^,
 from a poisoned arrow."
@@ -3292,7 +3374,7 @@ He leads the effort to retake the ^4/capital^ of
 wearing down the ^5/Frostblooms^' strength with
 methodical tactics."
 UcArchiveList.fms:1655	da7879266209	c17511b6124b	"Born to a once-prominent but fallen noble house
-of ^1/Drakenhold^, he quickly sided with the ^2/Zenoiran Army^
+of ^1/Drakengard^, he quickly sided with the ^2/Zenoiran Army^
 to restore his family's fortunes. Proud of his
 bloodline and convinced of his superiority,
 he nevertheless has genuine martial and
@@ -4133,7 +4215,7 @@ give the ^4/Ring of the Maiden^."
 UcArchiveList.fms:1848	2d66835ad326	06b5ed8d2beb	"^3/Alain^ visits the ^2/sanctuary^ in ^1/Cornia^, but the ^4/great
 sage^ tells ^6/Alain^ he must return once he has unbound
 the ^5/Ring of the Unicorn^."
-UcArchiveList.fms:1849	9a69e8ab845a	7ad7b22b4d77	"^3/Alain^ visits the ^2/sanctuary^ in ^1/Drakenhold^, but the
+UcArchiveList.fms:1849	9a69e8ab845a	7ad7b22b4d77	"^3/Alain^ visits the ^2/sanctuary^ in ^1/Drakengard^, but the
 ^4/great sage^ tells ^6/Alain^ he must return once he has
 unbound the ^5/Ring of the Unicorn^."
 UcArchiveList.fms:1850	15ca60d732e9	3179d068e7dd	"^3/Alain^ visits the ^2/sanctuary^ in ^1/Elheim^, but the ^4/great
@@ -4184,7 +4266,7 @@ the ^7/sanctuary^. The ^8/great sage^ explains what
 led to the downfall of ^9/Galerius^ and the
 ancient Zenoirans."
 UcArchiveList.fms:1860	a1a5b80d6968	cd6a778da9b4	"^3/Alain^ and his companions visit the ^2/sanctuary^
-in ^1/Drakenhold^. ^4/Berengaria^ asks the ^5/great sage^
+in ^1/Drakengard^. ^4/Berengaria^ asks the ^5/great sage^
 about ^6/Baltro^. The ^7/great sage^ explains
 ^8/Baltro's^ days as a sorcerer in ancient Zenoira
 and the truth of Zenoira's ^9/magick of control^."
@@ -4240,12 +4322,12 @@ UcArchiveList.fms:1869	49023b699e3d	7ca24bfdef77	" — The Northern Army and Lio
 ^4/Reimann^ plans to destroy the ^8/Liberation^ with
 ^7/bestrals^ controlled by his ^5/magick^, including
 a powerful ^6/lion bestral^."
-UcArchiveList.fms:1870	6c32aacc493d	a9a5773d6766	" — Reinforcements from Drakenhold —
-Meanwhile, ^1/Drakenhold^ reorganizes its forces
+UcArchiveList.fms:1870	6c32aacc493d	a9a5773d6766	" — Reinforcements from Drakengard —
+Meanwhile, ^1/Drakengard^ reorganizes its forces
 and sends a special unit to support ^3/Gilbert^,
 who is already fighting with the ^2/Liberation^."
 UcArchiveList.fms:1871	00e943eca35c	df367459188a	" — Gilbert Marches —
-Meanwhile, ^1/Drakenhold^ reorganizes its forces.
+Meanwhile, ^1/Drakengard^ reorganizes its forces.
 The new king, ^2/Gilbert^, personally leads a
 special unit to support the ^3/Liberation^."
 UcArchiveList.fms:1872	072ca7acd781	cfc83351891d	" — Tragedy in the Capital —
@@ -4564,12 +4646,35 @@ UcCharaColorList.fms:2154	1afcb9ff9d55	1c8b92b0da38	Iron Armor
 UcCharaList.fms:49	360e058a1d78	f6ca735edff6	Rock Rat Member
 UcCharaList.fms:50	360e058a1d78	f6ca735edff6	Rock Rat Member
 UcCharaList.fms:51	360e058a1d78	f6ca735edff6	Rock Rat Member
+UcCharaList.fms:101	e8bd52d837f1	1077375c255d	Drakengard Soldier
 UcCharaList.fms:110	127f1adb4516	6b30a76939c2	Sand Scorpion Bandit
 UcCharaList.fms:111	127f1adb4516	6b30a76939c2	Sand Scorpion Bandit
 UcCharaList.fms:112	127f1adb4516	6b30a76939c2	Sand Scorpion Bandit
 UcCharaList.fms:150	a8a3e08854e6	1cd3729f14e2	Whiteflower Soldier
 UcCharaList.fms:151	a8a3e08854e6	1cd3729f14e2	Whiteflower Soldier
 UcCharaList.fms:174	e76da5d9b973	6b9656308741	Morris
+UcCharaList.fms:233	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:234	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:235	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:236	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:237	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:238	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:239	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:240	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:241	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:242	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:243	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:244	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:245	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:246	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:247	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:248	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:249	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:250	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:251	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:252	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:253	e8bd52d837f1	1077375c255d	Drakengard Soldier
+UcCharaList.fms:254	e8bd52d837f1	1077375c255d	Drakengard Soldier
 UcCharaList.fms:335	39b6c7620899	17e7aa702eed	Winged
 UcCharaList.fms:336	39b6c7620899	17e7aa702eed	Winged
 UcCharaList.fms:337	39b6c7620899	17e7aa702eed	Winged
@@ -4839,7 +4944,7 @@ Effective vs. infantry like #c(10)Housecarls#/c and
 UcClassList.fms:136	afec58bcbf62	108692acf576	"A sword-wielding warrior with the resolve and ability to inherit the throne.
 Boasts excellent support skills,
 and can greatly strengthen allies."
-UcClassList.fms:137	6a0c84662170	ee2463b7b67b	"The champion of the Drakenhold coliseum.
+UcClassList.fms:137	6a0c84662170	ee2463b7b67b	"The champion of the Drakengard coliseum.
 Excels at offense and defense in equal measure.
 Boasts powerful physical attack skills."
 UcClassList.fms:138	100ac3f81d7d	2fe6d1649cee	"Amalia, possessed by an unknown entity.
@@ -4890,15 +4995,21 @@ UcClassList.fms:200	0e01dc0b9cae	1e42ce4b8390	Halves grounded melee attack accur
 UcClassList.fms:209	c1be7e23f5eb	d6c962d133b7	2x physical damage v. #(35)Infantry
 UcClassList.fms:216	c1be7e23f5eb	d6c962d133b7	2x physical damage v. #(35)Infantry
 UcClassPedia.fms:45	918f6a2242f1	b8d686cdba5e	Witches' Village
+UcClassPedia.fms:50	64bb66325880	3bdd0cb0f6f5	Drakengard Town
+UcClassPedia.fms:51	f3fc3e41eb4c	f55663a220bb	Drakengard Citadel
+UcClassPedia.fms:52	92dde0daa22c	54c71f0a6a6d	Drakengard Harbor
 UcClassPedia.fms:58	d09c84841d82	846f4a93ad72	Dark Elven Underground City
 UcClassPedia.fms:59	42c4521b512e	dbab009264c8	Tower of Thorns
 UcClassPedia.fms:73	09eecfe90ab7	95f2fcbc4204	Bisfaine Cathedral
 UcClassPedia.fms:74	b2240d2deb87	37a0df7ec3f0	Bisfaine Cathedral, Interior
 UcClassPedia.fms:82	cb98157e1bbf	dfd36ed8035e	Grassland Garrison
+UcClassPedia.fms:97	a8ef03f93775	8dc29a9ed5cd	Drakengard Residence
+UcClassPedia.fms:117	5326f4d96d77	9dd62e7f0283	Drakengard Fort Gate
 UcClassPedia.fms:123	c2753d7d911e	66fe0fa230da	Divine Tree
 UcClassPedia.fms:133	380329975b99	03416f41c116	Priestess's Chamber
 UcClassPedia.fms:149	6e4bef984680	1e8988152df7	Knockback
 UcClassPedia.fms:150	9799a80d9a60	ae477c669b7e	Down
+UcCoatOfArmsList.fms:2	2f40d7467072	1a41d5000599	Drakengard
 UcCoatOfArmsList.fms:14	69549e44ba89	9a0139bdccb6	Heavenly Wolf Mercenaries
 UcCoatOfArmsList.fms:15	8e23fccd9958	6f3914d907f2	Black Talon Bandits
 UcCoatOfArmsList.fms:22	d06867629ef6	b0795cc8bf5d	Crimson Dragon Knights
@@ -4926,6 +5037,7 @@ UcCookList.fms:23	718414c07c5e	d5ea785224f2	Mashed Potato Salad
 UcCookList.fms:24	e81000dc5c2a	1d6c6bb648b6	Roast Ham Salad
 UcDLCSysMsg.fms:20	df2144b4987d	bcb900e440e1	Cooking
 UcDLCSysMsg.fms:22	4001a2457f49	3edaf62b3bb0	Early Designs & Roughs
+UcDLCSysMsg.fms:36	6bfea083b024	6bfea083b024	Drakengard Medley (Stage Theme - Battle Theme)
 UcDLCSysMsg.fms:85	1598b3ff6f05	2a38da621431	#(14) Scroll #(22) Invert Controls #(19) Zoom In/Out #(3) Category List #(4)#(5) Switch Categories #(2) Change BGM #(23) Hide UI
 UcDLCSysMsg.fms:87	fce130ab661c	e05c1bc4daca	"- CREDIT -
 
@@ -4953,6 +5065,13 @@ UcFacilityList.fms:131	0122326f010d	20619258a778	Castle Gran Corrine
 UcFacilityList.fms:192	3912b6fbfb60	6360666f47b9	Gravemond Village
 UcFacilityList.fms:201	0ad54a6be7b1	3404d0de38ac	Baumratte Coliseum
 UcFacilityList.fms:244	a4996da9ae7a	c3bb9fb2fa26	Fort Pritzlasse
+UcFacilityList.fms:245	009f09fe3c51	23a616e73681	Drakengard Quarry
+UcFacilityList.fms:246	13dd3a156925	945cbf93c25f	Drakengard Sanctuary
+UcFacilityList.fms:254	b63276cb8eb5	b680f84f2ea2	Drakengard Cemetery
+UcFacilityList.fms:255	b63276cb8eb5	b680f84f2ea2	Drakengard Cemetery
+UcFacilityList.fms:256	b63276cb8eb5	b680f84f2ea2	Drakengard Cemetery
+UcFacilityList.fms:257	b63276cb8eb5	b680f84f2ea2	Drakengard Cemetery
+UcFacilityList.fms:258	b63276cb8eb5	b680f84f2ea2	Drakengard Cemetery
 UcFacilityList.fms:259	d2b3e8d6ded1	571e8a581497	Wind Gate
 UcFacilityList.fms:260	d2b3e8d6ded1	571e8a581497	Wind Gate
 UcFacilityList.fms:322	7985ca67e9e0	b2808d4b93cc	Palanspelt Underground Palace
@@ -5400,6 +5519,13 @@ UcItemList.fms:159	478fccb34cf4	a675e513c521	Clean Iron Scraps
 UcItemList.fms:160	1f32b26356e6	8221c7381734	Sturdy Iron Scraps
 UcItemList.fms:192	51a9a7a14df5	622d74a6b25c	Board Game
 UcItemList.fms:196	7f1838dec880	ff45e6350e92	Pencil
+UcItemList.fms:209	c830c806325f	d965ac766295	Drakengard Treasure Map 1
+UcItemList.fms:210	fad7d6af66b6	1c4f11c3b43f	Drakengard Treasure Map 2
+UcItemList.fms:211	09560175da57	a0d84c4000e0	Drakengard Treasure Map 3
+UcItemList.fms:212	6d29684850ed	74bbfc13ddd2	Drakengard Treasure Map 4
+UcItemList.fms:213	26361ebfcd96	ba1897066625	Drakengard Treasure Map 5
+UcItemList.fms:214	49c8bfbd1a1e	b102340c2232	Drakengard Treasure Map 6
+UcItemList.fms:235	2f40d7467072	1a41d5000599	Drakengard
 UcItemList.fms:247	69549e44ba89	9a0139bdccb6	Heavenly Wolf Mercenaries
 UcItemList.fms:248	8e23fccd9958	6f3914d907f2	Black Talon Bandits
 UcItemList.fms:255	d06867629ef6	b0795cc8bf5d	Crimson Dragon Knights
@@ -5430,17 +5556,27 @@ UcItemList.fms:382	19573b6c4057	02236ccec08d	"A stone symbolizing the power and 
 Said to control bestrals and even reincarnate humans as bestrals."
 UcItemList.fms:383	b05d028bf477	9942bc1f385a	"The key to Mutsin Orphanage, entrusted to you by Lou.
 It may let you infiltrate the Kingdom of Gordon."
+UcItemList.fms:402	9e5beff1ae71	f1e07eafc1dc	"Robust lumber from Drakengard that holds up well
+in drier climates."
 UcItemList.fms:404	af6af02c0a5d	b9058cc98db8	Lumber from Bastorias with a straight grain that makes it easy to work with.
+UcItemList.fms:407	fa21e8052943	b31e13b81f51	Stone quarried in Drakengard.
+UcItemList.fms:412	94389506f061	99e213e1a641	Wild grass harvested in Drakengard.
+UcItemList.fms:417	ebe9c450b3fe	53510164107e	"A saltwater fish from Drakengard.
+It's covered with sturdy scales."
 UcItemList.fms:419	4d5df18d0b02	42b28de2b532	"A saltwater fish from Bastorias.
 This red-fleshed whitefish is a favorite among bear bestrals."
+UcItemList.fms:422	cb2b53a7fa64	0e50fd4ce4a1	"A freshwater fish from Drakengard.
+Though tasty, its intense fishy odor can be difficult to handle."
 UcItemList.fms:425	5bb3f106728f	17d98d3af0ff	"A huge freshwater fish from Albion.
 It has a mild taste and little fishy odor."
-UcItemList.fms:432	3c021707e69e	90738751412a	Bones found in Drakenhold.
+UcItemList.fms:432	3c021707e69e	90738751412a	Bones found in Drakengard.
 UcItemList.fms:434	4ca7ae9a4157	731b9b0ca073	An ice crystal found in Bastorias.
 UcItemList.fms:435	40f3dfe1701b	b08a6c1d5e24	Goat's milk from Albion.
 UcItemList.fms:439	ade92659e6e7	e3cf24d0e21d	Iron scraps salvaged from broken carts and the like.
 UcItemList.fms:440	ade92659e6e7	e3cf24d0e21d	Iron scraps salvaged from broken carts and the like.
 UcItemList.fms:441	ade92659e6e7	e3cf24d0e21d	Iron scraps salvaged from broken carts and the like.
+UcItemList.fms:447	bc3770d45aef	dcfe3f7dcf6b	"Salt from Drakengard known for its complex flavor.
+An excellent gift for one who enjoys cooking."
 UcItemList.fms:453	9df682a17761	7b0ca781ec8e	"Albion ale flavored with herbs.
 An excellent gift for one who enjoys the occasional drink."
 UcItemList.fms:455	f0213059fad7	c80cdec7c108	"A spirit distilled from pear wine produced in Elheim.
@@ -5451,7 +5587,7 @@ UcItemList.fms:463	107dc4ae0997	8ce5f00a3a4e	"A soft white confection made by se
 An excellent gift for one who enjoys confections."
 UcItemList.fms:475	c0adad08b5e6	3f14262ca1ed	"A fitted, slightly long outer garment of a simple, common style.
 An excellent gift for one keen on their attire."
-UcItemList.fms:477	b618e53f07d4	e470990ed89a	"A writing pencil made from graphite mined in Drakenhold.
+UcItemList.fms:477	b618e53f07d4	e470990ed89a	"A writing pencil made from graphite mined in Drakengard.
 An excellent gift for one fascinated by the arts."
 UcItemList.fms:478	0e14ec1d7ea7	015cc1efe6d5	"A colorful assortment of paints made with drying oils.
 An excellent gift for one fascinated by the arts."
@@ -5459,7 +5595,7 @@ UcItemList.fms:480	2331dae1fb40	bfb7ecaaadae	"A vivid deep-blue stone flecked wi
 An excellent gift for one who appreciates finery."
 UcItemList.fms:515	43b6b8a4ae6e	e90fbf95d15c	"The emblem of the Kingdom of Cornia.
 Can be used as a preset when creating emblems."
-UcItemList.fms:516	3568ad53a033	28f91d0e6e09	"The emblem of the Kingdom of Drakenhold.
+UcItemList.fms:516	3568ad53a033	28f91d0e6e09	"The emblem of the Kingdom of Drakengard.
 Can be used as a preset when creating emblems."
 UcItemList.fms:517	5b593594551a	725e3571ed86	"The emblem of the elven land of Elheim.
 Can be used as a preset when creating emblems."
@@ -5567,6 +5703,7 @@ UcItemList.fms:568	d11e72886d62	f4877b929edd	"The emblem of a foreign kingdom kn
 Can be used as a preset when creating emblems."
 UcItemList.fms:569	d9e0f443fcd5	cfd22809e876	"The emblem of a foreign institution known as Sakura High School.
 Can be used as a preset when creating emblems."
+UcItemList.fms:574	adba87cbccf2	312b8925de0d	A journal with information on a treasure hidden in Drakengard.
 UcItemList.fms:620	1a4215be22e9	a26c4e682341	Veteran's Old Sword
 UcItemList.fms:630	f589133da14e	e812443bf16e	Barbarian's Sword
 UcItemList.fms:631	a572df7dbc3a	d8f6fdafa453	Dancer's Curved Sword
@@ -5676,15 +5813,15 @@ UcQuestList.fms:4	ba83b6a2d8bc	216e2027582e	Retaking the Knights' Domain
 UcQuestList.fms:5	ca94859bb0f1	af5eee9e7e96	The Priestess's Whereabouts
 UcQuestList.fms:8	48c70cf073bf	7e1da7142906	Bandit Hunt
 UcQuestList.fms:9	3d9ded1633b2	84de91123538	The Lone Rebel
-UcQuestList.fms:10	6afe8ffe8780	00347bdfed5d	The Swordsman of a Distinguished House
+UcQuestList.fms:10	6afe8ffe8780	00347bdfed5d	Swordsman of a Noble House
 UcQuestList.fms:11	45af99522217	1225a17f905d	What We Must Protect
 UcQuestList.fms:12	91c2954cddc1	0d96b54f36c5	The Wandering Helm
 UcQuestList.fms:13	a77f5e32f80b	c28628ba6069	Sorcerer of the Ruins
-UcQuestList.fms:20	6da4236c0cc0	12f45728ea0d	Black Knight of the Scorching Sands
+UcQuestList.fms:20	6da4236c0cc0	12f45728ea0d	Black Knight of Blazing Sands
 UcQuestList.fms:21	952c15517b8e	8999e38baba1	The Guardian of Order
 UcQuestList.fms:22	fd92001ffe05	249fe4be7485	The First Counterattack
-UcQuestList.fms:24	febc7d7340ad	fca760399083	A Bridge Between Water and Greenery
-UcQuestList.fms:25	e0e2593fdffe	96aae695468c	Divine Tree of the Spirit Forest
+UcQuestList.fms:24	febc7d7340ad	fca760399083	Bridge of Water and Greenery
+UcQuestList.fms:25	e0e2593fdffe	96aae695468c	Spirit Forest's Divine Tree
 UcQuestList.fms:26	1d69807bcec5	68c40fd71b9a	The Blasphemous Necromancer
 UcQuestList.fms:28	52aa76332ecf	3333e16abb94	Wandering Bandits
 UcQuestList.fms:30	29c69b03df50	21e251f0a280	A Half-Elf's Path
@@ -5700,6 +5837,7 @@ UcQuestList.fms:41	cf91a73b3731	fd7cd51fb1b1	The Robed Knight
 UcQuestList.fms:42	3b1982dd7924	98f3dc1cf481	Road to the Grand Cathedral
 UcQuestList.fms:44	45c70cbce638	88c097ad2df9	The Capital of Calamity Reborn
 UcQuestList.fms:72	6d5417bf8941	d4954aa815bb	The Battle for Domgakom
+UcQuestList.fms:92	815b9592860d	755adf49c96d	The Cemeteries of Drakengard
 UcQuestList.fms:96	fd5f9239da17	d28ac898f96f	Ancient Magic Circle
 UcQuestList.fms:97	fdf62c65c681	6a950c4f8724	Ancient Magic Circle: Beginner 1
 UcQuestList.fms:98	4ec0f5591f34	5ceac5c89512	Ancient Magic Circle: Beginner 2
@@ -5721,8 +5859,9 @@ UcQuestList.fms:114	31841e834862	69ee6a2afde5	Siltakulya Stone Bridge
 UcQuestList.fms:116	d808888a6360	f2f720d25838	Stone Tablets of Albion
 UcQuestList.fms:117	5294a95ced54	3d926fcd37c9	Stone Tablets of Bastorias
 UcQuestList.fms:118	c97a59751bf8	65bd4a5ba6e4	Stone Tablets of Cornia
-UcQuestList.fms:119	b6eb465f61e1	14e6e098c0dc	Stone Tablets of Drakenhold
+UcQuestList.fms:119	b6eb465f61e1	14e6e098c0dc	Stone Tablets of Drakengard
 UcQuestList.fms:120	573cf11fb216	c931654eb3cf	Stone Tablets of Elheim
+UcQuestList.fms:123	55f8b7c216e0	053c08d6acd9	Drakengard's Escaped Chickens
 UcQuestList.fms:124	5e2309340083	6724f3ecf4e8	The Black Market Dealer
 UcQuestList.fms:125	3bc26e587b1c	3476c9f8fc1e	Armaments of the Wind God
 UcQuestList.fms:129	14cfe3529d46	924744f49fae	Changing Equipment
@@ -5739,6 +5878,12 @@ UcQuestList.fms:142	c7bf58f50087	79f638cf7404	Completing the World Map 3
 UcQuestList.fms:143	468faaffe0de	ebac8bbcba87	Completing the World Map 4
 UcQuestList.fms:144	fb5b61069dc3	ffdfa5d0cf53	Completing the World Map 5
 UcQuestList.fms:150	69a49948f0d6	9594ea155fc6	Six Sages of the Sanctuaries
+UcQuestList.fms:159	c830c806325f	d965ac766295	Drakengard Treasure Map 1
+UcQuestList.fms:160	fad7d6af66b6	1c4f11c3b43f	Drakengard Treasure Map 2
+UcQuestList.fms:161	09560175da57	a0d84c4000e0	Drakengard Treasure Map 3
+UcQuestList.fms:162	6d29684850ed	74bbfc13ddd2	Drakengard Treasure Map 4
+UcQuestList.fms:163	26361ebfcd96	ba1897066625	Drakengard Treasure Map 5
+UcQuestList.fms:164	49c8bfbd1a1e	b102340c2232	Drakengard Treasure Map 6
 UcQuestList.fms:188	e34eb04b24ff	1003a0cc18b6	"A Zenoiran legion arrives on the shores of Palevia,
 where Alain has spent the last ten years, and begins
 to ransack the island. Alain, Josef, and the others
@@ -5821,31 +5966,31 @@ Auch and his Zenoiran troops occupy the ruins in
 Cornia's Veille region. The Liberation sets out to
 defeat him and free the area from Zenoiran
 control."
-UcQuestList.fms:202	63011229fcb9	b0f887ea8f98	"Having secured a route into Drakenhold, the
+UcQuestList.fms:202	63011229fcb9	b0f887ea8f98	"Having secured a route into Drakengard, the
 Liberation hears that Prince Gilbert is gathering
 soldiers and hopes to request their help. They
-cross the liberated checkpoint into Drakenhold.
+cross the liberated checkpoint into Drakengard.
 
 
 A Zenoiran general is to be executed in a mining
-town on the border between Cornia and Drakenhold.
+town on the border between Cornia and Drakengard.
 Despite tight security, the Liberation aims to free
 the town and eliminate this threat behind them."
-UcQuestList.fms:203	833c4219cb7d	7267c2a82320	"Drakenhold's desert, once used as a place of exile,
+UcQuestList.fms:203	833c4219cb7d	7267c2a82320	"Drakengard's desert, once used as a place of exile,
 is dangerous land—and Aubin's childhood home.
 Worried about the people he knows there, Aubin asks
 to stop by and offers to guide the Liberation."
-UcQuestList.fms:204	5242783d42b6	eba3b436687d	"Prince Gilbert of Drakenhold also lost his kingdom
+UcQuestList.fms:204	5242783d42b6	eba3b436687d	"Prince Gilbert of Drakengard also lost his kingdom
 to Galerius. Now gathering troops in Baumratte,
 he is said to be awaiting Alain's arrival.
 
 
-Gilbert, Drakenhold's second prince, raised troops
+Gilbert, Drakengard's second prince, raised troops
 to restore his kingdom and recaptured Baumratte.
 But Zenoira has returned with a great army. Alain
 joins Gilbert in defending the
 city."
-UcQuestList.fms:205	ff2ab733be17	de647a721ee6	"#FN(D4北東の港町), in Drakenhold's Früth region, is a
+UcQuestList.fms:205	ff2ab733be17	de647a721ee6	"#FN(D4北東の港町), in Drakengard's Früth region, is a
 strategic harbor held by substantial enemy forces.
 Through Leah's arrangements, the Liberation joins
 forces with the Früth Militia to take the port."
@@ -5858,13 +6003,13 @@ Liberation again and asks to meet them at
 Gilbert's troops have gathered at #FN(D5東の砦)
 for the assault on #FN(D5城). The Liberation joins
 him there to fight the Zenoiran army occupying
-Drakenhold."
+Drakengard."
 UcQuestList.fms:207	dd96597da7ed	ac3680a6bece	"The enemy general Giethe holds #FN(D6要塞).
 Once a Cornian noble, he has been an enemy of
 Virginia and the Knights of the Rose for ten years.
 The Liberation marches to capture his fortress."
 UcQuestList.fms:208	b16284e68811	d26bb1e153e6	"Learning that a Zenoiran army led by
-Gloucester, the Black Knight of Drakenhold, is
+Gloucester, the Black Knight of Drakengard, is
 preparing to raid the desert, Alain turns to Liza for
 more information on their newfound foe.
 
@@ -5873,7 +6018,7 @@ Suspecting Gloucester is under
 the magick of control, the Liberation
 marches into the desert to bring him
 back to his senses."
-UcQuestList.fms:209	8164cefe4f97	3eae10fc3c95	"Zenoira clings tight to Drakenhold's plague-ridden
+UcQuestList.fms:209	8164cefe4f97	3eae10fc3c95	"Zenoira clings tight to Drakengard's plague-ridden
 Ömpalast region, due largely to its bountiful veins
 of ore. Learning of their foul influence, the
 Liberation sets forth to see the area freed."
@@ -6047,7 +6192,7 @@ to defeat him and free the city."
 UcQuestList.fms:241	89a0c269942a	d0e990b677a5	"The Liberation sets out to defeat #CN(敵：TKC09_ボス),
 a Zenoiran officer leading ruins investigations,
 and free #FN(TK_C09砦) from his control."
-UcQuestList.fms:244	9f96c19bf120	8b24dcc4a68f	"Years after Drakenhold fell to Zenoira,
+UcQuestList.fms:244	9f96c19bf120	8b24dcc4a68f	"Years after Drakengard fell to Zenoira,
 Jeremy's Three Poison Mercenaries, hired by
 Zenoira's army, control #FN(TK_D01城塞都市).
 Defeat him to free the Walled City of Adopti."
@@ -6068,7 +6213,7 @@ UcQuestList.fms:268	bb776f75078f	637a896376ed	"#FN(TK_A04城塞都市) is defend
 Knight #CN(敵：柔和フェザーシールド), a Zenoiran general.
 The Liberation sets out to defeat him and
 free the city from imperial control."
-UcQuestList.fms:272	7bf98fcac077	3a21a8f0c1d8	"#FN(GK_C04関所) stands on Drakenhold's border.
+UcQuestList.fms:272	7bf98fcac077	3a21a8f0c1d8	"#FN(GK_C04関所) stands on Drakengard's border.
 For years, this checkpoint has held off invasions
 from Cornia, but it is now controlled by Zenoira.
 Capture the checkpoint and its massive gate."
@@ -6077,7 +6222,7 @@ border with Bastorias. Capture this massive gate,
 now controlled by Zenoira, and secure a route into
 Bastorias."
 UcQuestList.fms:274	f3b8a2c7a4ec	35d1af02841b	"Kleinfelt Checkpoint leads to #FN(D5城), the capital
-of Drakenhold. Capture this massive gate, now
+of Drakengard. Capture this massive gate, now
 controlled by Zenoira, and secure a route to the
 capital."
 UcQuestList.fms:275	0f1654541c54	3560802c5791	"Zenoiran imperial guards defend the bridge to
@@ -6103,7 +6248,7 @@ departed. Join her at gravesites across Cornia."
 UcQuestList.fms:280	85645cc69c07	44a04ab63a54	"Sharon, a priestess of the Palevian Orthodoxy,
 was once asked by Head Priestess Laelia to visit graves
 around the world and pray for the souls of the
-departed. Join her at gravesites across Drakenhold."
+departed. Join her at gravesites across Drakengard."
 UcQuestList.fms:281	2fe672f58726	c54311c34bd1	"Sharon, a priestess of the Palevian Orthodoxy,
 was once asked by Head Priestess Laelia to visit graves
 around the world and pray for the souls of the
@@ -6171,6 +6316,10 @@ The stone bridge northeast of #FN(D3闘技場) was
 destroyed in Zenoira's invasion and left abandoned.
 Gather the necessary materials to repair it and
 open a path beyond."
+UcQuestList.fms:299	8d26658330ad	cc09bb9cb0e0	"The wooden bridge near #FN(D8中央の町) in
+Drakengard has languished in disrepair since its
+collapse. Gather the materials to restore it and
+secure a route to the opposite shore."
 UcQuestList.fms:300	7c6665d721ee	42e1ed0aac51	"The stone bridge southeast of #FN(B1城) in Bastorias
 has been left collapsed for many years. Repairing it
 will require finding someone with the necessary skills.
@@ -6229,7 +6378,7 @@ unicorn."" Visit the tablets in that order."
 UcQuestList.fms:307	503dac0feb8c	cc0ec3101d39	"Alain finds a journal, but it's written in an
 ancient language he can't fully decipher.
 It seems to contain clues to treasure
-hidden somewhere in Drakenhold.
+hidden somewhere in Drakengard.
 
 The journal describes treasure hidden by
 carved stone tablets across the region.
@@ -6247,6 +6396,9 @@ Visit the tablets in that order."
 UcQuestList.fms:309	264fdc2c11fc	98c631007e88	"A man on the Isle of Palevia at #FN(C0町)
 needs help rounding up escaped chickens.
 Help him find them!"
+UcQuestList.fms:311	bd81073208c8	489fcce28fbf	"A man from #FN(D2前半オアシスの町) in the Drakengard
+desert needs a hand rounding up his escaped
+chickens. Help him track them down!"
 UcQuestList.fms:312	8b087da81dd4	fb4d4452a620	"An elderly arms merchant travels the land,
 boasting excellent weapons and armor. But he
 trades only with the Zenoiran army. Liberate
@@ -6298,18 +6450,22 @@ UcQuestList.fms:326	d09e22be1b70	e3362b12f7e7	"Fevrith holds treasures from anci
 as well as hoards hidden by bandits long ago.
 Maps showing their locations may be dug up.
 Try finding a treasure map for yourself."
-UcQuestList.fms:327	d5506eadec0d	8adf2b690209	"The Coliseum in the Kingdom of Drakenhold has reopened,
+UcQuestList.fms:327	d5506eadec0d	8adf2b690209	"The Coliseum in the Kingdom of Drakengard has reopened,
 and now draws many formidable fighters.
 A mercenary is hesitant to enter, so
 fight one match in the Coliseum in her stead."
 UcQuestList.fms:333	83a21278aef7	4c891392b90a	"Princess Virginia, Alain's cousin, is said to
-have fled to Drakenhold. To verify the report,
+have fled to Drakengard. To verify the report,
 Alain heads for Mier Checkpoint on the border
-between Cornia and Drakenhold."
+between Cornia and Drakengard."
 UcQuestList.fms:334	9ef638bb93c1	ea72049050c3	"At Cornia's sanctuary, Alain learns that the
 Ring of the Unicorn has yet to awaken its true
 power. Head to the Winding Wood to meet
 Elheim's priestess, who knows how to unlock it."
+UcQuestList.fms:335	1e4111f7271b	34b368257e85	"In order to reach Bastorias, the frozen land of a
+race known as the bestrals, the Liberation must
+either travel by ship from northern Drakengard or
+reclaim the checkpoint in the north of Cornia."
 UcQuestList.fms:336	de8302896f5d	1862bad1d3ac	"What Scarlett heard concerning Galerius
 at the sanctuary has been troubling her.
 She heads for Albion to learn whether the
@@ -6331,6 +6487,7 @@ UcQuestList.fms:340	2169f228706a	c546626d3fbc	"A cat bestral unexpectedly shares
 about treasure hidden somewhere in Elheim.
 It's said to lie where magical energy gathers.
 Find the place and claim the treasure."
+UcQuestList.fms:468	3579a9819121	7cc1167e1080	Throughout Drakengard
 UcQuestList.fms:476	a5cd1ddd28d5	c11da7c820af	Southwest of #FN(TK_D04町)
 UcQuestList.fms:484	0d93db1d1ff5	6d64e2a6e90f	Stone Bridge Southwest of Gran Corrine
 UcQuestList.fms:485	dcb181f90f5a	6f9fad4f11ae	Stone Bridge Southeast of Gran Corrine
@@ -6339,7 +6496,16 @@ UcQuestList.fms:487	082eefbdc458	85fc6e342ca8	Wooden Bridge Near #FN(D8中央の
 UcQuestList.fms:488	93f8f466b287	a19b3477dc6d	Stone Bridge Southeast of #FN(B1城)
 UcQuestList.fms:489	63a705f636e7	3b0c5480522d	Stone Bridge Near the Bastorias Quarry
 UcQuestList.fms:490	a23a9ebeacf2	1c9b76d86a75	Stone Bridge Near #FN(TK_E01町)
+UcQuestList.fms:495	3579a9819121	7cc1167e1080	Throughout Drakengard
+UcQuestList.fms:499	c0d9e4d224a3	860ae68c2256	The Drakengard Desert
 UcQuestList.fms:515	bb5ac13a142d	3404d0de38ac	Coliseum
+UcQuestList.fms:521	80f577d51872	1a41d5000599	Drakengard
+UcQuestList.fms:535	c830c806325f	d965ac766295	Drakengard Treasure Map 1
+UcQuestList.fms:536	fad7d6af66b6	1c4f11c3b43f	Drakengard Treasure Map 2
+UcQuestList.fms:537	09560175da57	a0d84c4000e0	Drakengard Treasure Map 3
+UcQuestList.fms:538	6d29684850ed	74bbfc13ddd2	Drakengard Treasure Map 4
+UcQuestList.fms:539	26361ebfcd96	ba1897066625	Drakengard Treasure Map 5
+UcQuestList.fms:540	49c8bfbd1a1e	b102340c2232	Drakengard Treasure Map 6
 UcRandomName.fms:2	b0443ab1ddeb	9d682b7eaa97	Adrei
 UcRandomName.fms:16	8aeedf04487f	712f497d5490	Gilbert
 UcRandomName.fms:25	410775410fa5	9f2ce973092b	Jehu
@@ -6485,7 +6651,7 @@ you may be able to claim the sacred sword now."
 UcScriptMsgConv.fms:40821	18c028607b14	0db9ebe58ba4	Investigate the Royal Mausoleum.
 UcScriptMsgConv.fms:40823	8f619fa40a05	a69afa0f749c	A desolate land of rubble, abandoned homes, and disease...
 UcScriptMsgConv.fms:40824	122fd67d5c87	ec3a5e007b1c	But that's gradually becoming a thing of the past, thanks to both the people and the Liberation.
-UcScriptMsgConv.fms:40825	7b1d5242e612	eabe8981fa21	Cornia and Drakenhold have been at odds with each other for ages, but...
+UcScriptMsgConv.fms:40825	7b1d5242e612	eabe8981fa21	Cornia and Drakengard have been at odds with each other for ages, but...
 UcScriptMsgConv.fms:40826	b9198026f7e1	b3cc5d64b03a	Alain doesn't hold any grudges over that.
 UcScriptMsgConv.fms:40827	73629f8cc12e	f478a1881886	...This war should also give our countries a chance to reconsider their relationship.
 UcScriptMsgConv.fms:40828	b5c4a7e7f589	efc69b5db7e0	Yes. But first, we have to reclaim the world.
@@ -6494,7 +6660,7 @@ UcScriptMsgConv.fms:40830	13894e2d343f	2bade47b5180	I'm glad I've been able to t
 UcScriptMsgConv.fms:40831	869f0bf023e2	15d377ad3758	I swear, when the decisive battle comes, I'll send my country's finest troops to help.
 UcScriptMsgConv.fms:40832	4e5be012567f	d37ce6b8677c	It pains me that I can't join the Liberation, but...
 UcScriptMsgConv.fms:40833	d0ff739be6d2	fdcd84de2261	When the final battle comes, I'll be there with my finest troops. I promise.
-UcScriptMsgConv.fms:40834	19ce0aada4b1	5a5b3c41dd94	All towns in the Kingdom of Drakenhold have been restored.
+UcScriptMsgConv.fms:40834	19ce0aada4b1	5a5b3c41dd94	All towns in the Kingdom of Drakengard have been restored.
 UcScriptMsgConv.fms:40835	f7e3390cca70	cf0cff083b37	We've managed to rebuild Elheim much faster than I expected.
 UcScriptMsgConv.fms:40836	b8a8a3e7c35e	933c1a7417ff	But... never since Elheim's founding has this land been so defiled.
 UcScriptMsgConv.fms:40837	5f6be3a2206e	92e8aaee53ae	Its people surrendered to humans, and even the dead were turned into undead soldiers.
@@ -6537,7 +6703,7 @@ UcScriptMsgConv.fms:41211	c79364551010	7d91e8d20e8c	If only the Zenoirans would 
 UcScriptMsgConv.fms:41212	c3ac8198eb69	3f81300a46ad	Then I'd follow them without a word. But they're such cheapskates...
 UcScriptMsgConv.fms:41601	47af0db97c3a	d47f3ce860d0	I'd like to resume mining, but it's too dangerous around here...
 UcScriptMsgConv.fms:41605	faba90b6995d	987d3c524f62	The church'll be happy if you take it there.
-UcScriptMsgConv.fms:41606	70f686dd8308	b862292e52cb	I came here from Drakenhold, you know.
+UcScriptMsgConv.fms:41606	70f686dd8308	b862292e52cb	I came here from Drakengard, you know.
 UcScriptMsgConv.fms:41607	a642f9971028	bb722b51c639	I miss the heat of that desert.
 UcScriptMsgConv.fms:41608	98fbbd367ee9	809267e8b00d	Hey, I found this spot! Go somewhere else!
 UcScriptMsgConv.fms:41609	e7dd9d7632b8	042bcff5b119	I get bored easily. When I think there's nothing around me...
@@ -6719,6 +6885,7 @@ UcScriptMsgConv.fms:43376	a5169ea68c53	af7db8746174	I've been worried about Fath
 UcScriptMsgConv.fms:43377	5a187db36ed6	3a87588def63	Reach the entrance to Blizzard Village.
 UcScriptMsgConv.fms:43386	1f9ca0b639ac	5efde333b074	Was that a dream...?
 UcScriptMsgConv.fms:43387	f90175a26176	c9fb6dcca793	I've already completed the rite of covenant. I'd better not do anything that would betray that bond.
+UcScriptMsgConv.fms:43388	a2fe0f5359d1	cc5b2b3075b1	Proceed deeper into Drakengard.
 UcScriptMsgConv.fms:43389	668d45f65818	2e42d79efd53	It's called the Idealist's Handmirror. It even lets you change your hair color at will...
 UcScriptMsgConv.fms:43390	dd73220ea1b7	d6789173fb7a	Would you like to exchange 30 Honors for an Idealist's Handmirror?
 UcScriptMsgConv.fms:43391	dd73220ea1b7	33493741d942	Would you like to exchange 30 Honors for an Idealist's Handmirror?
@@ -8088,12 +8255,12 @@ UcScriptMsgConv.fms:54448	fbdbf1d911d8	26c89d8bcc99	New shoots are sprouting in 
 UcScriptMsgConv.fms:54450	ba2299bf2a0b	7a66b84e0cad	Let's assess our situation. Please look at the map.
 UcScriptMsgConv.fms:54451	65e031f3b5ba	b02d8793e0ac	I've marked our new destination on the map.
 UcScriptMsgConv.fms:54452	b805ccca1b99	4facd413bbb8	Your Highness, choose our route and lead us to the destination.
-UcScriptMsgConv.fms:54460	5605e4b9d011	d5d1d5defe8d	The northern wall once protected us from threats from Drakenhold and Bastorias.
+UcScriptMsgConv.fms:54460	5605e4b9d011	d5d1d5defe8d	The northern wall once protected us from threats from Drakengard and Bastorias.
 UcScriptMsgConv.fms:54461	d5ba4347c6f4	88eafe56a521	Zenoira's unification made the wall obsolete, so it's open to travelers now.
 UcScriptMsgConv.fms:54462	563f58acf35d	f5e77c331c34	Renault-sama was once a splendid knight. It's a shame I have to speak of him in the past tense.
 UcScriptMsgConv.fms:54463	684b1e195e71	e4ba3fba9ded	What could have changed him? Was it our defeat, after all...?
 UcScriptMsgConv.fms:54464	a6f08b61d78e	44ec0d378f09	This was long before Zenoira took control of us, but...
-UcScriptMsgConv.fms:54465	ed95aea701dc	85ee07dec17a	These lands were disputed with Drakenhold for a long time.
+UcScriptMsgConv.fms:54465	ed95aea701dc	85ee07dec17a	These lands were disputed with Drakengard for a long time.
 UcScriptMsgConv.fms:54466	fbc718b5e4ff	2f8709dbdf70	The abandoned battering rams and catapults are still lying around.
 UcScriptMsgConv.fms:54467	272e8cdc2452	837e943ea4ce	Renault-sama changed completely after surrendering to the Zenoiran Army.
 UcScriptMsgConv.fms:54468	b72bfa26baef	21983a345a15	He began actively cooperating with Zenoira, providing troops and supplies...
@@ -8130,6 +8297,8 @@ UcScriptMsgConv.fms:54496	2e6780c45543	b2c810caa873	Bless you, bless you...
 UcScriptMsgConv.fms:54497	88254e9f6b6e	c89d5185e3b1	Your Highness, your support has truly been a great help.
 UcScriptMsgConv.fms:54498	4b551200c12b	b4451a86c2a2	Everyone in the territory is looking for a new leader.
 UcScriptMsgConv.fms:54499	dd26471b55be	22f4e100c291	If only it could be someone like you, Your Highness...
+UcScriptMsgConv.fms:54500	ee5cbcd68bb1	c602e0a2d132	"We may have had ourselves the odd skirmish
+with Drakengard here or there..."
 UcScriptMsgConv.fms:54501	9d80303754f2	374936361885	Life was easier back in Ilenia-sama's reign.
 UcScriptMsgConv.fms:54502	b3fa86ac0b7d	aab6115d53dd	The last battle I took part in was a pretty minor one, but...
 UcScriptMsgConv.fms:54503	912b6ebb75d5	94c15d8b12b9	Visibility was poor in the forest. We were ambushed and had to keep running...
@@ -8363,8 +8532,9 @@ UcScriptMsgConv.fms:56557	76c459bb08d9	071f38fa479d	No use losing our nerve. We'
 UcScriptMsgConv.fms:56558	f086c0890ffa	79c305f028bc	Hey, what's the rebel army doing all the way out here?
 UcScriptMsgConv.fms:56559	813cbb826698	2c540b55510b	This fort is a base for investigating the ancient Zenoiran ruins. Are you rebels after the treasures there?
 UcScriptMsgConv.fms:56560	3abb1c555d8e	9a86a984102e	Thanks to you, the quarry's open again. What a relief!
+UcScriptMsgConv.fms:56800	a9c69f26428e	1a41d5000599	Drakengard
 UcScriptMsgConv.fms:56801	2c211f4d2750	f0c2e72bd4f6	"Alain, beyond this point lies the former
-Kingdom of Drakenhold."
+Kingdom of Drakengard."
 UcScriptMsgConv.fms:56802	52c38a7a15f5	7a1b7292fdcd	It's all under the Zenoiran Army's control now, though...
 UcScriptMsgConv.fms:56803	228f01597dab	578b50aae702	You folks come from somewhere else?
 UcScriptMsgConv.fms:56804	4ae6d38e4bae	085120ec80f0	Then you'd better be careful up ahead.
@@ -8381,7 +8551,7 @@ UcScriptMsgConv.fms:56814	3441083efd41	4885d35c6565	We should liberate this regi
 UcScriptMsgConv.fms:56815	6812f6d6634e	c3a69e59cf58	You're right... Let's deploy once we're ready.
 UcScriptMsgConv.fms:56816	be9473504fb1	18f9dfe14714	Are you ready?
 UcScriptMsgConv.fms:56817	361e8f526f8e	afada3e369ac	"This town lies near the old border that once separated
-Drakenhold and Cornia."
+Drakengard and Cornia."
 UcScriptMsgConv.fms:56818	e2b2d8fe576a	3e01e60df34a	Thank you for helping restore the checkpoint.
 UcScriptMsgConv.fms:56819	e9104321b7f8	a19a4ddda9d7	We'll cooperate with the Liberation Army against our common enemy, Zenoira.
 UcScriptMsgConv.fms:56821	b4ad0c97708b	735a28e4b9d8	If we're fighting Zenoira, I'll give it everything I've got.
@@ -8429,7 +8599,7 @@ It's full of ruffians and shady types."
 UcScriptMsgConv.fms:57218	678663bf4450	e3b5f1c01c9b	It's a bandit hideout now, but apparently this place was originally an ancient Zenoiran ruin.
 UcScriptMsgConv.fms:57600	0ad54a6be7b1	3404d0de38ac	Baumratte Coliseum
 UcScriptMsgConv.fms:57601	65b7478dccae	d6d0113fbb42	This town is huge...
-UcScriptMsgConv.fms:57602	84e915aced0d	28b94ad312de	Baumratte, home to the coliseum, is the largest city in Drakenhold.
+UcScriptMsgConv.fms:57602	84e915aced0d	28b94ad312de	Baumratte, home to the coliseum, is the largest city in Drakengard.
 UcScriptMsgConv.fms:57603	3751382561c4	2645e4487841	Although... the coliseum isn't operating right now.
 UcScriptMsgConv.fms:57604	47b55db66385	00a5e7011af2	All right. Let's go meet Prince Gilbert.
 UcScriptMsgConv.fms:57605	f4fec42093be	72656599f8f9	Then I think I'll have a look around town.
@@ -8480,7 +8650,7 @@ UcScriptMsgConv.fms:57673	cd99b31187f2	4bb5cfe48d44	I'll master swordsmanship we
 UcScriptMsgConv.fms:58000	f04341b18497	7691c08e6602	We managed to persuade the enemy troops who had barricaded themselves inside.
 UcScriptMsgConv.fms:58001	c702e5e51845	bfa623c73a18	The Früth Militia has also agreed to help govern this area.
 UcScriptMsgConv.fms:58002	7a9ec7c1abab	e388560fa324	Your Highness, someone from the militia has arrived, asking to meet with Leah-dono.
-UcScriptMsgConv.fms:58004	01f3baaeeac7	0ff7abfc4e70	A Drakenhold militia... Haven't they rallied to the prince?
+UcScriptMsgConv.fms:58004	01f3baaeeac7	0ff7abfc4e70	A Drakengard militia... Haven't they rallied to the prince?
 UcScriptMsgConv.fms:58005	3538ef40add2	760f61d5d092	They're a civilian anti-Zenoiran force, raised outside Gilbert-sama's command.
 UcScriptMsgConv.fms:58006	8cc3930f1f6d	d4ed12f13c9f	They're not a large force, but we share an enemy... I used my contacts to suggest joining forces.
 UcScriptMsgConv.fms:58007	a316b305ef65	54ce8c9c71f5	If Leah-dono and I hadn't trained together, I'd have refused.
@@ -8497,8 +8667,8 @@ UcScriptMsgConv.fms:58017	35f747cee49f	45c9c0dc0923	Früth was a key position we
 UcScriptMsgConv.fms:58018	33006b390eb6	3b5d5d942878	However, the militia doesn't seem happy about fighting alongside us...
 UcScriptMsgConv.fms:58019	1fbf78a57e5d	541e1d947d4e	Perhaps they resent the fact that I didn't bring Your Highness to the negotiations...
 UcScriptMsgConv.fms:58020	81f36d21c8ed	167c760aabe6	No... I think they simply dislike accepting help from Cornia.
-UcScriptMsgConv.fms:58021	10c8fc09ebe8	05da0d48ac20	Cornia and Drakenhold were once constantly engaged in border skirmishes.
-UcScriptMsgConv.fms:58022	040109cc2551	6989bf404317	Unlike the Liberation Army, Drakenhold's resistance groups don't coordinate with one another.
+UcScriptMsgConv.fms:58021	10c8fc09ebe8	05da0d48ac20	Cornia and Drakengard were once constantly engaged in border skirmishes.
+UcScriptMsgConv.fms:58022	040109cc2551	6989bf404317	Unlike the Liberation Army, Drakengard's resistance groups don't coordinate with one another.
 UcScriptMsgConv.fms:58023	5895bc0f3e61	23eece0986ba	Fighting together is the first step toward organizing them, but it won't happen overnight.
 UcScriptMsgConv.fms:58024	314ca4c3be7f	62ecf2619af4	At any rate, we have an agreement. As long as we can fight together, it should be fine.
 UcScriptMsgConv.fms:58025	221e91e4c688	7fc07d01f343	We've occupied this fort, but it isn't within our territory, so there are no mercenaries here...
@@ -8518,7 +8688,7 @@ UcScriptMsgConv.fms:58042	0534167cd56c	0cfcedb51579	We should have followed thei
 UcScriptMsgConv.fms:58043	1af90ae98661	f526e0c0b84d	We have the Zenoiran Army as a common enemy. I'm ready to set our petty grudges aside.
 UcScriptMsgConv.fms:58044	e3f3c25e8929	340b72e0e27a	"I hear the leader of the Liberation Army
 is the prince of Cornia."
-UcScriptMsgConv.fms:58045	394ee8eee530	07c88e3858dd	Isn't one of Drakenhold's princes still resisting, too?
+UcScriptMsgConv.fms:58045	394ee8eee530	07c88e3858dd	Isn't one of Drakengard's princes still resisting, too?
 UcScriptMsgConv.fms:58046	e7e75edf0a0b	982d28daeda0	His older brother has gone missing, but the younger one is still holding out somehow.
 UcScriptMsgConv.fms:58047	bc9e79f1e121	300ebe3270c1	I can't believe Zenoira's long rule ended so easily...
 UcScriptMsgConv.fms:58048	e7f1ed434f34	8ed21505d7a9	Thank you, all of you.
@@ -8536,7 +8706,7 @@ must be shaking in their boots right about now."
 UcScriptMsgConv.fms:58060	c85bb1f61c26	d01d7cca0ae0	Mister, did you fix our house?
 UcScriptMsgConv.fms:58062	533e950cd5ac	9caa8b80785a	Daddy said that since the scary people are gone now...
 UcScriptMsgConv.fms:58063	221e140e13b3	2fe9f1462beb	I can go play outside! So I'm going to play with all my friends!
-UcScriptMsgConv.fms:58400	7990ee1414de	91c8519e5baa	So you managed to reclaim Drakenhold? It must have been hard on Gilbert-sama, too.
+UcScriptMsgConv.fms:58400	7990ee1414de	91c8519e5baa	So you managed to reclaim Drakengard? It must have been hard on Gilbert-sama, too.
 UcScriptMsgConv.fms:58401	ea62e44b1c76	61c660e6be68	"I thought about going back to town,
 but the desert's not so bad."
 UcScriptMsgConv.fms:58402	4614a534ce2a	5a33f626c1df	Maybe I'll settle here for good.
@@ -8556,11 +8726,12 @@ UcScriptMsgConv.fms:58418	0dbe56fc0b8c	5fe22e4ff7e5	"The prince is incredible.
 He must have been through so much."
 UcScriptMsgConv.fms:58419	c0cdb2c90835	1fff35eec8f8	I can't let him outdo me. I've got to protect everyone in town.
 UcScriptMsgConv.fms:58420	326cdc2e53a9	5e4d1995aa9f	We've been hearing a lot about the prince lately.
+UcScriptMsgConv.fms:58421	fd8fd51de0e5	4b2901549a7d	Ya think he'll be able to take Drakengard back?
 UcScriptMsgConv.fms:58422	8fe58c9726fd	b9209952f1da	There isn't much here now, but someday I'll turn it into a thriving town.
 UcScriptMsgConv.fms:58423	cda4a5584b6a	ec708ef5a0e0	And then perhaps Gilbert-sama will... Hehehe...
 UcScriptMsgConv.fms:58424	930de864b8a1	d91414b85195	I hear Gilbert-sama has returned.
 UcScriptMsgConv.fms:58425	6c98140aa5fc	a37a1347ca8f	Things may be hard now, but the prince will surely come to our aid...
-UcScriptMsgConv.fms:58426	95a6fdb23ad6	bb746e795dab	I believe he'll lead Drakenhold.
+UcScriptMsgConv.fms:58426	95a6fdb23ad6	bb746e795dab	I believe he'll lead Drakengard.
 UcScriptMsgConv.fms:58428	127fdea64316	b4c83f7bc1ef	He overcame so much and still managed to reclaim the kingdom.
 UcScriptMsgConv.fms:58429	36e681da9a6c	16ca59dc7aca	I hear Prince Gilbert has returned.
 UcScriptMsgConv.fms:58430	413da50a3538	7cabfc056f7b	Apparently, he managed to escape when the castle fell.
@@ -8578,8 +8749,8 @@ UcScriptMsgConv.fms:58440	8f47f576097d	49d6eece09af	Alain, I've been waiting for
 UcScriptMsgConv.fms:58441	ff878dee7a65	9e5c41177ef3	From now on, I'm a member of the Liberation Army too. I look forward to serving under your command.
 UcScriptMsgConv.fms:58442	509a482c54d8	e115ae466966	I've heard everything. Please take good care of His Majesty.
 UcScriptMsgConv.fms:58443	e9b823ce9c4c	b2c3c0c975eb	Alain, let's defeat Galerius and bring down Zenoira together.
-UcScriptMsgConv.fms:58444	1f0a218704b6	4ac9b2e0baba	The people of Drakenhold will support His Majesty and devote themselves to rebuilding.
-UcScriptMsgConv.fms:58445	ff458821ae07	9aaf730ba8c4	Prince Gilbert has raised Drakenhold's flag over the royal castle once more.
+UcScriptMsgConv.fms:58444	1f0a218704b6	4ac9b2e0baba	The people of Drakengard will support His Majesty and devote themselves to rebuilding.
+UcScriptMsgConv.fms:58445	ff458821ae07	9aaf730ba8c4	Prince Gilbert has raised Drakengard's flag over the royal castle once more.
 UcScriptMsgConv.fms:58446	91711d492eda	e145b7e77c72	I'm done working as a mercenary. I'm going back to the church.
 UcScriptMsgConv.fms:58447	2d2abf70e4f4	70ce87ccdee4	Damn, I missed my chance to earn anything in that battle. Nothing but wyvern knights to fight...
 UcScriptMsgConv.fms:58448	78e07c39af8f	2ab4ccf0b897	We managed to repair the damaged houses. Now the real work begins.
@@ -8599,16 +8770,17 @@ UcScriptMsgConv.fms:58464	a60f0426c12f	9fb13efc2c09	The knightly orders and mili
 UcScriptMsgConv.fms:58465	8762c6517bd2	276514fc5405	For now, I just want to take off this damn heavy armor and sleep without thinking about anything.
 UcScriptMsgConv.fms:58466	1b7cf4385833	9bdfe6a2a13d	We took heavy losses, but we should be glad we've got our homeland back.
 UcScriptMsgConv.fms:58468	40c484dbc5b8	d1a804ba542d	That was my first time commanding a unit... I'm glad everyone survived.
-UcScriptMsgConv.fms:58470	8807f41e4611	e8a483553d13	Drakenhold is in a terrible state right now.
+UcScriptMsgConv.fms:58470	8807f41e4611	e8a483553d13	Drakengard is in a terrible state right now.
 UcScriptMsgConv.fms:58471	7583a6ecb414	3a8dbeec6fcc	"But things should work out.
 The prince is back, after all."
-UcScriptMsgConv.fms:58472	f91b224407ae	6cdb1bbbb77b	Glory to Drakenhold!
+UcScriptMsgConv.fms:58472	f91b224407ae	6cdb1bbbb77b	Glory to Drakengard!
+UcScriptMsgConv.fms:58473	af7ab78a4ddb	b781bc758095	We might have freed Drakengard, but what about everywhere else?
 UcScriptMsgConv.fms:58474	c2d2b807668d	fea0e88205c9	I'm especially curious about Elheim. I'd love to meet an elf...
-UcScriptMsgConv.fms:58475	0f691a14e19b	5d7bf24ef03a	"The Drakenhold army has no forces to spare.
+UcScriptMsgConv.fms:58475	0f691a14e19b	5d7bf24ef03a	"The Drakengard army has no forces to spare.
 Right now, all we can do is defend our own country."
 UcScriptMsgConv.fms:58489	71538a6e291b	323ce0b53f52	"Looks like this country can finally start rebuilding.
 Maybe I'll head home for a while..."
-UcScriptMsgConv.fms:58800	c689ced1630b	b8fd5ca1c008	This impregnable fortress was built back when Cornia and Drakenhold were at war.
+UcScriptMsgConv.fms:58800	c689ced1630b	b8fd5ca1c008	This impregnable fortress was built back when Cornia and Drakengard were at war.
 UcScriptMsgConv.fms:58801	d607cdeae8bf	887279eff173	I hear it's called Fort Pritzlasse.
 UcScriptMsgConv.fms:58802	71581c16263a	ed9dfb8b389e	This is my first time seeing the fortress from this side...
 UcScriptMsgConv.fms:58804	322ade23e5d5	7b78f9559a23	Leave the scouting to me. I'll reconnoiter from the air.
@@ -8619,8 +8791,8 @@ UcScriptMsgConv.fms:58810	0346f21fe188	b951ee8e6c0f	Prince Gilbert has gathered 
 UcScriptMsgConv.fms:58812	0c05ec6a5b79	30081a56960a	Your Highness! You've reclaimed the castle!
 UcScriptMsgConv.fms:58813	ea511c327bb8	87112b556a4d	Let's retake the fortress ahead of us, too!
 UcScriptMsgConv.fms:58815	86c9dc5b48b0	2c6987b9c03a	"That's Fort Pritzlasse,
-a fortress in neighboring Drakenhold."
-UcScriptMsgConv.fms:58816	f735d2cf3c0d	7d35d5bbffc1	"Cornia and Drakenhold
+a fortress in neighboring Drakengard."
+UcScriptMsgConv.fms:58816	f735d2cf3c0d	7d35d5bbffc1	"Cornia and Drakengard
 were once at war."
 UcScriptMsgConv.fms:58817	525dd52b7b81	a804f7a39d78	"Leave the defense here to us.
 We won't let the Zenoiran Army through."
@@ -8631,6 +8803,8 @@ UcScriptMsgConv.fms:58821	fc03db191356	a89a8935d47b	The commander in charge is s
 UcScriptMsgConv.fms:58822	d864004aa129	e464dc755615	The general who commanded the fortress was notorious for killing prisoners of war.
 UcScriptMsgConv.fms:58823	567b8d479713	b656c1b91333	I hear even some Zenoiran soldiers are glad he's dead.
 UcScriptMsgConv.fms:58824	f07bc2945c3a	1be393d44eb3	Thanks to you, the town is lively again.
+UcScriptMsgConv.fms:58826	a3d50ea6f305	9a4760f6dbd8	"We've been getting tons of work from the Drakengard army
+lately. Time to make myself some actual coin!"
 UcScriptMsgConv.fms:58828	82ad4c76a925	8c6db6ab23b5	I'll protect this place so no one has to grieve again.
 UcScriptMsgConv.fms:58831	77d5e575779e	c2792ce003e5	Now that the town is lively again, it's our time to shine!
 UcScriptMsgConv.fms:58833	a74cc7f261f2	1553b8396ee7	Ah, thank you. We don't have to live in fear anymore...
@@ -8670,6 +8844,8 @@ UcScriptMsgConv.fms:59224	eb16e9e90caa	66da5be577df	Alain-dono, please let me jo
 UcScriptMsgConv.fms:59225	b4416cf33eb1	0f4806401a70	I'll do everything I can to help you rebuild the kingdom.
 UcScriptMsgConv.fms:59226	5e3cf33c3e6d	092797d12418	Having someone who knows this country so well join us is reassuring. We're glad to have you.
 UcScriptMsgConv.fms:59227	e24f21d241b9	2e9c3558afc8	Their goal probably isn't the resources.
+UcScriptMsgConv.fms:59234	da39a3ee5e6b	8a2b02f80c31	"If I find anyone with ties to Drakengard's royal family,
+I will bring them here straightaway."
 UcScriptMsgConv.fms:59244	e8a5e9196097	75bd6ec4927b	Yeah, I've decided to join the Liberation Army, too.
 UcScriptMsgConv.fms:59245	90534653ff57	07de529b0ed3	What?
 UcScriptMsgConv.fms:59246	d1b2b3edffb5	0b26813b6fb6	To protect the desert, I'll defeat Galerius, the one behind all this.
@@ -8818,7 +8994,7 @@ UcScriptMsgConv.fms:60401	aaa7bbc29887	a5deaa85fc23	How did you two get through 
 UcScriptMsgConv.fms:60402	b5a69fdf1768	3fea5dbe3910	Security here is very light, so a small group can pass through easily.
 UcScriptMsgConv.fms:60403	1725f07b5dfa	1b8fb654a0fb	But they'll surely notice an army the size of ours.
 UcScriptMsgConv.fms:60404	01c1fe58813f	b3af73d89180	Looks like they noticed us after all.
-UcScriptMsgConv.fms:60405	af9c4008bebb	314e3d655173	A mercenary captain who made a name for himself in the war between Drakenhold and Zenoira rules the city.
+UcScriptMsgConv.fms:60405	af9c4008bebb	314e3d655173	A mercenary captain who made a name for himself in the war between Drakengard and Zenoira rules the city.
 UcScriptMsgConv.fms:60406	4f559275e1ce	823112ab1608	We should make sure we're fully prepared before challenging him.
 UcScriptMsgConv.fms:60407	a05803a0b9e9	18f9dfe14714	Are you ready?
 UcScriptMsgConv.fms:60408	a05803a0b9e9	18f9dfe14714	Are you ready?
@@ -8859,7 +9035,7 @@ UcScriptMsgConv.fms:60471	60797c539ed7	a77a72d6003f	Did you cross the desert to 
 UcScriptMsgConv.fms:60473	cc8bdae59bd0	6fac5ca9b591	So you came across the desert... Well, take your time and rest here.
 UcScriptMsgConv.fms:60474	b4dd767b94e4	2fe087be6602	"The Zenoiran Army's blocking the border,
 and I'm too scared to cross the desert..."
-UcScriptMsgConv.fms:60475	c65e4da3be40	d39d4da4bda6	"The roads in Drakenhold are all narrow.
+UcScriptMsgConv.fms:60475	c65e4da3be40	d39d4da4bda6	"The roads in Drakengard are all narrow.
 Only a few can handle a large army at once."
 UcScriptMsgConv.fms:60476	8dab418bd5e3	abff7240790f	"It's a natural fortress—easy to defend, hard to attack.
 That's especially true of the royal castle."
@@ -8911,7 +9087,7 @@ UcScriptMsgConv.fms:60524	6eb1ab8f3b68	aeff0205f187	"Gambling is so common in th
 many people ruin themselves over it..."
 UcScriptMsgConv.fms:60525	be88ade38fe7	8619f578db57	Thanks to your help, I was able to repair the walls of my house.
 UcScriptMsgConv.fms:60526	23b5be7a6a47	e5b72b9f3b8e	Desert nights get cold, so I won't have to worry about catching a chill.
-UcScriptMsgConv.fms:60527	5bc860af1def	af25be3d9ae8	This is a vital port connecting Drakenhold and Bastorias...
+UcScriptMsgConv.fms:60527	5bc860af1def	af25be3d9ae8	This is a vital port connecting Drakengard and Bastorias...
 UcScriptMsgConv.fms:60528	7c1bef6eb6b4	9be751f569bd	So you've liberated the town... Thank you.
 UcScriptMsgConv.fms:60529	4f6f26371c51	0c96066f606e	I just hope we don't get caught up in another war...
 UcScriptMsgConv.fms:60530	bd317cdb7e52	9f3e041fc80d	Our port's caught between opposing armies... We hardly get a moment's peace.
@@ -9138,7 +9314,7 @@ UcScriptMsgConv.fms:62803	04671f132f02	e8c61d46ab8b	Please protect Rosalinde-sam
 UcScriptMsgConv.fms:62804	e52be96f8204	395713a70a12	Well, we've got no clues for now. Let's go and have a look.
 UcScriptMsgConv.fms:62805	8e065446b582	b36dbf6816d6	I used to clean that altar every day.
 UcScriptMsgConv.fms:62806	1508beadc87e	e393ca3f54f8	We have the Ring of the Maiden, but...
-UcScriptMsgConv.fms:62807	9ea48aef3dfe	d5ac4b5d7aeb	I heard even the elven priestess doesn't know where it is.
+UcScriptMsgConv.fms:62807	9ea48aef3dfe	d5ac4b5d7aeb	I heard even the elven priestess doesn't know where the altar is.
 UcScriptMsgConv.fms:62808	44c13f7c2343	d616a5a46d62	Oh... humans. Rosalinde-sama has ordered us not to lay a hand on you.
 UcScriptMsgConv.fms:62809	3c09f1b07dce	41dec62465a5	"But if you act like the Zenoiran Army did,
 you won't get away with it."
@@ -9489,7 +9665,7 @@ UcScriptMsgConv.fms:69628	9a36cbb9c2dc	593310b50821	King Alain! Please accept my
 UcScriptMsgConv.fms:69629	ddcbd91fdb65	badfb930bd20	Oh, King Alain...
 UcScriptMsgConv.fms:69630	29d34a4aa694	4e37179ed41c	My regular customers are delighted that business is picking up, too.
 UcScriptMsgConv.fms:69631	9b39083194c8	0e60b20eeb48	King Alain! Congratulations on your coronation!
-UcScriptMsgConv.fms:69632	8187948cf86f	4af6f58a879a	The people from Drakenhold look so dignified and handsome...
+UcScriptMsgConv.fms:69632	8187948cf86f	4af6f58a879a	The people from Drakengard look so dignified and handsome...
 UcScriptMsgConv.fms:69633	5ebcb0269aa1	ba7f4f64989f	Now that Zenoira's rule is over, we're free to trade again.
 UcScriptMsgConv.fms:69634	90e962b9cb14	2ab05a5dc52b	It's an honor to serve you, Your Majesty.
 UcScriptMsgConv.fms:69635	6149af6d7bda	1eeb6a8f81fb	Your Majesty, we will protect this castle.
@@ -9828,10 +10004,10 @@ UcScriptMsgConv.fms:71641	c22c6606e79c	81853edd83c7	Cornia cemeteries: 4 remaini
 UcScriptMsgConv.fms:71642	2e848befd99d	912a64c72e84	Cornia cemeteries: 3 remaining.
 UcScriptMsgConv.fms:71643	b75e513f8d15	f207050a61b6	Cornia cemeteries: 2 remaining.
 UcScriptMsgConv.fms:71644	c4d1d0cf9f5a	55a0df9d1f8d	Cornia cemeteries: 1 remaining.
-UcScriptMsgConv.fms:71645	db9d472eb024	308ae63b408b	Drakenhold cemeteries: 4 remaining.
-UcScriptMsgConv.fms:71646	9c2b73e6b070	efb8a1b73e1f	Drakenhold cemeteries: 3 remaining.
-UcScriptMsgConv.fms:71647	f72102bc9092	6c53a8aa675a	Drakenhold cemeteries: 2 remaining.
-UcScriptMsgConv.fms:71648	b50b46bc0340	658693f73023	Drakenhold cemeteries: 1 remaining.
+UcScriptMsgConv.fms:71645	db9d472eb024	308ae63b408b	Drakengard cemeteries: 4 remaining.
+UcScriptMsgConv.fms:71646	9c2b73e6b070	efb8a1b73e1f	Drakengard cemeteries: 3 remaining.
+UcScriptMsgConv.fms:71647	f72102bc9092	6c53a8aa675a	Drakengard cemeteries: 2 remaining.
+UcScriptMsgConv.fms:71648	b50b46bc0340	658693f73023	Drakengard cemeteries: 1 remaining.
 UcScriptMsgConv.fms:71649	72e1473514ed	a5f7f0cbe7a3	Elheim cemeteries: 4 remaining.
 UcScriptMsgConv.fms:71650	a26b6572db29	1c7c1b34fdbf	Elheim cemeteries: 3 remaining.
 UcScriptMsgConv.fms:71651	5e85c4864b3d	e52e00dd0162	Elheim cemeteries: 2 remaining.
@@ -9847,7 +10023,7 @@ UcScriptMsgConv.fms:71660	27736b44f4c2	91695d951c0a	Albion cemeteries: 1 remaini
 UcScriptMsgConv.fms:71661	6003ffbc469b	056061fffdc7	We've now visited every cemetery in Cornia.
 UcScriptMsgConv.fms:71662	f0fd48212fa4	285ac72a5459	"With that, we've fulfilled Head Priestess Laelia's wish...
 Thank you."
-UcScriptMsgConv.fms:71663	49a57b5d4deb	d526f58366f0	We've now visited every cemetery in Drakenhold.
+UcScriptMsgConv.fms:71663	49a57b5d4deb	d526f58366f0	We've now visited every cemetery in Drakengard.
 UcScriptMsgConv.fms:71664	f0fd48212fa4	285ac72a5459	"With that, we've fulfilled Head Priestess Laelia's wish...
 Thank you."
 UcScriptMsgConv.fms:71665	4debb2f435d7	cd64fc76e519	We've now visited every cemetery in Elheim.
@@ -11065,7 +11241,7 @@ UcScriptMsgConv.fms:79196	6c3d08b15f2d	6e5454b3ac52	Alain-sama, congratulations 
 UcScriptMsgConv.fms:79197	fad5f6bea5b8	0e70ebf6b1cd	After such a long war...
 UcScriptMsgConv.fms:79198	927bce186557	f6d4bbdb8b85	"No... perhaps this is
 the beginning of something new."
-UcScriptMsgConv.fms:79199	d2e86f34b7e2	de52d914ae27	...I suppose I ought to speak to you as an envoy of Drakenhold, but...
+UcScriptMsgConv.fms:79199	d2e86f34b7e2	de52d914ae27	...I suppose I ought to speak to you as an envoy of Drakengard, but...
 UcScriptMsgConv.fms:79200	29be09216469	9c0912bcdaba	I would like to thank you personally, Alain-sama...
 UcScriptMsgConv.fms:79201	09280277c3c5	efaab32133e9	Thanks to you, both my country and I have been saved time and again.
 UcScriptMsgConv.fms:79202	74bc3a7d2398	98c09e3f4f3a	Thank you, Alain-sama.
@@ -11766,7 +11942,7 @@ continue to enjoy a good relationship."
 UcScriptMsgConv.fms:79913	a8ca73808c74	47733f6be65e	I never imagined I'd find this as moving as my own coronation.
 UcScriptMsgConv.fms:79914	79620f110524	45f9f1499823	I couldn't have imagined it back when we defended the Baumratte Coliseum.
 UcScriptMsgConv.fms:79915	e60e86a948e8	83a6cf25cc7d	Fighting together must have deepened your bond with King Alain, wouldn't you say?
-UcScriptMsgConv.fms:79916	f9de720f836b	90b9aa2e90c7	"The relationship between Drakenhold and Cornia now
+UcScriptMsgConv.fms:79916	f9de720f836b	90b9aa2e90c7	"The relationship between Drakengard and Cornia now
 seems to reflect the bond between you two."
 UcScriptMsgConv.fms:79917	889b9496d03b	c8bd2c905b15	I see... I hope Alain and I can remain this close for many years.
 UcScriptMsgConv.fms:100000	9025d1d983a9	aef0c72373cf	Bradley has set up his base beyond the gate and is waiting for us there.
@@ -13166,7 +13342,7 @@ UcScriptMsgConv.fms:112000	986d11ce323d	28585cf32420	"Looks like the Zenoiran Ar
 Let's go over our scouts' reports first."
 UcScriptMsgConv.fms:112001	a9ce51fc7173	068f2c1561d2	Zenoira's main force is advancing from Castle Soldraga in the northeast.
 UcScriptMsgConv.fms:112002	8a3144654a18	861e9fbacdc0	Meanwhile, heavy infantry is advancing from Fort Pritzlasse in the northwest.
-UcScriptMsgConv.fms:112003	fc32d3052d0a	43ba59e69fde	"The former Golden Ram Knights of the Kingdom of Drakenhold
+UcScriptMsgConv.fms:112003	fc32d3052d0a	43ba59e69fde	"The former Golden Ram Knights of the Kingdom of Drakengard
 are approaching from the desert to the southeast."
 UcScriptMsgConv.fms:112005	7fc17bad9b67	609e13aac740	The Crimson Dragon Knights appear to be gathering near the ruins to the west.
 UcScriptMsgConv.fms:112006	e606c0de5ec6	e44fc76fa9fa	And...
@@ -13180,7 +13356,7 @@ UcScriptMsgConv.fms:112012	6104f72fcb98	e37598c8a7db	We've put up barricades, th
 UcScriptMsgConv.fms:112013	8cd4ce0d6f73	2f13111a34eb	If the barricades stop the enemy, it'll be a little easier to aim the catapults.
 UcScriptMsgConv.fms:112014	75871bac191e	9725f2a5a3be	"I'll give you the remaining barricades.
 Put them to good use."
-UcScriptMsgConv.fms:112015	5b5eb5e4657e	ea0308142aab	This is a great step toward recapturing Drakenhold!
+UcScriptMsgConv.fms:112015	5b5eb5e4657e	ea0308142aab	This is a great step toward recapturing Drakengard!
 UcScriptMsgConv.fms:112018	c201044aab70	ae01658c755a	But numbers are on my side. I'll deal with them personally right here.
 UcScriptMsgConv.fms:112026	a92cc4c89918	a9d796eb1533	To be frank, winning this battle outright will be difficult.
 UcScriptMsgConv.fms:112027	2155018b7ce7	7548832fe071	Still, we can deal them a heavy blow and signal the start of our counterattack.
@@ -13205,7 +13381,7 @@ UcScriptMsgConv.fms:112055	627bdcdc93e2	89fdbc66ee64	The enemy is definitely wea
 UcScriptMsgConv.fms:112056	27871f215e7c	2f9a0644e6fb	Damn it... Continuing this battle will only cause more casualties...
 UcScriptMsgConv.fms:112057	9998a6a64382	9581b5168217	All forces, retreat! Fall back to Castle Soldraga!
 UcScriptMsgConv.fms:112061	5bad19492601	c5927dd022f1	Everyone! Raise a victory cry!
-UcScriptMsgConv.fms:112062	5b5eb5e4657e	ea0308142aab	This is a great step toward recapturing Drakenhold!
+UcScriptMsgConv.fms:112062	5b5eb5e4657e	ea0308142aab	This is a great step toward recapturing Drakengard!
 UcScriptMsgConv.fms:112064	d80e32992dcb	a92dd266ca11	#CN(敵：D3ボス)-sama has been defeated...
 UcScriptMsgConv.fms:112065	62ee29ac95f2	9581b5168217	A-all forces, retreat! Fall back to Castle Soldraga!
 UcScriptMsgConv.fms:112070	aca07d45d6bc	a6518a24a1ba	I never thought those moles would come crawling out...
@@ -13281,7 +13457,7 @@ UcScriptMsgConv.fms:112812	e3bc0517d15f	c5accb085217	Thanks to your capture of t
 UcScriptMsgConv.fms:112814	9496fb45f157	dbdcae52a4ba	"I'll give you some magick bombs.
 You can use them to destroy the barricades."
 UcScriptMsgConv.fms:112815	8ab4e9e51bc9	4bc0af45add1	"Now, let's make our move.
-For Drakenhold's future!"
+For Drakengard's future!"
 UcScriptMsgConv.fms:112816	1b1da0ef5b96	a4e01548f5b6	"The enemy will notice us soon
 and send out wyvern units."
 UcScriptMsgConv.fms:112817	c89331d5baef	e459d5994a4a	Defend the base well with archers so we don't lose it.
@@ -13389,7 +13565,7 @@ UcScriptMsgConv.fms:113249	cc999f25f08a	da68e64707a3	Please... let us get there 
 UcScriptMsgConv.fms:113250	d351c15d326b	62ca39473c6f	Princess Virginia... I swear I'll protect you.
 UcScriptMsgConv.fms:113251	6cb3a15049c6	c636cd43166e	Out of my way! You're not the ones I'm after!
 UcScriptMsgConv.fms:113252	13814621d1b0	8549373aac53	Giethe! I'll have your head!
-UcScriptMsgConv.fms:113253	7947101803ff	48b355ebe5ca	"You're getting on my nerves.
+UcScriptMsgConv.fms:113253	7947101803ff	48b355ebe5ca	"What an annoying woman.
 Try it if you think you can!"
 UcScriptMsgConv.fms:113255	a9751d1116e6	89fa02819938	Ngh... Me... of all people...
 UcScriptMsgConv.fms:113256	52361a45301f	7e8c8cc8bb80	Eek! W-what? You're going to save us? ...Thank you!
@@ -13658,7 +13834,7 @@ UcScriptMsgConv.fms:116049	8a6ef8ca14e1	00e08562748e	Next time, rather than mere
 UcScriptMsgConv.fms:116050	188d05de05e8	cee2f121cd2b	Very well. As you wish, I'll have some fun with you again.
 UcScriptMsgConv.fms:116051	3c80acbacb1c	da461d1e8e52	You... Where have you taken Aneki?!
 UcScriptMsgConv.fms:116052	b644b9cf4212	6448d939fa23	Ho ho... Are you sure you should be wasting time here?
-UcScriptMsgConv.fms:116053	d304c2c30c63	8d2cc00f699e	If you don't hurry to Castle Soldraga, all of Drakenhold will be engulfed in flames.
+UcScriptMsgConv.fms:116053	d304c2c30c63	8d2cc00f699e	If you don't hurry to Castle Soldraga, all of Drakengard will be engulfed in flames.
 UcScriptMsgConv.fms:116400	207782e7bacc	b551d0a1f55f	Come on. I'll let you experience the full power of my magic.
 UcScriptMsgConv.fms:116401	1baf4dc9c167	953864e07cf4	Hmph... You do love a pointless struggle. How long do you intend to keep this up?
 UcScriptMsgConv.fms:116402	52ae394a8f1b	6e8edd304659	As long as I can draw magic from the Tower of Thorns, you have no chance of winning.
@@ -13864,7 +14040,7 @@ UcScriptMsgConv.fms:117658	082b60e206b0	397b5b3a8d69	I've got no business with y
 UcScriptMsgConv.fms:117660	6c47be2de056	73bd89b8e46b	W-what...? You half-elf! How dare you!
 UcScriptMsgConv.fms:117661	6c47be2de056	73bd89b8e46b	W-what...? You half-elf! How dare you!
 UcScriptMsgConv.fms:122400	fbf551d8f2e3	3208363093b7	So you've come, rebels.
-UcScriptMsgConv.fms:122401	2734b78a61e7	95a004e2c977	What a nuisance, with all the trouble already going on in Drakenhold...
+UcScriptMsgConv.fms:122401	2734b78a61e7	95a004e2c977	What a nuisance, with all the trouble already going on in Drakengard...
 UcScriptMsgConv.fms:122402	115f4316ca7f	353411d1f3c1	...It can't be helped. We'll face them ourselves!
 UcScriptMsgConv.fms:122800	53c08a3e4adb	7889b915e853	Even if Bastorias has fallen, you will not pass here!
 UcScriptMsgConv.fms:122801	24a239f15162	abac8391dd8c	We won't let you have your way! Bastorias belongs to us!
@@ -13985,7 +14161,7 @@ UcScriptMsgConv.fms:140423	d42f56df1bef	539e3f68795b	To think a man who spends a
 UcScriptMsgConv.fms:140424	b43273c76705	853c012c5dae	I won't let you through. There's no way out.
 UcScriptMsgConv.fms:140425	70ccdeb2a1b2	a1d2a21155cd	You betrayed the queen? You're a disgrace to knighthood!
 UcScriptMsgConv.fms:140426	f4ade6bb11d3	1a1715915b54	I... I cannot stop here!
-UcScriptMsgConv.fms:140801	778720fc0a62	004897a8543d	Drakenhold Castle Town
+UcScriptMsgConv.fms:140801	778720fc0a62	004897a8543d	Drakengard Castle Town
 UcScriptMsgConv.fms:140803	5428084e96f1	98bda11f230e	Royal Capital, Gran Corrine
 UcScriptMsgConv.fms:140804	c2f39bf519f8	4503a9123bf3	What... is that fog?!
 UcScriptMsgConv.fms:140805	5f9dd8222f94	407f8d05e7e8	"That ominous haze...
@@ -14064,13 +14240,13 @@ I'm more than enough on my own."
 UcScriptMsgConv.fms:140892	cac7ff9bb40a	7cbfd9ec49a0	Sorry to keep you waiting.
 UcScriptMsgConv.fms:140893	40ba9268bc6e	805b011cc4e0	Nigel...! You came!
 UcScriptMsgConv.fms:140894	6f5b9b725821	d621fd84727b	Alain and his allies helped liberate our homeland. Now is the time to repay that debt...
-UcScriptMsgConv.fms:140895	30761ffacaa3	47d56366dea9	Go! Show them the pride and strength of Drakenhold!
+UcScriptMsgConv.fms:140895	30761ffacaa3	47d56366dea9	Go! Show them the pride and strength of Drakengard!
 UcScriptMsgConv.fms:140896	d4b8b02e8a64	94e6fc766514	I've been fighting all this time, looking for you...
 UcScriptMsgConv.fms:140897	1b378561b7e7	b8887ae090d7	Prince Gilbert! Hermann has come to your aid!
-UcScriptMsgConv.fms:140898	d426c8233c97	29e00a9142e9	Those are... troops from Drakenhold!
+UcScriptMsgConv.fms:140898	d426c8233c97	29e00a9142e9	Those are... troops from Drakengard!
 UcScriptMsgConv.fms:140899	32d20c7eadba	f7e52d35e438	Hmph. A fitting time for some entertainment.
 UcScriptMsgConv.fms:140900	6f5b9b725821	d621fd84727b	Alain and his allies helped liberate our homeland. Now is the time to repay that debt...
-UcScriptMsgConv.fms:140901	30761ffacaa3	47d56366dea9	Go! Show them the pride and strength of Drakenhold!
+UcScriptMsgConv.fms:140901	30761ffacaa3	47d56366dea9	Go! Show them the pride and strength of Drakengard!
 UcScriptMsgConv.fms:140902	13c3172f162e	ebf1d04bd6a9	Wh-what?! So many bestrals...
 UcScriptMsgConv.fms:140903	0daab05cfef2	efc8a747cc22	Berserk bestrals?! Impossible! I thought they couldn't be controlled.
 UcScriptMsgConv.fms:140904	1098557187f9	93024caaea84	Maybe Reimann completed his spell... If so, we're in serious trouble.
@@ -14159,7 +14335,7 @@ UcScriptMsgConv.fms:142010	126fd9887116	eed8a1cfb77c	I'll end this battle, so a 
 UcScriptMsgConv.fms:142011	ea0d1cc1790e	c176b216e4dd	Father... Please protect everyone.
 UcScriptMsgConv.fms:142012	2e434d6128b0	8c8f3851fda7	Alain, we must survive and make it back to Ilenia-sama!
 UcScriptMsgConv.fms:142013	f67a24e75026	df2d782c18fa	I can't let you have all the glory, Alain.
-UcScriptMsgConv.fms:142014	e6cfab72d0d9	813f90759170	Come on! Follow Gilbert, King of Drakenhold!
+UcScriptMsgConv.fms:142014	e6cfab72d0d9	813f90759170	Come on! Follow Gilbert, King of Drakengard!
 UcScriptMsgConv.fms:142015	589a135d58ab	cdbd28523e46	I'll put an end to this, no matter what! Everyone, watch me.
 UcScriptMsgConv.fms:142016	61fdd938d02e	4c2145fa5d77	Eltolinde, I'll protect you. This time, I promise...
 UcScriptMsgConv.fms:142017	1894dcd95c8c	7836a13f8c31	We started out as just a resistance group... I can't believe how far we've come.
@@ -15170,7 +15346,7 @@ UcScriptMsgConv.fms:173201	801098b69a39	7eab36b627fe	Every region is still under
 UcScriptMsgConv.fms:173202	a490a7bcc674	33cbfed128c5	Yes... Let's decide where to head next.
 UcScriptMsgConv.fms:173203	93b2a0b8907d	5bd2de8937cf	"We should head for #c(11)Mier Checkpoint#/c
 in southeastern Cornia."
-UcScriptMsgConv.fms:173204	ac274b5f3c5a	76d2f4249130	We'll need to liberate the checkpoint that once stood on the Drakenhold border.
+UcScriptMsgConv.fms:173204	ac274b5f3c5a	76d2f4249130	We'll need to liberate the checkpoint that once stood on the Drakengard border.
 UcScriptMsgConv.fms:173205	ad632b736b56	388b6e723189	"If you intend to search for Princess Virginia,
 we should head south..."
 UcScriptMsgConv.fms:173206	b3dafada3eb8	18489c99a9ba	We should pass through the #c(11)Winding Wood#/c, southwest of the witches' swamp.
@@ -15190,7 +15366,7 @@ UcScriptMsgConv.fms:173218	5b07f09a19e5	3fff35bdeb47	This is the current balance
 UcScriptMsgConv.fms:173220	475b88098b7d	a87a942ace89	"If you want to search for her, let's head for
 #c(11)Mier Checkpoint#/c in southeastern Cornia."
 UcScriptMsgConv.fms:173221	00aaa7f03c88	97b6da9b749c	We've received word that Princess Virginia, Ilenia-sama's niece, has been seen there.
-UcScriptMsgConv.fms:173222	fc8ffcc04814	beb2335fe5f8	How about heading southeast to Drakenhold?
+UcScriptMsgConv.fms:173222	fc8ffcc04814	beb2335fe5f8	How about heading southeast to Drakengard?
 UcScriptMsgConv.fms:173224	0eaf48fdbd95	7cf53334ce3e	How about heading southwest to Elheim?
 UcScriptMsgConv.fms:173225	75735a91c910	06da724e71cc	You had that strange revelation when we rescued Scarlett, right?
 UcScriptMsgConv.fms:173226	588309975025	edf2fab38b1c	"To reach Elheim, we must pass through
@@ -15209,9 +15385,11 @@ UcScriptMsgConv.fms:173238	919e5b444224	f45c1a952b1b	Let's head for #c(11)Devolp
 UcScriptMsgConv.fms:173239	d0b0b41bc024	c62a90f8c61f	Let's finish our preparations, then head for Castle Gran Corrine.
 UcScriptMsgConv.fms:173240	db7c7a9caae5	8f700621c28a	"We've liberated all the surrounding countries.
 Your Highness, it's time for the final battle."
+UcScriptMsgConv.fms:173242	008257db0382	abff6f99befa	"This message is only visible during cutscene debug.
+View the scene with Drakengard liberated?"
 UcScriptMsgConv.fms:173247	11adcc3acf17	7f7c945d0b8f	Restore the port town and cross to Albion.
-UcScriptMsgConv.fms:173250	fc8ffcc04814	beb2335fe5f8	How about heading southeast to Drakenhold?
-UcScriptMsgConv.fms:173251	bcbae6d145ce	cfe5892f13c0	Let's help Prince Gilbert-dono retake Drakenhold.
+UcScriptMsgConv.fms:173250	fc8ffcc04814	beb2335fe5f8	How about heading southeast to Drakengard?
+UcScriptMsgConv.fms:173251	bcbae6d145ce	cfe5892f13c0	Let's help Prince Gilbert-dono retake Drakengard.
 UcScriptMsgConv.fms:173602	3f32285db586	a2a263b5041c	I'll take you on, Lex.
 UcScriptMsgConv.fms:173606	9a52c77c285b	140482caa1fd	Whoa!
 UcScriptMsgConv.fms:173608	294346342abc	71ed6017c5f7	You're good, Alain.
@@ -15514,6 +15692,7 @@ UcScriptMsgConv.fms:179203	81aa1ed6b97d	98e25df3f86b	I see...
 UcScriptMsgConv.fms:179204	4fade78d258c	7c293be7952a	Then tell the whole army. We're about to fight the rebels' main force.
 UcScriptMsgConv.fms:179205	e3a5783cc32c	c5cc873c0422	Whoever brings me their heads will be rewarded.
 UcScriptMsgConv.fms:179208	971085932b7d	86b7e7fe09f4	You look as though you have something to say. Are you against this battle?
+UcScriptMsgConv.fms:179209	a3eac9936b0a	ef8ed42a4f1f	Yes, I am.
 UcScriptMsgConv.fms:179210	e50f580a107c	4c18822c8f84	Sir Clive is an enemy of Zenoira, and the rebels have now become a threat.
 UcScriptMsgConv.fms:179212	50b43e2b3d9e	623fa5fd6328	I've served you for a long time, Captain... no, my lady.
 UcScriptMsgConv.fms:179213	1b0992a761f0	0fa147c2a36d	Ten years ago, you felt the same way as Clive-dono.
@@ -16037,7 +16216,7 @@ UcScriptMsgConv.fms:189202	e7f00a36c0e4	09c74db8f591	Are you sure you're okay to
 UcScriptMsgConv.fms:189203	22f503aaf294	c8289ee1a478	Yeah.
 UcScriptMsgConv.fms:189204	b8b58f4c43e4	3f63712eda63	I was put in danger because I kept that secret...
 UcScriptMsgConv.fms:189205	2110a8bbf100	36270d01a390	What's wrong? If you're not feeling well, don't push yourself.
-UcScriptMsgConv.fms:189206	788c3c5c0770	5c57f74b805e	That's not what I mean.
+UcScriptMsgConv.fms:189206	788c3c5c0770	5c57f74b805e	That's not it.
 UcScriptMsgConv.fms:189207	bda862365756	700411d0a1a4	I could hear, faintly, what Galerius said at the sanctuary...
 UcScriptMsgConv.fms:189208	2aef462193ce	b09f3cdb1ae4	He called me the pontifex's daughter... And it's true.
 UcScriptMsgConv.fms:189209	6216d03bc336	7fd18f1583ca	I'm sorry... for hiding it all this time.
@@ -16059,14 +16238,14 @@ UcScriptMsgConv.fms:189224	fd8842c9b6cd	b8e5a1d4d73e	And you're unusually fired 
 UcScriptMsgConv.fms:189225	83819fe6d924	bb69d2df8a4f	Don't tease me...
 UcScriptMsgConv.fms:189226	e428ecaf4350	a9c50012ade6	Your Highness, I have something to tell you.
 UcScriptMsgConv.fms:189227	cca657c3cd3e	843ed494f648	"We received word that Princess Virginia
-was seen in Drakenhold."
+was seen in Drakengard."
 UcScriptMsgConv.fms:189228	002feba36ac6	f7877c044603	Princess Virginia?
 UcScriptMsgConv.fms:189229	d20de0628d3a	493c3f4551b0	She is Ilenia-sama's niece... and Prince Alain's older cousin.
 UcScriptMsgConv.fms:189230	7e94fa5ebca9	46a0239b2202	She had been missing for a long time, but...
-UcScriptMsgConv.fms:189231	e080ae75343b	82ae7f1efcf6	We've now learned that she escaped to Drakenhold.
+UcScriptMsgConv.fms:189231	e080ae75343b	82ae7f1efcf6	We've now learned that she escaped to Drakengard.
 UcScriptMsgConv.fms:189232	c0aae7730c4e	190fc828d858	I'm also concerned about the revelation at the sanctuary, telling you to go to Elheim, but...
 UcScriptMsgConv.fms:189233	2534cb456334	143a5ad44a7e	If the report is true, we can't simply leave Princess Virginia there.
-UcScriptMsgConv.fms:189234	d3fa63106070	1c39a6ca7233	Please consider marching toward Drakenhold as well.
+UcScriptMsgConv.fms:189234	d3fa63106070	1c39a6ca7233	Please consider marching toward Drakengard as well.
 UcScriptMsgConv.fms:189235	7887e2275fbd	8654923faece	Thank you... for coming to save me.
 UcScriptMsgConv.fms:189236	4a9ff599df20	ffe22f049453	Alain...?
 UcScriptMsgConv.fms:189237	e7a46404b633	ae70d3d3795a	Back in Albion, we had servants at the manor, and Bisfaine Cathedral was splendid!
@@ -16355,10 +16534,10 @@ I believe we have sufficient strength now."
 UcScriptMsgConv.fms:196801	a69cc757b576	cf5efea8acb9	Princess Virginia...?!
 UcScriptMsgConv.fms:196803	80376a450b1f	95a2a72ff918	It's been ten years.
 UcScriptMsgConv.fms:196804	0c95a1a043fc	adab94cc498a	I'm so glad you're safe...
-UcScriptMsgConv.fms:196805	f311d4fcfb6b	3ce17e7f1509	Ten years ago, during Galerius's rebellion, I fled to Drakenhold.
+UcScriptMsgConv.fms:196805	f311d4fcfb6b	3ce17e7f1509	Ten years ago, during Galerius's rebellion, I fled to Drakengard.
 UcScriptMsgConv.fms:196806	ee3faa4bbd53	9c48e1e0efe3	Our scouts told me the Liberation Army was heading for this checkpoint.
-UcScriptMsgConv.fms:196807	8a9cab3af034	db13fd40b7a1	Scouts? Princess, what have you been doing in Drakenhold...?
-UcScriptMsgConv.fms:196808	73d0266be949	5b806433dc77	Since then, Drakenhold's second prince, Gilbert, has looked after me.
+UcScriptMsgConv.fms:196807	8a9cab3af034	db13fd40b7a1	Scouts? Princess, what have you been doing in Drakengard...?
+UcScriptMsgConv.fms:196808	73d0266be949	5b806433dc77	Since then, Drakengard's second prince, Gilbert, has looked after me.
 UcScriptMsgConv.fms:196809	ef095e58ad93	5a64dc0f56a6	I see... I'm sorry I couldn't come for you all these years.
 UcScriptMsgConv.fms:196810	b4850a2107d6	95bee95a8654	...Princess Virginia. It has been a long time.
 UcScriptMsgConv.fms:196811	27aee4981b9c	791caf320796	I don't need protection anymore.
@@ -16383,12 +16562,12 @@ UcScriptMsgConv.fms:196830	8447ff0601d4	1b6aadbfc199	I'll join the Liberation Ar
 UcScriptMsgConv.fms:196831	b6ea5dec1f9d	794b5e35f902	Please, wait!
 UcScriptMsgConv.fms:196832	46178b13cf79	0cd26e150cc1	Thank you again for protecting Cornia's princess.
 UcScriptMsgConv.fms:196837	49c1f095d461	d2aa2810561d	But Gilbert has done a lot for me. I'll repay that debt.
-UcScriptMsgConv.fms:196840	08874114c131	da76ad35ddac	Alain, you heard him. Go answer Gilbert's request for reinforcements.
+UcScriptMsgConv.fms:196840	08874114c131	da76ad35ddac	Alain, you heard her. Go answer Gilbert's request for reinforcements.
 UcScriptMsgConv.fms:196844	94ef441764f2	961fd836625b	She's an incredibly headstrong princess... Are you sure this will be all right?
 UcScriptMsgConv.fms:196847	3546cd1c0319	0c574e49bdfa	The late queen used to say Virginia reminded her of herself as a child.
 UcScriptMsgConv.fms:196848	4f9e7544e3d3	7dc6c3ac7b26	I can certainly see why.
 UcScriptMsgConv.fms:196852	a566f636fb42	9a2658cf4829	We're the ones who should be grateful. Cornia's reinforcements have saved us from the brink.
-UcScriptMsgConv.fms:196853	c05b5fa58a6f	f7f9bd01f42c	I'll stake my life on restoring Drakenhold.
+UcScriptMsgConv.fms:196853	c05b5fa58a6f	f7f9bd01f42c	I'll stake my life on restoring Drakengard.
 UcScriptMsgConv.fms:197601	4daf441e01b7	f767f627c669	This is what you get for betraying the Zenoiran Army.
 UcScriptMsgConv.fms:197602	7398d4babace	db9cdee3700a	How the mighty have fallen, General Berengaria.
 UcScriptMsgConv.fms:197603	e8c43b16f32d	48fce33acee7	Not nearly as low as you and your petty schemes.
@@ -16436,6 +16615,7 @@ UcScriptMsgConv.fms:198808	3a43de4b9e15	022caa4ac427	Then come with us. We'll de
 UcScriptMsgConv.fms:198809	a5878b691bc2	a7559df888e5	H-hey...
 UcScriptMsgConv.fms:198810	e1ebeee5c93a	92f7d5fb8a1c	He's gone... What a pushy fellow.
 UcScriptMsgConv.fms:198811	e0d422f1b95e	bce5a1c3f964	Still, his offer couldn't have come at a better time... I suppose I'll go along with him.
+UcScriptMsgConv.fms:198812	82b98859cfe2	e9388399db12	Drakengard Roadway
 UcScriptMsgConv.fms:199200	942a3536e87f	4c6248b074f0	The town has been liberated, Alain-sama.
 UcScriptMsgConv.fms:199201	3ff171ecc449	b3914ba50461	Yes, thank you, Leah-dono.
 UcScriptMsgConv.fms:199202	28732274db8c	b1ff3cab1eb3	Let me introduce her properly. This is General Berengaria.
@@ -16475,6 +16655,7 @@ UcScriptMsgConv.fms:199618	0fb4ad030480	68c2cc13c52f	"I see... All right.
 Make sure you catch up with us later, okay?"
 UcScriptMsgConv.fms:199619	bc5fc33ac477	56cb59ac827f	...Why don't you come out? You have something to discuss, don't you?
 UcScriptMsgConv.fms:199620	e90c2cc30a18	e51e2a588015	Thank you again for saving me.
+UcScriptMsgConv.fms:199621	82b98859cfe2	e9388399db12	Drakengard Roadway
 UcScriptMsgConv.fms:200044	8ab7f2b5aadf	d90b29e5e978	It's really hot...
 UcScriptMsgConv.fms:200045	ade24d6eb9e3	1ac986373108	It's dangerous to cross the desert without a guide.
 UcScriptMsgConv.fms:200046	15a279066e61	b6d31b7ed4b3	The heat isn't the only danger.
@@ -16542,7 +16723,7 @@ UcScriptMsgConv.fms:201205	b3a641a7d9e0	b5e160f3adf7	You can call me king once w
 UcScriptMsgConv.fms:201206	8d4aa93cb612	e2c2197e6052	Then, Prince Gilbert... Leah-dono told me you'd requested reinforcements.
 UcScriptMsgConv.fms:201207	05d7e39d62cd	6df3ace613ad	That's right.
 UcScriptMsgConv.fms:201208	4ffbb1c88981	6dc1cd2f6c7b	Ever since we lost to Zenoira and my father passed away...
-UcScriptMsgConv.fms:201209	262a2e81dcbd	44416be9ecca	I've gathered the survivors and continued fighting to restore the Kingdom of Drakenhold.
+UcScriptMsgConv.fms:201209	262a2e81dcbd	44416be9ecca	I've gathered the survivors and continued fighting to restore the Kingdom of Drakengard.
 UcScriptMsgConv.fms:201210	c9abf9595d8e	68d811d09825	"But we lost many soldiers taking Baumratte,
 and morale has fallen."
 UcScriptMsgConv.fms:201211	3dcc2748968a	de2ffeb002d7	If the intelligence I had in the army is still right, they outnumber us more than four to one.
@@ -16587,7 +16768,7 @@ UcScriptMsgConv.fms:201648	3dd2d13b5e6c	4b343d02adea	I've been collecting things
 UcScriptMsgConv.fms:201649	61c4e31ff791	34640531ff7c	I haven't told my older brother or the others. They'd never let me hear the end of it if they found out...
 UcScriptMsgConv.fms:201650	3f97129d94e1	35eaaf0f8289	All right. I won't tell anyone.
 UcScriptMsgConv.fms:202000	829800605877	794b72bb3a53	Baumratte Outskirts
-UcScriptMsgConv.fms:202001	cdd932602bf2	89d52edcc52f	"On this campaign, we'll surround the remaining Drakenhold forces
+UcScriptMsgConv.fms:202001	cdd932602bf2	89d52edcc52f	"On this campaign, we'll surround the remaining Drakengard forces
 and wipe them out to the last man."
 UcScriptMsgConv.fms:202002	a79f7b0d84d9	771d51bf1369	We'll crush those moles hiding in their burrows, along with the rebels who've joined them.
 UcScriptMsgConv.fms:202401	4fb9c2788d00	1d4b31dbde5a	Gilbert-sama, so this is where you were.
@@ -16638,7 +16819,7 @@ UcScriptMsgConv.fms:202827	0ccd6c92dade	2727915f59e2	Uh... Sorry, but...
 UcScriptMsgConv.fms:202828	963f21d1e650	6c19e8a0f6e3	Haven't you forgotten my request?
 UcScriptMsgConv.fms:202830	735199254d09	db0d3c385c56	Judging by the battle earlier, Amalia-dono, you're worth a thousand soldiers.
 UcScriptMsgConv.fms:202831	da189d421b67	e46eb951a69d	"Do you not intend to fight
-for Drakenhold?"
+for Drakengard?"
 UcScriptMsgConv.fms:202833	8c0411e97e75	80b0b13abb6b	Why do you want the coliseum reopened?
 UcScriptMsgConv.fms:202835	ff3c5093e3ab	28effba5f35f	Well... I figured the fighters who gather at a coliseum must be strong.
 UcScriptMsgConv.fms:202836	f533a66a9a24	556bc69f1732	So you're seeking the chance to fight strong opponents, purely for the sake of battle?
@@ -16693,10 +16874,11 @@ UcScriptMsgConv.fms:204006	6feed1bcd92e	76b2cc487cad	There are far too many thin
 UcScriptMsgConv.fms:204008	8d6de8aedf28	d807997963cf	"There are still enemies left!
 Several units are holed up in a warehouse at the harbor!"
 UcScriptMsgConv.fms:204009	4fd97f8e4e62	c76e4030b4de	Did they get away when we took control of the harbor?
+UcScriptMsgConv.fms:204010	f72cb8ac2615	2d71331a6efd	They used to be Drakengard soldiers, from the looks of it. Knew their way around here well enough to slip clean by us.
 UcScriptMsgConv.fms:204013	9ca78a2d5a27	812984deeed5	Leah-dono.
 UcScriptMsgConv.fms:204014	29fa042047ba	08ed8689a7a0	I'd like you to persuade them to surrender.
 UcScriptMsgConv.fms:204015	35412d5a8a6e	a4f4801eb2d5	You want me to persuade them...?
-UcScriptMsgConv.fms:204016	f45bfa3811c3	e8e56ca7a4b0	"Since you're from Drakenhold too,
+UcScriptMsgConv.fms:204016	f45bfa3811c3	e8e56ca7a4b0	"Since you're from Drakengard too,
 they may be more willing to lower their guard around you."
 UcScriptMsgConv.fms:204017	e764e56ac8bf	976cac99974c	Princess Virginia might only make them angrier.
 UcScriptMsgConv.fms:204018	657a5fe19d76	6f4efa7f7d4d	It annoys me, but that's a good choice, Alain.
@@ -16714,7 +16896,7 @@ UcScriptMsgConv.fms:204409	63fa6fbb9299	7a4ce3e52b25	...Would you explain what's
 UcScriptMsgConv.fms:204410	ea7fbfabb362	29ca87491f08	They were sent into the Zenoiran Army before my father died.
 UcScriptMsgConv.fms:204411	90adabb6ba70	66689fbe6763	I hear something similar happened in Cornia, but...
 UcScriptMsgConv.fms:204412	5b6686544220	2c6530d15a8c	"Many soldiers defected during the war
-between Drakenhold and the Zenoiran Army."
+between Drakengard and the Zenoiran Army."
 UcScriptMsgConv.fms:204413	64d7a2392048	435009f47e7c	It wasn't just people unhappy with the regime. Some of our most trusted retainers defected too.
 UcScriptMsgConv.fms:204414	8b4627eb380a	25fae6718d7c	"To find out why, these men posed as defectors
 and infiltrated their ranks."
@@ -16846,15 +17028,15 @@ UcScriptMsgConv.fms:207215	d8eab7195ab7	52afb94c4664	Prince Gilbert.
 UcScriptMsgConv.fms:207216	1c66e89a6bbe	e070c2700d71	"The people know how hard you've fought
 to save this country, Your Highness."
 UcScriptMsgConv.fms:207217	7f1cb810d81c	2a21b4f2e08c	You led us in place of the late king and Ludwig-sama.
-UcScriptMsgConv.fms:207218	7965050084bc	3a2ee5302689	Otherwise, the people of Drakenhold would be...
+UcScriptMsgConv.fms:207218	7965050084bc	3a2ee5302689	Otherwise, the people of Drakengard would be...
 UcScriptMsgConv.fms:207219	96025ab7c7a7	e3f674e587bf	...I was losing confidence for a moment. Forget I said that.
 UcScriptMsgConv.fms:207220	ab85c37166fd	d1f974253cbe	"Thinking that way would be an insult
 to all of you who believed in me and followed me."
 UcScriptMsgConv.fms:207221	47114cf58308	b65b18c70658	This is the result of all your hard work so far, Prince Gilbert.
 UcScriptMsgConv.fms:207222	4a38340144e2	b9bf075619a7	How do you really feel?
 UcScriptMsgConv.fms:207224	9af488099861	d08c04eefec0	Don't panic, Hermann. I was joking.
-UcScriptMsgConv.fms:207225	3f2559a51d65	87a8386e888e	I'll protect the people of Drakenhold with my life.
-UcScriptMsgConv.fms:207226	911b5009914e	25ad156d34d9	From this moment on, I am the king of Drakenhold.
+UcScriptMsgConv.fms:207225	3f2559a51d65	87a8386e888e	I'll protect the people of Drakengard with my life.
+UcScriptMsgConv.fms:207226	911b5009914e	25ad156d34d9	From this moment on, I am the king of Drakengard.
 UcScriptMsgConv.fms:207227	24539f1c0796	c8ba725bb71b	I won't let anyone trample this land again.
 UcScriptMsgConv.fms:207228	d38232bd4d42	52ef2f5023a8	Today marks the end of my trying to imitate my older brother.
 UcScriptMsgConv.fms:207229	1bb3d4717d5d	e36ee34b4760	From now on, I must lead this country with my own hands.
@@ -16876,12 +17058,12 @@ UcScriptMsgConv.fms:207613	0058a7329a36	621a6a188dc2	If it were you, Aniue... I'
 UcScriptMsgConv.fms:207614	d90aeca44eda	12d215af9ace	You're far too lenient when judging family, and too hard on yourself.
 UcScriptMsgConv.fms:207615	76e3509a1c37	b6ef981e648e	Aniue...
 UcScriptMsgConv.fms:207616	76a8197763b9	30f47794f3a8	Those who rallied around you believe in you... Live up to their expectations.
-UcScriptMsgConv.fms:207617	8b4d31d6a16a	d1683d6552e7	Gilbert... you're the one they want as king of Drakenhold.
+UcScriptMsgConv.fms:207617	8b4d31d6a16a	d1683d6552e7	Gilbert... you're the one they want as king of Drakengard.
 UcScriptMsgConv.fms:207618	6e0ac950f8b2	ba66c8ac7552	What will you do now, Aniue?
 UcScriptMsgConv.fms:207619	d765632d1b84	4eacf37ab550	I'll fight alongside the Liberation Army as a mercenary, to defeat Galerius.
 UcScriptMsgConv.fms:207620	759530ef854b	a55de98951a9	Then... I'll fight alongside the Liberation Army too.
-UcScriptMsgConv.fms:207621	f2ad55bbe6ce	8fc70ba45f06	No. You need to rebuild Drakenhold.
-UcScriptMsgConv.fms:207622	aea01b184e20	d5e309331310	I'm the king of Drakenhold. I can't take orders from a mere mercenary.
+UcScriptMsgConv.fms:207621	f2ad55bbe6ce	8fc70ba45f06	No. You need to rebuild Drakengard.
+UcScriptMsgConv.fms:207622	aea01b184e20	d5e309331310	I'm the king of Drakengard. I can't take orders from a mere mercenary.
 UcScriptMsgConv.fms:207624	a7fdc6e6f5ae	4ef0aaf8e474	That cloak of Father's... It suits you well.
 UcScriptMsgConv.fms:207625	e672e16772f0	10e65d6087e5	But what would saying that now accomplish?
 UcScriptMsgConv.fms:207626	2d8da1ea57b2	64f16f658ff1	So Gilbert won't have any doubts about becoming king.
@@ -16907,7 +17089,7 @@ UcScriptMsgConv.fms:208408	4b69f3745f38	cdfe220fc4e1	To prove his loyalty to Gal
 UcScriptMsgConv.fms:208409	e95d2cfb8cd9	e0ff9d704355	What...?!
 UcScriptMsgConv.fms:208410	8671eacd12a5	7768769c8e18	Princess...
 UcScriptMsgConv.fms:208411	444e8ef0ddb8	b8283c316b7b	What happened? Do you have some history with Giethe?
-UcScriptMsgConv.fms:208412	64fbd3925d44	bc3741d4153b	So you fled to Drakenhold to escape him?
+UcScriptMsgConv.fms:208412	64fbd3925d44	bc3741d4153b	So you fled to Drakengard to escape him?
 UcScriptMsgConv.fms:208413	969e82aab89a	8892e1f3d817	Yes. I was supposed to cross the border with the Knights of the Rose, who were guarding me.
 UcScriptMsgConv.fms:208414	6a4351854851	03ab726ae8fe	Even in an impregnable fortress, a moment of chaos is bound to create an opening.
 UcScriptMsgConv.fms:208416	7514045e3129	bcf4043b68cb	Don't tell me Giethe...
@@ -16923,7 +17105,7 @@ UcScriptMsgConv.fms:208426	44781839c3ab	f593bad01d18	Leah... You heard all that?
 UcScriptMsgConv.fms:208427	df6562571fc3	1c5e0b457014	Yes... With all due respect...
 UcScriptMsgConv.fms:208428	9520f25ab6b6	e0fc3e2d6395	Josef. We'll continue this tomorrow.
 UcScriptMsgConv.fms:208429	af4a64ee8036	2746d76641c5	That was the first I'd heard of it. I'm sorry I didn't know.
-UcScriptMsgConv.fms:208430	4bbf0c387828	fdf0398386ae	...It's an old story that has nothing to do with Drakenhold.
+UcScriptMsgConv.fms:208430	4bbf0c387828	fdf0398386ae	...It's an old story that has nothing to do with Drakengard.
 UcScriptMsgConv.fms:208431	a0c096f33788	a372a3f8b685	Just forget about it.
 UcScriptMsgConv.fms:208432	6cc4ef534c46	ca6068221e81	But from a military standpoint, I agree with Josef-dono's plan.
 UcScriptMsgConv.fms:208433	d68819a7940e	5b4dd15a7f58	...I rather like that about you.
@@ -16964,11 +17146,12 @@ UcScriptMsgConv.fms:209213	55bec3cf6536	734f2c11357c	I'm sure our captain and th
 UcScriptMsgConv.fms:209214	0cf424cfe2c8	8076be3d7246	Everyone... I'm sorry.
 UcScriptMsgConv.fms:209215	eacf366753c9	77e994a96201	From this moment on, my unit will be under Alain's command.
 UcScriptMsgConv.fms:209216	8671eacd12a5	224b5dc295b4	Princess...
+UcScriptMsgConv.fms:209217	82b98859cfe2	e9388399db12	Drakengard Roadway
 UcScriptMsgConv.fms:210000	c4acb3cdf22d	2f43d33b7390	What is it, Josef? Is your old wound keeping you awake?
 UcScriptMsgConv.fms:210002	759508b15bdc	c98b1274fc59	No... I was thinking back on what happened that day.
 UcScriptMsgConv.fms:210003	fa50283de9d2	fe645621d73f	...I see.
-UcScriptMsgConv.fms:210004	ad6fad37fdd6	cf305262228a	Ilenia-sama herself acted as a decoy and entrusted Your Highness to me.
-UcScriptMsgConv.fms:210006	b2134eab9534	c7ca9b1b6535	I should have fought Galerius and died, while Ilenia-sama escaped with Your Highness...
+UcScriptMsgConv.fms:210004	ad6fad37fdd6	cf305262228a	Ilenia-sama herself acted as a decoy and entrusted His Highness to me.
+UcScriptMsgConv.fms:210006	b2134eab9534	c7ca9b1b6535	I should have fought Galerius and died, while Ilenia-sama escaped with His Highness...
 UcScriptMsgConv.fms:210007	1cba9ad7af16	a1208f59f8dc	I sometimes wonder if there could have been another way...
 UcScriptMsgConv.fms:210008	69bb672c8200	87b6473ca9ad	It was Ilenia-sama who should have survived.
 UcScriptMsgConv.fms:210009	9fa3d576ad0d	3c2ee16804d3	Yes... I'm trapped by the past too.
@@ -17004,7 +17187,7 @@ UcScriptMsgConv.fms:210419	cbe706c6328e	980144832bb8	We've got trouble!
 UcScriptMsgConv.fms:210421	397505732580	1392a3e9f7c4	What?! What happened while I was gone?
 UcScriptMsgConv.fms:210422	9786ca5e5b06	08e1398245e1	Aubin, remember Gloucester, the Black Knight?
 UcScriptMsgConv.fms:210423	691a46d7d9ce	f8d85f36ce04	"He was Prince Ludwig's personal guard
-in the Kingdom of Drakenhold, right?"
+in the Kingdom of Drakengard, right?"
 UcScriptMsgConv.fms:210424	097774f202ac	dc32f7e8f772	He worked behind the scenes to keep our group and the kingdom on good terms, for the desert people's sake.
 UcScriptMsgConv.fms:210425	6e898a6ebe75	8ff97034524b	Did something happen to him?
 UcScriptMsgConv.fms:210426	3d84dc3b30de	9108cb90456b	Same as my older brother—Gloucester started acting strangely, too.
@@ -17057,7 +17240,7 @@ UcScriptMsgConv.fms:214006	1cb29fdc4773	87ffb302ab38	It looks certain that Zenoi
 UcScriptMsgConv.fms:214007	9f01c92839f6	9a594046dc77	I'm so glad... You believed me, Ane-sama.
 UcScriptMsgConv.fms:214008	c5776089b99c	576e5003305a	...If you really manage to defeat Zenoira,
 UcScriptMsgConv.fms:214009	23aeadcd56f9	9c0ecbf354e0	What will you do with this country?
-UcScriptMsgConv.fms:214010	5242718762c6	0cfbcd367e68	Not just Drakenhold.
+UcScriptMsgConv.fms:214010	5242718762c6	0cfbcd367e68	Not just Drakengard.
 UcScriptMsgConv.fms:214011	fd9f604cb60a	8f6260f50dcb	"Let's restore the proper order
 to this entire continent."
 UcScriptMsgConv.fms:214013	e9958467e90a	733f9817d8f4	...By the way, your unit is terribly put together.
@@ -17078,7 +17261,7 @@ UcScriptMsgConv.fms:214404	4cc0841b9fe2	bbe2e8e8d3c6	Back to your tents, all of 
 UcScriptMsgConv.fms:214405	0c37b105d2d4	0a66f249e552	That's everyone who tried to get in. Not a single one escaped.
 UcScriptMsgConv.fms:214406	9ac44c7f62f8	9d9fff875c91	Someday we'll be able to say this was the right decision... Surely...
 UcScriptMsgConv.fms:214407	f2b7889805e5	61690e4fc677	Tell me it was the right decision...
-UcScriptMsgConv.fms:214408	2aafb4ac3aca	24fa304646ea	He's one of the new recruits you were fond of, Hilda-sama. He was in that unit too...
+UcScriptMsgConv.fms:214408	2aafb4ac3aca	24fa304646ea	That's one of the new recruits you were fond of, Hilda-sama. From that unit too...
 UcScriptMsgConv.fms:214409	c2db6f74f0a1	7e31bf8e79e9	According to the report, almost the entire unit fell ill on the way back.
 UcScriptMsgConv.fms:214410	a62fc864fc5b	394695341823	...I think there was no other choice.
 UcScriptMsgConv.fms:214411	947a8eadaf33	d135b74bfc64	Don't touch the bodies. The appointed officials will take care of them.
@@ -17116,6 +17299,7 @@ belonging to the Zenoiran Army..."
 UcScriptMsgConv.fms:215213	a3ff31bbfa59	8d9634e0eaa6	So you're saying Zenoira secretly made poison and spread it around here...?
 UcScriptMsgConv.fms:215214	b0749539fc6c	f0d22de2df25	...Someone's filled your head with that. It's rebel propaganda.
 UcScriptMsgConv.fms:215215	367ede18a78a	5c3a5b2d2cc2	No...! You'd know if you went to see for yourself!
+UcScriptMsgConv.fms:215216	82b98859cfe2	e9388399db12	Drakengard Roadway
 UcScriptMsgConv.fms:215217	562ea56c4312	e9f49c498ceb	If you won't come with me, leave immediately.
 UcScriptMsgConv.fms:215218	446e4540b94e	c3ec502f1c85	If you disrupt order, I'll have to punish you too.
 UcScriptMsgConv.fms:215219	96c52924b6f4	342520131758	Ane-sama...
@@ -17132,7 +17316,7 @@ UcScriptMsgConv.fms:215609	11e35b8b36f3	cef24b5127b9	Yes!
 UcScriptMsgConv.fms:215610	b444f0b885bb	699205ac768a	Wait, I'll help too.
 UcScriptMsgConv.fms:215611	3cb2a2632546	5ca519b0ecec	Scars? So you'll stir up the people and throw them into confusion with lies like that?
 UcScriptMsgConv.fms:215612	db8ec20a180f	38e7975c273b	...Six years ago,
-UcScriptMsgConv.fms:215613	20d214282873	c4fd8a324dc9	Drakenhold's army held back the invasion here for five whole months.
+UcScriptMsgConv.fms:215613	20d214282873	c4fd8a324dc9	Drakengard's army held back the invasion here for five whole months.
 UcScriptMsgConv.fms:215614	088ce54a34a9	59fb3c29805d	"How could such a formidable army
 have been defeated by the Zenoiran Army?"
 UcScriptMsgConv.fms:215615	f25eda1ff8d2	2f82664d1453	...Because a deadly plague suddenly spread across this region.
@@ -17428,7 +17612,7 @@ UcScriptMsgConv.fms:223212	ae9ffc8049e9	e4452f0ac787	How horrifying...
 UcScriptMsgConv.fms:223213	05a1a3008c1e	e01b863cd222	I know your goal is the ancient document in the Tower of Thorns.
 UcScriptMsgConv.fms:223214	ef013c4a250a	2501be4f951d	We'll settle things there.
 UcScriptMsgConv.fms:223217	0da4d17126a5	04e9fa3efbb5	I'm not dead... Living souls can be transferred too. Does that explain it?
-UcScriptMsgConv.fms:223218	59970581a674	413129a255fb	She got away...
+UcScriptMsgConv.fms:223218	59970581a674	413129a255fb	He got away...
 UcScriptMsgConv.fms:223219	c5b1ad180310	ab627decdfe9	That elven priestess is a precious vessel to me. I can't let her be destroyed.
 UcScriptMsgConv.fms:223221	ee3e98a7fa94	077971a62bb8	Spirit summoning...?
 UcScriptMsgConv.fms:223222	120eb893ed5f	db2d12ef79ef	You mean you let the dead take over other people’s bodies?
@@ -17550,6 +17734,7 @@ UcScriptMsgConv.fms:227221	244861f450b7	e358e817298b	I think once she's well aga
 UcScriptMsgConv.fms:227222	a4e0fda50f26	9e6493281122	...So says this sheltered young lady, but...
 UcScriptMsgConv.fms:227223	c78e39366d23	ab12c248bdfc	Are you all right with that?
 UcScriptMsgConv.fms:227224	4fa182cb462d	8c67063af96b	I have no objections.
+UcScriptMsgConv.fms:227225	af81100ea43e	c26063d7baa2	...Really?
 UcScriptMsgConv.fms:227228	47c86bdffc50	3bc18bca9a7e	I'm sorry... I owe you.
 UcScriptMsgConv.fms:227229	b29d5a76ea18	82d1e4e669b3	I'm sorry!
 UcScriptMsgConv.fms:227230	20d8f11bf6de	a934470c9b2c	After you helped me, I went and said something so selfish...
@@ -17754,12 +17939,12 @@ UcScriptMsgConv.fms:232411	8ee912f97003	ce3680732017	I won't let you!
 UcScriptMsgConv.fms:241200	868d424c2259	e67f4bbf5743	Hermann-dono.
 UcScriptMsgConv.fms:241201	d45713f2b040	fbd98d7a3fed	The troops are ready to march.
 UcScriptMsgConv.fms:241202	6e966876c907	9d629acb8bd9	We'll go join King Gilbert, too!
-UcScriptMsgConv.fms:241203	778720fc0a62	004897a8543d	Drakenhold Castle Town
+UcScriptMsgConv.fms:241203	778720fc0a62	004897a8543d	Drakengard Castle Town
 UcScriptMsgConv.fms:241600	e74c361504cc	d4afe1a0d0e9	King Gilbert.
 UcScriptMsgConv.fms:241601	d45713f2b040	fbd98d7a3fed	The troops are ready to march.
 UcScriptMsgConv.fms:241602	4a9acdfe5a3d	57c0885b206f	I need to repay the debt I owe Alain.
 UcScriptMsgConv.fms:241603	c843015c34f0	44ded9b0efa6	Move out!
-UcScriptMsgConv.fms:241604	778720fc0a62	004897a8543d	Drakenhold Castle Town
+UcScriptMsgConv.fms:241604	778720fc0a62	004897a8543d	Drakengard Castle Town
 UcScriptMsgConv.fms:242800	a88ec6f05945	9dd0f6c54d75	Hmph... So you have come, my faithful servants.
 UcScriptMsgConv.fms:242801	b1a02de2583d	c171b61af2cd	Galerius-sama... It's an honor to see you again.
 UcScriptMsgConv.fms:242803	6da803fa5bf5	fae825460c04	As long as I get to fight, I don't care. I'll start preparing right away.
@@ -17868,7 +18053,7 @@ UcScriptMsgConv.fms:249604	4832893861b4	bfb5e6b0dfa4	You can win back the people
 UcScriptMsgConv.fms:249606	bc7bcc045952	bbc50a0bc870	Gloucester-dono.
 UcScriptMsgConv.fms:249607	c35968a2c4db	f202a071da6d	Would you fight alongside us?
 UcScriptMsgConv.fms:249608	3fb6df649cd0	58626723d3c1	Alain-dono, thank you for the generous offer.
-UcScriptMsgConv.fms:249609	10a87d27cea9	2a191e5cc0df	But even though my kingdom has fallen, I'm still a royal guard of Drakenhold.
+UcScriptMsgConv.fms:249609	10a87d27cea9	2a191e5cc0df	But even though my kingdom has fallen, I'm still a royal guard of Drakengard.
 UcScriptMsgConv.fms:249611	74c093da9b66	6acd34267067	I must protect this land, just as my lord ordered me to.
 UcScriptMsgConv.fms:249627	47570caddddb	a722f8243999	It's been a long time, Gloucester.
 UcScriptMsgConv.fms:249630	23e180e25a7e	5436ca145892	...! Y-you can't be...
@@ -18301,6 +18486,7 @@ UcScriptMsgConv.fms:258801	18984df88338	9b657584d37e	Hmm... In that case, this m
 UcScriptMsgConv.fms:258802	4992fbde54e8	38436bc047c9	"I suppose there's no longer any need
 for me to stay undercover within Zenoira."
 UcScriptMsgConv.fms:258804	766c54bdc421	3d02ef938ace	Perhaps I'll ask my guest to introduce me to the Liberation Army.
+UcScriptMsgConv.fms:258805	82b98859cfe2	e9388399db12	Drakengard Roadway
 UcScriptMsgConv.fms:259600	8a38a4be76ee	cbca58d4a262	"#s(0.95)#c(12)Ochlys
 #s(0.75)￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣#/c#s(0.85)
 After the war, Ochlys left the knights and
@@ -18757,11 +18943,11 @@ coronation, then left the capital, vowing to
 help his younger brother in his own way.
 
 By now a master of disguise, he traveled far
-and wide to help rebuild Drakenhold, posing
+and wide to help rebuild Drakengard, posing
 in turn as a mercenary, an actor, and a
 sailor.
 
-Later accounts of Drakenhold's restoration
+Later accounts of Drakengard's restoration
 tell of several different men, all named
 Aramis."
 UcScriptMsgConv.fms:264402	05f51d584744	0600c5ac2b60	"#s(0.95)#c(12)Primm
@@ -18860,7 +19046,7 @@ her."
 UcScriptMsgConv.fms:265202	8be6964b5680	94ef09237687	"#s(0.95)#c(12)Berengaria
 #s(0.75)￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣#/c#s(0.85)
 After the war, Berengaria reformed the
-Tricorn Mercenaries. The king of Drakenhold
+Tricorn Mercenaries. The king of Drakengard
 invited them to become a royal order of
 knights, but she refused.
 
@@ -18922,7 +19108,7 @@ to its vast collection."
 UcScriptMsgConv.fms:265600	da59dc05fc65	7919e56e9d8d	"#s(0.95)#c(12)Gilbert
 #s(0.75)￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣#/c#s(0.85)
 After his coronation, Gilbert formally took
-up the duties of king of Drakenhold.
+up the duties of king of Drakengard.
 
 Once a prince who lived in his older brother's
 shadow, he had grown into a king who forged
@@ -18930,16 +19116,16 @@ his own future. His people placed great hope
 in him.
 
 He went down in history as one of
-Drakenhold's finest rulers, having rebuilt
+Drakengard's finest rulers, having rebuilt
 his homeland after the devastation of war."
 UcScriptMsgConv.fms:265601	db42fe2fe3b5	84e7df351cf7	"#s(0.95)#c(12)Virginia
 #s(0.75)￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣#/c#s(0.85)
 Once peace returned, Virginia received a
 formal marriage proposal from the king of
-Drakenhold and accepted it.
+Drakengard and accepted it.
 
 She became a bridge between Cornia and
-Drakenhold, beloved by the people of both
+Drakengard, beloved by the people of both
 nations as a symbol of their friendship.
 
 Her bold spirit and brilliant swordsmanship
@@ -18948,7 +19134,7 @@ Warrior Queen."
 UcScriptMsgConv.fms:265602	73632ad4e954	52ce68f8293d	"#s(0.95)#c(12)Leah
 #s(0.75)￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣#/c#s(0.85)
 After the war, when friendship between
-Cornia and Drakenhold had been secured, Leah
+Cornia and Drakengard had been secured, Leah
 formally entered Virginia's service.
 
 A few years later, the royal couple had an
@@ -18961,10 +19147,10 @@ sword, she became his swordsmanship
 instructor, firm but kind."
 UcScriptMsgConv.fms:265606	132c1393da76	3e2f6a5e7752	"#s(0.95)#c(12)Leah
 #s(0.75)￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣#/c#s(0.85)
-After peace between Cornia and Drakenhold
+After peace between Cornia and Drakengard
 was secured, Leah stepped down as Virginia's
 attendant and returned to serve the king of
-Drakenhold.
+Drakengard.
 
 Her formidable swordsmanship earned her
 command of skilled soldiers, and she served
@@ -19272,10 +19458,12 @@ UcScriptMsgConv.fms:267694	dca40f70e92a	4f30a118e85d	"Welcomed to Castle Gran Co
 was initially mocked for her desert origins, but..."
 UcScriptMsgConv.fms:267695	43d9be5a6225	4039227187e3	Liza's forthrightness and Alain's persistent persuasion gradually eased the hostility.
 UcScriptMsgConv.fms:267696	106f4a55c545	3e0b383a4022	Word of this eventually reached the desert, and more people began moving there to live.
+UcScriptMsgConv.fms:267697	17d6fae7f759	5d7a825e478d	Thus, Hilda and Primm traveled across Drakengard to aid in its reconstruction,
 UcScriptMsgConv.fms:267698	743df4a13522	1dac1b8895ab	After becoming an apothecary, Hilda shared her findings with Alain and worked to prevent disease across national borders.
 UcScriptMsgConv.fms:267699	6478ff7e42ee	59760cc22fd3	When she and Alain met, they would talk for hours with Primm and her wyvern joining them.
 UcScriptMsgConv.fms:267700	2b3e9d5e2b0b	f5c9af17af11	"Gilbert and Alain returned to their respective kingdoms
 as new kings, leading reconstruction and governing their lands."
+UcScriptMsgConv.fms:267702	18172b77a560	732fe22a44fe	a bond which saw Cornia and Drakengard form a strong alliance for generations to come.
 UcScriptMsgConv.fms:267703	2496b3f2c38f	e2adff9ee481	Monica returned to her lands and worked alongside her grandfather to rebuild them.
 UcScriptMsgConv.fms:267704	5b0a32ffe901	d9e9f0a91854	After reconstruction, Alain granted more territory to Monica, with whom he had made a pact—
 UcScriptMsgConv.fms:267705	31710a6b3aea	2513eed6be72	She went down in history as one of Cornia's most distinguished lords.
@@ -19595,6 +19783,7 @@ UcScriptMsgConv.fms:277214	eecb43d55e32	facee558422c	You women can all come at m
 UcScriptMsgConv.fms:277215	8d14ae0c4743	41b18ceaf4c3	That head will be a gift for His Majesty Galerius.
 UcScriptMsgConv.fms:277216	88a291ddcf3d	2b931afe78fd	Please... live...!
 UcScriptMsgConv.fms:277217	fcbefa1de29f	8403db1b8edf	You must survive...!
+UcScriptMsgConv.fms:277218	82b98859cfe2	e9388399db12	Drakengard Roadway
 UcScriptMsgConv.fms:277600	cb3f87bed1a8	6393aa757f23	I'll avenge the Knights of the Rose!
 UcScriptMsgConv.fms:277601	76976c5a2809	266102ab57ed	We did it, Princess...!
 UcScriptMsgConv.fms:277602	01bd8e4cd552	ddbf90aa4bce	Princess Virginia...
@@ -19614,7 +19803,8 @@ UcScriptMsgConv.fms:277618	b47ff66d7d77	d8d3b0d2df10	I have to take responsibili
 UcScriptMsgConv.fms:277619	7f847bdaa284	b150d6eaddc3	The sense of justice that drove you, Princess, is the very model of Cornian royalty.
 UcScriptMsgConv.fms:277620	baec51a082bf	0db2cfd2e763	Please don't put yourself down.
 UcScriptMsgConv.fms:277622	cb563864028c	e13ba86e2e87	Forgive my boldness, but I must say something.
-UcScriptMsgConv.fms:277624	38831664c6d6	490f66eff0f5	Do you know how much you've inspired those of us fighting to restore Drakenhold?
+UcScriptMsgConv.fms:277623	8457648deff6	398ea7182733	But I have stood by your side for a number of years now, ever since you first stepped foot into Drakengard.
+UcScriptMsgConv.fms:277624	38831664c6d6	490f66eff0f5	Do you know how much you've inspired those of us fighting to restore Drakengard?
 UcScriptMsgConv.fms:277625	dec70c743bb5	71305a11e410	Do you realize that, Princess Virginia?
 UcScriptMsgConv.fms:277626	b8fdb16a3e23	605307aa5383	Seeing a princess his own age from a fallen kingdom still holding her head high...
 UcScriptMsgConv.fms:277627	3d0fa72dba12	7814b9350682	Prince Gilbert was so moved that he took up his sword and rose to fight.
@@ -19623,7 +19813,7 @@ UcScriptMsgConv.fms:277629	5ab5a3cafd82	11379c35d1fd	Your pride as a royal was a
 UcScriptMsgConv.fms:277630	03c3ae97db1f	4739b7d4cc0c	If Prince Gilbert saw you now, he would be deeply saddened.
 UcScriptMsgConv.fms:277631	6e7ab451e902	f9a87fd40f24	What did you say, Leah? Do you really have to go that far?
 UcScriptMsgConv.fms:277632	a2e92949e877	059d403aeeca	Cornia isn't the only country counting on you.
-UcScriptMsgConv.fms:277633	ca4002f6ee2a	37fd5db80e60	Please don't let Drakenhold down.
+UcScriptMsgConv.fms:277633	ca4002f6ee2a	37fd5db80e60	Please don't let Drakengard down.
 UcScriptMsgConv.fms:277636	cd7e470cfa3d	922ea66f5dd4	Virginia, I'm asking you too.
 UcScriptMsgConv.fms:277637	818ffc29c018	b530fdcbac6c	I still have a lot to learn.
 UcScriptMsgConv.fms:277638	50d59879ecde	491d4bf450e6	There's so much I never got to learn from my mother, who I was separated from when I was young.
@@ -19988,16 +20178,16 @@ UcScriptMsgConv.fms:311605	e04cf58e0281	acfa24b90f1b	I've only kept moving forwa
 UcScriptMsgConv.fms:311606	84dc72334cf3	3e6dcec21762	We may fight under the banner of liberating Fevrith, but...
 UcScriptMsgConv.fms:311607	1f69f08a0bd5	3544e5ddcabf	Sometimes I feel as though all I can think about is avenging my mother.
 UcScriptMsgConv.fms:311608	c45e90909bab	05ea96dacc52	You may see it that way, but...
-UcScriptMsgConv.fms:311609	feda37352dda	51ff38efe339	If that were all, the Liberation Army would never have come to Drakenhold.
+UcScriptMsgConv.fms:311609	feda37352dda	51ff38efe339	If that were all, the Liberation Army would never have come to Drakengard.
 UcScriptMsgConv.fms:311610	effef7c0eaa2	c7743a1c5fb6	Alain, #w(30)your actions have saved many lives and given people hope.
 UcScriptMsgConv.fms:311612	6d647664c5e6	01eee5804439	Maybe that was part of what I was thinking.
-UcScriptMsgConv.fms:311613	83e6ca8a35e1	d1823ebccf73	I wanted to use Drakenhold's strength to bolster the Liberation Army...
+UcScriptMsgConv.fms:311613	83e6ca8a35e1	d1823ebccf73	I wanted to use Drakengard's strength to bolster the Liberation Army...
 UcScriptMsgConv.fms:311614	5dbd148d810a	36621ab90f71	And what's wrong with that? So many people were saved because of it.
-UcScriptMsgConv.fms:311615	0208bb87d279	b3d96c6e0e5d	You and your army came to Drakenhold and fought to free us. That much is undeniable.
+UcScriptMsgConv.fms:311615	0208bb87d279	b3d96c6e0e5d	You and your army came to Drakengard and fought to free us. That much is undeniable.
 UcScriptMsgConv.fms:311616	de731102f478	3bd6867096c3	When this war ends, you will be king.
 UcScriptMsgConv.fms:311617	c6bce85cf650	53ef04ccff86	If revenge were all you cared about, you wouldn't listen to anyone else's advice.
 UcScriptMsgConv.fms:311618	3259ffc298c1	93d0ecc6f75a	You'd have pressed on without giving other nations a second thought, wouldn't you?
-UcScriptMsgConv.fms:311620	9313e9ccbcfd	9e00d5f2b4fa	Drakenhold and Cornia were at odds even in my father's time.
+UcScriptMsgConv.fms:311620	9313e9ccbcfd	9e00d5f2b4fa	Drakengard and Cornia were at odds even in my father's time.
 UcScriptMsgConv.fms:311621	db01f7bae426	4a76f617428d	"You'll have to rebuild exhausted Cornia
 and lead its people."
 UcScriptMsgConv.fms:311622	5161df301e54	38800ae70fa4	I want us to mend that relationship together.
@@ -20031,7 +20221,7 @@ UcScriptMsgConv.fms:311659	8ea7fbfc08c5	cf6f10986012	...What a guy.
 UcScriptMsgConv.fms:311660	bcc67bdbdcfd	dbcf3cfa3137	Do you always do things like this...?
 UcScriptMsgConv.fms:311661	2ca41a908f30	c2512953f759	You're exaggerating. Even a child would do it.
 UcScriptMsgConv.fms:311662	1c79bcaa1c98	e89a433365de	Oh... I see.
-UcScriptMsgConv.fms:311663	e790d4737c8f	f2e7d514789c	I noticed it in Drakenhold... There are hardly any insects compared to Palevia.
+UcScriptMsgConv.fms:311663	e790d4737c8f	f2e7d514789c	I noticed it in Drakengard... There are hardly any insects compared to Palevia.
 UcScriptMsgConv.fms:311664	2639a89ed707	25d3969fcc9e	Virginia wasn't used to insects either. Are you the same, Gilbert?
 UcScriptMsgConv.fms:311666	dc486b5e0193	562b7eaf22ca	You really are an unusual prince...
 UcScriptMsgConv.fms:311667	47fff79d8841	6e5238a01ca8	Is that why Virginia acknowledged you, I wonder...?
@@ -20050,7 +20240,7 @@ UcScriptMsgConv.fms:311680	a6272b74e0b6	635ca72daad8	Indeed... If anyone can do 
 UcScriptMsgConv.fms:311681	9c536c7010d4	1659d7fb0fd6	If you become king of Cornia...
 UcScriptMsgConv.fms:311682	73498731ca07	0afd46c6dd6e	Perhaps even all of Fevrith will change.
 UcScriptMsgConv.fms:311683	234e3ef9e4bf	82f329a5bfd4	Oh...! What an incredible valley!
-UcScriptMsgConv.fms:311684	44887969d8d0	a4a29d945df2	Just what you'd expect of Drakenhold, a land said to be home to dragons.
+UcScriptMsgConv.fms:311684	44887969d8d0	a4a29d945df2	Just what you'd expect of Drakengard, a land said to be home to dragons.
 UcScriptMsgConv.fms:311685	036aebc5cca0	5bb0e9433de5	Heh... Impressive, isn't it? This majestic view is our nation's treasure.
 UcScriptMsgConv.fms:311686	46f44f2efe8e	be27b0b7f4ed	It is! There's nothing like this in Cornia.
 UcScriptMsgConv.fms:311687	6a401ae03a9e	82045169b03a	......
@@ -20060,11 +20250,12 @@ UcScriptMsgConv.fms:311690	3cf5f08be15f	e9be0f1250e0	Hasn't Josef told you about
 UcScriptMsgConv.fms:311691	f3120aff5bd7	0a741f7960f0	Long ago, Cornia was torn by a dispute over who would inherit the throne.
 UcScriptMsgConv.fms:311692	5fb247af7b98	066023d41812	Brothers fought each other in a bloody struggle.
 UcScriptMsgConv.fms:311693	bf3e1d73f37b	a11d76c4622a	The prince who lost was exiled to the wastelands. He overcame his humiliation and founded a kingdom...
-UcScriptMsgConv.fms:311694	ada5f888b2c1	3bab67033e5d	That kingdom is this land—#w(20)Drakenhold.
+UcScriptMsgConv.fms:311694	ada5f888b2c1	3bab67033e5d	That kingdom is this land—#w(20)Drakengard.
 UcScriptMsgConv.fms:311695	86410ca24be1	8e093c0452ed	So that's what happened... I had no idea.
+UcScriptMsgConv.fms:311696	7915112cf80e	114d96af7471	Drakengard is not a wealthy place. Nor is its barren soil suitable for crops or cattle.
 UcScriptMsgConv.fms:311697	9a7a2c42f039	10ed30b4cfb2	No matter how hard we work, we'll never be like Cornia...
 UcScriptMsgConv.fms:311698	156bc4fea402	e9e4d17ee3c2	Even so, our people have held fast to this barren land, standing together like rock.
-UcScriptMsgConv.fms:311699	7a1b2d9377f6	61ca94fdecbe	At heart, Drakenhold's people resent how fortunate Cornia is.
+UcScriptMsgConv.fms:311699	7a1b2d9377f6	61ca94fdecbe	At heart, Drakengard's people resent how fortunate Cornia is.
 UcScriptMsgConv.fms:311700	3ac5af5b218e	47994acb383b	When I was young, we once invited Cornian nobles to visit.
 UcScriptMsgConv.fms:311701	448e0ac784c3	c485f89927a5	My father gathered ingredients from across the kingdom and treated them to the best feast he could offer.
 UcScriptMsgConv.fms:311702	08ad0efdfbcf	44a0697ad81c	But instead of appreciating it, they turned up their noses at every dish.
@@ -20074,7 +20265,7 @@ UcScriptMsgConv.fms:311705	5901b18ac0a1	90cd8e1bc22b	They were overjoyed, practi
 UcScriptMsgConv.fms:311706	3d90580269ae	dd7a77af93df	I'll be frank. I used to distrust Cornians too.
 UcScriptMsgConv.fms:311707	3242bfb2038a	a28334c917da	Heh... Until I met you, that is.
 UcScriptMsgConv.fms:311708	4545ad167c40	ee0fad543f76	Cornia is a wonderful country. Prosperity is a good thing.
-UcScriptMsgConv.fms:311710	841c36ae7609	d18dd735888e	And it's not just Drakenhold.
+UcScriptMsgConv.fms:311710	841c36ae7609	d18dd735888e	And it's not just Drakengard.
 UcScriptMsgConv.fms:311711	e0914de29a41	8bae54e2cd9c	Bastorias is covered in snow all year, and Albion's soil contains salt.
 UcScriptMsgConv.fms:311712	b3a007d40f1d	c787d83c3c63	No land in Fevrith is as fortunate as Cornia.
 UcScriptMsgConv.fms:311713	b41950dc36b4	ef7daa23efb7	Alain, never forget this.
@@ -20084,8 +20275,8 @@ UcScriptMsgConv.fms:311716	504826e5ec80	b6067d1bf1ce	Gilbert...
 UcScriptMsgConv.fms:311717	5888462bf631	f9f976a9c4ea	I won't. I'll stay the same.
 UcScriptMsgConv.fms:312000	313d36330d6f	4767ce09f474	...Your Highness. You were here?
 UcScriptMsgConv.fms:312001	45b3b9cdf5cd	7fe48fd4b649	...As you may have gathered from that story,
-UcScriptMsgConv.fms:312002	7a38497ffb04	3215a92b2182	Cornia and Drakenhold have never been on particularly good terms.
-UcScriptMsgConv.fms:312003	bf5eb4c3ee85	d42f565aaf6f	Oh, right. The ride on your shoulders.
+UcScriptMsgConv.fms:312002	7a38497ffb04	3215a92b2182	Cornia and Drakengard have never been on particularly good terms.
+UcScriptMsgConv.fms:312003	bf5eb4c3ee85	d42f565aaf6f	Oh, right. The ride on my shoulders.
 UcScriptMsgConv.fms:312004	8b5fdffe3a5b	5b3036abf33d	That's right. You lifted me onto your shoulders so I could see the city stretching out below. Do you remember?
 UcScriptMsgConv.fms:312005	8824f73348c2	3c7ec4ea5a0d	Of course! I was young myself back then.
 UcScriptMsgConv.fms:312006	3e7fdbca5e17	f7dea7201d2c	Josef-sama scolded me afterward for giving you a shoulder ride on the balcony. It was dangerous.
@@ -20099,7 +20290,7 @@ UcScriptMsgConv.fms:312014	42cb5eb85944	60160cf2be49	I was able to stop Hodel's 
 UcScriptMsgConv.fms:312015	c0608d08ea10	3b969dd2d02c	Yes. Seeing your back reminded me of when I was little. #w(30)
 UcScriptMsgConv.fms:312016	79d147149009	b2effa70378a	The balcony railing was so high I couldn't see the view beyond it.
 UcScriptMsgConv.fms:312017	7831df1997da	0aa08dc70724	It sounds impossible, but perhaps we should check just in case...
-UcScriptMsgConv.fms:312018	b9aa63b16265	1edf4a3b0f28	We've fought this far alongside the people of Drakenhold, and I've come to understand how they feel.
+UcScriptMsgConv.fms:312018	b9aa63b16265	1edf4a3b0f28	We've fought this far alongside the people of Drakengard, and I've come to understand how they feel.
 UcScriptMsgConv.fms:312019	dadbb0ae0f1d	4db531b0c23a	Alain-sama, the night is getting cold. Please come back inside.
 UcScriptMsgConv.fms:312021	c2deb22e54c8	3474193d4779	What is it?
 UcScriptMsgConv.fms:312022	c629bedc8ead	5037757f3a7e	I know I shouldn't say this, but... sometimes I feel anxious.
@@ -20130,23 +20321,23 @@ UcScriptMsgConv.fms:312050	455999ffecd1	838efdb40a20	I never thought I'd see thi
 UcScriptMsgConv.fms:312051	438d5ff0dac8	8c6bcaff645a	I've heard this fortress is practically impregnable.
 UcScriptMsgConv.fms:312052	bb2c9e69a9ed	5525c8ee5028	Did we ever attack this fortress during my mother's reign?
 UcScriptMsgConv.fms:312053	7533e6c51039	7121131e2b13	We should find a way to bring about peace without wounding their pride.
-UcScriptMsgConv.fms:312054	ca26c9fcba28	c94f3dacf1c5	The land beyond this fortress, between Cornia and Drakenhold, has been disputed for years.
+UcScriptMsgConv.fms:312054	ca26c9fcba28	c94f3dacf1c5	The land beyond this fortress, between Cornia and Drakengard, has been disputed for years.
 UcScriptMsgConv.fms:312055	186ac563408e	f6fde35a4d0d	And... Her Majesty isn't the only one.
 UcScriptMsgConv.fms:312056	688a63a9a1b3	bd5c1e138eb2	Her Majesty never wished to invade another country, but...
 UcScriptMsgConv.fms:312057	a50031d9b966	f494fd30e87f	Was it fifteen years ago now...?
 UcScriptMsgConv.fms:312058	f4f54bd5b8e6	42783b5202ec	It was when Hodel had set up camp west of here.
 UcScriptMsgConv.fms:312059	88f06492b524	5875c609ddf4	Don't stop me, Hodrick...!
 UcScriptMsgConv.fms:312060	12d3263b12f6	7c388fd6c7dd	They keep sending small groups of soldiers from the fortress to provoke us!
-UcScriptMsgConv.fms:312061	e5655e3d8e50	ef590fa1736c	I won't be satisfied until we've taught those Drakenhold soldiers a lesson.
+UcScriptMsgConv.fms:312061	e5655e3d8e50	ef590fa1736c	I won't be satisfied until we've taught those Drakengard soldiers a lesson.
 UcScriptMsgConv.fms:312062	bcc6002f6225	4e3ef9686310	There's no need to take their bait.
 UcScriptMsgConv.fms:312063	2e846f8c39d0	bb48962a124e	Don't waste your soldiers attacking an impregnable fortress. #w(20)
 UcScriptMsgConv.fms:312064	58b57d8c059f	cb2d80029125	I suppose Her Majesty realized what I was planning and sent you here.
 UcScriptMsgConv.fms:312065	63dc90443df0	d8f79c518038	It's no use. #w(30)You won't be able to stop me.
-UcScriptMsgConv.fms:312066	6bc758fbfe84	df02fc888325	Cornia has nothing to gain from attacking Drakenhold.
+UcScriptMsgConv.fms:312066	6bc758fbfe84	df02fc888325	Cornia has nothing to gain from attacking Drakengard.
 UcScriptMsgConv.fms:312067	5577053e9dfc	ebd7bb7860d9	Even General Valmore is working toward peace.
 UcScriptMsgConv.fms:312068	73055c17a38f	cad969b834c2	What!? General Valmore is...!?
 UcScriptMsgConv.fms:312069	be859100c867	2c6326479399	But you think much like Ilenia-sama did, Your Highness.
-UcScriptMsgConv.fms:312070	db4aea55dc62	320f7838b0a5	I believe you can build a good relationship with Drakenhold.
+UcScriptMsgConv.fms:312070	db4aea55dc62	320f7838b0a5	I believe you can build a good relationship with Drakengard.
 UcScriptMsgConv.fms:312074	e6d2e62056d5	fb46001fb390	Cornia is a wealthy country, but we have no intention of keeping that prosperity to ourselves.
 UcScriptMsgConv.fms:312400	dd33061ea728	e2b6ba56f98c	Yeah, fresh out of the oven!
 UcScriptMsgConv.fms:312401	a7ebd281b7c2	686c11a8a625	And you think you can run a bakery when you make bread like that...?
@@ -20587,7 +20778,7 @@ UcScriptMsgConv.fms:316417	3c349afdd669	0fd1dd63d5c0	I'd love to hear about your
 UcScriptMsgConv.fms:316418	45ce9576f6bd	e3fe6399d17a	And I'd very much like to hear about you, the head of House Meillet.
 UcScriptMsgConv.fms:316419	9f5a4ef5046d	a40afd8dfc93	...She has quite an eye for these things. #w(30)It's been a long time since someone made me break into a cold sweat.
 UcScriptMsgConv.fms:316420	2ce7960a949b	8abe168f5de7	She's not to be underestimated.
-UcScriptMsgConv.fms:316800	550f7aa782e4	a0c56629e939	Drakenhold really is a little hot...
+UcScriptMsgConv.fms:316800	550f7aa782e4	a0c56629e939	Drakengard really is a little hot...
 UcScriptMsgConv.fms:316801	d719da8047dc	6b2c44ce214f	Then why not cut that long hair of yours?
 UcScriptMsgConv.fms:316802	bb8a74b9d4ef	8d536c280aec	Long hair is a defining feature of the man called Aramis.
 UcScriptMsgConv.fms:316803	6ce5ca815d51	0f38f7c4f728	And I've grown used to it. I'd rather keep it this way.
@@ -21402,7 +21593,7 @@ UcScriptMsgConv.fms:327622	ac42d14ee7da	286637802ae8	So that's why my older brot
 UcScriptMsgConv.fms:327623	fa50283de9d2	e35b38179857	...I see.
 UcScriptMsgConv.fms:327624	3d15c5fec458	d2f619fa64d2	Gloucester.
 UcScriptMsgConv.fms:327625	f55484873dfc	6577caac9e13	Once this war is over and Zenoira has been driven out...
-UcScriptMsgConv.fms:327626	47e4f23e6cb4	ad897bb7ddab	I intend to build a new Drakenhold.
+UcScriptMsgConv.fms:327626	47e4f23e6cb4	ad897bb7ddab	I intend to build a new Drakengard.
 UcScriptMsgConv.fms:327627	079327e714df	9595054af87a	I'll break down the barriers separating the desert from the rest of the kingdom and make it a province like any other.
 UcScriptMsgConv.fms:327628	3f5e2dcb72fc	d7ac21abe2a0	And when that day comes, Gloucester, I want you to lead its people.
 UcScriptMsgConv.fms:327629	76cb127d222b	8dece62fc5da	You want me... to be its lord?
@@ -23477,7 +23668,7 @@ UcScriptMsgConv.fms:357608	c411205e485d	9d883e14bf2a	That's why the maid was so 
 UcScriptMsgConv.fms:357610	acb3150aeb55	bee20c998784	Hehe, no... #w(15)It was just a blanket that looked like wings.
 UcScriptMsgConv.fms:357611	63429e304dfe	945613e4e0a1	Haha! So it's just like my yeti story!
 UcScriptMsgConv.fms:357612	f9371287374c	a56eb2d73bd3	Maybe quite a few scary stories start with simple misunderstandings...
-UcScriptMsgConv.fms:357613	551a628e84bc	4248ac0d9fa0	Then I'd like to hear a story from Drakenhold next...
+UcScriptMsgConv.fms:357613	551a628e84bc	4248ac0d9fa0	Then I'd like to hear a story from Drakengard next...
 UcScriptMsgConv.fms:357614	6f079813cce7	3d08f38f6aab	Oh, me too, me too! #w(15)Huh?
 UcScriptMsgConv.fms:357615	d98e120231ef	606a16a347d6	W-who said that just now? #w(45)Scarlett, who were you answering?
 UcScriptMsgConv.fms:357616	2494e1279c0b	5da5e6068f6e	This is a story about a human who served an angel in Albion...
@@ -23979,7 +24170,7 @@ UcScriptMsgConv.fms:364804	79f3a34124e1	e1562ebd2069	I also gave advice to those
 UcScriptMsgConv.fms:364805	2d03c3390004	75a43359d2b9	I'd listen to the knights' troubles or cast charms for them.
 UcScriptMsgConv.fms:364806	a12a9737a80c	422203f16d62	What kinds of things did they worry about?
 UcScriptMsgConv.fms:364807	14395b895024	b932a1b43185	Well... Quite a few knights were afraid to point their weapons at people.
-UcScriptMsgConv.fms:364808	50ffc7706ff6	f8fe531029d2	Cornia and Drakenhold were at a standoff back then.
+UcScriptMsgConv.fms:364808	50ffc7706ff6	f8fe531029d2	Cornia and Drakengard were at a standoff back then.
 UcScriptMsgConv.fms:364809	431a8d069afa	b35af55c94ff	So before battle, I'd sometimes cast a charm to ease their fear.
 UcScriptMsgConv.fms:364810	4ea2c11c379a	2cd761b547ce	A charm... That could stop fear from putting someone in danger.
 UcScriptMsgConv.fms:364811	43f2293d14d6	9dff760fe6d4	Yeah, it can help, but...
@@ -24278,7 +24469,7 @@ UcScriptMsgConv.fms:368837	c6c51d1ea7cc	9d6fc8f35468	Back then, I looked ahead t
 UcScriptMsgConv.fms:368838	297b22e02bad	69bb24fd12d9	I planned to fulfill my father's ambitions, build the country he envisioned, and succeed him.
 UcScriptMsgConv.fms:368839	7eec470d1f01	43e45f3f3872	I lost myself in those dreams. When we suffered a crushing defeat, the man called Ludwig died.
 UcScriptMsgConv.fms:368841	b6bd0973c45c	f1610951e2b9	Alain... I'm not someone who should even be speaking to you.
-UcScriptMsgConv.fms:368842	e5582407cfc6	92ae5ca8233f	My father planned to annex Cornia to Drakenhold after Cornia fell.
+UcScriptMsgConv.fms:368842	e5582407cfc6	92ae5ca8233f	My father planned to annex Cornia to Drakengard after Cornia fell.
 UcScriptMsgConv.fms:368843	76d61e201711	d9b1bb58c8eb	He meant to seize your homeland... your country, amid the chaos of war.
 UcScriptMsgConv.fms:368845	5a5ed0ae77b2	dc0164c5fb64	You asked about my plans after the war because you were worried about me, weren't you?
 UcScriptMsgConv.fms:368846	eff64088a0cc	ca5e50386ac0	You should save that concern for the comrades who matter to you.
@@ -24482,14 +24673,14 @@ UcScriptMsgConv.fms:370849	ad8b0c770364	d0c008027630	I'd never betray you for my
 UcScriptMsgConv.fms:370850	7775fde1e8e3	5321d69580b0	I'd stand with my homeland. Without a doubt.
 UcScriptMsgConv.fms:370851	f999763a4178	5f3560eafcdc	That's what it means to be strangers. Just remember that.
 UcScriptMsgConv.fms:370852	29ca0ebc9767	519d9faf9b4c	...#w(30)That's not fair. If you put it that way, I...
-UcScriptMsgConv.fms:370853	29c08b85bce6	c1164ec7b8d7	...could never bring myself to do anything that would harm Drakenhold.
+UcScriptMsgConv.fms:370853	29c08b85bce6	c1164ec7b8d7	...could never bring myself to do anything that would harm Drakengard.
 UcScriptMsgConv.fms:370854	9368aa6164a3	b0a6cfd3ef5d	Was that what you were after all along?
 UcScriptMsgConv.fms:370855	4db48cbf1d33	a629b2827bf1	...You could say that, I suppose. But...
 UcScriptMsgConv.fms:370856	38d291cd4579	ca3ed1ce09af	I don't dislike this secret relationship of ours, either.
 UcScriptMsgConv.fms:370857	f65e91d5da65	7cdfa225a7d2	And I don't mind that answer, either. Are you really so reluctant to part with me?
 UcScriptMsgConv.fms:370858	cb0a2fa145e1	75aa9e997a01	What... Argh! That's really not fair, Berengaria.
 UcScriptMsgConv.fms:370859	834940558967	52dee63dd762	I'm surprised. I thought you'd dismiss it as something obvious.
-UcScriptMsgConv.fms:370861	bc41a97fc883	0206f4aa190f	Let's hope Cornia and Drakenhold stay friends forever.
+UcScriptMsgConv.fms:370861	bc41a97fc883	0206f4aa190f	Let's hope Cornia and Drakengard stay friends forever.
 UcScriptMsgConv.fms:370862	98509613c821	348ac717daff	...Yeah... Let's hope so.
 UcScriptMsgConv.fms:371200	a58b614955c6	1c008b7e3092	Damn Travis... What's gotten into him, acting so unlike himself...?
 UcScriptMsgConv.fms:371203	0e996cb7b3b6	08ac7ce074be	I love the food, sure, but it's starting to creep me out. #w(30)He never used to do this.
@@ -24941,7 +25132,7 @@ UcScriptMsgConv.fms:374807	79acf9160fbc	5b54111b2273	Hah, I knew you were kind, 
 UcScriptMsgConv.fms:374808	caf181ca6605	834aee239acb	I-it's not like that! #w(40)Fine, I'll tell you...!
 UcScriptMsgConv.fms:374809	4c7f5789e1dc	68abf646e216	So you played with Aubin and Magellan all the time when you were little.
 UcScriptMsgConv.fms:374811	6b60da20cb50	7020ce2c4945	I did promise I'd bring you a gift next time.
-UcScriptMsgConv.fms:374812	8a50f6ccb5de	c787d6d9ede5	"I see... The major cities of Drakenhold really are
+UcScriptMsgConv.fms:374812	8a50f6ccb5de	c787d6d9ede5	"I see... The major cities of Drakengard really are
 completely different from the desert."
 UcScriptMsgConv.fms:374813	fee7c679093e	852931059d8e	What's this? #w(20)Ribbons?
 UcScriptMsgConv.fms:374814	40f48a751e59	edc183cbabb2	And thanks for telling me all that.
@@ -24960,7 +25151,7 @@ UcScriptMsgConv.fms:374824	792f16c190d2	4915e286b8f3	Is wanting to know you bett
 UcScriptMsgConv.fms:374825	21fafeec7b1e	b83bfdb30f87	...#w(20)What's so funny?
 UcScriptMsgConv.fms:374826	a240949083fd	a32bffb68578	Yes. I'd like to take you up on that kindness.
 UcScriptMsgConv.fms:374827	511cf79a5418	05626b0d83ad	Because it's just what Aubin told me about you.
-UcScriptMsgConv.fms:374828	ef828e7aebca	9725d1ae1ec9	But I want to understand. #w(20)It could help Cornia and Drakenhold get along.
+UcScriptMsgConv.fms:374828	ef828e7aebca	9725d1ae1ec9	But I want to understand. #w(20)It could help Cornia and Drakengard get along.
 UcScriptMsgConv.fms:374829	328a57e6476c	24839b78ccce	...So you want to know, even knowing how dangerous it is?
 UcScriptMsgConv.fms:374830	59089d9d73b4	935ea13bc0e2	I'll tell you about life in the desert, the kind a prince could never imagine.
 UcScriptMsgConv.fms:374831	3ec7f09457b5	67943cb46da9	See? It's rough out here. #w(20)Gloucester was caught in the middle of it, too.
@@ -25370,9 +25561,9 @@ UcScriptMsgConv.fms:378027	38794ff3696f	f9305c579320	Alain, here's your chance t
 UcScriptMsgConv.fms:378028	5116d7b1fda1	9fb4ca1878ce	All right. You're on.
 UcScriptMsgConv.fms:378029	bfcfe313f316	7acc21b0fb08	You've gotten stronger... Alain.
 UcScriptMsgConv.fms:378030	25a16b6d2161	1a9abbf87b6e	...#w(30)What's wrong? You won. Aren't you happy?
-UcScriptMsgConv.fms:378031	c6975a5f73c8	7f4f5ac33b0e	While you were being sheltered in Drakenhold...
+UcScriptMsgConv.fms:378031	c6975a5f73c8	7f4f5ac33b0e	While you were being sheltered in Drakengard...
 UcScriptMsgConv.fms:378032	ddf33ace43d5	7819ac04c310	Was there anyone you could play games like this with while you were there?
-UcScriptMsgConv.fms:378033	eb827d5ddb36	19c802ce4925	...Drakenhold treated me well as the princess of a fallen kingdom, but...
+UcScriptMsgConv.fms:378033	eb827d5ddb36	19c802ce4925	...Drakengard treated me well as the princess of a fallen kingdom, but...
 UcScriptMsgConv.fms:378034	54726d322b9f	49e2f43e7c29	Even as a child, I understood my position. I couldn't play without a care in the world.
 UcScriptMsgConv.fms:378035	229a989157eb	caef2f6cdc76	So this was my first game since we played together. I truly enjoyed it.
 UcScriptMsgConv.fms:378036	8d814c2f8797	71936d889247	Alain... Why are you crying?
@@ -25413,7 +25604,7 @@ UcScriptMsgConv.fms:378402	bc5f81335993	992a1e0377c1	I might mistake you for an 
 UcScriptMsgConv.fms:378403	ee54b54ef3c9	5d75fe43614e	Sorry. You seem full of secrets. I got curious...
 UcScriptMsgConv.fms:378404	2dd4996caed0	7fe5dd206dd9	An ordinary soldier like me has no great secrets. I was simply born with a solemn face.
 UcScriptMsgConv.fms:378405	27101c59cdba	d797f65f011b	Ordinary, huh... #w(15)Finding a swordsman as good as you is harder than finding gold in the desert.
-UcScriptMsgConv.fms:378406	741ce2ba8a32	711df72e3e8a	And that... #w(20)It's an old Drakenhold fairy tale, isn't it?
+UcScriptMsgConv.fms:378406	741ce2ba8a32	711df72e3e8a	And that... #w(20)It's an old Drakengard fairy tale, isn't it?
 UcScriptMsgConv.fms:378407	76f7dbf20a93	9eb10890de43	It's about a mercenary who rises up against a cruel ruler and becomes king.
 UcScriptMsgConv.fms:378408	fa840ddf2118	3240c51bf552	Thinking of following his example? You're certainly skilled enough.
 UcScriptMsgConv.fms:378409	a6079b336197	3646529a8f7b	No. If anything, I...
@@ -25424,7 +25615,7 @@ UcScriptMsgConv.fms:378414	378b748b7e04	f7d88e649009	...Oh, that reminds me.
 UcScriptMsgConv.fms:378415	0a4315baa691	3f4780368875	Oh, that fairy tale had a character named Aramis too, didn't it?
 UcScriptMsgConv.fms:378416	a3ea0277fd02	c7c4a3e82d44	A relative of the hero. He committed a crime to protect his family and #w(15)was burned at the stake.
 UcScriptMsgConv.fms:378418	947125e90fa2	66df2de13c72	He seemed like a good man who cared for his family... but what an awful end.
-UcScriptMsgConv.fms:378419	e254531b9a3b	e5700ae9d69a	Your parents must have been odd to give you that name in Drakenhold.
+UcScriptMsgConv.fms:378419	e254531b9a3b	e5700ae9d69a	Your parents must have been odd to give you that name in Drakengard.
 UcScriptMsgConv.fms:378421	651fd706a580	3a84cb29a9f8	The war against Zenoira is a story of rebellion too, isn't it?
 UcScriptMsgConv.fms:378422	ae3b694ff23d	cc78bdcc74db	So that's why I #w(10)chose that name for myself in secret.
 UcScriptMsgConv.fms:378800	2ac60e2a89fd	fcab1d0cdeec	Are you feeling better now?
@@ -25602,7 +25793,7 @@ You really can't hide how much you hate to lose."
 UcScriptMsgConv.fms:380033	32a5dec5ceae	b1adac6a2da2	That's not what I meant...
 UcScriptMsgConv.fms:380034	fb8d51e6ee66	89511a76c8cb	Not what you meant... what?
 UcScriptMsgConv.fms:380035	b4e6c67a8453	150881d4fa92	When I'm with you... I can't afford to lose.
-UcScriptMsgConv.fms:380036	6e4d4ad3b8dc	4dc38c36e4a0	You came to Drakenhold all on your own...
+UcScriptMsgConv.fms:380036	6e4d4ad3b8dc	4dc38c36e4a0	You came to Drakengard all on your own...
 UcScriptMsgConv.fms:380037	3b20223b8659	c09494b89cd4	Yet you never lost your pride as a royal or your love for Cornia...
 UcScriptMsgConv.fms:380038	532fbdddd5c9	9a767db30008	And you never gave up on fighting back or returning home.
 UcScriptMsgConv.fms:380039	832cf403aefc	dda6abc1031c	Seeing you like that...
@@ -26089,7 +26280,7 @@ UcScriptMsgConv.fms:384806	07930fdf868a	9742b21baba0	When the previous king foun
 UcScriptMsgConv.fms:384807	75b97ad9af4d	a87e1036994f	...I remember how fond he was of my blue hair, and how he used to stroke it.
 UcScriptMsgConv.fms:384808	201133ad7e91	10b990bda25e	I'm alive today thanks to the previous king, and...
 UcScriptMsgConv.fms:384809	41e89a1bac2b	82f708ca2512	It's thanks to Gilbert-sama, who has kept me at his side even after the previous king's death.
-UcScriptMsgConv.fms:384810	b4e9f90bfdea	b69d1f672c6c	I don't even know for certain whether I was born in Drakenhold.
+UcScriptMsgConv.fms:384810	b4e9f90bfdea	b69d1f672c6c	I don't even know for certain whether I was born in Drakengard.
 UcScriptMsgConv.fms:384811	38a57ca2ffa0	39d5079979ed	Even so, I owe this royal family enough to risk my life for them.
 UcScriptMsgConv.fms:384812	50af86c17460	5d920f255625	I see...
 UcScriptMsgConv.fms:384813	1706c012c6f7	f1d2a6fb2c17	When the previous king took me in...
@@ -26937,6 +27128,7 @@ UcScriptMsgConv.fms:394407	13ad21fb1ac3	758afc0429c2	As Gilbert-sama said, many 
 UcScriptMsgConv.fms:394408	3780d0b6e28a	66c8ce66543a	...#w(20)Leah-dono, do you feel the same way?
 UcScriptMsgConv.fms:394409	04c57c9670e1	99c05a74ee70	Even though I stood by and watched my father die...?
 UcScriptMsgConv.fms:394410	7b7edd856c6d	7b1901acce7f	...!
+UcScriptMsgConv.fms:394411	517cf0af0229	42ef4e1d57d6	Until his dying breath, my king desired the prosperity of Drakengard above all else.
 UcScriptMsgConv.fms:394412	3a650e56cddd	e54054f0d94a	Whatever the circumstances, I'm sure he hoped you would return alive.
 UcScriptMsgConv.fms:394413	f2a2ea2f41c0	fb6ac328903b	That's what I believe.
 UcScriptMsgConv.fms:394414	9dd24d1d579f	fb58fa9d095e	So please... #w(20)stop directing that hatred at yourself.
@@ -27023,11 +27215,11 @@ UcScriptMsgConv.fms:395613	6dc0f883c24d	26ca10f9b84a	Now that she's gotten to kn
 UcScriptMsgConv.fms:395614	a3b4b691f241	8b0bd1491413	That's good to hear.
 UcScriptMsgConv.fms:395615	f5d34aa95f47	5bf2889bb4e1	...I need to become a king who makes all our people feel that way.
 UcScriptMsgConv.fms:396000	1a793d3ca39c	00244c4606d4	What a lovely country, so green and full of flowers... #w(20)They're adorable.
-UcScriptMsgConv.fms:396001	4c33bb245571	645b594d278c	Primm-san, you're from Drakenhold, known for its distinctive red soil, aren't you?
+UcScriptMsgConv.fms:396001	4c33bb245571	645b594d278c	Primm-san, you're from Drakengard, known for its distinctive red soil, aren't you?
 UcScriptMsgConv.fms:396002	c627fcf96da4	408d5ed1f927	Yes. #w(20)My homeland is so dry that no flowers bloom there at all.
 UcScriptMsgConv.fms:396003	09350cb9b79d	ded3761fe9d7	The only flowers I've ever seen were imported from other countries for use in medicines.
 UcScriptMsgConv.fms:396004	562bdcf6e148	d218de559b6f	So you've never seen flowers growing from the ground before...?
-UcScriptMsgConv.fms:396005	eb773fed1fb5	3a04756de47b	Yes. This campaign was the first time I'd ever left my homeland of Drakenhold...
+UcScriptMsgConv.fms:396005	eb773fed1fb5	3a04756de47b	Yes. This campaign was the first time I'd ever left my homeland of Drakengard...
 UcScriptMsgConv.fms:396006	783760b41a25	4838ef050231	And I think this may be the first time I've seen flowers growing straight from the ground like this.
 UcScriptMsgConv.fms:396007	499e8fe6857f	bd64229a7aef	...Hehe. I'm a little moved, actually.
 UcScriptMsgConv.fms:396008	e683579592f0	77d818b6d6ce	Primm-san...
@@ -27584,7 +27776,7 @@ UcScriptMsgConv.fms:404821	dbbce32b9808	3da6a051b34a	Hey, you two. Take back wha
 UcScriptMsgConv.fms:404823	098946012481	5ef95e310518	Good for you, old man!
 UcScriptMsgConv.fms:404824	71a84b1a3095	7728329856d5	You were always going on about Ilenia-sama, weren't you?
 UcScriptMsgConv.fms:404827	44bb5005e560	d0af4a61b7f8	Ilenia may be brilliant, but she's still a woman, isn't she?
-UcScriptMsgConv.fms:404828	9d12b46f889f	c9ce911cdfcb	And she seems to be going soft on Drakenhold.
+UcScriptMsgConv.fms:404828	9d12b46f889f	c9ce911cdfcb	And she seems to be going soft on Drakengard.
 UcScriptMsgConv.fms:404829	3575faaa76cd	8a3fbbcb12cd	I wouldn't be such a pushover! Gahaha!
 UcScriptMsgConv.fms:404830	cfb7f6aacb8d	8070fdcacda1	You think they'll recognize your achievements and make you a knight in Her Majesty's personal guard, huh?
 UcScriptMsgConv.fms:404831	45d1921a7ac8	3b3e46ffde86	You! Did you just insult Ilenia-sama!?
@@ -27902,6 +28094,7 @@ UcScriptMsgConv.fms:468102	73f4e431da22	8307f922bc7d	Right. That's how it should
 UcScriptMsgConv.fms:468104	808be2c3ff9f	cd79a345755b	No thanks.
 UcScriptMsgConv.fms:468106	a43ed4cda52a	1d9dda17be0f	Rosalinde told me. There's a price to pay for betrayal, isn't there?
 UcScriptMsgConv.fms:468107	aa4bf2dbbde3	547bd3adc230	What guarantee is there that neither of us will ever betray the other?
+UcScriptMsgConv.fms:468110	eecfd5dc673f	5cd39e9dd64c	Once this war's done and buried, I'll be back in Drakengard where I belong.
 UcScriptMsgConv.fms:468111	28c6824b9e66	308e67900239	If relations with Cornia deteriorate, there's a chance I could end up fighting you.
 UcScriptMsgConv.fms:468112	8a168e1f62b6	e5dbf87d1136	...Think carefully before you give that ring away.
 UcScriptMsgConv.fms:468113	310d49cd035e	a263146081a8	Then let's both accept the risk. Even knowing that, I want to ask you.
@@ -28255,7 +28448,7 @@ UcScriptMsgConv.fms:470303	47fdf046d203	feb04bda22b1	"...No, this is an importan
 Better to be overly cautious."
 UcScriptMsgConv.fms:470304	9994491c99c9	27b31711f681	...We'll talk again another time.
 UcScriptMsgConv.fms:470306	5b50eee92694	34d76ae511fd	I imagine you didn't choose me merely to draw out the rings' power.
-UcScriptMsgConv.fms:470307	faf84ddcd0ab	22e688b7c6e1	Your aim must be to strengthen relations between Cornia and Drakenhold...
+UcScriptMsgConv.fms:470307	faf84ddcd0ab	22e688b7c6e1	Your aim must be to strengthen relations between Cornia and Drakengard...
 UcScriptMsgConv.fms:470310	6497ed65d5d1	b4754e27c866	Well? Am I right?
 UcScriptMsgConv.fms:470311	08634205709d	04d6f5a79493	It's a covenant promising mutual trust. Yes, that would be an advantage, too.
 UcScriptMsgConv.fms:470312	4754d6716f8c	b80d31cc2df8	The tensions between my country and Cornia have persisted through the previous generations...
@@ -28271,7 +28464,7 @@ UcScriptMsgConv.fms:470322	9cee63eee109	8967ac8fa643	...is you.
 UcScriptMsgConv.fms:470323	a0e88e0954c9	e0d91b2e1f53	...I hadn't thought that far.
 UcScriptMsgConv.fms:470324	e2e65bdbd5ad	9f00b686d6dd	I've never seen you so completely caught off guard before. It makes me happy.
 UcScriptMsgConv.fms:470325	bbc6791754cc	ee777d6bf524	You got me there...
-UcScriptMsgConv.fms:470327	2dce39b58a66	93e6cb994e42	When I'm with you, the future between Cornia and Drakenhold looks bright.
+UcScriptMsgConv.fms:470327	2dce39b58a66	93e6cb994e42	When I'm with you, the future between Cornia and Drakengard looks bright.
 UcScriptMsgConv.fms:470328	9938b9699a10	a51a9cb5dce1	Let's defeat Galerius and make that future a reality as soon as we can.
 UcScriptMsgConv.fms:470329	4b0ee2f1f05d	1e1d64b4aed8	I suppose I have no choice but to accept this offer.
 UcScriptMsgConv.fms:470400	c6488fbef675	dc5c8ba68209	You called me to a place like this... Is there something important you want to discuss?
@@ -30418,7 +30611,7 @@ UcStaffRoll.fms:17	bd8a2bc1ab5a	1472151afd57	"<1>#s(0.8)Additional Voices#/s<2>K
 <2>Suzuki Hina<br>
 <2>Murata Ayaka<br>"
 UcStaffRoll.fms:18	94b293912a76	3e705e46e13c	"<1>#s(0.8)Great Sage (Cornia)#/s<2>Kikuchi Michitake<br>
-<1>#s(0.8)Great Sage (Drakenhold)#/s<2>Natsutani Miki<br>
+<1>#s(0.8)Great Sage (Drakengard)#/s<2>Natsutani Miki<br>
 <1>#s(0.8)Great Sage (Elheim)#/s<2>Sato Haruka<br>
 <1>#s(0.8)Great Sage (Bastorias)#/s<2>Sugisaki Ryo<br>
 <1>#s(0.8)Great Sage (Albion)#/s<2>Yoshino Takahiro<br>
@@ -30806,7 +30999,7 @@ UcStaffRoll.fms:53	179a03a2eea2	179a03a2eea2	"<1>#s(0.8)#bMercenary (TYPE A) / N
 <br><br><br>
 <br><br><br>"
 UcStaffRoll.fms:54	26f140b30f50	26f140b30f50	"<1>#s(0.8)#bGreat Sage (Cornia)#/s<2>#s(0.8)Kikuchi Michitake<br>
-<1>#s(0.8)#bGreat Sage (Drakenhold)#/s<2>#s(0.8)Natsutani Miki<br>
+<1>#s(0.8)#bGreat Sage (Drakengard)#/s<2>#s(0.8)Natsutani Miki<br>
 <1>#s(0.8)#bGreat Sage (Elheim)#/s<2>#s(0.8)Sato Haruka<br>
 <1>#s(0.8)#bGreat Sage (Bastorias)#/s<2>#s(0.8)Sugisaki Ryo<br>
 <1>#s(0.8)#bGreat Sage (Albion)#/s<2>#s(0.8)Yoshino Takahiro<br>
@@ -30970,7 +31163,7 @@ UcStaffRoll.fms:72	1472151afd57	1472151afd57	"<1>#s(0.8)Additional Voices#/s<2>K
 <2>Suzuki Hina<br>
 <2>Murata Ayaka<br>"
 UcStaffRoll.fms:73	3e705e46e13c	3e705e46e13c	"<1>#s(0.8)Great Sage (Cornia)#/s<2>Kikuchi Michitake<br>
-<1>#s(0.8)Great Sage (Drakenhold)#/s<2>Natsutani Miki<br>
+<1>#s(0.8)Great Sage (Drakengard)#/s<2>Natsutani Miki<br>
 <1>#s(0.8)Great Sage (Elheim)#/s<2>Sato Haruka<br>
 <1>#s(0.8)Great Sage (Bastorias)#/s<2>Sugisaki Ryo<br>
 <1>#s(0.8)Great Sage (Albion)#/s<2>Yoshino Takahiro<br>
@@ -31160,7 +31353,7 @@ UcStaffRoll.fms:115	1472151afd57	1472151afd57	"<1>#s(0.8)Additional Voices#/s<2>
 <2>Suzuki Hina<br>
 <2>Murata Ayaka<br>"
 UcStaffRoll.fms:116	3e705e46e13c	3e705e46e13c	"<1>#s(0.8)Great Sage (Cornia)#/s<2>Kikuchi Michitake<br>
-<1>#s(0.8)Great Sage (Drakenhold)#/s<2>Natsutani Miki<br>
+<1>#s(0.8)Great Sage (Drakengard)#/s<2>Natsutani Miki<br>
 <1>#s(0.8)Great Sage (Elheim)#/s<2>Sato Haruka<br>
 <1>#s(0.8)Great Sage (Bastorias)#/s<2>Sugisaki Ryo<br>
 <1>#s(0.8)Great Sage (Albion)#/s<2>Yoshino Takahiro<br>
@@ -31893,7 +32086,7 @@ UcStaffRoll.fms:172	7a995c4d7999	7a995c4d7999	"<1>#s(0.8)Mercenary (TYPE A) / NP
 <br><br><br>
 <br><br><br>"
 UcStaffRoll.fms:173	c8820c698410	c8820c698410	"<1>#s(0.8)Great Sage (Cornia)#/s<2>Kikuchi Michitake<br>
-<1>#s(0.8)Great Sage (Drakenhold)#/s<2>Natsutani Miki<br>
+<1>#s(0.8)Great Sage (Drakengard)#/s<2>Natsutani Miki<br>
 <1>#s(0.8)Great Sage (Elheim)#/s<2>Sato Haruka<br>
 <1>#s(0.8)Great Sage (Bastorias)#/s<2>Sugisaki Ryo<br>
 <1>#s(0.8)Great Sage (Albion)#/s<2>Yoshino Takahiro<br>
@@ -34800,6 +34993,9 @@ UcSymbolMsg.fms:4	c83e6717ef69	dbeef919fcda	"[n] Ruins
 UcSymbolMsg.fms:8	6aaf299e6733	f8e42a74e551	"[n] #FN(FL1-5西の砦)
 [e] #FN(1-4北西の町)
 [w] The #FN(TK_C01城塞都市)"
+UcSymbolMsg.fms:17	33e543db19cf	d400aa583f58	"[n] #FN(1-4南東の町)
+[se] Drakengard Border Crossing
+[w] #FN(FL1-4湿地東の町)"
 UcSysMsg.fms:57	2cdffe526b00	d7f83a0930ae	Lost #c(12)#(102)#/c x #c(12)%d#/c.
 UcSysMsg.fms:73	651a1d72b9a2	45f6e1120608	#(48)Winged
 UcSysMsg.fms:76	3aded2581300	b6362003f44b	#(58)Mage
@@ -34827,6 +35023,8 @@ UcSysMsg.fms:452	aa65d0b83829	16972e60ea66	Total Physical Damage Dealt
 UcSysMsg.fms:454	80b763bdf12c	8a225c24a44d	Total Physical Damage Received
 UcSysMsg.fms:461	a41bd50bba50	5f76a950c470	Spend #c(2)%d#/c Honors to promote this character?
 UcSysMsg.fms:500	de9ecca6538c	238e74f2f270	#(100) Gather
+UcSysMsg.fms:511	8991435ea2e7	1a41d5000599	Drakengard
+UcSysMsg.fms:549	417622e4c6ae	2ec6c154ed95	DRAKENGARD
 UcSysMsg.fms:554	5e2309340083	f4976e369aee	Black Market Dealer
 UcSysMsg.fms:624	b62c2f8ec3dc	6b0d27fd935b	You lack the Honors to proceed.
 UcSysMsg.fms:643	1d49895d44cc	657be62d230a	Merge/Reorganize
@@ -34868,6 +35066,7 @@ UcSysMsg.fms:1196	b15c2a956a8a	960ae8a3babf	"Hmm... Tough luck.
 There's nothing buried inside that circle."
 UcSysMsg.fms:1200	62baed3970d3	46ebcb1c6a37	"Fine bit of digging you did there.
 Next, how about trying a Mighty Dig?"
+UcSysMsg.fms:1216	2f40d7467072	1a41d5000599	Drakengard
 UcSysMsg.fms:1249	94d31fce6b02	b568e032ea93	Create new save data? You need save data to start the game.
 UcSysMsg.fms:1276	1ffab4649786	756451c379d2	Choose the parts to use in your emblem.
 UcSysMsg.fms:1277	12599cd9c9de	2475159655ab	Choose an emblem from the presets.
@@ -34924,6 +35123,7 @@ UcUnitList.fms:489	e89202e83c3c	aa91ce72a363	Dustgrind
 UcUnitList.fms:490	e89202e83c3c	aa91ce72a363	Dustgrind
 UcUnitList.fms:521	d06867629ef6	b0484acd0b66	Crimson Dragon
 UcUnitList.fms:522	d06867629ef6	b0484acd0b66	Crimson Dragon
+UcUnitList.fms:527	9ce9846e695b	1a41d5000599	Drakengard
 UcUnitList.fms:767	09e2319b9cc4	01cac01624f7	Undead
 UcUnitList.fms:768	09e2319b9cc4	01cac01624f7	Undead
 UcUnitList.fms:769	09e2319b9cc4	01cac01624f7	Undead
@@ -34941,6 +35141,10 @@ UcUnitList.fms:780	09e2319b9cc4	01cac01624f7	Undead
 UcUnitList.fms:781	09e2319b9cc4	01cac01624f7	Undead
 UcUnitList.fms:979	cbf3661b559e	ba613464d598	Whiteflower
 UcUnitList.fms:980	cbf3661b559e	ba613464d598	Whiteflower
+UcUnitList.fms:1373	9ce9846e695b	1a41d5000599	Drakengard
+UcUnitList.fms:1374	9ce9846e695b	1a41d5000599	Drakengard
+UcUnitList.fms:1375	9ce9846e695b	1a41d5000599	Drakengard
+UcUnitList.fms:1376	9ce9846e695b	1a41d5000599	Drakengard
 UcUnitList.fms:1399	cbf3661b559e	ba613464d598	Whiteflower
 UcUnitList.fms:1400	cbf3661b559e	ba613464d598	Whiteflower
 UcUnitList.fms:1401	cbf3661b559e	ba613464d598	Whiteflower
